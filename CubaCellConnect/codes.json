@@ -219,7 +219,413 @@
               "requiresInput": false
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "purchase",
+      "name": "Compras",
+      "icon": "cart",
+      "groups": [
+        {
+          "name": "Datos",
+          "codes": [
+            {
+              "id": "data-bundle-45gb",
+              "code": "*133*1*4*1#",
+              "title": "Plan de 4.5GB",
+              "details": "4.5GB de datos.",
+              "price": "$240.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*1*4*1*1#"
+            },
+            {
+              "id": "data-daily-plan",
+              "code": "*133*1*3#",
+              "title": "Plan Diario de 200MB",
+              "details": "200MB por día.",
+              "price": "$25.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*1*3*1#"
+            },
+            {
+              "id": "data-todus-plan",
+              "code": "*133*1*2#",
+              "title": "Plan ToDus",
+              "details": "Datos para la app ToDus.",
+              "price": "$25.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*1*2*1#"
+            }
+          ]
         },
+        {
+          "name": "Planes Combinados",
+          "codes": [
+            {
+              "id": "data-bundle-2gb-combo",
+              "code": "*133*1*4*2#",
+              "title": "2GB + 15MIN + 20SMS",
+              "details": "Datos, minutos y SMS en un solo combo.",
+              "price": "$120.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*1*4*2*1#"
+            },
+            {
+              "id": "data-bundle-4gb-combo",
+              "code": "*133*1*4*3#",
+              "title": "4GB + 35MIN + 40SMS",
+              "details": "Datos, minutos y SMS en un solo combo.",
+              "price": "$240.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*1*4*3*1#"
+            },
+            {
+              "id": "data-bundle-6gb-combo",
+              "code": "*133*1*4*4#",
+              "title": "6GB + 60MIN + 70SMS",
+              "details": "Datos, minutos y SMS en un solo combo.",
+              "price": "$360.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*1*4*4*1#"
+            }
+          ]
+        },
+        {
+          "name": "SMS",
+          "codes": [
+            {
+              "id": "sms-bundle-20",
+              "code": "*133*2*1#",
+              "title": "Plan de 20 SMS",
+              "details": "20 SMS.",
+              "price": "$15.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*2*1*1#"
+            },
+            {
+              "id": "sms-bundle-50",
+              "code": "*133*2*2#",
+              "title": "Plan de 50 SMS",
+              "details": "50 SMS.",
+              "price": "$30.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*2*2*1#"
+            },
+            {
+              "id": "sms-bundle-90",
+              "code": "*133*2*3#",
+              "title": "Plan de 90 SMS",
+              "details": "90 SMS.",
+              "price": "$50.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*2*3*1#"
+            },
+            {
+              "id": "sms-bundle-120",
+              "code": "*133*2*4#",
+              "title": "Plan de 120 SMS",
+              "details": "120 SMS.",
+              "price": "$60.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*2*4*1#"
+            }
+          ]
+        },
+        {
+          "name": "Voz",
+          "codes": [
+            {
+              "id": "voice-bundle-5min",
+              "code": "*133*3*1#",
+              "title": "Plan de 5 MIN",
+              "details": "5 minutos.",
+              "price": "$37.50",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*3*1*1#"
+            },
+            {
+              "id": "voice-bundle-10min",
+              "code": "*133*3*2#",
+              "title": "Plan de 10 MIN",
+              "details": "10 minutos.",
+              "price": "$72.50",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*3*2*1#"
+            },
+            {
+              "id": "voice-bundle-15min",
+              "code": "*133*3*3#",
+              "title": "Plan de 15 MIN",
+              "details": "15 minutos.",
+              "price": "$105.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*3*3*1#"
+            },
+            {
+              "id": "voice-bundle-25min",
+              "code": "*133*3*4#",
+              "title": "Plan de 25 MIN",
+              "details": "25 minutos.",
+              "price": "$162.50",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*3*4*1#"
+            },
+            {
+              "id": "voice-bundle-40min",
+              "code": "*133*3*5#",
+              "title": "Plan de 40 MIN",
+              "details": "40 minutos.",
+              "price": "$250.00",
+              "type": "ussd",
+              "requiresInput": false,
+              "noConfirmCode": "*133*3*5*1#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "helplines",
+      "name": "Líneas de Ayuda",
+      "icon": "flipphone",
+      "groups": [
+        {
+          "name": null,
+          "codes": [
+            {
+              "id": "voicemail",
+              "code": "*123",
+              "title": "Buzón de Voz",
+              "details": "Accede a tu buzón de voz.",
+              "icon": "recordingtape",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "customer-service",
+              "code": "*2266",
+              "title": "Atención al Cliente",
+              "details": "Soporte, dudas, o activar el buzón de voz en tu teléfono.",
+              "icon": "headphones",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            }
+          ]
+        },
+        {
+          "name": "Emergencias y Seguridad",
+          "codes": [
+            {
+              "id": "emergency-antidrugs",
+              "code": "103",
+              "title": "Línea Antidrogas",
+              "details": "Apoyo a adicciones.",
+              "icon": "pills.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "emergency-ambulance",
+              "code": "104",
+              "title": "Ambulancia (SIUM)",
+              "details": "Servicio de ambulancias.",
+              "icon": "cross.case.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "emergency-firefighters",
+              "code": "105",
+              "title": "Bomberos",
+              "details": "También para escapes graves de gas.",
+              "icon": "flame.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "emergency-police",
+              "code": "106",
+              "title": "Policía Nacional (PNR)",
+              "details": "Policía Nacional Revolucionaria.",
+              "icon": "shield.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "emergency-coastguard",
+              "code": "107",
+              "title": "Salvamento Marítimo",
+              "details": "Tropas Guardafronteras.",
+              "icon": "sailboat.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            }
+          ]
+        },
+        {
+          "name": "Servicios Básicos del Hogar",
+          "codes": [
+            {
+              "id": "home-electricity",
+              "code": "18888",
+              "title": "Averías Eléctricas (UNE)",
+              "details": "Reporte de cortes y averías eléctricas.",
+              "icon": "bolt.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "home-water",
+              "code": "18838",
+              "title": "Averías de Agua",
+              "details": "Salideros y roturas de tuberías (Acueducto).",
+              "icon": "drop.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "home-gas",
+              "code": "7833-3333",
+              "title": "Averías de Gas",
+              "details": "Gas manufacturado — línea directa en La Habana.",
+              "icon": "flame",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            }
+          ]
+        },
+        {
+          "name": "Servicios ETECSA y Teléfono",
+          "codes": [
+            {
+              "id": "etecsa-assisted-calls",
+              "code": "112",
+              "title": "Llamadas Asistidas",
+              "details": "Gestión de llamadas asistidas, nacionales e internacionales.",
+              "icon": "phone.arrow.up.right",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "etecsa-directory",
+              "code": "113",
+              "title": "Información y Guía Telefónica",
+              "details": "Para pedir un número.",
+              "icon": "info.circle.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "etecsa-landline-report",
+              "code": "114",
+              "title": "Averías de Teléfono Fijo",
+              "details": "Reporte de interrupciones de telefonía fija.",
+              "icon": "phone.down.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "etecsa-general-info",
+              "code": "115",
+              "title": "Información General ETECSA",
+              "details": "Información general y trámites comerciales.",
+              "icon": "building.2.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "etecsa-time-signal",
+              "code": "116",
+              "title": "Señal Horaria",
+              "details": "La hora exacta.",
+              "icon": "clock.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "etecsa-commercial",
+              "code": "118",
+              "title": "Atención Comercial ETECSA",
+              "details": "Atención comercial unificada.",
+              "icon": "person.2.wave.2.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            }
+          ]
+        },
+        {
+          "name": "Quejas y Atención Ciudadana",
+          "codes": [
+            {
+              "id": "complaints-mininit",
+              "code": "18806",
+              "title": "Atención a la Ciudadanía (MININT)",
+              "details": "Denuncias o quejas sobre policías.",
+              "icon": "exclamationmark.bubble.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "complaints-prosecutor",
+              "code": "18860",
+              "title": "Fiscalía General",
+              "details": "Orientación jurídica y quejas de legalidad.",
+              "icon": "building.columns.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            },
+            {
+              "id": "complaints-mail",
+              "code": "8024-4644",
+              "title": "Correos de Cuba",
+              "details": "Línea única gratuita para bultos y giros.",
+              "icon": "envelope.fill",
+              "showsNumber": true,
+              "type": "call",
+              "requiresInput": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sms",
+      "name": "Servicios por SMS",
+      "icon": "envelope.badge",
+      "groups": [
         {
           "name": "Consultas",
           "codes": [
@@ -832,405 +1238,6 @@
                 "RATA",
                 "CERDO"
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "purchase",
-      "name": "Compras",
-      "icon": "cart",
-      "groups": [
-        {
-          "name": "Datos",
-          "codes": [
-            {
-              "id": "data-bundle-45gb",
-              "code": "*133*1*4*1#",
-              "title": "Plan de 4.5GB",
-              "details": "4.5GB de datos.",
-              "price": "$240.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*1*4*1*1#"
-            },
-            {
-              "id": "data-daily-plan",
-              "code": "*133*1*3#",
-              "title": "Plan Diario de 200MB",
-              "details": "200MB por día.",
-              "price": "$25.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*1*3*1#"
-            },
-            {
-              "id": "data-todus-plan",
-              "code": "*133*1*2#",
-              "title": "Plan ToDus",
-              "details": "Datos para la app ToDus.",
-              "price": "$25.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*1*2*1#"
-            }
-          ]
-        },
-        {
-          "name": "Planes Combinados",
-          "codes": [
-            {
-              "id": "data-bundle-2gb-combo",
-              "code": "*133*1*4*2#",
-              "title": "2GB + 15MIN + 20SMS",
-              "details": "Datos, minutos y SMS en un solo combo.",
-              "price": "$120.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*1*4*2*1#"
-            },
-            {
-              "id": "data-bundle-4gb-combo",
-              "code": "*133*1*4*3#",
-              "title": "4GB + 35MIN + 40SMS",
-              "details": "Datos, minutos y SMS en un solo combo.",
-              "price": "$240.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*1*4*3*1#"
-            },
-            {
-              "id": "data-bundle-6gb-combo",
-              "code": "*133*1*4*4#",
-              "title": "6GB + 60MIN + 70SMS",
-              "details": "Datos, minutos y SMS en un solo combo.",
-              "price": "$360.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*1*4*4*1#"
-            }
-          ]
-        },
-        {
-          "name": "SMS",
-          "codes": [
-            {
-              "id": "sms-bundle-20",
-              "code": "*133*2*1#",
-              "title": "Plan de 20 SMS",
-              "details": "20 SMS.",
-              "price": "$15.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*2*1*1#"
-            },
-            {
-              "id": "sms-bundle-50",
-              "code": "*133*2*2#",
-              "title": "Plan de 50 SMS",
-              "details": "50 SMS.",
-              "price": "$30.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*2*2*1#"
-            },
-            {
-              "id": "sms-bundle-90",
-              "code": "*133*2*3#",
-              "title": "Plan de 90 SMS",
-              "details": "90 SMS.",
-              "price": "$50.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*2*3*1#"
-            },
-            {
-              "id": "sms-bundle-120",
-              "code": "*133*2*4#",
-              "title": "Plan de 120 SMS",
-              "details": "120 SMS.",
-              "price": "$60.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*2*4*1#"
-            }
-          ]
-        },
-        {
-          "name": "Voz",
-          "codes": [
-            {
-              "id": "voice-bundle-5min",
-              "code": "*133*3*1#",
-              "title": "Plan de 5 MIN",
-              "details": "5 minutos.",
-              "price": "$37.50",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*3*1*1#"
-            },
-            {
-              "id": "voice-bundle-10min",
-              "code": "*133*3*2#",
-              "title": "Plan de 10 MIN",
-              "details": "10 minutos.",
-              "price": "$72.50",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*3*2*1#"
-            },
-            {
-              "id": "voice-bundle-15min",
-              "code": "*133*3*3#",
-              "title": "Plan de 15 MIN",
-              "details": "15 minutos.",
-              "price": "$105.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*3*3*1#"
-            },
-            {
-              "id": "voice-bundle-25min",
-              "code": "*133*3*4#",
-              "title": "Plan de 25 MIN",
-              "details": "25 minutos.",
-              "price": "$162.50",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*3*4*1#"
-            },
-            {
-              "id": "voice-bundle-40min",
-              "code": "*133*3*5#",
-              "title": "Plan de 40 MIN",
-              "details": "40 minutos.",
-              "price": "$250.00",
-              "type": "ussd",
-              "requiresInput": false,
-              "noConfirmCode": "*133*3*5*1#"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "helplines",
-      "name": "Líneas de Ayuda",
-      "icon": "flipphone",
-      "groups": [
-        {
-          "name": null,
-          "codes": [
-            {
-              "id": "voicemail",
-              "code": "*123",
-              "title": "Buzón de Voz",
-              "details": "Accede a tu buzón de voz.",
-              "icon": "recordingtape",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "customer-service",
-              "code": "*2266",
-              "title": "Atención al Cliente",
-              "details": "Soporte, dudas, o activar el buzón de voz en tu teléfono.",
-              "icon": "headphones",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            }
-          ]
-        },
-        {
-          "name": "Emergencias y Seguridad",
-          "codes": [
-            {
-              "id": "emergency-antidrugs",
-              "code": "103",
-              "title": "Línea Antidrogas",
-              "details": "Apoyo a adicciones.",
-              "icon": "pills.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "emergency-ambulance",
-              "code": "104",
-              "title": "Ambulancia (SIUM)",
-              "details": "Servicio de ambulancias.",
-              "icon": "cross.case.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "emergency-firefighters",
-              "code": "105",
-              "title": "Bomberos",
-              "details": "También para escapes graves de gas.",
-              "icon": "flame.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "emergency-police",
-              "code": "106",
-              "title": "Policía Nacional (PNR)",
-              "details": "Policía Nacional Revolucionaria.",
-              "icon": "shield.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "emergency-coastguard",
-              "code": "107",
-              "title": "Salvamento Marítimo",
-              "details": "Tropas Guardafronteras.",
-              "icon": "sailboat.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            }
-          ]
-        },
-        {
-          "name": "Servicios Básicos del Hogar",
-          "codes": [
-            {
-              "id": "home-electricity",
-              "code": "18888",
-              "title": "Averías Eléctricas (UNE)",
-              "details": "Reporte de cortes y averías eléctricas.",
-              "icon": "bolt.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "home-water",
-              "code": "18838",
-              "title": "Averías de Agua",
-              "details": "Salideros y roturas de tuberías (Acueducto).",
-              "icon": "drop.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "home-gas",
-              "code": "7833-3333",
-              "title": "Averías de Gas",
-              "details": "Gas manufacturado — línea directa en La Habana.",
-              "icon": "flame",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            }
-          ]
-        },
-        {
-          "name": "Servicios ETECSA y Teléfono",
-          "codes": [
-            {
-              "id": "etecsa-assisted-calls",
-              "code": "112",
-              "title": "Llamadas Asistidas",
-              "details": "Gestión de llamadas asistidas, nacionales e internacionales.",
-              "icon": "phone.arrow.up.right",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "etecsa-directory",
-              "code": "113",
-              "title": "Información y Guía Telefónica",
-              "details": "Para pedir un número.",
-              "icon": "info.circle.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "etecsa-landline-report",
-              "code": "114",
-              "title": "Averías de Teléfono Fijo",
-              "details": "Reporte de interrupciones de telefonía fija.",
-              "icon": "phone.down.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "etecsa-general-info",
-              "code": "115",
-              "title": "Información General ETECSA",
-              "details": "Información general y trámites comerciales.",
-              "icon": "building.2.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "etecsa-time-signal",
-              "code": "116",
-              "title": "Señal Horaria",
-              "details": "La hora exacta.",
-              "icon": "clock.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "etecsa-commercial",
-              "code": "118",
-              "title": "Atención Comercial ETECSA",
-              "details": "Atención comercial unificada.",
-              "icon": "person.2.wave.2.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            }
-          ]
-        },
-        {
-          "name": "Quejas y Atención Ciudadana",
-          "codes": [
-            {
-              "id": "complaints-mininit",
-              "code": "18806",
-              "title": "Atención a la Ciudadanía (MININT)",
-              "details": "Denuncias o quejas sobre policías.",
-              "icon": "exclamationmark.bubble.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "complaints-prosecutor",
-              "code": "18860",
-              "title": "Fiscalía General",
-              "details": "Orientación jurídica y quejas de legalidad.",
-              "icon": "building.columns.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
-            },
-            {
-              "id": "complaints-mail",
-              "code": "8024-4644",
-              "title": "Correos de Cuba",
-              "details": "Línea única gratuita para bultos y giros.",
-              "icon": "envelope.fill",
-              "showsNumber": true,
-              "type": "call",
-              "requiresInput": false
             }
           ]
         }

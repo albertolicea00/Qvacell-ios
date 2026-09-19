@@ -12,6 +12,7 @@ struct HomeView: View {
     @Environment(AccentColorStore.self) private var accentColorStore
     @Environment(ReminderManager.self) private var reminderManager
     @Environment(TabRouter.self) private var tabRouter
+    @Environment(CrossCatalogSearchIndicator.self) private var searchIndicator
     @AppStorage("defaultTab") private var defaultTab = HomeTab.home.rawValue
     @State private var selectedTab = HomeTab.home.rawValue
 
@@ -24,6 +25,7 @@ struct HomeView: View {
                             .accessibilityLabel(helplines.name)
                     }
                     .tag(HomeTab.helplines.rawValue)
+                    .badge(searchIndicator.matchingTabs.contains(.helplines) ? "•" : "")
             }
 
             ContactsListView()
@@ -47,6 +49,7 @@ struct HomeView: View {
                             .accessibilityLabel(purchase.name)
                     }
                     .tag(HomeTab.purchase.rawValue)
+                    .badge(searchIndicator.matchingTabs.contains(.purchase) ? "•" : "")
             }
 
             SettingsView()
@@ -55,6 +58,7 @@ struct HomeView: View {
                         .accessibilityLabel("Ajustes")
                 }
                 .tag(HomeTab.settings.rawValue)
+                .badge(searchIndicator.matchingTabs.contains(.settings) ? "•" : "")
         }
         .tint(accentColorStore.color)
         .onAppear {
@@ -78,13 +82,13 @@ struct HomeView: View {
 /// The 5 tabs, keyed by a stable string so it can be stored in `@AppStorage` (as "Pestaña
 /// inicial" in Ajustes › Preferencias) and used as the `TabView` selection tag.
 enum HomeTab: String, CaseIterable, Identifiable {
-    case helplines, contacts, home, purchase, settings, speedTest, directory, smsServices, directoryOnline, yellowPages
+    case helplines, contacts, home, purchase, settings, database, smsServices, directory
 
     var id: String { rawValue }
 
     /// Every case except the plain `.settings` landing screen itself — used by "Pestaña Inicial"
-    /// in Ajustes, which offers `.speedTest`/`.directory` (nested screens *inside* Ajustes) as
-    /// launch destinations but not the bare Ajustes list.
+    /// in Ajustes, which offers `.database`/`.smsServices`/`.directory` (nested screens *inside*
+    /// Ajustes) as launch destinations but not the bare Ajustes list.
     static var launchOptions: [HomeTab] {
         allCases.filter { $0 != .settings }
     }
@@ -97,10 +101,8 @@ enum HomeTab: String, CaseIterable, Identifiable {
             case .purchase: return "Compras"
             case .smsServices: return "Servicios por SMS"
             case .settings: return "Ajustes"
-            case .speedTest: return "Velocidad de Internet"
-            case .directory: return "Buscar en Directorio (Local)"
-            case .directoryOnline: return "Buscar en Directorio (Online)"
-            case .yellowPages: return "Buscar en Páginas Amarillas"
+            case .database: return "Buscar en Database"
+            case .directory: return "Buscar en Directorio"
         }
     }
 
@@ -109,7 +111,7 @@ enum HomeTab: String, CaseIterable, Identifiable {
     /// Ajustes is showing.
     var tabToSelect: HomeTab {
         switch self {
-        case .speedTest, .directory, .smsServices, .directoryOnline, .yellowPages: return .settings
+        case .database, .smsServices, .directory: return .settings
         default: return self
         }
     }
@@ -734,6 +736,8 @@ struct CategoryListView: View {
     let category: USSDCategory
 
     @Environment(AccentColorStore.self) private var accentColorStore
+    @Environment(USSDCodeStore.self) private var store
+    @Environment(CrossCatalogSearchIndicator.self) private var searchIndicator
     @AppStorage("showNetworkStatus") private var showNetworkStatus = false
     @AppStorage("quickPurchaseNoConfirmDefault") private var quickPurchaseNoConfirmDefault = false
     @State private var pendingInputCode: USSDCode?
@@ -755,6 +759,17 @@ struct CategoryListView: View {
             }
             guard !matches.isEmpty else { return nil }
             return USSDCodeGroup(name: group.name, codes: matches)
+        }
+    }
+
+    /// This tab's identity for `CrossCatalogSearchIndicator` — `nil` for any category besides
+    /// Compras/Líneas de Ayuda (there is none today, but a category with no matching `HomeTab`
+    /// just opts out of cross-tab badging instead of crashing).
+    private var currentTab: HomeTab? {
+        switch category.id {
+        case "purchase": return .purchase
+        case "helplines": return .helplines
+        default: return nil
         }
     }
 
@@ -835,6 +850,11 @@ struct CategoryListView: View {
                 .tint(accentColorStore.color)
                 .searchable(text: $searchText, prompt: "Buscar")
                 .searchDictationBehavior(.automatic)
+                .onChange(of: searchText) { _, newValue in
+                    guard let currentTab else { return }
+                    searchIndicator.updateMatches(query: newValue, hasLocalMatch: !filteredGroups.isEmpty, excluding: currentTab, store: store)
+                }
+                .onDisappear { searchIndicator.clear() }
             }
             .navigationTitle(category.name)
             .navigationBarTitleDisplayMode(.inline)
@@ -928,6 +948,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
 
     @Environment(USSDCodeStore.self) private var store
     @Environment(AccentColorStore.self) private var accentColorStore
+    @Environment(CrossCatalogSearchIndicator.self) private var searchIndicator
 
     @State private var pendingInputCode: USSDCode?
     @State private var inputText = ""
@@ -973,6 +994,11 @@ private struct SMSCodeListView<ExtraSection: View>: View {
                 .listStyle(.insetGrouped)
                 .tint(accentColorStore.color)
                 .searchable(text: $searchText, prompt: "Buscar")
+                .onChange(of: searchText) { _, newValue in
+                    let hasLocalMatch = !filtered(leadingGroups).isEmpty || !filtered(trailingGroups).isEmpty
+                    searchIndicator.updateMatches(query: newValue, hasLocalMatch: hasLocalMatch, excluding: .settings, store: store)
+                }
+                .onDisappear { searchIndicator.clear() }
             }
         }
         .navigationTitle(title)
@@ -1230,6 +1256,7 @@ private struct PendingSMS: Identifiable {
     }
     .environment(USSDCodeStore())
     .environment(AccentColorStore())
+    .environment(CrossCatalogSearchIndicator())
 }
 
 // MARK: - Settings / Help Screen
@@ -1245,14 +1272,19 @@ struct SettingsView: View {
     @AppStorage("quickPurchaseNoConfirmDefault") private var quickPurchaseNoConfirmDefault = false
 
     /// Fires at most once per launch — `defaultTab` is only meant to auto-push
-    /// `.speedTest`/`.directory` the moment Ajustes first appears on a fresh launch, not every
+    /// `.database`/`.directory` the moment Ajustes first appears on a fresh launch, not every
     /// time the user switches back to this tab after navigating elsewhere.
     @State private var hasAutoNavigatedToLaunchDestination = false
-    @State private var isShowingSpeedTestOnLaunch = false
-    @State private var isShowingDirectoryOnLaunch = false
+    @State private var isShowingDatabaseOnLaunch = false
     @State private var isShowingSMSServicesOnLaunch = false
-    @State private var isShowingDirectoryOnlineOnLaunch = false
-    @State private var isShowingYellowPagesOnLaunch = false
+    @State private var isShowingDirectoryOnLaunch = false
+
+    /// Unlocks the hidden "Buscar en Database" row — 5 taps on the version text below within 3
+    /// seconds toggles it. Not persisted-and-forgotten as a one-way unlock: toggling lets whoever
+    /// found it hide the row again the same way, and staying an `@AppStorage` bool (rather than a
+    /// plain `@State`) means the row stays revealed across relaunches once found.
+    @AppStorage("showDatabaseSearch") private var showDatabaseSearch = false
+    @State private var versionTapTimestamps: [Date] = []
 
     /// Backs the three "Configuraciones" SMS rows (LTE, 3G/4G check, MMS) in Cuenta — these dial
     /// straight from the row, no sub-screen, so `SettingsView` needs its own compose-SMS state
@@ -1322,28 +1354,18 @@ struct SettingsView: View {
                     }
 
                     NavigationLink {
-                        SpeedTestView()
-                    } label: {
-                        Label("Medir Velocidad de Internet", systemImage: "speedometer")
-                    }
-
-                    NavigationLink {
                         YellowPagesSearchView()
                     } label: {
-                        Label("Buscar en Páginas Amarillas", systemImage: "book.pages")
+                        Label("Buscar en Directorio", systemImage: "network")
                     }
 
-                    NavigationLink {
-                        DirectoryOnlineSearchView()
-                    } label: {
-                        Label("Buscar en Directorio (Online)", systemImage: "network")
+                    if showDatabaseSearch {
+                        NavigationLink {
+                            DirectorySearchView()
+                        } label: {
+                            Label("Buscar en Database", systemImage: "magnifyingglass")
+                        }
                     }
-                    NavigationLink {
-                        DirectorySearchView()
-                    } label: {
-                        Label("Buscar en Directorio (Local)", systemImage: "magnifyingglass")
-                    }
-
                 }
 
                 Section("Cuenta") {
@@ -1425,13 +1447,13 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .listRowBackground(Color.clear)
+                        .contentShape(Rectangle())
+                        .onTapGesture { registerVersionTap() }
                 }
             }
-            .navigationDestination(isPresented: $isShowingSpeedTestOnLaunch) { SpeedTestView() }
-            .navigationDestination(isPresented: $isShowingDirectoryOnLaunch) { DirectorySearchView() }
+            .navigationDestination(isPresented: $isShowingDatabaseOnLaunch) { DirectorySearchView() }
             .navigationDestination(isPresented: $isShowingSMSServicesOnLaunch) { SMSServicesView() }
-            .navigationDestination(isPresented: $isShowingDirectoryOnlineOnLaunch) { DirectoryOnlineSearchView() }
-            .navigationDestination(isPresented: $isShowingYellowPagesOnLaunch) { YellowPagesSearchView() }
+            .navigationDestination(isPresented: $isShowingDirectoryOnLaunch) { YellowPagesSearchView() }
             .navigationTitle("Ajustes")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
@@ -1443,16 +1465,12 @@ struct SettingsView: View {
                 }
                 guard !hasAutoNavigatedToLaunchDestination else { return }
                 hasAutoNavigatedToLaunchDestination = true
-                if defaultTab == HomeTab.speedTest.rawValue {
-                    isShowingSpeedTestOnLaunch = true
-                } else if defaultTab == HomeTab.directory.rawValue {
-                    isShowingDirectoryOnLaunch = true
+                if defaultTab == HomeTab.database.rawValue {
+                    isShowingDatabaseOnLaunch = true
                 } else if defaultTab == HomeTab.smsServices.rawValue {
                     isShowingSMSServicesOnLaunch = true
-                } else if defaultTab == HomeTab.directoryOnline.rawValue {
-                    isShowingDirectoryOnlineOnLaunch = true
-                } else if defaultTab == HomeTab.yellowPages.rawValue {
-                    isShowingYellowPagesOnLaunch = true
+                } else if defaultTab == HomeTab.directory.rawValue {
+                    isShowingDirectoryOnLaunch = true
                 }
             }
             .alert(
@@ -1484,6 +1502,19 @@ struct SettingsView: View {
                 MessageComposeView(recipient: pending.recipient, body: pending.body)
                     .ignoresSafeArea()
             }
+        }
+    }
+
+    /// 5 taps within 3 seconds on "Versión X (Y)" toggles the hidden "Buscar en Database" row —
+    /// old timestamps outside the 3s window are dropped first so 5 taps spread out over a minute
+    /// don't quietly accumulate into an accidental unlock.
+    private func registerVersionTap() {
+        let now = Date()
+        versionTapTimestamps.append(now)
+        versionTapTimestamps.removeAll { now.timeIntervalSince($0) > 3 }
+        if versionTapTimestamps.count >= 5 {
+            showDatabaseSearch.toggle()
+            versionTapTimestamps.removeAll()
         }
     }
 
@@ -1774,7 +1805,7 @@ private struct TransferPinSettingsView: View {
     }
 }
 
-/// Ajustes › Buscar en Directorio — reverse number/name lookup over whichever directory database
+/// Ajustes › Buscar en Database — reverse number/name lookup over whichever directory database
 /// file the user has copied into this app's Documents folder: Finder file sharing, the "Importar
 /// Base de Datos" picker, or the "Descargar Base de Datos" button (fetches `DirectoryDatabase
 /// .downloadURL`, wherever that's currently hosted). Its schema shape (v1/v2) is auto-detected from the file's
@@ -1889,7 +1920,7 @@ struct DirectorySearchView: View {
                 // below; this is just the big centered "nothing typed yet" placeholder, same
                 // pattern as Music/App Store's search tab.
                 ContentUnavailableView {
-                    Label("Buscar en Directorio", systemImage: "magnifyingglass.circle.fill")
+                    Label("Buscar en Database", systemImage: "magnifyingglass.circle.fill")
                 } description: {
                     Text("Escribe un número para buscar")
                 }
@@ -1908,7 +1939,7 @@ struct DirectorySearchView: View {
                 .listStyle(.insetGrouped)
             }
         }
-        .navigationTitle("Buscar en Directorio (Local)")
+        .navigationTitle("Buscar en Database")
         .navigationBarTitleDisplayMode(.inline)
         // Name search stays disabled for privacy and security — see README. `nameQuery` stays ""
         // forever; the rest of the code (DirectoryDatabase.search, hasSearchableInput) already
@@ -2069,32 +2100,11 @@ struct DirectorySearchView: View {
     }
 }
 
-/// Ajustes › Buscar en Directorio (Online) — same reverse phone lookup as "Buscar en Directorio
-/// (Local)", but meant to query a live online source instead of a bundled/imported file. Not wired
-/// to a real source yet — the form exists so the field it will use is fixed, but "Buscar" stays
-/// disabled until there's an actual endpoint to call.
-struct DirectoryOnlineSearchView: View {
-    // Fields this will use once wired up (see GitHub issue #2) — kept here so the planned shape
-    // is fixed, but not rendered while this stays a placeholder. `nombre` stays commented for the
-    // same privacy/security reasoning as name search in Buscar en Directorio (Local): a
-    // name-search UI turns this into a reverse people-search tool.
-    // @State private var telefono = ""
-    // @State private var nombre = ""
-
-    var body: some View {
-        ContentUnavailableView(
-            "En Construcción",
-            systemImage: "hammer.fill",
-            description: Text("Buscar en Directorio (Online) todavía no está disponible.")
-        )
-        .navigationTitle("Buscar en Directorio (Online)")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-/// Ajustes › Buscar en Páginas Amarillas — placeholder search screen for an online Cuban Yellow
-/// Pages–style lookup. Not wired to a real source yet — the form exists so the fields it will use
-/// are fixed, but "Buscar" stays disabled until there's an actual endpoint to call.
+/// Ajustes › Buscar en Directorio — placeholder search screen for a live/online reverse
+/// number-and-name directory lookup (formerly "Páginas Amarillas"). Not wired to a real source
+/// yet — the form exists so the fields it will use are fixed, but "Buscar" stays disabled until
+/// there's an actual endpoint to call. Distinct from "Buscar en Database" (`DirectorySearchView`),
+/// which searches a file the user has copied onto the device themselves.
 struct YellowPagesSearchView: View {
     // Fields this will use once wired up (see GitHub issue #3) — kept here so the planned shape
     // is fixed, but not rendered while this stays a placeholder. `nombre` and `calle` stay
@@ -2110,9 +2120,9 @@ struct YellowPagesSearchView: View {
         ContentUnavailableView(
             "En Construcción",
             systemImage: "hammer.fill",
-            description: Text("Buscar en Páginas Amarillas todavía no está disponible.")
+            description: Text("Buscar en Directorio todavía no está disponible.")
         )
-        .navigationTitle("Buscar en Páginas Amarillas")
+        .navigationTitle("Buscar en Directorio")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -2240,7 +2250,7 @@ private struct HelpSettingsView: View {
                 )
             }
 
-            Section("Buscar en Directorio") {
+            Section("Buscar en Database") {
                 SettingsInfoRow(
                     title: "¿De dónde salen los datos?",
                     text: "La app no trae ningún directorio incluido ni lo descarga por su cuenta — tienes que traer tú mismo el archivo de base de datos (copiándolo con Finder o con el botón \"Importar\" dentro de la pantalla) para poder buscar."
@@ -2482,224 +2492,6 @@ struct WifiRoomsDetailView: View {
                 WifiHotspotGroup(municipality: "Artemisa", spots: ["Park Las Cañas", "Boulevard"]),
             ]
         ))
-    }
-    .environment(AccentColorStore())
-}
-
-// MARK: - Speed Test
-
-/// Ajustes › Prueba de Velocidad — ping/download/upload against Cloudflare's public speed-test
-/// endpoints (see `SpeedTestRunner`). Works over any connection with internet access; not tied
-/// to Cuban carriers or bundled data the way the rest of Ajustes is.
-struct SpeedTestView: View {
-    @Environment(AccentColorStore.self) private var accentColorStore
-    @State private var runner = SpeedTestRunner()
-
-    private var statusText: String {
-        switch runner.phase {
-        case .idle: return "Toca el botón para medir tu conexión."
-        case .testingPing: return "Midiendo ping…"
-        case .testingDownload: return "Midiendo velocidad de descarga…"
-        case .testingUpload: return "Midiendo velocidad de subida…"
-        case .finished: return "Prueba completada."
-        case .failed(let message): return message
-        }
-    }
-
-    /// What the needle/number track for the current phase — ping is milliseconds on a 0–300
-    /// scale, download/upload are Mbps on a 0–150 scale (a reasonable ceiling for a home/mobile
-    /// connection; a real reading past that just pins the needle at max, the number keeps going).
-    private var gaugeMaxValue: Double {
-        switch runner.phase {
-        case .testingPing: return 300
-        default: return 150
-        }
-    }
-
-    private var gaugeUnit: String {
-        switch runner.phase {
-        case .testingPing: return "ms"
-        case .testingDownload, .testingUpload: return "Mbps"
-        default: return ""
-        }
-    }
-
-    /// "Intento 3 de 5" under the number while pinging — download/upload already read as "doing
-    /// something" from the number itself climbing live, ping's single small number doesn't.
-    private var liveCaption: String? {
-        guard case .testingPing = runner.phase else { return nil }
-        return "Intento \(runner.pingAttempt) de 5"
-    }
-
-    var body: some View {
-        Form {
-            Section {
-                VStack(spacing: 12) {
-                    SpeedGaugeView(
-                        value: runner.gaugeValue,
-                        maxValue: gaugeMaxValue,
-                        color: accentColorStore.color
-                    )
-                    .frame(width: 220, height: 130)
-
-                    if runner.isRunning {
-                        VStack(spacing: 2) {
-                            Text(formattedGaugeValue)
-                                .font(.system(size: 34, weight: .bold, design: .rounded))
-                                .contentTransition(.numericText())
-                                .animation(.snappy, value: runner.gaugeValue)
-                                .foregroundStyle(accentColorStore.color)
-                            Text(gaugeUnit)
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.secondary)
-                        }
-
-                        if let liveCaption {
-                            Text(liveCaption)
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-
-                    Text(statusText)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                        .contentTransition(.opacity)
-                        .animation(.default, value: statusText)
-
-                    if !runner.isRunning {
-                        Button {
-                            runner.start()
-                        } label: {
-                            Label(
-                                isFinishedOrFailed ? "Repetir Prueba" : "Iniciar Prueba",
-                                systemImage: "play.fill"
-                            )
-                            .labelStyle(.titleAndIcon)
-                            .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(accentColorStore.color)
-                        .controlSize(.large)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-                .listRowBackground(Color.clear)
-            }
-
-            if hasAnyResult {
-                Section("Resultados") {
-                    if let ping = runner.result.pingMs {
-                        LabeledContent("Ping", value: String(format: "%.0f ms", ping))
-                    }
-                    if let download = runner.result.downloadMbps {
-                        LabeledContent("Descarga", value: String(format: "%.1f Mbps", download))
-                    }
-                    if let upload = runner.result.uploadMbps {
-                        LabeledContent("Subida", value: String(format: "%.1f Mbps", upload))
-                    }
-                }
-            }
-        }
-        .navigationTitle("Prueba de Velocidad")
-        .navigationBarTitleDisplayMode(.inline)
-        .onDisappear {
-            runner.cancel()
-        }
-    }
-
-    private var isFinishedOrFailed: Bool {
-        switch runner.phase {
-        case .finished, .failed: return true
-        default: return false
-        }
-    }
-
-    private var hasAnyResult: Bool {
-        runner.result.pingMs != nil || runner.result.downloadMbps != nil || runner.result.uploadMbps != nil
-    }
-
-    private var formattedGaugeValue: String {
-        switch runner.phase {
-        case .testingPing: return String(format: "%.0f", runner.gaugeValue)
-        default: return String(format: "%.1f", runner.gaugeValue)
-        }
-    }
-}
-
-/// A car-speedometer-style semicircular gauge: a needle that sweeps from left (0) to right
-/// (`maxValue`) as `value` changes, animating smoothly between readings instead of jumping —
-/// used by `SpeedTestView` to make a live ping/download/upload reading visibly "move" as it
-/// updates, the way a real speed test's needle does.
-private struct SpeedGaugeView: View {
-    let value: Double
-    let maxValue: Double
-    let color: Color
-
-    private var fraction: Double {
-        guard maxValue > 0 else { return 0 }
-        return min(max(value / maxValue, 0), 1)
-    }
-
-    /// 0 = needle pointing straight up (the `rotationEffect` rest position); the needle itself
-    /// is drawn vertical, pivoting from its bottom edge, so -90°/+90° swing it to the gauge's
-    /// left/right ends.
-    private var needleRotationDegrees: Double {
-        -90 + fraction * 180
-    }
-
-    var body: some View {
-        GeometryReader { geometry in
-            let radius = min(geometry.size.width / 2, geometry.size.height)
-
-            ZStack(alignment: .bottom) {
-                Path { path in
-                    path.addArc(
-                        center: CGPoint(x: radius, y: radius),
-                        radius: radius - 10,
-                        startAngle: .degrees(180),
-                        endAngle: .degrees(360),
-                        clockwise: false
-                    )
-                }
-                .stroke(Color.secondary.opacity(0.15), style: StrokeStyle(lineWidth: 12, lineCap: .round))
-                .frame(width: radius * 2, height: radius)
-
-                Path { path in
-                    path.addArc(
-                        center: CGPoint(x: radius, y: radius),
-                        radius: radius - 10,
-                        startAngle: .degrees(180),
-                        endAngle: .degrees(180 + fraction * 180),
-                        clockwise: false
-                    )
-                }
-                .stroke(color, style: StrokeStyle(lineWidth: 12, lineCap: .round))
-                .frame(width: radius * 2, height: radius)
-                .animation(.easeOut(duration: 0.25), value: fraction)
-
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(color)
-                    .frame(width: 4, height: radius - 22)
-                    .rotationEffect(.degrees(needleRotationDegrees), anchor: .bottom)
-                    .animation(.easeOut(duration: 0.25), value: needleRotationDegrees)
-
-                Circle()
-                    .fill(color)
-                    .frame(width: 12, height: 12)
-                    .offset(y: 6)
-            }
-            .frame(width: radius * 2, height: radius, alignment: .top)
-            .frame(maxWidth: .infinity)
-        }
-    }
-}
-
-#Preview {
-    NavigationStack {
-        SpeedTestView()
     }
     .environment(AccentColorStore())
 }

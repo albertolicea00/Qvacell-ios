@@ -118,6 +118,64 @@ final class USSDCodeStore {
         categories = catalog.categories
         carrier = catalog.carrier
     }
+
+    /// Which `HomeTab`s (other than `sourceTab`) have a code matching `query` — used to badge a
+    /// tab whose catalog has a hit the user's *current* tab doesn't. `.home` carries no
+    /// searchable catalog of its own (custom quick-actions layout, not a code list) and
+    /// `.contacts` is the user's own address book, not part of this catalog — neither is a
+    /// possible match target. "sms" (`codes.json`'s 4th category) maps to `.settings` since
+    /// Servicios por SMS is a screen nested there, not its own tab.
+    func tabsMatching(_ query: String, excluding sourceTab: HomeTab) -> Set<HomeTab> {
+        guard !query.isEmpty else { return [] }
+
+        let tabsByCategoryId: [String: HomeTab] = [
+            "purchase": .purchase,
+            "helplines": .helplines,
+            "sms": .settings,
+        ]
+
+        var matches: Set<HomeTab> = []
+        for category in categories {
+            guard let tab = tabsByCategoryId[category.id], tab != sourceTab else { continue }
+            let hasMatch = category.groups.contains { group in
+                group.codes.contains {
+                    $0.title.localizedCaseInsensitiveContains(query)
+                        || $0.code.localizedCaseInsensitiveContains(query)
+                }
+            }
+            if hasMatch { matches.insert(tab) }
+        }
+        return matches
+    }
+}
+
+// MARK: - Cross-Catalog Search Indicator
+
+/// Shared across the catalog-search screens (Compras, Líneas de Ayuda, Servicios por SMS) so one
+/// screen's empty search result can badge the tab bar item of another tab that *does* have a
+/// match — e.g. searching "clima" in Compras finds nothing there, but Ajustes (which holds
+/// Servicios por SMS) lights up since "Clima" lives in the SMS catalog. Only sourced from an
+/// empty *local* result, per `updateMatches(for:excluding:store:)` callers — a screen with its
+/// own matches clears this instead of also flagging other tabs, so the badge only ever means
+/// "nothing here, but something there."
+@Observable
+final class CrossCatalogSearchIndicator {
+    var matchingTabs: Set<HomeTab> = []
+
+    /// Called by a catalog-search screen whenever its query or its own filtered results change.
+    /// `hasLocalMatch` short-circuits to clearing the indicator — a screen showing its own results
+    /// has nothing to announce elsewhere.
+    func updateMatches(query: String, hasLocalMatch: Bool, excluding sourceTab: HomeTab, store: USSDCodeStore) {
+        guard !query.isEmpty, !hasLocalMatch else {
+            matchingTabs = []
+            return
+        }
+        matchingTabs = store.tabsMatching(query, excluding: sourceTab)
+    }
+
+    func clear() {
+        matchingTabs = []
+    }
 }
 
 // MARK: - Cellular Signal Monitor
@@ -181,187 +239,10 @@ final class CellularMonitor {
     }
 }
 
-// MARK: - Speed Test
-
-/// The three phases a run passes through, in order, plus the terminal states.
-enum SpeedTestPhase {
-    case idle
-    case testingPing
-    case testingDownload
-    case testingUpload
-    case finished
-    case failed(String)
-}
-
-/// Results filled in as each phase completes — `nil` means "not measured yet", not "measured
-/// zero", so the results section only shows rows for what has actually finished.
-struct SpeedTestResult {
-    var pingMs: Double?
-    var downloadMbps: Double?
-    var uploadMbps: Double?
-}
-
-/// Runs a basic internet speed test (ping, download, upload) against Cloudflare's public,
-/// no-API-key speed-test endpoints (the same ones behind speed.cloudflare.com) — there is no
-/// ETECSA-run equivalent, and this needs a real server round-trip either way, not bundled data.
-/// Cellular-only in practice since that's this app's whole context, but works over Wi-Fi too;
-/// nothing here is Cuba-specific.
-@Observable
-final class SpeedTestRunner {
-    private(set) var phase: SpeedTestPhase = .idle
-    private(set) var result = SpeedTestResult()
-
-    /// Live reading for whatever's being measured right now — the gauge's needle and the big
-    /// number under it both just track this. Ping's is an "ms so far" per attempt; download/
-    /// upload's is a running Mbps estimate from bytes moved so far, updated several times a
-    /// second as real progress bytes come in — not a fake/simulated ramp.
-    private(set) var gaugeValue: Double = 0
-    /// 1...5 during `.testingPing`, so the UI can show "intento 3 de 5" instead of a number with
-    /// no context.
-    private(set) var pingAttempt: Int = 0
-
-    /// Handle to the in-flight run, so leaving the screen can actually stop it instead of
-    /// letting it keep downloading/uploading tens of megabytes in the background and mutating
-    /// `phase`/`result` after nothing is watching them.
-    private var task: Task<Void, Never>?
-
-    var isRunning: Bool {
-        switch phase {
-        case .testingPing, .testingDownload, .testingUpload: return true
-        case .idle, .finished, .failed: return false
-        }
-    }
-
-    /// No-op while a run is already in flight — button that triggers this is hidden during a
-    /// run anyway, but this guards direct callers too.
-    func start() {
-        guard !isRunning else { return }
-        result = SpeedTestResult()
-        gaugeValue = 0
-        pingAttempt = 0
-        task = Task { await run() }
-    }
-
-    /// Stops the run in progress (if any) — called when the screen disappears. Leaves `phase`
-    /// as-is rather than resetting to `.idle`: if the view comes back (it won't, since it's torn
-    /// down on pop, but this keeps the method safe to call from anywhere), it's clearer to show
-    /// "interrupted mid-test" than a fresh `.idle` implying nothing ever ran.
-    func cancel() {
-        task?.cancel()
-        task = nil
-    }
-
-    @MainActor
-    private func run() async {
-        do {
-            phase = .testingPing
-            result.pingMs = try await Self.measurePing { [weak self] attempt, ms in
-                self?.pingAttempt = attempt
-                self?.gaugeValue = ms
-            }
-            try Task.checkCancellation()
-
-            phase = .testingDownload
-            gaugeValue = 0
-            result.downloadMbps = try await Self.measureDownload { [weak self] mbps in
-                self?.gaugeValue = mbps
-            }
-            try Task.checkCancellation()
-
-            phase = .testingUpload
-            gaugeValue = 0
-            result.uploadMbps = try await Self.measureUpload { [weak self] mbps in
-                self?.gaugeValue = mbps
-            }
-            try Task.checkCancellation()
-
-            phase = .finished
-            gaugeValue = 0
-        } catch is CancellationError {
-            // Left mid-run on purpose (screen dismissed) — nothing to show an error for.
-        } catch {
-            phase = .failed("No se pudo completar la prueba. Revisa tu conexión e inténtalo de nuevo.")
-        }
-    }
-
-    /// Round-trip time of a handful of zero-byte requests, reported live as each one lands, so
-    /// the gauge visibly reacts once per attempt instead of sitting still for the whole phase —
-    /// median of the samples is the actual reported ping. Rough (a real speed test warms up the
-    /// connection first), but good enough for "is this laggy or not".
-    private static func measurePing(onSample: @escaping (Int, Double) -> Void) async throws -> Double {
-        let url = URL(string: "https://speed.cloudflare.com/__down?bytes=0")!
-        var samples: [Double] = []
-        for attempt in 1...5 {
-            var request = URLRequest(url: url)
-            request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-            let start = Date()
-            _ = try await URLSession.shared.data(for: request)
-            let ms = Date().timeIntervalSince(start) * 1000
-            samples.append(ms)
-            await MainActor.run { onSample(attempt, ms) }
-        }
-        samples.sort()
-        return samples[samples.count / 2]
-    }
-
-    /// Downloads via `URLSessionDownloadDelegate` (not a plain `data(for:)`) specifically so
-    /// `didWriteData` can report real bytes-received-so-far — that's what makes the gauge track
-    /// actual throughput instead of jumping straight to a final number at the end.
-    private static func measureDownload(onProgress: @escaping (Double) -> Void) async throws -> Double {
-        let byteCount = 25_000_000
-        var request = URLRequest(url: URL(string: "https://speed.cloudflare.com/__down?bytes=\(byteCount)")!)
-        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-
-        let start = Date()
-        let delegate = TransferProgressDelegate { totalBytes, _ in
-            Task { @MainActor in
-                let elapsed = Date().timeIntervalSince(start)
-                guard elapsed > 0.05 else { return }
-                onProgress(megabits(forByteCount: Int(totalBytes), elapsed: elapsed))
-            }
-        }
-        let (tempURL, _) = try await URLSession.shared.download(for: request, delegate: delegate)
-        try? FileManager.default.removeItem(at: tempURL)
-
-        let elapsed = Date().timeIntervalSince(start)
-        return megabits(forByteCount: byteCount, elapsed: elapsed)
-    }
-
-    /// Same idea as `measureDownload`, via `URLSessionTaskDelegate.didSendBodyData` for real
-    /// bytes-sent-so-far progress.
-    private static func measureUpload(onProgress: @escaping (Double) -> Void) async throws -> Double {
-        let byteCount = 10_000_000
-        var request = URLRequest(url: URL(string: "https://speed.cloudflare.com/__up")!)
-        request.httpMethod = "POST"
-        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        let payload = Data(count: byteCount)
-
-        let start = Date()
-        let delegate = TransferProgressDelegate { totalBytes, _ in
-            Task { @MainActor in
-                let elapsed = Date().timeIntervalSince(start)
-                guard elapsed > 0.05 else { return }
-                onProgress(megabits(forByteCount: Int(totalBytes), elapsed: elapsed))
-            }
-        }
-        _ = try await URLSession.shared.upload(for: request, from: payload, delegate: delegate)
-
-        let elapsed = Date().timeIntervalSince(start)
-        return megabits(forByteCount: byteCount, elapsed: elapsed)
-    }
-
-    private static func megabits(forByteCount byteCount: Int, elapsed: TimeInterval) -> Double {
-        guard elapsed > 0 else { return 0 }
-        return (Double(byteCount) * 8 / 1_000_000) / elapsed
-    }
-}
-
 /// Bridges `URLSessionTaskDelegate`/`URLSessionDownloadDelegate`'s progress callbacks (which
 /// aren't part of the async/await `data(for:)`/`upload(for:from:)` APIs) into a plain closure —
-/// shared by the speed-test measurements above and `DirectorySearchView`'s database download.
-/// Reports both the running total and the expected total, since the speed test only cares about
-/// the former (throughput over elapsed time) while the database download needs both to show a
-/// determinate percentage.
+/// used by `DirectorySearchView`'s database download. Reports both the running total and the
+/// expected total so the progress bar can show a determinate percentage.
 final class TransferProgressDelegate: NSObject, URLSessionTaskDelegate, URLSessionDownloadDelegate {
     private let onProgress: (Int64, Int64) -> Void
 

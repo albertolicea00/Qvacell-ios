@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct CubaCellConnectApp: App {
+struct QvacellApp: App {
     @State private var store = USSDCodeStore()
     @State private var accentColorStore = AccentColorStore()
     @State private var wifiRoomsStore = WifiRoomsStore()

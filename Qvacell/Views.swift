@@ -456,7 +456,7 @@ struct ContactsListView: View {
                     ContentUnavailableView(
                         "Sin Acceso a Contactos",
                         systemImage: "person.crop.circle.badge.exclamationmark",
-                        description: Text("Actívalo en Ajustes del sistema › CubaCell Connect › Contactos.")
+                        description: Text("Actívalo en Ajustes del sistema › Qvacell › Contactos.")
                     )
                 } else if !service.isLoaded {
                     ProgressView()
@@ -1422,7 +1422,7 @@ struct SettingsView: View {
                         Label("Ayuda (Manual de Uso)", systemImage: "questionmark.circle.fill")
                     }
 
-                    Text("CubaCell Connect da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias.")
+                    Text("Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias.")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
@@ -1430,10 +1430,10 @@ struct SettingsView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
 
-                    Link(destination: URL(string: "https://github.com/albertolicea00/cubacell-connect")!) {
+                    Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios")!) {
                         Label("Código fuente en GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
                     }
-                    Link(destination: URL(string: "https://github.com/albertolicea00/cubacell-connect/blob/main/CubaCellConnect/codes.json")!) {
+                    Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/codes.json")!) {
                         Label("Descargar Todos los Códigos", systemImage: "arrow.down.doc")
                     }
                     Link(destination: URL(string: "https://www.linkedin.com/in/albertolicea00")!) {
@@ -2264,19 +2264,19 @@ private struct HelpSettingsView: View {
             Section("Siri y Atajos de Voz") {
                 SettingsInfoRow(
                     title: "¿Qué hace?",
-                    text: "No hay que configurar nada: al instalar la app, Siri y Atajos la reconocen automáticamente. Puedes usar tanto «CubaCell Connect» como simplemente «CubaCell» o «Cubacel»."
+                    text: "No hay que configurar nada: al instalar la app, Siri y Atajos la reconocen automáticamente con el nombre «Qvacell»."
                 )
                 SettingsInfoRow(
                     title: "Frases para llamar oculto o por cobrar (*99)",
-                    text: "«Oye Siri, llama con 99 a [Número/Contacto] en CubaCell», «Oye Siri, llama con *99 en CubaCell», «Oye Siri, llama pagando el a [Número/Contacto] en CubaCell», «Oye Siri, llama con oculto a [Número/Contacto] en CubaCell», «Oye Siri, llama con privado en CubaCell»."
+                    text: "«Oye Siri, llama con 99 a [Número/Contacto] en Qvacell», «Oye Siri, llama con *99 en Qvacell», «Oye Siri, llama pagando el a [Número/Contacto] en Qvacell», «Oye Siri, llama con oculto a [Número/Contacto] en Qvacell», «Oye Siri, llama con privado en Qvacell»."
                 )
                 SettingsInfoRow(
                     title: "Consultar saldo y servicios",
-                    text: "«Oye Siri, consulta mi saldo en CubaCell», «Oye Siri, marca Bonos y Planes en CubaCell»."
+                    text: "«Oye Siri, consulta mi saldo en Qvacell», «Oye Siri, marca Bonos y Planes en Qvacell»."
                 )
                 SettingsInfoRow(
                     title: "Comprar planes por voz (código seguro)",
-                    text: "«Oye Siri, compra Plan de 4.5GB en CubaCell», «Oye Siri, compra Combo 2GB en CubaCell», «Oye Siri, compra Plan de 20 SMS en CubaCell». Usa siempre el código estándar seguro que abre la pantalla de confirmación de ETECSA antes de realizar la compra."
+                    text: "«Oye Siri, compra Plan de 4.5GB en Qvacell», «Oye Siri, compra Combo 2GB en Qvacell», «Oye Siri, compra Plan de 20 SMS en Qvacell». Usa siempre el código estándar seguro que abre la pantalla de confirmación de ETECSA antes de realizar la compra."
                 )
                 SettingsInfoRow(
                     title: "Cómo funciona por dentro",
@@ -2287,7 +2287,7 @@ private struct HelpSettingsView: View {
                         UIApplication.shared.open(url)
                     }
                 } label: {
-                    Label("Abrir Ajustes de Siri para CubaCell", systemImage: "gear")
+                    Label("Abrir Ajustes de Siri para Qvacell", systemImage: "gear")
                 }
             }
 
@@ -2351,7 +2351,7 @@ struct WifiRoomsProvinceListView: View {
             }
 
             Section {
-                Link(destination: URL(string: "https://github.com/albertolicea00/cubacell-connect/blob/main/CubaCellConnect/wifi_navigation_rooms.json")!) {
+                Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/wifi_navigation_rooms.json")!) {
                     Label("Descargar JSON de Salas y Zonas WiFi", systemImage: "arrow.down.doc")
                 }
             }

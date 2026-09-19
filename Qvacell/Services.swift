@@ -431,7 +431,7 @@ enum MapsService {
 /// so the "Clave" field in Transferir (Home and inside a contact) can prefill itself instead of
 /// asking the user to retype it every time.
 enum TransferPinStore {
-    private static let service = "com.cubacellconnect.transferpin"
+    private static let service = "com.qvacell.transferpin"
     private static let account = "transferPin"
 
     private static var query: [String: Any] {
@@ -933,9 +933,9 @@ final class ReminderManager: NSObject, UNUserNotificationCenterDelegate {
 
 // MARK: - Siri / App Intents
 /// Lets Siri, Spotlight, and the Shortcuts app dial a code or place a `*99`/`#31#` call directly —
-/// "Oye Siri, marca Saldo Principal en CubaCell", "Oye Siri, llama con 99 a Pepe en CubaCell".
+/// "Oye Siri, marca Saldo Principal en Qvacell", "Oye Siri, llama con 99 a Pepe en Qvacell".
 /// Built on `AppIntents` (not legacy SiriKit `Intents.framework`), needing no separate extension target:
-/// the system discovers `CubaCellShortcuts` by reflection at install time. Every intent marks
+/// the system discovers `QvacellShortcuts` by reflection at install time. Every intent marks
 /// `openAppWhenRun` so the system's own dial confirmation always has the app in the foreground to
 /// appear over — nothing dials silently in the background.
 enum QuickUSSDCode: String, AppEnum {
@@ -1012,7 +1012,7 @@ enum PlanCompra: String, AppEnum {
 
 struct EjecutarCodigoIntent: AppIntent {
     static var title: LocalizedStringResource = "Marcar Código Rápido"
-    static var description = IntentDescription("Marca uno de los códigos rápidos de CubaCell Connect: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo.")
+    static var description = IntentDescription("Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo.")
     static var openAppWhenRun: Bool = true
 
     @Parameter(title: "Código")
@@ -1073,7 +1073,7 @@ struct ComprarPlanIntent: AppIntent {
 
 struct LlamarPorCobrarIntent: AppIntent {
     static var title: LocalizedStringResource = "Llamar por Cobrar (*99)"
-    static var description = IntentDescription("Marca una llamada por cobrar (*99) a un número móvil cubano usando CubaCell Connect.")
+    static var description = IntentDescription("Marca una llamada por cobrar (*99) a un número móvil cubano usando Qvacell.")
     static var openAppWhenRun: Bool = true
 
     @Parameter(title: "Número")
@@ -1097,7 +1097,7 @@ struct LlamarPorCobrarIntent: AppIntent {
 
 struct LlamarOcultoIntent: AppIntent {
     static var title: LocalizedStringResource = "Llamar Oculto (#31#)"
-    static var description = IntentDescription("Marca una llamada con número oculto (#31#) a un número móvil cubano usando CubaCell Connect.")
+    static var description = IntentDescription("Marca una llamada con número oculto (#31#) a un número móvil cubano usando Qvacell.")
     static var openAppWhenRun: Bool = true
 
     @Parameter(title: "Número")
@@ -1121,9 +1121,10 @@ struct LlamarOcultoIntent: AppIntent {
 
 /// Dynamic mapping of \.applicationName:
 /// In Swift, when you write phrases like "Check my balance in \(.applicationName)", iOS replaces
-/// \.applicationName not only with the app’s official name (“CubaCell Connect”), but also with all spoken aliases defined in CFBundleSpokenName and INAlternativeAppNames in the Info.plist
-/// (“CubaCell”, “Cubacel”, “Cuba Cell”). That’s why the user can simply say “in CubaCell” or “in Cubacel”.
-struct CubaCellShortcuts: AppShortcutsProvider {
+/// \.applicationName with the app's official name (CFBundleDisplayName, "Qvacell") — no
+/// INAlternativeAppNames spoken aliases are configured, since none of the old ones ("CubaCell",
+/// "Cubacel", "Cuba Cell") were ever meant to apply to a different app name.
+struct QvacellShortcuts: AppShortcutsProvider {
     @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
         AppShortcut(

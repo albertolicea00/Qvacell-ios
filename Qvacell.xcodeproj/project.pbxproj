@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00A116E10A8F88A9983DAC1C /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6EBC038E535B3BCAEE163B /* Services.swift */; };
+		1BBBCFDDA242479263ABC83C /* codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3737C9D32EA41E146FB8F112 /* codes.json */; };
+		2AAA6CCB88EE275D33FF9795 /* CallerIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */; };
+		4EEF6A5BC4B63C9BE876667D /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5327CE953B7E62F240584E /* Views.swift */; };
+		4F1F3C8C701BA2778C1CEE68 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C399DCC1FC26430B939D5C09 /* UIComponents.swift */; };
+		85FE368EC7E835F615D3217D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA686A05D19BF528961E2960 /* Models.swift */; };
+		8DBA8E3FC061AFF8688819ED /* CallerIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */; };
+		983135DC85990D1F471681C6 /* wifi_navigation_rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */; };
+		9A4344702172E06C11EA7C7A /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */; };
+		BCCC7D4D840D07A95DFFB2C5 /* CallerIDExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FD5716B54BF3C4E6D4EE9B10 /* QvacellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A6043F64E4118A05AFEE9A /* QvacellApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45559F560DEE64D1265FD770 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CFA1690DE3F7C0F70AB2A0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0248ACC366A6D67084D4923A;
+			remoteInfo = CallerIDExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5871D23E4BBE1C9B49C469D6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BCCC7D4D840D07A95DFFB2C5 /* CallerIDExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		301757F2FCA61984E6AD5A99 /* Qvacell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qvacell.entitlements; sourceTree = "<group>"; };
+		3151AF1B92A77020CC07419E /* CallerIDExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallerIDExtension.entitlements; sourceTree = "<group>"; };
+		3737C9D32EA41E146FB8F112 /* codes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = codes.json; sourceTree = "<group>"; };
+		4A68326477E11D3FA4066B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4B6EBC038E535B3BCAEE163B /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		4E5327CE953B7E62F240584E /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		54A6043F64E4118A05AFEE9A /* QvacellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvacellApp.swift; sourceTree = "<group>"; };
+		71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallerIDStore.swift; sourceTree = "<group>"; };
+		8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CallerIDExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		909DAB7013C02EE1A908399E /* Qvacell.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Qvacell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
+		BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wifi_navigation_rooms.json; sourceTree = "<group>"; };
+		C399DCC1FC26430B939D5C09 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
+		E0357C6DBBEFC6A02BB65F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FA686A05D19BF528961E2960 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2E15B34489D45978082090CD = {
+			isa = PBXGroup;
+			children = (
+				D9CD23BAB43D13CF128E6D72 /* CallerIDExtension */,
+				8DADEF96453516C4BE5EE855 /* Qvacell */,
+				E05B8D1A137D66535073D2B1 /* Shared */,
+				433671ED627DD824A1253D94 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		433671ED627DD824A1253D94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */,
+				909DAB7013C02EE1A908399E /* Qvacell.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8DADEF96453516C4BE5EE855 /* Qvacell */ = {
+			isa = PBXGroup;
+			children = (
+				3737C9D32EA41E146FB8F112 /* codes.json */,
+				4A68326477E11D3FA4066B87 /* Info.plist */,
+				FA686A05D19BF528961E2960 /* Models.swift */,
+				301757F2FCA61984E6AD5A99 /* Qvacell.entitlements */,
+				54A6043F64E4118A05AFEE9A /* QvacellApp.swift */,
+				4B6EBC038E535B3BCAEE163B /* Services.swift */,
+				C399DCC1FC26430B939D5C09 /* UIComponents.swift */,
+				4E5327CE953B7E62F240584E /* Views.swift */,
+				BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */,
+			);
+			path = Qvacell;
+			sourceTree = "<group>";
+		};
+		D9CD23BAB43D13CF128E6D72 /* CallerIDExtension */ = {
+			isa = PBXGroup;
+			children = (
+				ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */,
+				3151AF1B92A77020CC07419E /* CallerIDExtension.entitlements */,
+				E0357C6DBBEFC6A02BB65F58 /* Info.plist */,
+			);
+			path = CallerIDExtension;
+			sourceTree = "<group>";
+		};
+		E05B8D1A137D66535073D2B1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0248ACC366A6D67084D4923A /* CallerIDExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B63B872B946D0604077DC839 /* Build configuration list for PBXNativeTarget "CallerIDExtension" */;
+			buildPhases = (
+				9F131771236BBD5AF81196BA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CallerIDExtension;
+			packageProductDependencies = (
+			);
+			productName = CallerIDExtension;
+			productReference = 8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		3701F48025FB171055F12334 /* Qvacell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D70A20C1FA95BC7FD84C0414 /* Build configuration list for PBXNativeTarget "Qvacell" */;
+			buildPhases = (
+				71AB01D01491B81B9B5E4D6D /* Sources */,
+				D023BFA083C658FD8FDBEF6B /* Resources */,
+				5871D23E4BBE1C9B49C469D6 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C28652851B7E2BB5EC00F4A6 /* PBXTargetDependency */,
+			);
+			name = Qvacell;
+			packageProductDependencies = (
+			);
+			productName = Qvacell;
+			productReference = 909DAB7013C02EE1A908399E /* Qvacell.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CFA1690DE3F7C0F70AB2A0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 5B68646823E8E87B011C5C47 /* Build configuration list for PBXProject "Qvacell" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2E15B34489D45978082090CD;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 433671ED627DD824A1253D94 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0248ACC366A6D67084D4923A /* CallerIDExtension */,
+				3701F48025FB171055F12334 /* Qvacell */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D023BFA083C658FD8FDBEF6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BBBCFDDA242479263ABC83C /* codes.json in Resources */,
+				983135DC85990D1F471681C6 /* wifi_navigation_rooms.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71AB01D01491B81B9B5E4D6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AAA6CCB88EE275D33FF9795 /* CallerIDStore.swift in Sources */,
+				85FE368EC7E835F615D3217D /* Models.swift in Sources */,
+				FD5716B54BF3C4E6D4EE9B10 /* QvacellApp.swift in Sources */,
+				00A116E10A8F88A9983DAC1C /* Services.swift in Sources */,
+				4F1F3C8C701BA2778C1CEE68 /* UIComponents.swift in Sources */,
+				4EEF6A5BC4B63C9BE876667D /* Views.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F131771236BBD5AF81196BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4344702172E06C11EA7C7A /* CallDirectoryHandler.swift in Sources */,
+				8DBA8E3FC061AFF8688819ED /* CallerIDStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C28652851B7E2BB5EC00F4A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0248ACC366A6D67084D4923A /* CallerIDExtension */;
+			targetProxy = 45559F560DEE64D1265FD770 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4A63CB9AA450A9EAFF8363A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55E6B9ECE2320282CE90C78F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CallerIDExtension/CallerIDExtension.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = CallerIDExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qvacell.app.CallerIDExtension;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		7E6CBFF87FD241F6284E67D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Qvacell/Qvacell.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = Qvacell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qvacell.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8F54DF625A21AADF26226976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CallerIDExtension/CallerIDExtension.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = CallerIDExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qvacell.app.CallerIDExtension;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BB3D36AF5D7D3A5128435435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D964E0E734E72C52EA3F9854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Qvacell/Qvacell.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = Qvacell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qvacell.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B68646823E8E87B011C5C47 /* Build configuration list for PBXProject "Qvacell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A63CB9AA450A9EAFF8363A3 /* Debug */,
+				BB3D36AF5D7D3A5128435435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B63B872B946D0604077DC839 /* Build configuration list for PBXNativeTarget "CallerIDExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F54DF625A21AADF26226976 /* Debug */,
+				55E6B9ECE2320282CE90C78F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D70A20C1FA95BC7FD84C0414 /* Build configuration list for PBXNativeTarget "Qvacell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D964E0E734E72C52EA3F9854 /* Debug */,
+				7E6CBFF87FD241F6284E67D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1CFA1690DE3F7C0F70AB2A0B /* Project object */;
+}

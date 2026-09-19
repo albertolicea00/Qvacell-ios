@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB8D1B900E1DD4AB439A7712"
-               BuildableName = "CubaCellConnect.app"
-               BlueprintName = "CubaCellConnect"
-               ReferencedContainer = "container:CubaCellConnect.xcodeproj">
+               BlueprintIdentifier = "3701F48025FB171055F12334"
+               BuildableName = "Qvacell.app"
+               BlueprintName = "Qvacell"
+               ReferencedContainer = "container:Qvacell.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB8D1B900E1DD4AB439A7712"
-            BuildableName = "CubaCellConnect.app"
-            BlueprintName = "CubaCellConnect"
-            ReferencedContainer = "container:CubaCellConnect.xcodeproj">
+            BlueprintIdentifier = "3701F48025FB171055F12334"
+            BuildableName = "Qvacell.app"
+            BlueprintName = "Qvacell"
+            ReferencedContainer = "container:Qvacell.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -57,10 +57,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB8D1B900E1DD4AB439A7712"
-            BuildableName = "CubaCellConnect.app"
-            BlueprintName = "CubaCellConnect"
-            ReferencedContainer = "container:CubaCellConnect.xcodeproj">
+            BlueprintIdentifier = "3701F48025FB171055F12334"
+            BuildableName = "Qvacell.app"
+            BlueprintName = "Qvacell"
+            ReferencedContainer = "container:Qvacell.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -76,10 +76,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB8D1B900E1DD4AB439A7712"
-            BuildableName = "CubaCellConnect.app"
-            BlueprintName = "CubaCellConnect"
-            ReferencedContainer = "container:CubaCellConnect.xcodeproj">
+            BlueprintIdentifier = "3701F48025FB171055F12334"
+            BuildableName = "Qvacell.app"
+            BlueprintName = "Qvacell"
+            ReferencedContainer = "container:Qvacell.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>

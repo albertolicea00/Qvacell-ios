@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
   # pull_request:
   #   paths:
-  #     - "CubaCellConnect/wifi_navigation_rooms.json"
+  #     - "Qvacell/wifi_navigation_rooms.json"
   #     - ".github/scripts/check-wifi-rooms-sync.mjs"
   #     - ".github/workflows/wifi-rooms-sync-check.yml"
 

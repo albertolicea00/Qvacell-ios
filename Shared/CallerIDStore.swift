@@ -12,8 +12,8 @@ struct CallerIDEntry: Codable {
 /// an App Group container — a Call Directory Extension runs in its own sandboxed process and
 /// has no Contacts access of its own.
 enum CallerIDStore {
-    static let appGroupID = "group.com.cubacellconnect.shared"
-    static let extensionBundleID = "com.cubacellconnect.app.CallerIDExtension"
+    static let appGroupID = "group.com.qvacell.shared"
+    static let extensionBundleID = "com.qvacell.app.CallerIDExtension"
 
     private static let fileName = "caller-id-entries.json"
 

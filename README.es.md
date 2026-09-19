@@ -1,6 +1,6 @@
-# 🇨🇺 CubaCell Connect
+# 🇨🇺 Qvacell
 
-> La app se llama **Cuba-Cell** (con doble "L") para evitar conflictos legales o problemas de marca registrada con Cubacel.
+> Tu cell en Cuba. Cambiamos la letra, mantenemos el sonido.
 
 [![Plataforma](https://img.shields.io/badge/plataforma-iOS%2017.0%2B-blue.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/swift-5.9%2B-orange.svg)](https://swift.org)
@@ -33,8 +33,8 @@ Una aplicación para iPhone para acceder rápidamente a los **códigos de servic
 - 🌗 **Personalización y Ajustes** — Soporte para tema Claro/Oscuro, selector de color de acento personalizado y pestaña de inicio configurable.
 
 ### Próximamente
-- **Búsqueda en Directorio Telefónico Online** — Integración backend con web scraper para búsqueda de números telefónicos en línea. Consulta [#2](https://github.com/albertolicea00/CubaCellConnect/issues/2) para más detalles.
-- **Integración con Páginas Amarillas** — Integración backend con web scraper para buscar en Páginas Amarillas de ETECSA por categoría, número, municipio y provincia. Consulta [#3](https://github.com/albertolicea00/CubaCellConnect/issues/3) para más detalles.
+- **Búsqueda en Directorio Telefónico Online** — Integración backend con web scraper para búsqueda de números telefónicos en línea. Consulta [#2](https://github.com/albertolicea00/Qvacell-ios/issues/2) para más detalles.
+- **Integración con Páginas Amarillas** — Integración backend con web scraper para buscar en Páginas Amarillas de ETECSA por categoría, número, municipio y provincia. Consulta [#3](https://github.com/albertolicea00/Qvacell-ios/issues/3) para más detalles.
 
 ## 🛠️ Requisitos
 
@@ -45,13 +45,13 @@ Una aplicación para iPhone para acceder rápidamente a los **códigos de servic
 ## 🚀 Primeros Pasos
 
 ```bash
-git clone https://github.com/albertolicea00/cubacell-connect.git
-cd cubacell-connect
+git clone https://github.com/albertolicea00/Qvacell-ios.git
+cd Qvacell-ios
 xcodegen generate
-open CubaCellConnect.xcodeproj
+open Qvacell.xcodeproj
 ```
 
-> **Nota sobre XcodeGen:** Este proyecto usa **XcodeGen** con una especificación `project.yml` para generar `CubaCellConnect.xcodeproj` dinámicamente y evitar conflictos de fusión en `.pbxproj`.
+> **Nota sobre XcodeGen:** Este proyecto usa **XcodeGen** con una especificación `project.yml` para generar `Qvacell.xcodeproj` dinámicamente y evitar conflictos de fusión en `.pbxproj`.
 
 Compila y ejecuta en un dispositivo. **El marcado USSD requiere un iPhone físico con una SIM de Cubacel** 📲 — el simulador no puede realizar llamadas.
 
@@ -60,8 +60,8 @@ Para activar el Identificador de Llamadas para llamadas `*99`, tras instalar la 
 ## 🗂️ Estructura del Proyecto
 
 ```
-CubaCellConnect/
-├── CubaCellConnectApp.swift  # Punto de entrada de la app
+Qvacell/
+├── QvacellApp.swift  # Punto de entrada de la app
 ├── Models.swift              # USSDCode, USSDCategory, decodificación del catálogo, paleta de colores, Reminder/ReminderTemplate
 ├── Services.swift            # Almacén del catálogo JSON, Contactos, puente con marcador del sistema, ReminderManager (notificaciones locales)
 ├── UIComponents.swift        # Vistas de presentación reutilizables (fila de código)
@@ -76,7 +76,7 @@ Shared/                        # Código compartido entre la app y CallerIDExten
 └── CallerIDStore.swift        # Lista de IDs de llamadas respaldada por App Group (lectura/escritura)
 ```
 
-*El catálogo completo de códigos USSD se carga dinámicamente desde nuestro archivo de configuración JSON [`CubaCellConnect/codes.json`](CubaCellConnect/codes.json), manteniendo la app ligera y fácil de actualizar.* 📁
+*El catálogo completo de códigos USSD se carga dinámicamente desde nuestro archivo de configuración JSON [`Qvacell/codes.json`](Qvacell/codes.json), manteniendo la app ligera y fácil de actualizar.* 📁
 
 ## ☎️ Marcado Directo vs. Confirmación
 

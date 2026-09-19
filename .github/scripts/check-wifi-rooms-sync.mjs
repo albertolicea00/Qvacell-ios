@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * WiFi navigation rooms sync check — CubaCell Connect.
+ * WiFi navigation rooms sync check — Qvacell.
  *
  * Ajustes › Salas y Zonas WiFi bundles a scraped copy of ETECSA's own public
  * "Navigation rooms and public spaces (WIFI)" directory (see README § Navigation
@@ -23,7 +23,7 @@
 
 import fs from "node:fs";
 
-const LOCAL_FILE = "CubaCellConnect/wifi_navigation_rooms.json";
+const LOCAL_FILE = "Qvacell/wifi_navigation_rooms.json";
 const BASE_URL = "https://www.etecsa.cu/en/rooms-public-spaces";
 const FETCH_TIMEOUT_MS = 15_000;
 const REACHABILITY_TIMEOUT_MS = 10_000;

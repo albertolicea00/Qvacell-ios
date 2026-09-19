@@ -1,27 +1,21 @@
-name: CubaCellConnect
+name: Qvacell
 options:
-  bundleIdPrefix: com.cubacellconnect
+  bundleIdPrefix: com.qvacell
   deploymentTarget:
     iOS: "17.0"
   createIntermediateGroups: true
 
 targets:
-  CubaCellConnect:
+  Qvacell:
     type: application
     platform: iOS
     sources:
-      - CubaCellConnect
+      - Qvacell
       - Shared
     info:
-      path: CubaCellConnect/Info.plist
+      path: Qvacell/Info.plist
       properties:
-        CFBundleDisplayName: CubaCell Connect
-        CFBundleSpokenName: CubaCell
-        INAlternativeAppNames:
-          - INAlternativeAppName: Cubacel
-            INAlternativeAppNamePronunciationHint: ku-ba-sel
-          - INAlternativeAppName: CubaCell
-          - INAlternativeAppName: Cuba Cell
+        CFBundleDisplayName: Qvacell
         CFBundleShortVersionString: 1.2.4
         CFBundleVersion: "1"
         UILaunchScreen: {}
@@ -35,7 +29,7 @@ targets:
         LSSupportsOpeningDocumentsInPlace: true
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.cubacellconnect.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.qvacell.app
         MARKETING_VERSION: 1.2.4
         CURRENT_PROJECT_VERSION: 1
         SWIFT_VERSION: "5.9"
@@ -43,10 +37,10 @@ targets:
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
     entitlements:
-      path: CubaCellConnect/CubaCellConnect.entitlements
+      path: Qvacell/Qvacell.entitlements
       properties:
         com.apple.security.application-groups:
-          - group.com.cubacellconnect.shared
+          - group.com.qvacell.shared
     dependencies:
       - target: CallerIDExtension
         embed: true
@@ -70,7 +64,7 @@ targets:
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).CallDirectoryHandler
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.cubacellconnect.app.CallerIDExtension
+        PRODUCT_BUNDLE_IDENTIFIER: com.qvacell.app.CallerIDExtension
         MARKETING_VERSION: 1.2.4
         CURRENT_PROJECT_VERSION: 1
         SWIFT_VERSION: "5.9"
@@ -80,4 +74,4 @@ targets:
       path: CallerIDExtension/CallerIDExtension.entitlements
       properties:
         com.apple.security.application-groups:
-          - group.com.cubacellconnect.shared
+          - group.com.qvacell.shared

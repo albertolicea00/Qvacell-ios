@@ -1,6 +1,6 @@
-# Contributing to CubaCell Connect
+# Contributing to Qvacell
 
-Thanks for your interest in improving CubaCell Connect! This document explains how to propose changes.
+Thanks for your interest in improving Qvacell! This document explains how to propose changes.
 
 ## Ways to Contribute
 
@@ -14,11 +14,11 @@ Thanks for your interest in improving CubaCell Connect! This document explains h
 1. Install the toolchain: Xcode 15+ and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
 2. Fork and clone the repository.
 3. Generate the project: `xcodegen generate`.
-4. Open `CubaCellConnect.xcodeproj` and build.
+4. Open `Qvacell.xcodeproj` and build.
 
 ## Updating the USSD Catalog
 
-All codes live in `CubaCellConnect/codes.json`. When adding or changing a code:
+All codes live in `Qvacell/codes.json`. When adding or changing a code:
 
 - Keep the JSON schema: `id`, `code`, `title`, `details`, `category`, `type`, `requiresInput`, optional `inputPlaceholder` and `mnemonic`.
 - Use `{input}` inside `code` for the user-provided part.

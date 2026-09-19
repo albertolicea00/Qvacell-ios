@@ -1,13 +1,13 @@
-# 🇨🇺 CubaCell Connect
+# 🇨🇺 Qvacell
 
-> The app is named **Cuba-Cell** (with double "L") to avoid any legal conflicts or trademark issues with Cubacel.
+> Your cell in Cuba. We changed the letter, kept the sound.
 
 [![Platform](https://img.shields.io/badge/platform-iOS%2017.0%2B-blue.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/swift-5.9%2B-orange.svg)](https://swift.org)
 [![Xcode](https://img.shields.io/badge/Xcode-15.0%2B-blue.svg)](https://developer.apple.com/xcode/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-<!-- [![WiFi rooms sync](https://github.com/albertolicea00/cubacell-connect/actions/workflows/wifi-rooms-sync-check.yml/badge.svg)](https://github.com/albertolicea00/cubacell-connect/actions/workflows/wifi-rooms-sync-check.yml) -->
+<!-- [![WiFi rooms sync](https://github.com/albertolicea00/qvacell-ios/actions/workflows/wifi-rooms-sync-check.yml/badge.svg)](https://github.com/albertolicea00/qvacell-ios/actions/workflows/wifi-rooms-sync-check.yml) -->
 
 An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** : check your balance, buy data/voice/SMS plans, transfer credit and more — all from a clean, organized list that hands the code straight to the system dialer.
 
@@ -34,8 +34,8 @@ An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** :
 - 🌗 **Customization & Settings** — Light/Dark theme support, custom accent color picker, and configurable launch tab.
 
 ### Upcoming
-- **Online Phone Directory Search** — Web scraper backend integration for online phone number lookups. See [#2](https://github.com/albertolicea00/CubaCellConnect/issues/2) for details.
-- **Yellow Pages Integration** — Web scraper backend integration to search ETECSA Yellow Pages by category, number, municipality, and province. See [#3](https://github.com/albertolicea00/CubaCellConnect/issues/3) for details.
+- **Online Phone Directory Search** — Web scraper backend integration for online phone number lookups. See [#2](https://github.com/albertolicea00/Qvacell/issues/2) for details.
+- **Yellow Pages Integration** — Web scraper backend integration to search ETECSA Yellow Pages by category, number, municipality, and province. See [#3](https://github.com/albertolicea00/Qvacell/issues/3) for details.
 
 ## 🛠️ Requirements
 
@@ -46,13 +46,13 @@ An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** :
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/albertolicea00/cubacell-connect.git
-cd cubacell-connect
+git clone https://github.com/albertolicea00/qvacell-ios.git
+cd qvacell-ios
 xcodegen generate
-open CubaCellConnect.xcodeproj
+open Qvacell.xcodeproj
 ```
 
-> **Note on XcodeGen:** This project uses **XcodeGen** with a `project.yml` specification to generate `CubaCellConnect.xcodeproj` dynamically and prevent `.pbxproj` merge conflicts.
+> **Note on XcodeGen:** This project uses **XcodeGen** with a `project.yml` specification to generate `Qvacell.xcodeproj` dynamically and prevent `.pbxproj` merge conflicts.
 
 Build and run on a device. **USSD dialing requires a physical iPhone with a Cubacel SIM** 📲 — the simulator cannot place calls.
 
@@ -61,8 +61,8 @@ To get Caller ID working for `*99` collect calls, after installing the app go to
 ## 🗂️ Project Structure
 
 ```
-CubaCellConnect/
-├── CubaCellConnectApp.swift  # App entry point
+Qvacell/
+├── QvacellApp.swift  # App entry point
 ├── Models.swift              # USSDCode, USSDCategory, catalog decoding, brand palette, Reminder/ReminderTemplate
 ├── Services.swift            # JSON catalog store, Contacts, system dialer bridge, ReminderManager (local notifications)
 ├── UIComponents.swift        # Reusable presentational views (code row)
@@ -77,7 +77,7 @@ Shared/                        # Code shared by the app and CallerIDExtension
 └── CallerIDStore.swift        # App Group–backed caller-ID list (read/write)
 ```
 
-*The full USSD code catalog is dynamically loaded from our JSON configuration file [`CubaCellConnect/codes.json`](CubaCellConnect/codes.json), keeping the app lightweight and easy to update.* 📁
+*The full USSD code catalog is dynamically loaded from our JSON configuration file [`Qvacell/codes.json`](Qvacell/codes.json), keeping the app lightweight and easy to update.* 📁
 
 ## ☎️ Direct Dial vs. Confirmation
 
@@ -95,7 +95,7 @@ Includes an offline directory of official ETECSA navigation rooms and public Wi-
 
 - **Directory database not integrated with Caller ID (`*99`).** The directory database (see above) is intentionally kept separate from `CallerIDStore`/`CallDirectoryHandler` (see [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), which only ever loads from the device's own Contacts. A CallKit Call Directory Extension has a hard cap on how many identification entries it can register (historically on the order of 100k–200k) — the directory dump has millions of rows (v1: ~4.6M; v2: ~4.8M combined), so registering it wholesale would get the extension rejected/disabled by iOS. Feeding it in would need a drastic filter (e.g. only numbers already in the device's own contacts, which is exactly what happens today) to fit under that ceiling.
 
-- **No "call via WhatsApp/Teams" option in Contactos.** The Contactos tab only offers cellular actions (normal call, `*99` collect, `#31#` anonymous) next to each contact — it can't add a "call via WhatsApp" or "call via Teams" option alongside them. Those apps place calls over their own proprietary VoIP/Wi-Fi-calling stack, not the cellular network, and don't expose any public API or URL scheme a third-party app can use to trigger a call through them — that's entirely up to WhatsApp/Teams themselves (they'd need to register their own CallKit provider and/or an app-specific integration), not something CubaCellConnect can add from the outside.
+- **No "call via WhatsApp/Teams" option in Contactos.** The Contactos tab only offers cellular actions (normal call, `*99` collect, `#31#` anonymous) next to each contact — it can't add a "call via WhatsApp" or "call via Teams" option alongside them. Those apps place calls over their own proprietary VoIP/Wi-Fi-calling stack, not the cellular network, and don't expose any public API or URL scheme a third-party app can use to trigger a call through them — that's entirely up to WhatsApp/Teams themselves (they'd need to register their own CallKit provider and/or an app-specific integration), not something Qvacell can add from the outside.
 
 - **iOS security sandbox and USSD limitations (no real-time balance tracking).** Unlike Android (where apps can intercept USSD responses in the background), iOS sandbox security prevents third-party apps from reading or parsing USSD response dialogs, chaining sessions automatically, or running background USSD queries. Because of this system limitation, the app cannot automatically display or update your balance, data packages, or bonus balances in real-time inside the app UI; dialing a code (`tel://`) hands off execution to the native Phone app where the user sees the carrier response screen directly.
 

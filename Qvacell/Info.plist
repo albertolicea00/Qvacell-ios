@@ -5,26 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>CubaCell Connect</string>
-	<key>CFBundleSpokenName</key>
-	<string>CubaCell</string>
-	<key>INAlternativeAppNames</key>
-	<array>
-		<dict>
-			<key>INAlternativeAppName</key>
-			<string>Cubacel</string>
-			<key>INAlternativeAppNamePronunciationHint</key>
-			<string>ku-ba-sel</string>
-		</dict>
-		<dict>
-			<key>INAlternativeAppName</key>
-			<string>CubaCell</string>
-		</dict>
-		<dict>
-			<key>INAlternativeAppName</key>
-			<string>Cuba Cell</string>
-		</dict>
-	</array>
+	<string>Qvacell</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

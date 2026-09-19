@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-CubaCell Connect ships as a single, continuously updated iOS app (no parallel major-version branches). Only the latest release on the App Store / latest commit on `main` receives security fixes.
+Qvacell ships as a single, continuously updated iOS app (no parallel major-version branches). Only the latest release on the App Store / latest commit on `main` receives security fixes.
 
 | Version | Supported |
 | ------- | --------- |
@@ -13,7 +13,7 @@ CubaCell Connect ships as a single, continuously updated iOS app (no parallel ma
 
 This app has no backend server, no user accounts, and no network layer of its own:
 
-- The USSD catalog (`CubaCellConnect/codes.json`) is a static file bundled at build time.
+- The USSD catalog (`Qvacell/codes.json`) is a static file bundled at build time.
 - The only privileged action the app performs is handing a dial string to iOS via `UIApplication.open` on a `tel:`/USSD URL — it does not place calls itself.
 - No analytics, no ads SDKs, no third-party dependencies (per [CONTRIBUTING.md](CONTRIBUTING.md): "No third-party dependencies unless discussed in an issue first").
 
@@ -31,13 +31,13 @@ Out of scope: this app cannot leak account credentials, payment data, or server-
 
 Instead, use one of these private channels:
 
-1. **Preferred:** [GitHub Security Advisories](https://github.com/albertolicea00/cubacell-connect/security/advisories/new) for this repository — lets the maintainer triage privately and coordinate a fix/disclosure.
+1. **Preferred:** [GitHub Security Advisories](https://github.com/albertolicea00/Qvacell-ios/security/advisories/new) for this repository — lets the maintainer triage privately and coordinate a fix/disclosure.
 2. **Email:** contact the maintainer directly. *(Assumption — verify before publishing: use the address the repo maintainer wants listed here, e.g. the address tied to the `albertolicea00` GitHub account. If none is set, keep GitHub Security Advisories as the sole channel.)*
 
 When reporting, please include:
 
 - Steps to reproduce (device/iOS version, the specific USSD entry or input value involved).
-- The affected file(s) (e.g. `CubaCellConnect/codes.json`, `Services.swift`, a specific CI workflow).
+- The affected file(s) (e.g. `Qvacell/codes.json`, `Services.swift`, a specific CI workflow).
 - Potential impact (e.g. "dials a premium number without confirmation", "crashes on malformed input", "CI workflow allows arbitrary code injection via PR").
 
 ## Response Expectations

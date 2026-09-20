@@ -549,8 +549,10 @@ private struct ContactCallRowView: View {
                 Text(entry.contact.name)
                     .font(.body.weight(.medium))
                     .foregroundStyle(Color.appForeground)
-                Text("\(entry.number.label): \(number)")
-                    .font(AppTheme.codeFont(size: 14))
+                (Text(number).font(AppTheme.codeFont(size: 14))
+                    + Text(entry.contact.numbers.count > 1 ? " (\(entry.number.label))" : "")
+                        .font(.caption)
+                        .italic())
                     .foregroundStyle(.secondary)
             }
 
@@ -654,8 +656,10 @@ private struct ContactCallOptionsSheet: View {
                     VStack(spacing: 2) {
                         Text(contact.name)
                             .font(.title2.weight(.semibold))
-                        Text("\(entry.number.label): \(number)")
-                            .font(AppTheme.codeFont(size: 16))
+                        (Text(number).font(AppTheme.codeFont(size: 16))
+                            + Text(entry.contact.numbers.count > 1 ? " (\(entry.number.label))" : "")
+                                .font(.subheadline)
+                                .italic())
                             .foregroundStyle(.secondary)
                     }
                 }

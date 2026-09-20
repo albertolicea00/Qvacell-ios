@@ -1437,10 +1437,6 @@ struct SettingsView: View {
                         Label("Ayuda (Manual de Uso)", systemImage: "questionmark.circle.fill")
                     }
 
-                    Text("Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-
                     Label("No está afiliada, avalada ni patrocinada por ETECSA. Los códigos pueden cambiar en cualquier momento a discreción del operador.", systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -2236,6 +2232,13 @@ private struct DirectoryActionRow: View {
 private struct HelpSettingsView: View {
     var body: some View {
         Form {
+            Section("Qué es Qvacell") {
+                SettingsInfoRow(
+                    title: "¿Qué hace la app?",
+                    text: "Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias."
+                )
+            }
+
             Section("Cómo Funciona el USSD") {
                 SettingsInfoRow(
                     title: "¿Qué es el USSD?",
@@ -2422,20 +2425,11 @@ private struct CallerIDSettingsView: View {
             }
 
             Section {
-                Button {
-                    openSettings()
-                } label: {
-                    HStack {
-                        Spacer()
-                        Label("Abrir Ajustes de iOS", systemImage: "arrow.up.forward.app.fill")
-                            .font(.headline)
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                }
-                .tint(accentColorStore.color)
+                Text("Actívala manualmente en Ajustes › Teléfono › Bloqueo e Identificación de Llamadas.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             } footer: {
-                Text("Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma; debe autorizarse manualmente desde los ajustes de iOS.")
+                Text("Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma, ni abrir esa pantalla de Ajustes directamente; debe autorizarse manualmente desde los ajustes de iOS.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -2493,11 +2487,6 @@ private struct CallerIDSettingsView: View {
         }
     }
 
-    private func openSettings() {
-        if let url = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(url)
-        }
-    }
 }
 
 private struct StepRowView: View {

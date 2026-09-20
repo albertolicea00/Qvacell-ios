@@ -1333,14 +1333,6 @@ struct SettingsView: View {
                     }
                 }
 
-                Section("Identificador de Llamadas") {
-                    NavigationLink {
-                        CallerIDSettingsView()
-                    } label: {
-                        Label("Identificador de Llamadas (*99)", systemImage: "phone.badge.checkmark")
-                    }
-                }
-
                 Section("Utilidades") {
                     NavigationLink {
                         RemindersListView()
@@ -1423,6 +1415,18 @@ struct SettingsView: View {
                 }
 
                 Section("Acerca de") {
+                    NavigationLink {
+                        CallerIDSettingsView()
+                    } label: {
+                        Label("Identificador de Llamadas (*99)", systemImage: "phone.badge.checkmark")
+                    }
+
+                    NavigationLink {
+                        SiriShortcutsHelpView()
+                    } label: {
+                        Label("Siri y Atajos de Voz", systemImage: "waveform")
+                    }
+
                     NavigationLink {
                         HelpSettingsView()
                     } label: {
@@ -2326,36 +2330,6 @@ private struct HelpSettingsView: View {
             //     )
             // }
 
-            Section("Siri y Atajos de Voz") {
-                SettingsInfoRow(
-                    title: "¿Qué hace?",
-                    text: "No hay que configurar nada: al instalar la app, Siri y Atajos la reconocen automáticamente con el nombre «Qvacell»."
-                )
-                SettingsInfoRow(
-                    title: "Frases para llamar oculto o por cobrar (*99)",
-                    text: "«Oye Siri, llama con 99 a [Número/Contacto] en Qvacell», «Oye Siri, llama con *99 en Qvacell», «Oye Siri, llama pagando el a [Número/Contacto] en Qvacell», «Oye Siri, llama con oculto a [Número/Contacto] en Qvacell», «Oye Siri, llama con privado en Qvacell»."
-                )
-                SettingsInfoRow(
-                    title: "Consultar saldo y servicios",
-                    text: "«Oye Siri, consulta mi saldo en Qvacell», «Oye Siri, marca Bonos y Planes en Qvacell»."
-                )
-                SettingsInfoRow(
-                    title: "Comprar planes por voz (código seguro)",
-                    text: "«Oye Siri, compra Plan de 4.5GB en Qvacell», «Oye Siri, compra Combo 2GB en Qvacell», «Oye Siri, compra Plan de 20 SMS en Qvacell». Usa siempre el código estándar seguro que abre la pantalla de confirmación de ETECSA antes de realizar la compra."
-                )
-                SettingsInfoRow(
-                    title: "Cómo funciona por dentro",
-                    text: "Cada frase abre la app y marca exactamente igual que si tocaras el botón en pantalla — el sistema pide confirmación para realizar la llamada."
-                )
-                Button {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url)
-                    }
-                } label: {
-                    Label("Abrir Ajustes de Siri para Qvacell", systemImage: "gear")
-                }
-            }
-
         }
         .navigationTitle("Ayuda")
         .navigationBarTitleDisplayMode(.inline)
@@ -2557,6 +2531,137 @@ private struct StepRowView: View {
                 .foregroundStyle(.secondary)
         }
         .padding(.vertical, 2)
+    }
+}
+
+// MARK: - Siri & Shortcuts Instructions Screen
+
+/// Ajustes › Siri y Atajos de Voz — voice command instructions and deep links to Siri settings.
+private struct SiriShortcutsHelpView: View {
+    @Environment(AccentColorStore.self) private var accentColorStore
+
+    var body: some View {
+        List {
+            Section {
+                VStack(spacing: 12) {
+                    Image(systemName: "waveform")
+                        .font(.system(size: 46))
+                        .foregroundStyle(accentColorStore.color)
+                        .padding(.top, 6)
+
+                    Text("Siri y Atajos de Voz")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+
+                    Text("Controla Qvacell usando tu voz con Siri o integrando acciones en la app Atajos de iOS.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 4)
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color.clear)
+            }
+
+            Section("¿Cómo funciona?") {
+                VStack(alignment: .leading, spacing: 8) {
+                    Label("No necesitas configurar nada: al instalar la app, Siri y Atajos reconocen automáticamente «Qvacell».", systemImage: "sparkles")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
+                    Label("Cada orden por voz abre la app y prepara el marcado exacto, solicitando confirmación del sistema antes de llamar.", systemImage: "shield.checkered")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.vertical, 4)
+            }
+
+            Section("Llamar Oculto o por Cobrar (*99)") {
+                SiriPhraseRow(phrase: "Oye Siri, llama con 99 a [Contacto] en Qvacell", subtitle: "Llamada a cobro revertido (*99) a un contacto")
+                SiriPhraseRow(phrase: "Oye Siri, llama pagando el a [Contacto] en Qvacell", subtitle: "Frase alternativa para cobro revertido")
+                SiriPhraseRow(phrase: "Oye Siri, llama con *99 en Qvacell", subtitle: "Abre el marcador con el prefijo *99")
+                SiriPhraseRow(phrase: "Oye Siri, llama con oculto a [Contacto] en Qvacell", subtitle: "Llama ocultando tu número con #31#")
+                SiriPhraseRow(phrase: "Oye Siri, llama con privado en Qvacell", subtitle: "Abre el marcador con el prefijo #31#")
+            }
+
+            Section("Consultar Saldo y Servicios") {
+                SiriPhraseRow(phrase: "Oye Siri, consulta mi saldo en Qvacell", subtitle: "Consulta de saldo principal (*222#)")
+                SiriPhraseRow(phrase: "Oye Siri, marca Bonos y Planes en Qvacell", subtitle: "Consulta de datos, bonos y voz (*222*266#)")
+            }
+
+            Section {
+                SiriPhraseRow(phrase: "Oye Siri, compra Plan de 4.5GB en Qvacell", subtitle: "Plan de datos móviles 4.5GB (LTE)")
+                SiriPhraseRow(phrase: "Oye Siri, compra Combo 2GB en Qvacell", subtitle: "Plan combinado de datos, voz y SMS")
+                SiriPhraseRow(phrase: "Oye Siri, compra Plan de 20 SMS en Qvacell", subtitle: "Paquete de mensajes de texto")
+            } header: {
+                Text("Comprar Planes por Voz")
+            } footer: {
+                Text("Usa siempre el código estándar seguro que abre la pantalla de confirmación interactiva de ETECSA antes de realizar la compra.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+
+            Section("App Atajos de iOS") {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Puedes integrar cualquiera de estas acciones dentro de la app **Atajos** de iOS para crear rutinas personalizadas, widgets en tu pantalla de inicio o ejecutarlas desde tu Apple Watch.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.vertical, 4)
+            }
+
+            Section {
+                Button {
+                    openSettings()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Label("Abrir Ajustes de Siri para Qvacell", systemImage: "gear")
+                            .font(.headline)
+                        Spacer()
+                    }
+                    .padding(.vertical, 4)
+                }
+                .tint(accentColorStore.color)
+            } footer: {
+                Text("En los ajustes de iOS puedes verificar que los permisos de «Aprender de esta app» y «Sugerencias» estén activados para Qvacell.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .listStyle(.insetGrouped)
+        .navigationTitle("Siri y Atajos")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func openSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
+    }
+}
+
+private struct SiriPhraseRow: View {
+    @Environment(AccentColorStore.self) private var accentColorStore
+    let phrase: String
+    let subtitle: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .top, spacing: 8) {
+                Image(systemName: "mic.fill")
+                    .font(.caption)
+                    .foregroundStyle(accentColorStore.color)
+                    .padding(.top, 2)
+                Text(phrase)
+                    .font(.subheadline.weight(.semibold))
+            }
+            Text(subtitle)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .padding(.leading, 20)
+        }
+        .padding(.vertical, 3)
     }
 }
 

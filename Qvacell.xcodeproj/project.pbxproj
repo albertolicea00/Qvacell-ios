@@ -54,7 +54,7 @@
 		4E5327CE953B7E62F240584E /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		54A6043F64E4118A05AFEE9A /* QvacellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvacellApp.swift; sourceTree = "<group>"; };
 		71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallerIDStore.swift; sourceTree = "<group>"; };
-		8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CallerIDExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CallerIDExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		909DAB7013C02EE1A908399E /* Qvacell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qvacell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wifi_navigation_rooms.json; sourceTree = "<group>"; };
@@ -303,6 +303,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallerIDExtension/CallerIDExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				INFOPLIST_FILE = CallerIDExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -347,6 +348,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallerIDExtension/CallerIDExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				INFOPLIST_FILE = CallerIDExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

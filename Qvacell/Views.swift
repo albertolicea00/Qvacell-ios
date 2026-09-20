@@ -2301,23 +2301,23 @@ private struct HelpSettingsView: View {
                 )
             }
 
-            Section("Medir Velocidad de Internet") {
-                SettingsInfoRow(
-                    title: "¿Cómo funciona?",
-                    text: "Mide ping, velocidad de descarga y de subida de tu conexión actual (datos móviles o WiFi). La prueba consume los datos que uses durante ella — ten cuidado si tienes un plan de datos limitado."
-                )
-            }
+            // Section("Medir Velocidad de Internet") {
+            //     SettingsInfoRow(
+            //         title: "¿Cómo funciona?",
+            //         text: "Mide ping, velocidad de descarga y de subida de tu conexión actual (datos móviles o WiFi). La prueba consume los datos que uses durante ella — ten cuidado si tienes un plan de datos limitado."
+            //     )
+            // }
 
-            Section("Buscar en Database") {
-                SettingsInfoRow(
-                    title: "¿De dónde salen los datos?",
-                    text: "La app no trae ningún directorio incluido ni lo descarga por su cuenta — tienes que traer tú mismo el archivo de base de datos (copiándolo con Finder o con el botón \"Importar\" dentro de la pantalla) para poder buscar."
-                )
-                SettingsInfoRow(
-                    title: "Solo por número",
-                    text: "La búsqueda por nombre está desactivada a propósito, por privacidad — solo se puede buscar por número de teléfono."
-                )
-            }
+            // Section("Buscar en Database") {
+            //     SettingsInfoRow(
+            //         title: "¿De dónde salen los datos?",
+            //         text: "La app no trae ningún directorio incluido ni lo descarga por su cuenta — tienes que traer tú mismo el archivo de base de datos (copiándolo con Finder o con el botón \"Importar\" dentro de la pantalla) para poder buscar."
+            //     )
+            //     SettingsInfoRow(
+            //         title: "Solo por número",
+            //         text: "La búsqueda por nombre está desactivada a propósito, por privacidad — solo se puede buscar por número de teléfono."
+            //     )
+            // }
 
             Section("Siri y Atajos de Voz") {
                 SettingsInfoRow(

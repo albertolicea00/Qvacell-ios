@@ -83,11 +83,10 @@ enum HomeTab: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    /// Every case except the plain `.settings` landing screen itself — used by "Pestaña Inicial"
-    /// in Ajustes, which offers `.database`/`.smsServices`/`.directory` (nested screens *inside*
-    /// Ajustes) as launch destinations but not the bare Ajustes list.
-    static var launchOptions: [HomeTab] {
-        allCases.filter { $0 != .settings }
+    /// Every case except the plain `.settings` landing screen itself (and `.database` if locked) —
+    /// used by "Pestaña Inicial" in Ajustes.
+    static func launchOptions(includingDatabase: Bool = false) -> [HomeTab] {
+        allCases.filter { $0 != .settings && ($0 != .database || includingDatabase) }
     }
 
     var displayName: String {
@@ -1288,7 +1287,7 @@ struct SettingsView: View {
                     Toggle("Aviso de señal celular", isOn: $showNetworkStatus)
 
                     Picker("Pestaña Inicial", selection: $defaultTab) {
-                        ForEach(HomeTab.launchOptions) { tab in
+                        ForEach(HomeTab.launchOptions(includingDatabase: showDatabaseSearch)) { tab in
                             Text(tab.displayName).tag(tab.rawValue)
                         }
                     }
@@ -1434,9 +1433,9 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 // A stored `defaultTab` of "settings" predates removing the bare Ajustes option
-                // from "Pestaña Inicial" — normalize it so the Picker doesn't show a blank
-                // selection forever for anyone who had it set.
-                if defaultTab == HomeTab.settings.rawValue {
+                // from "Pestaña Inicial", or ".database" if database search is not unlocked —
+                // normalize it so the Picker doesn't show a blank selection.
+                if defaultTab == HomeTab.settings.rawValue || (!showDatabaseSearch && defaultTab == HomeTab.database.rawValue) {
                     defaultTab = HomeTab.home.rawValue
                 }
                 guard !hasAutoNavigatedToLaunchDestination else { return }
@@ -1518,6 +1517,9 @@ struct SettingsView: View {
             versionTapTimestamps.removeAll()
 
             let isUnlocked = showDatabaseSearch
+            if !isUnlocked && defaultTab == HomeTab.database.rawValue {
+                defaultTab = HomeTab.home.rawValue
+            }
             showToast(
                 message: isUnlocked ? "Búsqueda en Database desbloqueada" : "Búsqueda en Database oculta",
                 icon: isUnlocked ? "cylinder.split.1x2" : "lock.fill"
@@ -1870,7 +1872,7 @@ struct DirectorySearchView: View {
                     ContentUnavailableView(
                         "Sin Base de Datos",
                         systemImage: "externaldrive.badge.questionmark",
-                        description: Text("Descarga la base de datos o impórtala si ya la tienes en este dispositivo.")
+                        description: Text("Impórtala si ya la tienes en este dispositivo.")
                     )
 
                     if isDownloading {
@@ -1900,6 +1902,11 @@ struct DirectorySearchView: View {
                         // separate pill buttons — reads as one grouped action, matching the
                         // inset-grouped list rows used everywhere else in Ajustes.
                         VStack(spacing: 0) {
+                            // Disabled for security and legal compliance: downloading an external phone directory
+                            // database directly in-app may violate privacy laws, data protection regulations, or App
+                            // Store guidelines regarding unauthorized personal data distribution. Users must supply
+                            // their own file manually.
+                            /*
                             DirectoryActionRow(
                                 title: "Descargar Base de Datos",
                                 systemImage: "arrow.down.circle.fill",
@@ -1910,6 +1917,7 @@ struct DirectorySearchView: View {
                             }
 
                             Divider().padding(.leading, 52)
+                            */
 
                             DirectoryActionRow(
                                 title: "Importar Base de Datos",

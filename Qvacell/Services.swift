@@ -436,6 +436,7 @@ enum DialService {
     /// `canOpenURL`/`open(_:)` — those are synchronous, XPC-backed calls that trip Swift's
     /// "unsafeForcedSync called from Swift Concurrent context" diagnostic when called from an
     /// `async` function running on the cooperative thread pool.
+    @MainActor
     static func dial(_ rawCode: String) async -> Bool {
         guard let url = dialURL(for: rawCode) else { return false }
         return await withCheckedContinuation { continuation in

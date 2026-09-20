@@ -225,7 +225,36 @@ struct DeviceContact: Identifiable, Hashable {
     let id: String
     let name: String
     let phoneNumber: String
-    let thumbnailImageData: Data?
+}
+
+/// Loads one contact's thumbnail at a time, on demand — the bulk fetch used to pull
+/// `CNContactThumbnailImageDataKey` for every contact up front, which held every photo's `Data`
+/// in memory for the whole session and could OOM-kill the app on address books with many
+/// photos. Results are cached so scrolling back to a row doesn't re-fetch it.
+enum ContactThumbnailLoader {
+    private static let store = CNContactStore()
+    private static let cache = NSCache<NSString, UIImage>()
+
+    /// Runs the (synchronous, XPC-backed) Contacts lookup on a plain background queue rather
+    /// than inline in the caller's `async` context — doing it inline would block a thread in
+    /// Swift's cooperative pool and trip the "unsafeForcedSync" diagnostic.
+    static func thumbnail(forContactID id: String) async -> UIImage? {
+        if let cached = cache.object(forKey: id as NSString) {
+            return cached
+        }
+        return await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async {
+                let image = (try? store.unifiedContact(
+                    withIdentifier: id,
+                    keysToFetch: [CNContactThumbnailImageDataKey as CNKeyDescriptor]
+                )).flatMap { $0.thumbnailImageData }.flatMap { UIImage(data: $0) }
+                if let image {
+                    cache.setObject(image, forKey: id as NSString)
+                }
+                continuation.resume(returning: image)
+            }
+        }
+    }
 }
 
 /// Reads the full address book so the Contactos tab can render its own alphabetical list
@@ -308,7 +337,6 @@ final class ContactsService {
         let keys: [CNKeyDescriptor] = [
             CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
             CNContactPhoneNumbersKey as CNKeyDescriptor,
-            CNContactThumbnailImageDataKey as CNKeyDescriptor,
         ]
         let request = CNContactFetchRequest(keysToFetch: keys)
         request.sortOrder = .givenName
@@ -326,8 +354,7 @@ final class ContactsService {
                 results.append(DeviceContact(
                     id: contact.identifier,
                     name: name,
-                    phoneNumber: cubanNumber,
-                    thumbnailImageData: contact.thumbnailImageData
+                    phoneNumber: cubanNumber
                 ))
             }
             let sorted = results.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }

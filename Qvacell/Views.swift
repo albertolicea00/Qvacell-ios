@@ -567,6 +567,7 @@ private struct ContactAvatarView: View {
     var size: CGFloat = 40
 
     @Environment(AccentColorStore.self) private var accentColorStore
+    @State private var uiImage: UIImage?
 
     private var initials: String {
         let words = contact.name.split(separator: " ")
@@ -576,7 +577,7 @@ private struct ContactAvatarView: View {
 
     var body: some View {
         Group {
-            if let data = contact.thumbnailImageData, let uiImage = UIImage(data: data) {
+            if let uiImage {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
@@ -591,6 +592,9 @@ private struct ContactAvatarView: View {
         }
         .frame(width: size, height: size)
         .clipShape(Circle())
+        .task(id: contact.id) {
+            uiImage = await ContactThumbnailLoader.thumbnail(forContactID: contact.id)
+        }
     }
 }
 

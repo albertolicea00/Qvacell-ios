@@ -33,8 +33,7 @@ Una aplicación para iPhone para acceder rápidamente a los **códigos de servic
 - 🌗 **Personalización y Ajustes** — Soporte para tema Claro/Oscuro, selector de color de acento personalizado y pestaña de inicio configurable.
 
 ### Próximamente
-- **Búsqueda en Directorio Telefónico Online** — Integración backend con web scraper para búsqueda de números telefónicos en línea. Consulta [#2](https://github.com/albertolicea00/Qvacell-ios/issues/2) para más detalles.
-- **Integración con Páginas Amarillas** — Integración backend con web scraper para buscar en Páginas Amarillas de ETECSA por categoría, número, municipio y provincia. Consulta [#3](https://github.com/albertolicea00/Qvacell-ios/issues/3) para más detalles.
+- **Búsqueda en Directorio Online (Buscar en Directorio)** — Integración backend con web scraper para buscar en el directorio telefónico y comercial de ETECSA por categoría, número, municipio y provincia. Consulta [#3](https://github.com/albertolicea00/Qvacell-ios/issues/3) para más detalles.
 
 ## 🛠️ Requisitos
 
@@ -82,9 +81,11 @@ Shared/                        # Código compartido entre la app y CallerIDExten
 
 Los códigos de consulta gratuitos se marcan inmediatamente. Los códigos de compra de pago se detienen en el menú de confirmación de ETECSA por defecto; la opción **Acción Rápida sin Confirmación** permite variantes de código con autoconfirmación con una advertencia visible en la interfaz.
 
-## 🔍 Directorio (Búsqueda Inversa)
+## 🔍 Directorio Telefónico y Base de Datos Offline
 
-Proporciona opciones de búsqueda local (base de datos importada por el usuario) y en la web en Ajustes › Utilidades. Por privacidad, la búsqueda es estrictamente solo por número (sin búsqueda por nombre), y los resultados se copian al portapapeles en lugar de marcar automáticamente.
+En **Ajustes › Utilidades**:
+- **Buscar en Directorio**: Búsqueda en el directorio telefónico y comercial (en construcción).
+- **Buscar en Database**: Búsqueda inversa offline sobre una base de datos SQLite (`.db`) suministrada por el usuario. Por seguridad y privacidad, esta función viene oculta por defecto (se desbloquea tocando 5 veces la versión en *Acerca de*) y la búsqueda es estrictamente solo por número (sin búsqueda por nombre).
 
 ## 🛜 Salas de Navegación y Wi-Fi Público
 
@@ -92,7 +93,7 @@ Incluye un directorio offline de salas de navegación oficiales de ETECSA y punt
 
 ## 🚧 Limitaciones Conocidas
 
-- **La base de datos del directorio no está integrada con el ID de Llamadas (`*99`).** La base de datos del directorio se mantiene separada intencionalmente de `CallerIDStore`/`CallDirectoryHandler` (ver [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), el cual solo se carga desde los Contactos propios del dispositivo. Una extensión CallKit Call Directory tiene un límite estricto en la cantidad de entradas de identificación que puede registrar (alrededor de 100k–200k) — el volcado del directorio tiene millones de filas (v1: ~4.6M; v2: ~4.8M combinados), por lo que registrarlo por completo provocaría el rechazo o desactivación de la extensión por parte de iOS.
+- **La base de datos offline no está integrada con el ID de Llamadas (`*99`).** La base de datos importada por el usuario (`Buscar en Database`) se mantiene separada intencionalmente de `CallerIDStore`/`CallDirectoryHandler` (ver [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), el cual solo se carga desde los Contactos propios del dispositivo. Una extensión CallKit Call Directory tiene un límite estricto en la cantidad de entradas de identificación que puede registrar (alrededor de 100k–200k) — los volcados de base de datos tienen millones de filas (v1: ~4.6M; v2: ~4.8M combinados), por lo que registrarlos por completo provocaría el rechazo o desactivación de la extensión por parte de iOS.
 
 - **Sin opción de "llamar por WhatsApp/Teams" en Contactos.** La pestaña Contactos solo ofrece acciones celulares (llamada normal, `*99` a cobro revertido, `#31#` anónima) al lado de cada contacto — no puede añadir una opción de "llamar por WhatsApp" o "llamar por Teams". Esas apps realizan llamadas sobre su propia pila VoIP/Wi-Fi, no sobre la red celular, y no exponen APIs públicas o esquemas URL que una app externa pueda usar para desencadenar una llamada a través de ellas.
 

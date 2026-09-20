@@ -34,8 +34,7 @@ An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** :
 - 🌗 **Customization & Settings** — Light/Dark theme support, custom accent color picker, and configurable launch tab.
 
 ### Upcoming
-- **Online Phone Directory Search** — Web scraper backend integration for online phone number lookups. See [#2](https://github.com/albertolicea00/Qvacell/issues/2) for details.
-- **Yellow Pages Integration** — Web scraper backend integration to search ETECSA Yellow Pages by category, number, municipality, and province. See [#3](https://github.com/albertolicea00/Qvacell/issues/3) for details.
+- **Online Directory Search (Buscar en Directorio)** — Web scraper backend integration to search the phone and business directory by category, number, municipality, and province. See [#3](https://github.com/albertolicea00/Qvacell/issues/3) for details.
 
 ## 🛠️ Requirements
 
@@ -83,9 +82,11 @@ Shared/                        # Code shared by the app and CallerIDExtension
 
 Free query codes dial immediately. Paid purchase codes stop at ETECSA's confirmation menu by default; an optional **Acción Rápida sin Confirmación** setting enables auto-confirming code variants with a visible UI safety warning.
 
-## 🔍 Directory (Reverse Lookup)
+## 🔍 Phone Directory & Offline Database Search
 
-Provides local (user-imported database) and online web search options under Ajustes › Utilidades. For privacy, search is strictly number-only (no name lookup), and results copy to clipboard rather than auto-dialing.
+Under **Ajustes › Utilidades**:
+- **Buscar en Directorio**: Online search integration for phone and commercial directory records (under construction).
+- **Buscar en Database**: Advanced offline reverse phone lookup over a user-supplied SQLite (`.db`) file. For security and privacy, this feature is hidden by default (unlocked by tapping the app version 5 times in *Acerca de*) and searches strictly by phone number (no name lookup).
 
 ## 🛜 Navigation Rooms & Public Wi-Fi
 
@@ -93,7 +94,7 @@ Includes an offline directory of official ETECSA navigation rooms and public Wi-
 
 ## 🚧 Known Limitations
 
-- **Directory database not integrated with Caller ID (`*99`).** The directory database (see above) is intentionally kept separate from `CallerIDStore`/`CallDirectoryHandler` (see [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), which only ever loads from the device's own Contacts. A CallKit Call Directory Extension has a hard cap on how many identification entries it can register (historically on the order of 100k–200k) — the directory dump has millions of rows (v1: ~4.6M; v2: ~4.8M combined), so registering it wholesale would get the extension rejected/disabled by iOS. Feeding it in would need a drastic filter (e.g. only numbers already in the device's own contacts, which is exactly what happens today) to fit under that ceiling.
+- **Offline database not integrated with Caller ID (`*99`).** The user-imported database (`Buscar en Database`) is intentionally kept separate from `CallerIDStore`/`CallDirectoryHandler` (see [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), which only ever loads from the device's own Contacts. A CallKit Call Directory Extension has a hard cap on how many identification entries it can register (historically on the order of 100k–200k) — typical database dumps have millions of rows (v1: ~4.6M; v2: ~4.8M combined), so registering them wholesale would get the extension rejected or disabled by iOS. Feeding it in would need a drastic filter (e.g. only numbers already in the device's own contacts, which is exactly what happens today) to fit under that ceiling.
 
 - **No "call via WhatsApp/Teams" option in Contactos.** The Contactos tab only offers cellular actions (normal call, `*99` collect, `#31#` anonymous) next to each contact — it can't add a "call via WhatsApp" or "call via Teams" option alongside them. Those apps place calls over their own proprietary VoIP/Wi-Fi-calling stack, not the cellular network, and don't expose any public API or URL scheme a third-party app can use to trigger a call through them — that's entirely up to WhatsApp/Teams themselves (they'd need to register their own CallKit provider and/or an app-specific integration), not something Qvacell can add from the outside.
 

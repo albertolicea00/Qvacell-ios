@@ -2094,7 +2094,7 @@ struct DirectorySearchView: View {
                     databaseFile = discovered
                     isImporting = false
                     if discovered == nil {
-                        importErrorMessage = "El archivo se copió pero no tiene el formato esperado de base de datos de directorio.\n\nDiagnóstico: \(diagnosis ?? "?")"
+                        importErrorMessage = "El archivo se copió pero no tiene el formato esperado de base de datos.\n\nDiagnóstico: \(diagnosis ?? "?")"
                     }
                 }
             } catch {
@@ -2155,7 +2155,7 @@ struct DirectorySearchView: View {
                     databaseFile = discovered
                     isDownloading = false
                     if discovered == nil {
-                        importErrorMessage = "El archivo se descargó pero no tiene el formato esperado de base de datos de directorio.\n\nDiagnóstico: \(diagnosis ?? "?")"
+                        importErrorMessage = "El archivo se descargó pero no tiene el formato esperado de base de datos.\n\nDiagnóstico: \(diagnosis ?? "?")"
                     }
                 }
             } catch {
@@ -2300,16 +2300,23 @@ private struct HelpSettingsView: View {
             //     )
             // }
 
-            // Section("Buscar en Database") {
-            //     SettingsInfoRow(
-            //         title: "¿De dónde salen los datos?",
-            //         text: "La app no trae ningún directorio incluido ni lo descarga por su cuenta — tienes que traer tú mismo el archivo de base de datos (copiándolo con Finder o con el botón \"Importar\" dentro de la pantalla) para poder buscar."
-            //     )
-            //     SettingsInfoRow(
-            //         title: "Solo por número",
-            //         text: "La búsqueda por nombre está desactivada a propósito, por privacidad — solo se puede buscar por número de teléfono."
-            //     )
-            // }
+            Section("Buscar en Directorio") {
+                SettingsInfoRow(
+                    title: "¿Qué es?",
+                    text: "En Ajustes › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
+                )
+            }
+
+            Section("Buscar en Database") {
+                SettingsInfoRow(
+                    title: "¿De dónde salen los datos?",
+                    text: "La app no incluye ninguna base de datos ni la descarga automáticamente — tienes que traer tú mismo el archivo SQLite (.db) de base de datos (con el botón «Importar» o copiándolo mediante Finder) para poder buscar."
+                )
+                SettingsInfoRow(
+                    title: "Búsqueda solo por número",
+                    text: "Por privacidad, la búsqueda inversa en la base de datos se realiza únicamente a partir de números de teléfono, no por nombre."
+                )
+            }
 
         }
         .navigationTitle("Ayuda")

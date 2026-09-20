@@ -73,6 +73,7 @@ jobs:
         if: steps.check.outputs.exit_code == '1' && env.CROSS_REPO_TOKEN != ''
         env:
           CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+          TARGET_REPO: ${{ env.ANDROID_REPO }}
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.CROSS_REPO_TOKEN }}
@@ -81,7 +82,7 @@ jobs:
             const body = fs.readFileSync('codes-sync-report.md', 'utf8');
             const title = 'USSD catalog structure drifted from iOS';
             const marker = '<!-- catalog-sync-check:codes -->';
-            const [owner, repo] = process.env.ANDROID_REPO.split('/');
+            const [owner, repo] = process.env.TARGET_REPO.split('/');
             const open = await github.paginate(github.rest.issues.listForRepo, {
               owner, repo, state: 'open', labels: 'catalog-sync', per_page: 100,
             });
@@ -92,8 +93,6 @@ jobs:
             } else {
               await github.rest.issues.create({ owner, repo, title, body: fullBody, labels: ['catalog-sync'] });
             }
-        env:
-          ANDROID_REPO: ${{ env.ANDROID_REPO }}
 
       - name: Fail if real drift was found
         if: steps.check.outputs.exit_code == '1'
@@ -137,6 +136,7 @@ jobs:
         if: steps.check.outputs.exit_code == '1' && env.CROSS_REPO_TOKEN != ''
         env:
           CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+          TARGET_REPO: ${{ env.ANDROID_REPO }}
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.CROSS_REPO_TOKEN }}
@@ -145,7 +145,7 @@ jobs:
             const body = fs.readFileSync('wifi-sync-report.md', 'utf8');
             const title = 'WiFi navigation rooms directory drifted from iOS';
             const marker = '<!-- catalog-sync-check:wifi -->';
-            const [owner, repo] = process.env.ANDROID_REPO.split('/');
+            const [owner, repo] = process.env.TARGET_REPO.split('/');
             const open = await github.paginate(github.rest.issues.listForRepo, {
               owner, repo, state: 'open', labels: 'catalog-sync', per_page: 100,
             });
@@ -156,8 +156,6 @@ jobs:
             } else {
               await github.rest.issues.create({ owner, repo, title, body: fullBody, labels: ['catalog-sync'] });
             }
-        env:
-          ANDROID_REPO: ${{ env.ANDROID_REPO }}
 
       - name: Fail if real drift was found
         if: steps.check.outputs.exit_code == '1'

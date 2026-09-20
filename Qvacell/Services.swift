@@ -251,21 +251,56 @@ final class ContactsService {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
             hasLoaded = true
+            isDenied = false
             fetch()
         case .notDetermined:
             hasLoaded = true
             store.requestAccess(for: .contacts) { [weak self] granted, _ in
                 DispatchQueue.main.async {
                     if granted {
+                        self?.isDenied = false
                         self?.fetch()
                     } else {
                         self?.isDenied = true
+                        self?.isLoaded = true
                     }
                 }
             }
         default:
             hasLoaded = true
             isDenied = true
+            isLoaded = true
+        }
+    }
+
+    /// Re-evaluates authorization status and re-fetches if permitted, or updates `isDenied`.
+    func reload() {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            isDenied = false
+            hasLoaded = true
+            fetch()
+        case .notDetermined:
+            hasLoaded = false
+            isDenied = false
+            loadIfNeeded()
+        default:
+            isDenied = true
+            hasLoaded = true
+            contacts = []
+            isLoaded = true
+        }
+    }
+
+    /// Triggers the system permission prompt if not determined yet, or opens system Settings if denied.
+    func requestAccess() {
+        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
+            hasLoaded = false
+            loadIfNeeded()
+        } else {
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
         }
     }
 

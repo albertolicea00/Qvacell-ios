@@ -1,3 +1,4 @@
+import CallKit
 import MessageUI
 import SwiftUI
 import UIKit
@@ -425,6 +426,8 @@ private struct QuickActionTile: View {
 struct ContactsListView: View {
     @State private var service = ContactsService()
     @State private var searchText = ""
+    @Environment(AccentColorStore.self) private var accentColorStore
+    @Environment(\.scenePhase) private var scenePhase
 
     private var filteredContacts: [DeviceContact] {
         guard !searchText.isEmpty else { return service.contacts }
@@ -449,11 +452,20 @@ struct ContactsListView: View {
         NavigationStack {
             Group {
                 if service.isDenied {
-                    ContentUnavailableView(
-                        "Sin Acceso a Contactos",
-                        systemImage: "person.crop.circle.badge.exclamationmark",
-                        description: Text("Actívalo en Ajustes del sistema › Qvacell › Contactos.")
-                    )
+                    ContentUnavailableView {
+                        Label("Sin Acceso a Contactos", systemImage: "person.crop.circle.badge.exclamationmark")
+                    } description: {
+                        Text("Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente.")
+                    } actions: {
+                        Button {
+                            service.requestAccess()
+                        } label: {
+                            Text("Permitir Acceso a Contactos")
+                                .font(.headline)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(accentColorStore.color)
+                    }
                 } else if !service.isLoaded {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -481,7 +493,12 @@ struct ContactsListView: View {
             .navigationTitle("Contactos")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .onAppear { service.loadIfNeeded() }
+        .onAppear { service.reload() }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                service.reload()
+            }
+        }
     }
 }
 
@@ -1306,6 +1323,14 @@ struct SettingsView: View {
                         Button("Restablecer Color por Defecto") {
                             accentColorStore.resetToDefault()
                         }
+                    }
+                }
+
+                Section("Identificador de Llamadas") {
+                    NavigationLink {
+                        CallerIDSettingsView()
+                    } label: {
+                        Label("Identificador de Llamadas (*99)", systemImage: "phone.badge.checkmark")
                     }
                 }
 
@@ -2327,6 +2352,204 @@ private struct HelpSettingsView: View {
         }
         .navigationTitle("Ayuda")
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Caller ID Settings & Instructions Screen
+
+/// Ajustes › Identificador de Llamadas (*99) — instructions, live CallKit extension status,
+/// and deep link to iOS Phone Settings.
+private struct CallerIDSettingsView: View {
+    @Environment(AccentColorStore.self) private var accentColorStore
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var status: CXCallDirectoryManager.EnabledStatus = .unknown
+    @State private var isChecking = true
+
+    var body: some View {
+        List {
+            Section {
+                VStack(spacing: 12) {
+                    Image(systemName: "phone.badge.checkmark")
+                        .font(.system(size: 46))
+                        .foregroundStyle(accentColorStore.color)
+                        .padding(.top, 6)
+
+                    Text("Identificador de Llamadas (*99)")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+
+                    Text("Identifica automáticamente quién te llama con cobro revertido (*99) mostrando el nombre real de tu contacto en la pantalla de llamada.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 4)
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color.clear)
+            }
+
+            Section("Estado de la Extensión") {
+                HStack(spacing: 12) {
+                    Image(systemName: statusIcon)
+                        .font(.title3)
+                        .foregroundStyle(statusColor)
+
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(statusTitle)
+                            .font(.subheadline.weight(.semibold))
+                        Text(statusSubtitle)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Spacer()
+
+                    if isChecking {
+                        ProgressView()
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+
+            Section("¿Qué es y cómo funciona?") {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("En Cuba, cuando alguien te llama a cobro revertido marcando **\\*99**, ETECSA envía el número entrante envuelto con 14 dígitos (por ejemplo, **99535XXXXXXX99**).")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
+                    Text("Por eso, la app Teléfono de tu iPhone normalmente no sabe quién es y solo muestra esa serie de números. La extensión de Qvacell le enseña a iOS a reconocerlo y mostrar el nombre real del contacto guardado en tu agenda.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.vertical, 4)
+            }
+
+            Section("Pasos para Activar en tu iPhone") {
+                StepRowView(stepNumber: "1", text: "Abre los **Ajustes** de tu iPhone.", icon: "gear")
+                StepRowView(stepNumber: "2", text: "Toca en **Teléfono**.", icon: "phone.fill")
+                StepRowView(stepNumber: "3", text: "Entra en **Bloqueo e identificación de llamadas**.", icon: "shield.checkered")
+                StepRowView(stepNumber: "4", text: "Activa el interruptor de **Qvacell** (CallerID).", icon: "checkmark.circle.fill")
+            }
+
+            Section("Importante") {
+                VStack(alignment: .leading, spacing: 8) {
+                    Label("Debes abrir la pestaña Contactos en Qvacell al menos una vez para que la app sincronice tu lista de contactos con la extensión.", systemImage: "info.circle.fill")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Label("Solo se identifican contactos que ya tengas guardados en tu agenda con número celular cubano (+53 5XXXXXXX).", systemImage: "person.crop.circle")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Label("Tus contactos se procesan 100% en el dispositivo (offline), sin servidores ni internet.", systemImage: "lock.shield.fill")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.vertical, 4)
+            }
+
+            Section {
+                Button {
+                    openSettings()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Label("Abrir Ajustes de iOS", systemImage: "arrow.up.forward.app.fill")
+                            .font(.headline)
+                        Spacer()
+                    }
+                    .padding(.vertical, 4)
+                }
+                .tint(accentColorStore.color)
+            } footer: {
+                Text("Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma; debe autorizarse manualmente desde los ajustes de iOS.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .listStyle(.insetGrouped)
+        .navigationTitle("Identificador *99")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear { checkStatus() }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                checkStatus()
+            }
+        }
+    }
+
+    private var statusTitle: String {
+        switch status {
+        case .enabled: return "Extensión Activada"
+        case .disabled: return "Extensión Desactivada"
+        default: return "Estado No Disponible"
+        }
+    }
+
+    private var statusSubtitle: String {
+        switch status {
+        case .enabled: return "Las llamadas por cobrar (*99) mostrarán el nombre de tu contacto."
+        case .disabled: return "Actívala en Ajustes › Teléfono para que funcione."
+        default: return "Solo verificable en un iPhone físico real."
+        }
+    }
+
+    private var statusIcon: String {
+        switch status {
+        case .enabled: return "checkmark.circle.fill"
+        case .disabled: return "exclamationmark.triangle.fill"
+        default: return "questionmark.circle.fill"
+        }
+    }
+
+    private var statusColor: Color {
+        switch status {
+        case .enabled: return .green
+        case .disabled: return .orange
+        default: return .secondary
+        }
+    }
+
+    private func checkStatus() {
+        isChecking = true
+        CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: CallerIDStore.extensionBundleID) { newStatus, _ in
+            DispatchQueue.main.async {
+                self.status = newStatus
+                self.isChecking = false
+            }
+        }
+    }
+
+    private func openSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
+    }
+}
+
+private struct StepRowView: View {
+    let stepNumber: String
+    let text: LocalizedStringKey
+    let icon: String
+
+    var body: some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(Color.secondary.opacity(0.15))
+                    .frame(width: 26, height: 26)
+                Text(stepNumber)
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(.primary)
+            }
+            Text(text)
+                .font(.subheadline)
+            Spacer()
+            Image(systemName: icon)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding(.vertical, 2)
     }
 }
 

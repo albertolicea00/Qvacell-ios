@@ -1,0 +1,166 @@
+name: Cross-platform catalog sync check (vs. Android)
+
+# Guard: keeps codes.json and wifi_navigation_rooms.json structurally in sync
+# between this repo (iOS) and qvacell-apk (Android). Only structural fields
+# are compared for codes.json (id, code, type, requiresInput, inputPlaceholder,
+# noConfirmCode, smsBody, options, isSubscription, variants, category/group
+# placement) — cosmetic fields (icon, price, compact, showsNumber, title,
+# details) are allowed to differ per platform. wifi_navigation_rooms.json is
+# compared in full since it has no cosmetic fields.
+#
+# Requires the CROSS_REPO_TOKEN secret: a personal access token (classic,
+# "repo" scope, or a fine-grained token with Issues: write on qvacell-apk)
+# so this workflow can open an issue in the Android repo, not just this one.
+# Without it, the job still runs and reports drift in its own logs/summary,
+# but skips opening the cross-repo issue.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Qvacell/codes.json"
+      - "Qvacell/wifi_navigation_rooms.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cross-platform-sync-check
+  cancel-in-progress: false
+
+env:
+  ANDROID_REPO: albertolicea00/Qvacell-apk
+  ANDROID_CODES_URL: https://raw.githubusercontent.com/albertolicea00/Qvacell-apk/main/app/src/main/assets/codes.json
+  ANDROID_WIFI_URL: https://raw.githubusercontent.com/albertolicea00/Qvacell-apk/main/app/src/main/assets/wifi_navigation_rooms.json
+
+jobs:
+  check-codes:
+    runs-on: ubuntu-latest
+    outputs:
+      drift: ${{ steps.check.outputs.exit_code == '1' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Compare codes.json structure against Android
+        id: check
+        continue-on-error: true
+        env:
+          LOCAL_CATALOG_PATH: Qvacell/codes.json
+          REMOTE_CATALOG_URL: ${{ env.ANDROID_CODES_URL }}
+          REPORT_FILE: codes-sync-report.md
+          REMOTE_LABEL: "the Android app (qvacell-apk)"
+        run: |
+          set +e
+          node .github/scripts/check-catalog-sync.mjs
+          code=$?
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit "$code"
+
+      - name: Upload report
+        if: steps.check.outputs.exit_code == '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: codes-sync-report
+          path: codes-sync-report.md
+
+      - name: Open or update drift issue on Android repo
+        if: steps.check.outputs.exit_code == '1' && env.CROSS_REPO_TOKEN != ''
+        env:
+          CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.CROSS_REPO_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('codes-sync-report.md', 'utf8');
+            const title = 'USSD catalog structure drifted from iOS';
+            const marker = '<!-- catalog-sync-check:codes -->';
+            const [owner, repo] = process.env.ANDROID_REPO.split('/');
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', labels: 'catalog-sync', per_page: 100,
+            });
+            const found = open.find((i) => i.title === title);
+            const fullBody = `${marker}\n\n${body}`;
+            if (found) {
+              await github.rest.issues.update({ owner, repo, issue_number: found.number, body: fullBody });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body: fullBody, labels: ['catalog-sync'] });
+            }
+        env:
+          ANDROID_REPO: ${{ env.ANDROID_REPO }}
+
+      - name: Fail if real drift was found
+        if: steps.check.outputs.exit_code == '1'
+        run: |
+          cat codes-sync-report.md
+          exit 1
+
+  check-wifi-rooms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Compare wifi_navigation_rooms.json against Android
+        id: check
+        continue-on-error: true
+        env:
+          LOCAL_CATALOG_PATH: Qvacell/wifi_navigation_rooms.json
+          REMOTE_CATALOG_URL: ${{ env.ANDROID_WIFI_URL }}
+          REPORT_FILE: wifi-sync-report.md
+          REMOTE_LABEL: "the Android app (qvacell-apk)"
+        run: |
+          set +e
+          node .github/scripts/check-wifi-catalog-sync.mjs
+          code=$?
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit "$code"
+
+      - name: Upload report
+        if: steps.check.outputs.exit_code == '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: wifi-sync-report
+          path: wifi-sync-report.md
+
+      - name: Open or update drift issue on Android repo
+        if: steps.check.outputs.exit_code == '1' && env.CROSS_REPO_TOKEN != ''
+        env:
+          CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.CROSS_REPO_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('wifi-sync-report.md', 'utf8');
+            const title = 'WiFi navigation rooms directory drifted from iOS';
+            const marker = '<!-- catalog-sync-check:wifi -->';
+            const [owner, repo] = process.env.ANDROID_REPO.split('/');
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', labels: 'catalog-sync', per_page: 100,
+            });
+            const found = open.find((i) => i.title === title);
+            const fullBody = `${marker}\n\n${body}`;
+            if (found) {
+              await github.rest.issues.update({ owner, repo, issue_number: found.number, body: fullBody });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body: fullBody, labels: ['catalog-sync'] });
+            }
+        env:
+          ANDROID_REPO: ${{ env.ANDROID_REPO }}
+
+      - name: Fail if real drift was found
+        if: steps.check.outputs.exit_code == '1'
+        run: |
+          cat wifi-sync-report.md
+          exit 1

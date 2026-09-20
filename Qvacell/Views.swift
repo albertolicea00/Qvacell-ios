@@ -1332,14 +1332,14 @@ struct SettingsView: View {
                     NavigationLink {
                         YellowPagesSearchView()
                     } label: {
-                        Label("Buscar en Directorio", systemImage: "network")
+                        Label("Buscar en Directorio", systemImage: "magnifyingglass")
                     }
 
                     if showDatabaseSearch {
                         NavigationLink {
                             DirectorySearchView()
                         } label: {
-                            Label("Buscar en Database", systemImage: "magnifyingglass")
+                            Label("Buscar en Database", systemImage: "cylinder.split.1x2")
                         }
                     }
                 }
@@ -1520,7 +1520,7 @@ struct SettingsView: View {
             let isUnlocked = showDatabaseSearch
             showToast(
                 message: isUnlocked ? "Búsqueda en Database desbloqueada" : "Búsqueda en Database oculta",
-                icon: isUnlocked ? "lock.open.fill" : "lock.fill"
+                icon: isUnlocked ? "cylinder.split.1x2" : "lock.fill"
             )
         } else {
             let feedback = UIImpactFeedbackGenerator(style: .light)
@@ -1945,7 +1945,7 @@ struct DirectorySearchView: View {
                 // below; this is just the big centered "nothing typed yet" placeholder, same
                 // pattern as Music/App Store's search tab.
                 ContentUnavailableView {
-                    Label("Buscar en Database", systemImage: "magnifyingglass.circle.fill")
+                    Label("Buscar en Database", systemImage: "cylinder.split.1x2.fill")
                 } description: {
                     Text("Escribe un número para buscar")
                 }

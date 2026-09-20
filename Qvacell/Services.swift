@@ -344,8 +344,12 @@ final class ContactsService {
     /// user has never enabled the extension in Ajustes del sistema — `reloadExtension` still
     /// completes, CallKit just has nothing enabled to feed.
     private static func syncCallerIDExtension(with contacts: [DeviceContact]) {
+        // CallKit requires every wrapped number in the batch to be unique — a single duplicate
+        // (e.g. two contacts sharing the same local number) fails the whole extension reload.
+        var seenNumbers = Set<Int64>()
         let entries = contacts.compactMap { contact -> CallerIDEntry? in
-            guard let wrapped = CallerIDStore.wrappedNumber(forLocalNumber: contact.phoneNumber) else { return nil }
+            guard let wrapped = CallerIDStore.wrappedNumber(forLocalNumber: contact.phoneNumber),
+                  seenNumbers.insert(wrapped).inserted else { return nil }
             return CallerIDEntry(wrappedNumber: wrapped, name: contact.name)
         }
         CallerIDStore.write(entries)

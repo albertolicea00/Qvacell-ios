@@ -6,7 +6,6 @@
 [![Swift](https://img.shields.io/badge/swift-5.9%2B-orange.svg)](https://swift.org)
 [![Xcode](https://img.shields.io/badge/Xcode-15.0%2B-blue.svg)](https://developer.apple.com/xcode/)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-<!-- [![WiFi rooms sync](https://github.com/albertolicea00/qvacell-ios/actions/workflows/wifi-rooms-sync-check.yml/badge.svg)](https://github.com/albertolicea00/qvacell-ios/actions/workflows/wifi-rooms-sync-check.yml) -->
 [![Android sync](https://github.com/albertolicea00/Qvacell-ios/actions/workflows/cross-platform-sync-check.yml/badge.svg)](https://github.com/albertolicea00/Qvacell-ios/actions/workflows/cross-platform-sync-check.yml)
 
 An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** : check your balance, buy data/voice/SMS plans, transfer credit and more — all from a clean, organized list that hands the code straight to the system dialer.
@@ -90,7 +89,7 @@ Under **Ajustes › Utilidades**:
 
 ## 🛜 Navigation Rooms & Public Wi-Fi
 
-Includes an offline directory of official ETECSA navigation rooms and public Wi-Fi hotspots by province ([`wifi-rooms-sync-check`](.github/workflows/wifi-rooms-sync-check.yml) action monitors source data drift).
+Includes an offline directory of official ETECSA navigation rooms and public Wi-Fi hotspots by province.
 
 ## 🔄 Cross-Platform Catalog Sync
 

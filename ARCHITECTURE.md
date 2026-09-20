@@ -294,6 +294,6 @@ Only these fields are compared, per code: `id`, `code` (the dial string), `type`
 
 This file has no cosmetic fields — every field is data (province name, room name/address/positions, hotspot municipality/spots) — so the check compares it in full, per province, rather than filtering a subset.
 
-### 14.4 Relationship to `wifi-rooms-sync-check.yml`
+### 14.4 Relationship to the ETECSA-source WiFi check
 
-That's a separate, unrelated workflow in this same repo that checks the bundled WiFi directory against ETECSA's *own* website for source-data drift (§ Navigation Rooms in the README). This cross-platform check answers a different question — "do the two apps still agree with each other" — not "is the data still accurate against ETECSA."
+A separate, unrelated workflow lives in the [qvacell-web](https://github.com/albertolicea00/CubaCellConnect-web) repo (`wifi-rooms-sync-check.yml`) that checks *both* apps' bundled WiFi directory against ETECSA's *own* website for source-data drift — it lives there rather than in this repo since the web project has no bundled copy of its own to check and fetches both platforms' files remotely instead. This cross-platform check here answers a different question — "do the two apps still agree with each other" — not "is the data still accurate against ETECSA."

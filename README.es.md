@@ -89,7 +89,7 @@ En **Ajustes › Utilidades**:
 
 ## 🛜 Salas de Navegación y Wi-Fi Público
 
-Incluye un directorio offline de salas de navegación oficiales de ETECSA y puntos Wi-Fi públicos por provincia (el workflow [`wifi-rooms-sync-check`](.github/workflows/wifi-rooms-sync-check.yml) supervisa desvíos en los datos de origen).
+Incluye un directorio offline de salas de navegación oficiales de ETECSA y puntos Wi-Fi públicos por provincia. 
 
 ## 🔄 Sincronización entre Plataformas
 

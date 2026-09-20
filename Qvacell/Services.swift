@@ -380,6 +380,19 @@ enum DialService {
         UIApplication.shared.open(url)
         return true
     }
+
+    /// Async-context variant for App Intents. Uses the completion-handler `open` API instead of
+    /// `canOpenURL`/`open(_:)` — those are synchronous, XPC-backed calls that trip Swift's
+    /// "unsafeForcedSync called from Swift Concurrent context" diagnostic when called from an
+    /// `async` function running on the cooperative thread pool.
+    static func dial(_ rawCode: String) async -> Bool {
+        guard let url = dialURL(for: rawCode) else { return false }
+        return await withCheckedContinuation { continuation in
+            UIApplication.shared.open(url, options: [:]) { success in
+                continuation.resume(returning: success)
+            }
+        }
+    }
 }
 
 // MARK: - Maps Service
@@ -1014,7 +1027,7 @@ struct EjecutarCodigoIntent: AppIntent {
         guard let code = USSDCodeStore().code(withId: codigo.codeId) else {
             return .result(dialog: "No se encontró ese código.")
         }
-        guard DialService.dial(code.code) else {
+        guard await DialService.dial(code.code) else {
             return .result(dialog: "No se pudo abrir el marcador en este dispositivo.")
         }
         return .result(dialog: "Marcando \(code.title)...")
@@ -1045,7 +1058,7 @@ struct ComprarPlanIntent: AppIntent {
             return .result(dialog: "No se encontró ese plan.")
         }
         // Always dial codeObj.code (the safe code without auto-confirming *1)
-        guard DialService.dial(codeObj.code) else {
+        guard await DialService.dial(codeObj.code) else {
             return .result(dialog: "No se pudo abrir el marcador en este dispositivo.")
         }
         return .result(dialog: "Abriendo compra de \(codeObj.title)...")
@@ -1069,7 +1082,7 @@ struct LlamarPorCobrarIntent: AppIntent {
         guard let normalized = CubanPhoneNumber.normalize(numero) else {
             return .result(dialog: "Ese no parece un número móvil cubano válido.")
         }
-        guard DialService.dial("*99\(normalized)") else {
+        guard await DialService.dial("*99\(normalized)") else {
             return .result(dialog: "No se pudo abrir el marcador en este dispositivo.")
         }
         return .result(dialog: "Llamando por cobrar a \(normalized)...")
@@ -1093,7 +1106,7 @@ struct LlamarOcultoIntent: AppIntent {
         guard let normalized = CubanPhoneNumber.normalize(numero) else {
             return .result(dialog: "Ese no parece un número móvil cubano válido.")
         }
-        guard DialService.dial("#31#\(normalized)") else {
+        guard await DialService.dial("#31#\(normalized)") else {
             return .result(dialog: "No se pudo abrir el marcador en este dispositivo.")
         }
         return .result(dialog: "Llamando oculto a \(normalized)...")

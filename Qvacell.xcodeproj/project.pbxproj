@@ -10,6 +10,7 @@
 		00A116E10A8F88A9983DAC1C /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6EBC038E535B3BCAEE163B /* Services.swift */; };
 		1BBBCFDDA242479263ABC83C /* codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3737C9D32EA41E146FB8F112 /* codes.json */; };
 		2AAA6CCB88EE275D33FF9795 /* CallerIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */; };
+		3DD0EF7C461E407EB6D928C7 /* Qvacell.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E8FFA6F6625D1A2D30B598 /* Qvacell.xcassets */; };
 		4EEF6A5BC4B63C9BE876667D /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5327CE953B7E62F240584E /* Views.swift */; };
 		4F1F3C8C701BA2778C1CEE68 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C399DCC1FC26430B939D5C09 /* UIComponents.swift */; };
 		85FE368EC7E835F615D3217D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA686A05D19BF528961E2960 /* Models.swift */; };
@@ -58,6 +59,7 @@
 		ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wifi_navigation_rooms.json; sourceTree = "<group>"; };
 		C399DCC1FC26430B939D5C09 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
+		C8E8FFA6F6625D1A2D30B598 /* Qvacell.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Qvacell.xcassets; sourceTree = "<group>"; };
 		E0357C6DBBEFC6A02BB65F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FA686A05D19BF528961E2960 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +68,7 @@
 		2E15B34489D45978082090CD = {
 			isa = PBXGroup;
 			children = (
+				C8E8FFA6F6625D1A2D30B598 /* Qvacell.xcassets */,
 				D9CD23BAB43D13CF128E6D72 /* CallerIDExtension */,
 				8DADEF96453516C4BE5EE855 /* Qvacell */,
 				E05B8D1A137D66535073D2B1 /* Shared */,
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DD0EF7C461E407EB6D928C7 /* Qvacell.xcassets in Resources */,
 				1BBBCFDDA242479263ABC83C /* codes.json in Resources */,
 				983135DC85990D1F471681C6 /* wifi_navigation_rooms.json in Resources */,
 			);
@@ -320,6 +324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Qvacell/Qvacell.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -418,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Qvacell/Qvacell.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

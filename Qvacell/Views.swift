@@ -79,7 +79,7 @@ struct HomeView: View {
 /// The 5 tabs, keyed by a stable string so it can be stored in `@AppStorage` (as "Pestaña
 /// inicial" in Ajustes › Preferencias) and used as the `TabView` selection tag.
 enum HomeTab: String, CaseIterable, Identifiable {
-    case helplines, contacts, home, purchase, settings, database, smsServices, directory
+    case helplines, contacts, home, purchase, settings, smsServices, directory, database
 
     var id: String { rawValue }
 
@@ -97,8 +97,8 @@ enum HomeTab: String, CaseIterable, Identifiable {
             case .purchase: return "Compras"
             case .smsServices: return "Servicios por SMS"
             case .settings: return "Ajustes"
-            case .database: return "Buscar en Database"
             case .directory: return "Buscar en Directorio"
+            case .database: return "Buscar en Database"
         }
     }
 

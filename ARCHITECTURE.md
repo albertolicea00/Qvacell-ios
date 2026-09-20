@@ -268,3 +268,32 @@ Two non-obvious implementation details worth knowing before touching this code:
 - **Opens via `file:...?immutable=1` URI, not a plain path.** Plain `SQLITE_OPEN_READONLY` still makes SQLite take a shared lock and probe for a hot journal on first real access; inside the iOS sandbox that first access can fail with `SQLITE_CANTOPEN` ("unable to open database file") even though the exact same file opens and reads fine at the raw POSIX level. `immutable=1` tells SQLite the file will never change while open, skipping locking and the journal probe entirely — this was found and fixed after reproducing the failure with a raw `FileHandle` read succeeding where `sqlite3_prepare_v2` didn't.
 - **Only `number` is index-backed** (`v1.contacts`'s primary key, `v2.movil`'s primary key, an explicit index on `v2.fix.number`); `name` has an index too, but `LIKE '%x%'` can't use any B-tree index regardless — a name-only search is a genuine full-table scan over dumps with millions of rows. `DirectoryDatabase.minimumNumberQueryLength`/`.minimumNameQueryLength` (3 and 5) exist to bound how bad that gets, and callers must run `search` off the main thread.
 - Name search is currently **disabled in the UI** for privacy/security reasons (see README § Phone Directory & Offline Database Search) even though `DirectoryDatabase.search` itself still supports a `nameQuery`.
+
+---
+
+## 14. Cross-Platform Catalog Sync Check
+
+`Qvacell/codes.json` and `Qvacell/wifi_navigation_rooms.json` are maintained as two separate files — one per platform repo — rather than a shared package, so nothing enforces at build time that this repo's copy still matches [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk)'s (the Android app). [`.github/workflows/cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) is a CI guard against that drift.
+
+### 14.1 Trigger and flow
+
+Runs on every push to `main` touching either JSON file (plus `workflow_dispatch` for a manual run). Two independent jobs, `check-codes` and `check-wifi-rooms`, each:
+
+1. Fetch the counterpart file from the Android repo's raw GitHub URL (`raw.githubusercontent.com/albertolicea00/Qvacell-apk/main/app/src/main/assets/...`) — no auth needed, since both repos are public.
+2. Run a comparison script (`.github/scripts/check-catalog-sync.mjs` or `check-wifi-catalog-sync.mjs`) against the local copy.
+3. On drift: upload the diff as a build artifact, open (or update, if one is already open) an issue **on the Android repo** — not this one — labeled `catalog-sync`, and fail the job so it shows red in Actions.
+4. On no drift: exit clean.
+
+Opening the issue on the *other* repo (rather than this one) requires the `CROSS_REPO_TOKEN` secret — a PAT with `Issues: write` on `Qvacell-apk`. Without that secret configured, the job still detects and reports drift (failed run + artifact), it just can't open the cross-repo issue.
+
+### 14.2 What "structure" means for `codes.json`
+
+Only these fields are compared, per code: `id`, `code` (the dial string), `type`, `requiresInput`, `inputPlaceholder`, `noConfirmCode`, `smsBody`, `options`, `isSubscription`, `variants`, plus which category id and group name it lives under (and the overall category order). Deliberately **ignored**: `icon` (SF Symbol names vs. Material icon names are expected to differ), `price`, `compact`, `showsNumber`, `title`, `details` — all presentation/wording, not behavior. This means editing a title's phrasing or swapping an icon never trips the check; changing a dial string, adding/removing a code, or moving one to a different category does.
+
+### 14.3 What's compared for `wifi_navigation_rooms.json`
+
+This file has no cosmetic fields — every field is data (province name, room name/address/positions, hotspot municipality/spots) — so the check compares it in full, per province, rather than filtering a subset.
+
+### 14.4 Relationship to `wifi-rooms-sync-check.yml`
+
+That's a separate, unrelated workflow in this same repo that checks the bundled WiFi directory against ETECSA's *own* website for source-data drift (§ Navigation Rooms in the README). This cross-platform check answers a different question — "do the two apps still agree with each other" — not "is the data still accurate against ETECSA."

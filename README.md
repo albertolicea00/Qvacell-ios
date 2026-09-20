@@ -5,9 +5,9 @@
 [![Platform](https://img.shields.io/badge/platform-iOS%2017.0%2B-blue.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/swift-5.9%2B-orange.svg)](https://swift.org)
 [![Xcode](https://img.shields.io/badge/Xcode-15.0%2B-blue.svg)](https://developer.apple.com/xcode/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 <!-- [![WiFi rooms sync](https://github.com/albertolicea00/qvacell-ios/actions/workflows/wifi-rooms-sync-check.yml/badge.svg)](https://github.com/albertolicea00/qvacell-ios/actions/workflows/wifi-rooms-sync-check.yml) -->
+[![Android sync](https://github.com/albertolicea00/Qvacell-ios/actions/workflows/cross-platform-sync-check.yml/badge.svg)](https://github.com/albertolicea00/Qvacell-ios/actions/workflows/cross-platform-sync-check.yml)
 
 An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** : check your balance, buy data/voice/SMS plans, transfer credit and more — all from a clean, organized list that hands the code straight to the system dialer.
 
@@ -91,6 +91,10 @@ Under **Ajustes › Utilidades**:
 ## 🛜 Navigation Rooms & Public Wi-Fi
 
 Includes an offline directory of official ETECSA navigation rooms and public Wi-Fi hotspots by province ([`wifi-rooms-sync-check`](.github/workflows/wifi-rooms-sync-check.yml) action monitors source data drift).
+
+## 🔄 Cross-Platform Catalog Sync
+
+[`cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) runs on every push to `main` that touches `codes.json` or `wifi_navigation_rooms.json`, and compares this repo's copy against [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk)'s (the Android app). If they've drifted, it opens (or updates) an issue on the *other* repo so the missed platform gets updated. Only **structure** is compared for `codes.json` (ids, dial strings, action type, input handling, category/group placement) — cosmetic fields (icon, price, title wording, etc.) are allowed to differ per platform. See [ARCHITECTURE.md § 14](ARCHITECTURE.md#14-cross-platform-catalog-sync-check) for exactly what's compared and how.
 
 ## 🚧 Known Limitations
 

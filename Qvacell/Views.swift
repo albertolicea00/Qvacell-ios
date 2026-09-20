@@ -2243,25 +2243,6 @@ private struct HelpSettingsView: View {
                 )
             }
 
-            Section("Identificar Llamadas por Cobrar (*99)") {
-                SettingsInfoRow(
-                    title: "¿Por qué me llaman con un número raro?",
-                    text: "El servicio *99 de ETECSA no oculta el número de quien llama — lo envuelve, y por eso el teléfono muestra una cadena larga en vez del contacto real."
-                )
-                SettingsInfoRow(
-                    title: "Cómo activarlo",
-                    text: "Ve a Ajustes del sistema › Teléfono › Bloqueo e Identificación de Llamadas y activa la que dice \"CallerID\" (así se llama esta función dentro de esa lista de iOS, junto a otras apps que hacen lo mismo). Es un paso manual de iOS — la app no puede activarlo sola, y solo hace falta hacerlo una vez."
-                )
-                SettingsInfoRow(
-                    title: "Antes de activarlo: abre Contactos",
-                    text: "Para que \"CallerID\" tenga a quién identificar, primero tienes que haber abierto la pestaña Contactos al menos una vez (y dado permiso de Contactos a la app) — así arma la lista de nombres que luego usa para identificar. Si agregas un contacto nuevo después, vuelve a abrir la pestaña Contactos para que la lista se actualice."
-                )
-                SettingsInfoRow(
-                    title: "Qué sí y qué no identifica",
-                    text: "Solo identifica a quienes ya tienes guardados en Contactos con ese número. Una llamada anónima (#31#) nunca se puede identificar con nada, porque el número real nunca llega al teléfono."
-                )
-            }
-
             Section("Compras: Acción Rápida sin Confirmación") {
                 SettingsInfoRow(
                     title: "¿Qué hace?",

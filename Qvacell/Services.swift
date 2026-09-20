@@ -118,64 +118,6 @@ final class USSDCodeStore {
         categories = catalog.categories
         carrier = catalog.carrier
     }
-
-    /// Which `HomeTab`s (other than `sourceTab`) have a code matching `query` — used to badge a
-    /// tab whose catalog has a hit the user's *current* tab doesn't. `.home` carries no
-    /// searchable catalog of its own (custom quick-actions layout, not a code list) and
-    /// `.contacts` is the user's own address book, not part of this catalog — neither is a
-    /// possible match target. "sms" (`codes.json`'s 4th category) maps to `.settings` since
-    /// Servicios por SMS is a screen nested there, not its own tab.
-    func tabsMatching(_ query: String, excluding sourceTab: HomeTab) -> Set<HomeTab> {
-        guard !query.isEmpty else { return [] }
-
-        let tabsByCategoryId: [String: HomeTab] = [
-            "purchase": .purchase,
-            "helplines": .helplines,
-            "sms": .settings,
-        ]
-
-        var matches: Set<HomeTab> = []
-        for category in categories {
-            guard let tab = tabsByCategoryId[category.id], tab != sourceTab else { continue }
-            let hasMatch = category.groups.contains { group in
-                group.codes.contains {
-                    $0.title.localizedCaseInsensitiveContains(query)
-                        || $0.code.localizedCaseInsensitiveContains(query)
-                }
-            }
-            if hasMatch { matches.insert(tab) }
-        }
-        return matches
-    }
-}
-
-// MARK: - Cross-Catalog Search Indicator
-
-/// Shared across the catalog-search screens (Compras, Líneas de Ayuda, Servicios por SMS) so one
-/// screen's empty search result can badge the tab bar item of another tab that *does* have a
-/// match — e.g. searching "clima" in Compras finds nothing there, but Ajustes (which holds
-/// Servicios por SMS) lights up since "Clima" lives in the SMS catalog. Only sourced from an
-/// empty *local* result, per `updateMatches(for:excluding:store:)` callers — a screen with its
-/// own matches clears this instead of also flagging other tabs, so the badge only ever means
-/// "nothing here, but something there."
-@Observable
-final class CrossCatalogSearchIndicator {
-    var matchingTabs: Set<HomeTab> = []
-
-    /// Called by a catalog-search screen whenever its query or its own filtered results change.
-    /// `hasLocalMatch` short-circuits to clearing the indicator — a screen showing its own results
-    /// has nothing to announce elsewhere.
-    func updateMatches(query: String, hasLocalMatch: Bool, excluding sourceTab: HomeTab, store: USSDCodeStore) {
-        guard !query.isEmpty, !hasLocalMatch else {
-            matchingTabs = []
-            return
-        }
-        matchingTabs = store.tabsMatching(query, excluding: sourceTab)
-    }
-
-    func clear() {
-        matchingTabs = []
-    }
 }
 
 // MARK: - Cellular Signal Monitor

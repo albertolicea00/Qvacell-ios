@@ -12,7 +12,6 @@ struct HomeView: View {
     @Environment(AccentColorStore.self) private var accentColorStore
     @Environment(ReminderManager.self) private var reminderManager
     @Environment(TabRouter.self) private var tabRouter
-    @Environment(CrossCatalogSearchIndicator.self) private var searchIndicator
     @AppStorage("defaultTab") private var defaultTab = HomeTab.home.rawValue
     @State private var selectedTab = HomeTab.home.rawValue
 
@@ -25,7 +24,6 @@ struct HomeView: View {
                             .accessibilityLabel(helplines.name)
                     }
                     .tag(HomeTab.helplines.rawValue)
-                    .badge(searchIndicator.matchingTabs.contains(.helplines) ? "•" : "")
             }
 
             ContactsListView()
@@ -49,7 +47,6 @@ struct HomeView: View {
                             .accessibilityLabel(purchase.name)
                     }
                     .tag(HomeTab.purchase.rawValue)
-                    .badge(searchIndicator.matchingTabs.contains(.purchase) ? "•" : "")
             }
 
             SettingsView()
@@ -58,7 +55,6 @@ struct HomeView: View {
                         .accessibilityLabel("Ajustes")
                 }
                 .tag(HomeTab.settings.rawValue)
-                .badge(searchIndicator.matchingTabs.contains(.settings) ? "•" : "")
         }
         .tint(accentColorStore.color)
         .onAppear {
@@ -737,7 +733,6 @@ struct CategoryListView: View {
 
     @Environment(AccentColorStore.self) private var accentColorStore
     @Environment(USSDCodeStore.self) private var store
-    @Environment(CrossCatalogSearchIndicator.self) private var searchIndicator
     @AppStorage("showNetworkStatus") private var showNetworkStatus = false
     @AppStorage("quickPurchaseNoConfirmDefault") private var quickPurchaseNoConfirmDefault = false
     @State private var pendingInputCode: USSDCode?
@@ -759,17 +754,6 @@ struct CategoryListView: View {
             }
             guard !matches.isEmpty else { return nil }
             return USSDCodeGroup(name: group.name, codes: matches)
-        }
-    }
-
-    /// This tab's identity for `CrossCatalogSearchIndicator` — `nil` for any category besides
-    /// Compras/Líneas de Ayuda (there is none today, but a category with no matching `HomeTab`
-    /// just opts out of cross-tab badging instead of crashing).
-    private var currentTab: HomeTab? {
-        switch category.id {
-        case "purchase": return .purchase
-        case "helplines": return .helplines
-        default: return nil
         }
     }
 
@@ -850,11 +834,6 @@ struct CategoryListView: View {
                 .tint(accentColorStore.color)
                 .searchable(text: $searchText, prompt: "Buscar")
                 .searchDictationBehavior(.automatic)
-                .onChange(of: searchText) { _, newValue in
-                    guard let currentTab else { return }
-                    searchIndicator.updateMatches(query: newValue, hasLocalMatch: !filteredGroups.isEmpty, excluding: currentTab, store: store)
-                }
-                .onDisappear { searchIndicator.clear() }
             }
             .navigationTitle(category.name)
             .navigationBarTitleDisplayMode(.inline)
@@ -948,7 +927,6 @@ private struct SMSCodeListView<ExtraSection: View>: View {
 
     @Environment(USSDCodeStore.self) private var store
     @Environment(AccentColorStore.self) private var accentColorStore
-    @Environment(CrossCatalogSearchIndicator.self) private var searchIndicator
 
     @State private var pendingInputCode: USSDCode?
     @State private var inputText = ""
@@ -994,11 +972,6 @@ private struct SMSCodeListView<ExtraSection: View>: View {
                 .listStyle(.insetGrouped)
                 .tint(accentColorStore.color)
                 .searchable(text: $searchText, prompt: "Buscar")
-                .onChange(of: searchText) { _, newValue in
-                    let hasLocalMatch = !filtered(leadingGroups).isEmpty || !filtered(trailingGroups).isEmpty
-                    searchIndicator.updateMatches(query: newValue, hasLocalMatch: hasLocalMatch, excluding: .settings, store: store)
-                }
-                .onDisappear { searchIndicator.clear() }
             }
         }
         .navigationTitle(title)
@@ -1256,7 +1229,6 @@ private struct PendingSMS: Identifiable {
     }
     .environment(USSDCodeStore())
     .environment(AccentColorStore())
-    .environment(CrossCatalogSearchIndicator())
 }
 
 // MARK: - Settings / Help Screen

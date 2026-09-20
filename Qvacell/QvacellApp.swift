@@ -7,7 +7,6 @@ struct QvacellApp: App {
     @State private var wifiRoomsStore = WifiRoomsStore()
     @State private var reminderManager = ReminderManager.shared
     @State private var tabRouter = TabRouter()
-    @State private var crossCatalogSearchIndicator = CrossCatalogSearchIndicator()
     @AppStorage("darkModePreference") private var darkModePreference: Int = 0
 
     var body: some Scene {
@@ -18,7 +17,6 @@ struct QvacellApp: App {
                 .environment(wifiRoomsStore)
                 .environment(reminderManager)
                 .environment(tabRouter)
-                .environment(crossCatalogSearchIndicator)
                 .tint(accentColorStore.color)
                 .preferredColorScheme(darkModePreference == 1 ? .light : (darkModePreference == 2 ? .dark : nil))
         }

@@ -219,12 +219,23 @@ final class TransferProgressDelegate: NSObject, URLSessionTaskDelegate, URLSessi
 
 // MARK: - Device Contacts
 
-/// One entry from the device address book: just enough to list and dial it. Uses the first
-/// phone number on the contact — contacts with several numbers only show that one.
+/// One Cuban number on a contact, with iOS's own label for it ("móvil", "trabajo", "iPhone"...).
+struct ContactPhoneNumber: Hashable {
+    let label: String
+    let number: String
+}
+
+/// One entry from the device address book: just enough to list and dial it. Contacts can carry
+/// several Cuban numbers (e.g. two SIMs, a landline plus a mobile) — `numbers` keeps all of
+/// them, distinctly labeled, since limiting to one caused identification/dialing to silently
+/// pick the wrong line for contacts with more than one Cuban number.
 struct DeviceContact: Identifiable, Hashable {
     let id: String
     let name: String
-    let phoneNumber: String
+    let numbers: [ContactPhoneNumber]
+
+    /// Primary number shown by default — first one found on the contact.
+    var phoneNumber: String { numbers[0].number }
 }
 
 /// Loads one contact's thumbnail at a time, on demand — the bulk fetch used to pull
@@ -344,17 +355,26 @@ final class ContactsService {
         DispatchQueue.global(qos: .userInitiated).async { [store] in
             var results: [DeviceContact] = []
             try? store.enumerateContacts(with: request) { contact, _ in
-                // Skip contacts with no Cuban mobile number at all, even if a different
-                // (foreign) number is listed first — only Cuban numbers matter for USSD.
-                guard let cubanNumber = contact.phoneNumbers.lazy
-                    .compactMap({ CubanPhoneNumber.normalize($0.value.stringValue) })
-                    .first
-                else { return }
+                // Keep every Cuban number on the contact, not just the first — contacts with
+                // several lines (two SIMs, mobile + home) need all of them for identification
+                // and dialing to actually work, deduped in case the same number is repeated
+                // under different labels.
+                var seenNumbers = Set<String>()
+                let cubanNumbers: [ContactPhoneNumber] = contact.phoneNumbers.compactMap { labeled in
+                    guard let normalized = CubanPhoneNumber.normalize(labeled.value.stringValue),
+                          seenNumbers.insert(normalized).inserted
+                    else { return nil }
+                    let label = labeled.label.map {
+                        CNLabeledValue<NSString>.localizedString(forLabel: $0)
+                    } ?? "otro"
+                    return ContactPhoneNumber(label: label, number: normalized)
+                }
+                guard !cubanNumbers.isEmpty else { return }
                 let name = CNContactFormatter.string(from: contact, style: .fullName) ?? "Sin nombre"
                 results.append(DeviceContact(
                     id: contact.identifier,
                     name: name,
-                    phoneNumber: cubanNumber
+                    numbers: cubanNumbers
                 ))
             }
             let sorted = results.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
@@ -371,13 +391,17 @@ final class ContactsService {
     /// user has never enabled the extension in Ajustes del sistema — `reloadExtension` still
     /// completes, CallKit just has nothing enabled to feed.
     private static func syncCallerIDExtension(with contacts: [DeviceContact]) {
-        // CallKit requires every wrapped number in the batch to be unique — a single duplicate
-        // (e.g. two contacts sharing the same local number) fails the whole extension reload.
+        // Register every Cuban number on each contact, not just the primary one — a contact
+        // with several lines should be identified no matter which one calls in. CallKit still
+        // requires every wrapped number in the batch to be unique, so dedupe across the whole
+        // batch (a single duplicate fails the whole extension reload).
         var seenNumbers = Set<Int64>()
-        let entries = contacts.compactMap { contact -> CallerIDEntry? in
-            guard let wrapped = CallerIDStore.wrappedNumber(forLocalNumber: contact.phoneNumber),
-                  seenNumbers.insert(wrapped).inserted else { return nil }
-            return CallerIDEntry(wrappedNumber: wrapped, name: contact.name)
+        let entries = contacts.flatMap { contact in
+            contact.numbers.compactMap { number -> CallerIDEntry? in
+                guard let wrapped = CallerIDStore.wrappedNumber(forLocalNumber: number.number),
+                      seenNumbers.insert(wrapped).inserted else { return nil }
+                return CallerIDEntry(wrappedNumber: wrapped, name: contact.name)
+            }
         }
         CallerIDStore.write(entries)
         CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: CallerIDStore.extensionBundleID) { _ in }

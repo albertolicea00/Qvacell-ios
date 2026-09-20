@@ -429,22 +429,33 @@ struct ContactsListView: View {
     @Environment(AccentColorStore.self) private var accentColorStore
     @Environment(\.scenePhase) private var scenePhase
 
-    private var filteredContacts: [DeviceContact] {
-        guard !searchText.isEmpty else { return service.contacts }
-        return service.contacts.filter {
-            $0.name.localizedCaseInsensitiveContains(searchText)
-                || $0.phoneNumber.localizedCaseInsensitiveContains(searchText)
+    /// One row per Cuban number, not per contact — a contact with several lines shows up as
+    /// several rows, each tagged with its own label ("móvil", "trabajo", "iPhone"...), same as
+    /// how the system Phone/Contacts apps let you pick a specific number.
+    private var entries: [ContactListEntry] {
+        service.contacts.flatMap { contact in
+            contact.numbers.map { ContactListEntry(contact: contact, number: $0) }
         }
     }
 
-    /// Contacts grouped by first letter of name, sorted A→Z — no side index strip, just
+    private var filteredEntries: [ContactListEntry] {
+        guard !searchText.isEmpty else { return entries }
+        return entries.filter { entry in
+            entry.contact.name.localizedCaseInsensitiveContains(searchText)
+                || entry.number.number.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+
+    /// Grouped by first letter of contact name, sorted A→Z — no side index strip, just
     /// section headers plus the search bar to narrow things down.
-    private var groupedContacts: [(letter: String, contacts: [DeviceContact])] {
-        let groups = Dictionary(grouping: filteredContacts) { contact in
-            String(contact.name.prefix(1)).uppercased()
+    private var groupedEntries: [(letter: String, entries: [ContactListEntry])] {
+        let groups = Dictionary(grouping: filteredEntries) { entry in
+            String(entry.contact.name.prefix(1)).uppercased()
         }
         return groups.keys.sorted().map { letter in
-            (letter, groups[letter]!.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending })
+            (letter, groups[letter]!.sorted {
+                $0.contact.name.localizedCaseInsensitiveCompare($1.contact.name) == .orderedAscending
+            })
         }
     }
 
@@ -484,10 +495,10 @@ struct ContactsListView: View {
                     )
                 } else {
                     List {
-                        ForEach(groupedContacts, id: \.letter) { group in
+                        ForEach(groupedEntries, id: \.letter) { group in
                             Section(group.letter) {
-                                ForEach(group.contacts) { contact in
-                                    ContactCallRowView(contact: contact)
+                                ForEach(group.entries) { entry in
+                                    ContactCallRowView(entry: entry)
                                 }
                             }
                         }
@@ -509,25 +520,36 @@ struct ContactsListView: View {
     }
 }
 
-/// One contact row: name + number. Swiping reveals a call action on each side — collect call
-/// (`*99`) trailing, hidden caller ID (`#31#`) leading — and tapping the row opens a bottom
-/// sheet with both choices, mirroring the old Llamada por Cobrar / Llamada Privada codes,
-/// just applied directly to a picked contact instead of a manually typed number.
-private struct ContactCallRowView: View {
+/// One contact + one of its Cuban numbers — a contact with several lines yields several
+/// entries, one per row, each independently callable/identifiable.
+private struct ContactListEntry: Identifiable, Hashable {
     let contact: DeviceContact
+    let number: ContactPhoneNumber
+
+    var id: String { "\(contact.id)-\(number.number)" }
+}
+
+/// One row per contact number: name + labeled number ("móvil: 5XXXXXXX"). Swiping reveals a
+/// call action on each side — collect call (`*99`) trailing, hidden caller ID (`#31#`)
+/// leading — and tapping the row opens a bottom sheet with both choices, mirroring the old
+/// Llamada por Cobrar / Llamada Privada codes, just applied directly to this number.
+private struct ContactCallRowView: View {
+    let entry: ContactListEntry
 
     @Environment(AccentColorStore.self) private var accentColorStore
     @State private var showingCallOptions = false
 
+    private var number: String { entry.number.number }
+
     var body: some View {
         HStack(spacing: 12) {
-            ContactAvatarView(contact: contact)
+            ContactAvatarView(contact: entry.contact)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(contact.name)
+                Text(entry.contact.name)
                     .font(.body.weight(.medium))
                     .foregroundStyle(Color.appForeground)
-                Text(contact.phoneNumber)
+                Text("\(entry.number.label): \(number)")
                     .font(AppTheme.codeFont(size: 14))
                     .foregroundStyle(.secondary)
             }
@@ -541,21 +563,21 @@ private struct ContactCallRowView: View {
         }
         .swipeActions(edge: .trailing) {
             Button {
-                DialService.dial("*99\(contact.phoneNumber)")
+                DialService.dial("*99\(number)")
             } label: {
                 Label("Llamar 99", systemImage: "phone.fill")
             }
             .tint(accentColorStore.color)
 
             Button {
-                DialService.dial("#31#\(contact.phoneNumber)")
+                DialService.dial("#31#\(number)")
             } label: {
                 Label("Anónimo", systemImage: "shield.lefthalf.filled")
             }
             .tint(accentColorStore.color.opacity(0.6))
         }
         .sheet(isPresented: $showingCallOptions) {
-            ContactCallOptionsSheet(contact: contact)
+            ContactCallOptionsSheet(entry: entry)
         }
     }
 }
@@ -602,7 +624,7 @@ private struct ContactAvatarView: View {
 /// hidden caller ID via `#31#`), or transfer balance to it — same Clave/Monto form as Home's
 /// Transferir, just with the number already filled in from the contact.
 private struct ContactCallOptionsSheet: View {
-    let contact: DeviceContact
+    let entry: ContactListEntry
 
     @Environment(\.dismiss) private var dismiss
     @Environment(USSDCodeStore.self) private var store
@@ -614,6 +636,9 @@ private struct ContactCallOptionsSheet: View {
     /// Same store-vs-typed tracking as Home's Transferir — see `HomeQuickActionsView`.
     @State private var pinIsFromStore = false
     @State private var isLoadingStoredPin = false
+
+    private var contact: DeviceContact { entry.contact }
+    private var number: String { entry.number.number }
 
     private var isTransferDisabled: Bool {
         pin.trimmingCharacters(in: .whitespaces).isEmpty
@@ -629,7 +654,7 @@ private struct ContactCallOptionsSheet: View {
                     VStack(spacing: 2) {
                         Text(contact.name)
                             .font(.title2.weight(.semibold))
-                        Text(contact.phoneNumber)
+                        Text("\(entry.number.label): \(number)")
                             .font(AppTheme.codeFont(size: 16))
                             .foregroundStyle(.secondary)
                     }
@@ -639,7 +664,7 @@ private struct ContactCallOptionsSheet: View {
 
                 VStack(spacing: 10) {
                     Button {
-                        DialService.dial("*99\(contact.phoneNumber)")
+                        DialService.dial("*99\(number)")
                         dismiss()
                     } label: {
                         Label("Llamar con *99", systemImage: "phone.fill")
@@ -650,7 +675,7 @@ private struct ContactCallOptionsSheet: View {
                     .tint(accentColorStore.color)
 
                     Button {
-                        DialService.dial("#31#\(contact.phoneNumber)")
+                        DialService.dial("#31#\(number)")
                         dismiss()
                     } label: {
                         Label("Llamar Anónimo", systemImage: "shield.lefthalf.filled")
@@ -739,14 +764,14 @@ private struct ContactCallOptionsSheet: View {
     /// Home's Transferir, with the contact's number already supplied.
     private func dialTransfer() {
         guard let code = store.code(withId: "transfer-direct") else { return }
-        let resolved = code.resolvedCode(with: ["phoneNumber": contact.phoneNumber, "pin": pin, "amount": amount])
+        let resolved = code.resolvedCode(with: ["phoneNumber": number, "pin": pin, "amount": amount])
         DialService.dial(resolved)
         dismiss()
     }
 
     private func dialFriendsPlan(_ code: USSDCode) {
         guard !code.code.isEmpty else { return }
-        DialService.dial(code.resolvedCode(input: contact.phoneNumber))
+        DialService.dial(code.resolvedCode(input: number))
         dismiss()
     }
 }

@@ -452,20 +452,27 @@ struct ContactsListView: View {
         NavigationStack {
             Group {
                 if service.isDenied {
-                    ContentUnavailableView {
-                        Label("Sin Acceso a Contactos", systemImage: "person.crop.circle.badge.exclamationmark")
-                    } description: {
-                        Text("Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente.")
-                    } actions: {
-                        Button {
-                            service.requestAccess()
-                        } label: {
-                            Text("Permitir Acceso a Contactos")
-                                .font(.headline)
+                    VStack(spacing: 20) {
+                        ContentUnavailableView(
+                            "Sin Acceso a Contactos",
+                            systemImage: "person.crop.circle.badge.exclamationmark",
+                            description: Text("Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente.")
+                        )
+
+                        VStack(spacing: 0) {
+                            DirectoryActionRow(
+                                title: "Permitir Acceso a Contactos",
+                                systemImage: "person.crop.circle.badge.checkmark",
+                                isEnabled: true,
+                                tint: accentColorStore.color
+                            ) {
+                                service.requestAccess()
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(accentColorStore.color)
+                        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .padding(.horizontal, 20)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if !service.isLoaded {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

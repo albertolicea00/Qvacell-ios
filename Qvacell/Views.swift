@@ -1,5 +1,6 @@
 import MessageUI
 import SwiftUI
+import UIKit
 import UniformTypeIdentifiers
 
 // MARK: - Home Screen
@@ -1257,6 +1258,9 @@ struct SettingsView: View {
     /// plain `@State`) means the row stays revealed across relaunches once found.
     @AppStorage("showDatabaseSearch") private var showDatabaseSearch = false
     @State private var versionTapTimestamps: [Date] = []
+    @State private var toastMessage: String?
+    @State private var toastIcon = "lock.open.fill"
+    @State private var toastTask: Task<Void, Never>?
 
     /// Backs the three "Configuraciones" SMS rows (LTE, 3G/4G check, MMS) in Cuenta — these dial
     /// straight from the row, no sub-screen, so `SettingsView` needs its own compose-SMS state
@@ -1475,6 +1479,30 @@ struct SettingsView: View {
                     .ignoresSafeArea()
             }
         }
+        .overlay(alignment: .bottom) {
+            if let toastMessage {
+                HStack(spacing: 8) {
+                    Image(systemName: toastIcon)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(accentColorStore.color)
+                    Text(toastMessage)
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.primary)
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(.ultraThinMaterial, in: Capsule())
+                .overlay(
+                    Capsule()
+                        .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
+                )
+                .shadow(color: .black.opacity(0.12), radius: 10, x: 0, y: 4)
+                .padding(.bottom, 16)
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+                .allowsHitTesting(false)
+            }
+        }
+        .animation(.spring(response: 0.35, dampingFraction: 0.75), value: toastMessage)
     }
 
     /// 5 taps within 3 seconds on "Versión X (Y)" toggles the hidden "Buscar en Database" row —
@@ -1484,9 +1512,34 @@ struct SettingsView: View {
         let now = Date()
         versionTapTimestamps.append(now)
         versionTapTimestamps.removeAll { now.timeIntervalSince($0) > 3 }
+
         if versionTapTimestamps.count >= 5 {
             showDatabaseSearch.toggle()
             versionTapTimestamps.removeAll()
+
+            let isUnlocked = showDatabaseSearch
+            showToast(
+                message: isUnlocked ? "Búsqueda en Database desbloqueada" : "Búsqueda en Database oculta",
+                icon: isUnlocked ? "lock.open.fill" : "lock.fill"
+            )
+        } else {
+            let feedback = UIImpactFeedbackGenerator(style: .light)
+            feedback.impactOccurred()
+        }
+    }
+
+    private func showToast(message: String, icon: String) {
+        toastTask?.cancel()
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        toastMessage = message
+        toastIcon = icon
+        toastTask = Task {
+            try? await Task.sleep(nanoseconds: 2_600_000_000)
+            guard !Task.isCancelled else { return }
+            await MainActor.run {
+                toastMessage = nil
+            }
         }
     }
 

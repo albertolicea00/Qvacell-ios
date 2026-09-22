@@ -389,7 +389,7 @@ struct QuickPurchaseWarningBannerView: View {
         HStack(spacing: 8) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 14, weight: .bold))
-            Text("Acción rápida sin confirmación activada — las compras se marcan de una vez, sin pedir confirmación")
+            Text("Acción sin Confirmación activada — las compras se marcan de una vez, sin pedir confirmación")
                 .font(.system(size: 13, weight: .bold))
         }
         .foregroundStyle(.orange)

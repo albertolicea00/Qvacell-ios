@@ -33,6 +33,7 @@ An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** :
 - 🌗 **Customization & Settings** — Light/Dark theme support, custom accent color picker, and configurable launch tab.
 
 ### Upcoming
+
 - **Online Directory Search (Buscar en Directorio)** — Web scraper backend integration to search the phone and business directory by category, number, municipality, and province. See [#3](https://github.com/albertolicea00/Qvacell/issues/3) for details.
 
 ## 🛠️ Requirements
@@ -75,17 +76,18 @@ Shared/                        # Code shared by the app and CallerIDExtension
 └── CallerIDStore.swift        # App Group–backed caller-ID list (read/write)
 ```
 
-*The full USSD code catalog is dynamically loaded from our JSON configuration file [`Qvacell/codes.json`](Qvacell/codes.json), keeping the app lightweight and easy to update.* 📁
+_The full USSD code catalog is dynamically loaded from our JSON configuration file [`Qvacell/codes.json`](Qvacell/codes.json), keeping the app lightweight and easy to update._ 📁
 
 ## ☎️ Direct Dial vs. Confirmation
 
-Free query codes dial immediately. Paid purchase codes stop at ETECSA's confirmation menu by default; an optional **Acción Rápida sin Confirmación** setting enables auto-confirming code variants with a visible UI safety warning.
+Free query codes dial immediately. Paid purchase codes stop at ETECSA's confirmation menu by default; an optional **Acción sin Confirmación** setting enables auto-confirming code variants with a visible UI safety warning.
 
 ## 🔍 Phone Directory & Offline Database Search
 
 Under **Ajustes › Utilidades**:
+
 - **Buscar en Directorio**: Online search integration for phone and commercial directory records (under construction).
-- **Buscar en Database**: Advanced offline reverse phone lookup over a user-supplied SQLite (`.db`) file. For security and privacy, this feature is hidden by default (unlocked by tapping the app version 5 times in *Acerca de*) and searches strictly by phone number (no name lookup).
+- **Buscar en Database**: Advanced offline reverse phone lookup over a user-supplied SQLite (`.db`) file. For security and privacy, this feature is hidden by default (unlocked by tapping the app version 5 times in _Acerca de_) and searches strictly by phone number (no name lookup).
 
 ## 🛜 Navigation Rooms & Public Wi-Fi
 
@@ -93,7 +95,7 @@ Includes an offline directory of official ETECSA navigation rooms and public Wi-
 
 ## 🔄 Cross-Platform Catalog Sync
 
-[`cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) runs on every push to `main` that touches `codes.json` or `wifi_navigation_rooms.json`, and compares this repo's copy against [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk)'s (the Android app). If they've drifted, it opens (or updates) an issue on the *other* repo so the missed platform gets updated. Only **structure** is compared for `codes.json` (ids, dial strings, action type, input handling, category/group placement) — cosmetic fields (icon, price, title wording, etc.) are allowed to differ per platform. See [ARCHITECTURE.md § 14](ARCHITECTURE.md#14-cross-platform-catalog-sync-check) for exactly what's compared and how.
+[`cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) runs on every push to `main` that touches `codes.json` or `wifi_navigation_rooms.json`, and compares this repo's copy against [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk)'s (the Android app). If they've drifted, it opens (or updates) an issue on the _other_ repo so the missed platform gets updated. Only **structure** is compared for `codes.json` (ids, dial strings, action type, input handling, category/group placement) — cosmetic fields (icon, price, title wording, etc.) are allowed to differ per platform. See [ARCHITECTURE.md § 14](ARCHITECTURE.md#14-cross-platform-catalog-sync-check) for exactly what's compared and how.
 
 ## 🚧 Known Limitations
 
@@ -103,7 +105,7 @@ Includes an offline directory of official ETECSA navigation rooms and public Wi-
 
 - **iOS security sandbox and USSD limitations (no real-time balance tracking).** Unlike Android (where apps can intercept USSD responses in the background), iOS sandbox security prevents third-party apps from reading or parsing USSD response dialogs, chaining sessions automatically, or running background USSD queries. Because of this system limitation, the app cannot automatically display or update your balance, data packages, or bonus balances in real-time inside the app UI; dialing a code (`tel://`) hands off execution to the native Phone app where the user sees the carrier response screen directly.
 
-- **No Home Screen widget.** Considered and deliberately not built. A WidgetKit extension cannot call `UIApplication.shared.open`/`tel://` at all — `APPLICATION_EXTENSION_API_ONLY` makes that API unavailable in any app extension, widgets included, so a widget can never dial a code or place a `*99`/`#31#` call by itself. The only thing a widget *could* do is open the app via a deep link and let the app dial from there — but that adds a screen transition on top of what unlocking the phone and tapping the app icon already does, with no code actually reaching the dialer any faster. Not worth the extra target, App Group, and maintenance surface for zero real shortcut.
+- **No Home Screen widget.** Considered and deliberately not built. A WidgetKit extension cannot call `UIApplication.shared.open`/`tel://` at all — `APPLICATION_EXTENSION_API_ONLY` makes that API unavailable in any app extension, widgets included, so a widget can never dial a code or place a `*99`/`#31#` call by itself. The only thing a widget _could_ do is open the app via a deep link and let the app dial from there — but that adds a screen transition on top of what unlocking the phone and tapping the app icon already does, with no code actually reaching the dialer any faster. Not worth the extra target, App Group, and maintenance surface for zero real shortcut.
 
 - **Physical dual-SIM (two nano-SIM) devices.** iPhone models sold in mainland China, Hong Kong, and Macao support two physical nano-SIMs, instead of the nano-SIM + eSIM combo sold everywhere else. This app has no line-selection UI and no way to force a dial through one SIM specifically — iOS gives apps no public API to pick which line places a `tel://`/USSD call; it always goes out through whichever line the device's own Phone settings mark as default. Acknowledged, not implemented.
 
@@ -119,7 +121,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Please follow the [Code of Conduct](CODE
 > The app UI is intentionally in Spanish — it targets Cuban users. All technical communication follows English conventions.
 
 ## 📚 Sources
+
 The codes were saved from the following sites:
+
 - https://galixpay.com/recargas-a-cuba/
 - https://www.fonoma.com/blog/codigos-ussd-cuba
 - https://www.etecsa.cu/es/taxonomy/term/1445
@@ -130,4 +134,4 @@ The codes were saved from the following sites:
 
 ---
 
-*Developed by @albertolicea00*
+_Developed by @albertolicea00_

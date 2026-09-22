@@ -22,39 +22,34 @@ struct HomeView: View {
             if let helplines = store.tabCategories.first(where: { $0.id == "helplines" }) {
                 CategoryListView(category: helplines)
                     .tabItem {
-                        Image(systemName: helplines.icon)
-                            .accessibilityLabel(helplines.name)
+                        Label("Ayuda", systemImage: helplines.icon)
                     }
                     .tag(HomeTab.helplines.rawValue)
             }
 
             ContactsListView()
                 .tabItem {
-                    Image(systemName: "person.crop.circle.fill")
-                        .accessibilityLabel("Contactos")
+                    Label("Contactos", systemImage: "person.crop.circle.fill")
                 }
                 .tag(HomeTab.contacts.rawValue)
 
             HomeQuickActionsView()
                 .tabItem {
-                    Image(systemName: "house.fill")
-                        .accessibilityLabel("Home")
+                    Label("Home", systemImage: "house.fill")
                 }
                 .tag(HomeTab.home.rawValue)
 
             if let purchase = store.tabCategories.first(where: { $0.id == "purchase" }) {
                 CategoryListView(category: purchase)
                     .tabItem {
-                        Image(systemName: purchase.icon)
-                            .accessibilityLabel(purchase.name)
+                        Label("Compras", systemImage: purchase.icon)
                     }
                     .tag(HomeTab.purchase.rawValue)
             }
 
             SettingsView()
                 .tabItem {
-                    Image(systemName: "gearshape.fill")
-                        .accessibilityLabel("Ajustes")
+                    Label("Ajustes", systemImage: "gearshape.fill")
                 }
                 .tag(HomeTab.settings.rawValue)
         }
@@ -835,7 +830,7 @@ struct CategoryListView: View {
                 List {
                     if category.id == "purchase" {
                         Section {
-                            Toggle("Acción Rápida sin Confirmación", isOn: $isQuickActionEnabled)
+                            Toggle("Acción sin Confirmación", isOn: $isQuickActionEnabled)
                         } footer: {
                             Text("Marca el código saltando el paso de confirmación de ETECSA, por si acaso confías en la selección y quieres ahorrarte un paso.")
                         }
@@ -931,7 +926,7 @@ struct CategoryListView: View {
     }
 
     /// The code actually dialed — `noConfirmCode` (which auto-selects ETECSA's confirmation step)
-    /// only when Acción Rápida sin Confirmación is on for this code, otherwise the normal `code`.
+    /// only when Acción sin Confirmación is on for this code, otherwise the normal `code`.
     private func dialCode(for code: USSDCode) -> String {
         guard category.id == "purchase", isQuickActionEnabled, let noConfirmCode = code.noConfirmCode else {
             return code.code
@@ -2294,10 +2289,10 @@ private struct HelpSettingsView: View {
                 )
             }
 
-            Section("Compras: Acción Rápida sin Confirmación") {
+            Section("Compras: Acción sin Confirmación") {
                 SettingsInfoRow(
                     title: "¿Qué hace?",
-                    text: "En la pestaña Compras hay un interruptor \"Acción Rápida sin Confirmación\". Actívalo y los códigos que lo soportan marcan directo el paso de confirmación de ETECSA, ahorrándote un paso — solo actívalo si ya confías en lo que vas a comprar."
+                    text: "En la pestaña Compras hay un interruptor \"Acción sin Confirmación\". Actívalo y los códigos que lo soportan marcan directo el paso de confirmación de ETECSA, ahorrándote un paso — solo actívalo si ya confías en lo que vas a comprar."
                 )
             }
 

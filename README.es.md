@@ -33,6 +33,7 @@ Una aplicación para iPhone para acceder rápidamente a los **códigos de servic
 - 🌗 **Personalización y Ajustes** — Soporte para tema Claro/Oscuro, selector de color de acento personalizado y pestaña de inicio configurable.
 
 ### Próximamente
+
 - **Búsqueda en Directorio Online (Buscar en Directorio)** — Integración backend con web scraper para buscar en el directorio telefónico y comercial de ETECSA por categoría, número, municipio y provincia. Consulta [#3](https://github.com/albertolicea00/Qvacell-ios/issues/3) para más detalles.
 
 ## 🛠️ Requisitos
@@ -75,25 +76,26 @@ Shared/                        # Código compartido entre la app y CallerIDExten
 └── CallerIDStore.swift        # Lista de IDs de llamadas respaldada por App Group (lectura/escritura)
 ```
 
-*El catálogo completo de códigos USSD se carga dinámicamente desde nuestro archivo de configuración JSON [`Qvacell/codes.json`](Qvacell/codes.json), manteniendo la app ligera y fácil de actualizar.* 📁
+_El catálogo completo de códigos USSD se carga dinámicamente desde nuestro archivo de configuración JSON [`Qvacell/codes.json`](Qvacell/codes.json), manteniendo la app ligera y fácil de actualizar._ 📁
 
 ## ☎️ Marcado Directo vs. Confirmación
 
-Los códigos de consulta gratuitos se marcan inmediatamente. Los códigos de compra de pago se detienen en el menú de confirmación de ETECSA por defecto; la opción **Acción Rápida sin Confirmación** permite variantes de código con autoconfirmación con una advertencia visible en la interfaz.
+Los códigos de consulta gratuitos se marcan inmediatamente. Los códigos de compra de pago se detienen en el menú de confirmación de ETECSA por defecto; la opción **Acción sin Confirmación** permite variantes de código con autoconfirmación con una advertencia visible en la interfaz.
 
 ## 🔍 Directorio Telefónico y Base de Datos Offline
 
 En **Ajustes › Utilidades**:
+
 - **Buscar en Directorio**: Búsqueda en el directorio telefónico y comercial (en construcción).
-- **Buscar en Database**: Búsqueda inversa offline sobre una base de datos SQLite (`.db`) suministrada por el usuario. Por seguridad y privacidad, esta función viene oculta por defecto (se desbloquea tocando 5 veces la versión en *Acerca de*) y la búsqueda es estrictamente solo por número (sin búsqueda por nombre).
+- **Buscar en Database**: Búsqueda inversa offline sobre una base de datos SQLite (`.db`) suministrada por el usuario. Por seguridad y privacidad, esta función viene oculta por defecto (se desbloquea tocando 5 veces la versión en _Acerca de_) y la búsqueda es estrictamente solo por número (sin búsqueda por nombre).
 
 ## 🛜 Salas de Navegación y Wi-Fi Público
 
-Incluye un directorio offline de salas de navegación oficiales de ETECSA y puntos Wi-Fi públicos por provincia. 
+Incluye un directorio offline de salas de navegación oficiales de ETECSA y puntos Wi-Fi públicos por provincia.
 
 ## 🔄 Sincronización entre Plataformas
 
-[`cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) se ejecuta en cada push a `main` que modifique `codes.json` o `wifi_navigation_rooms.json`, y compara la copia de este repo contra la de [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk) (la app Android). Si han divergido, abre (o actualiza) un issue en el *otro* repositorio para que se actualice la plataforma que quedó atrás. Solo se compara la **estructura** en `codes.json` (ids, cadenas de marcado, tipo de acción, manejo de entrada, ubicación en categoría/grupo) — los campos cosméticos (icono, precio, redacción del título, etc.) pueden diferir entre plataformas. Ver [ARCHITECTURE.md § 14](ARCHITECTURE.md#14-cross-platform-catalog-sync-check) para el detalle exacto de qué se compara y cómo.
+[`cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) se ejecuta en cada push a `main` que modifique `codes.json` o `wifi_navigation_rooms.json`, y compara la copia de este repo contra la de [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk) (la app Android). Si han divergido, abre (o actualiza) un issue en el _otro_ repositorio para que se actualice la plataforma que quedó atrás. Solo se compara la **estructura** en `codes.json` (ids, cadenas de marcado, tipo de acción, manejo de entrada, ubicación en categoría/grupo) — los campos cosméticos (icono, precio, redacción del título, etc.) pueden diferir entre plataformas. Ver [ARCHITECTURE.md § 14](ARCHITECTURE.md#14-cross-platform-catalog-sync-check) para el detalle exacto de qué se compara y cómo.
 
 ## 🚧 Limitaciones Conocidas
 
@@ -119,7 +121,9 @@ Consulta [CONTRIBUTING.md](CONTRIBUTING.md). Por favor, sigue el [Código de Con
 > La interfaz de la app está intencionalmente en español (está dirigida a usuarios cubanos). Toda la comunicación técnica sigue las convenciones en inglés.
 
 ## 📚 Fuentes
+
 Los códigos se compilaron a partir de los siguientes sitios:
+
 - https://galixpay.com/recargas-a-cuba/
 - https://www.fonoma.com/blog/codigos-ussd-cuba
 - https://www.etecsa.cu/es/taxonomy/term/1445
@@ -130,4 +134,4 @@ Los códigos se compilaron a partir de los siguientes sitios:
 
 ---
 
-*Desarrollado por @albertolicea00*
+_Desarrollado por @albertolicea00_

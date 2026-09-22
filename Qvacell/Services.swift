@@ -1082,7 +1082,7 @@ struct EjecutarCodigoIntent: AppIntent {
         guard await DialService.dial(code.code) else {
             return .result(dialog: "No se pudo abrir el marcador en este dispositivo.")
         }
-        return .result(dialog: "Marcando \(code.title)...")
+        return .result(dialog: "Marcando \(code.localizedTitle)...")
     }
 }
 
@@ -1113,7 +1113,7 @@ struct ComprarPlanIntent: AppIntent {
         guard await DialService.dial(codeObj.code) else {
             return .result(dialog: "No se pudo abrir el marcador en este dispositivo.")
         }
-        return .result(dialog: "Abriendo compra de \(codeObj.title)...")
+        return .result(dialog: "Abriendo compra de \(codeObj.localizedTitle)...")
     }
 }
 

@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "es",
   "strings" : {
+    " · %@" : {
+
+    },
+    " · %@ " : {
+
+    },
     "¿Cómo funciona?" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -157,28 +163,8 @@
     "%@" : {
 
     },
-    "%@ · %@" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ · %2$@"
-          }
-        }
-      }
-    },
-    "%@ puestos" : {
+    "%@ " : {
 
-    },
-    "%@ salas de navegación · %@ zonas wifi" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ salas de navegación · %2$@ zonas wifi"
-          }
-        }
-      }
     },
     "Abre el marcador para comprar un plan de datos, combo, SMS o voz de ETECSA usando el código estable y seguro (con confirmación)." : {
       "extractionState" : "stale",
@@ -358,6 +344,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agregar"
+          }
+        }
+      }
+    },
+    "Agregar " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar "
           }
         }
       }
@@ -1051,6 +1053,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cómo Funciona el USSD"
+          }
+        }
+      }
+    },
+    "Comprar Paquete" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy a Package"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar Paquete"
           }
         }
       }
@@ -1881,6 +1900,23 @@
         }
       }
     },
+    "Estilo de Acciones Rápidas" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Actions Style"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estilo de Acciones Rápidas"
+          }
+        }
+      }
+    },
     "Fecha y hora" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1961,6 +1997,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar Clave"
+          }
+        }
+      }
+    },
+    "Hacer Transferencia" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make a Transfer"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hacer Transferencia"
           }
         }
       }
@@ -2143,6 +2196,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Límite"
+          }
+        }
+      }
+    },
+    "Líneas de Ayuda" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helplines"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Líneas de Ayuda"
           }
         }
       }
@@ -2805,6 +2875,23 @@
         }
       }
     },
+    "Pestaña Inicial" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starting Tab"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pestaña Inicial"
+          }
+        }
+      }
+    },
     "PIN de Transferencia" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3225,6 +3312,22 @@
         }
       }
     },
+    "puestos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "seats"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "puestos"
+          }
+        }
+      }
+    },
     "Qué es Qvacell" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3309,6 +3412,23 @@
         }
       }
     },
+    "Recargar Saldo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharge Balance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recargar Saldo"
+          }
+        }
+      }
+    },
     "Recordatorio" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3322,6 +3442,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recordatorio"
+          }
+        }
+      }
+    },
+    "Recordatorio Personalizado" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Reminder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorio Personalizado"
           }
         }
       }
@@ -3389,6 +3526,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer Color por Defecto"
+          }
+        }
+      }
+    },
+    "salas de navegación" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "navigation rooms"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "salas de navegación"
           }
         }
       }
@@ -3778,6 +3931,23 @@
         }
       }
     },
+    "Tema" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
+          }
+        }
+      }
+    },
     "Título" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3918,6 +4088,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voz"
+          }
+        }
+      }
+    },
+    "zonas wifi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wifi zones"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zonas wifi"
           }
         }
       }

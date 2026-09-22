@@ -85,7 +85,7 @@ enum HomeTab: String, CaseIterable, Identifiable {
         allCases.filter { $0 != .settings && ($0 != .database || includingDatabase) }
     }
 
-    var displayName: String {
+    var displayName: LocalizedStringKey {
         switch self {
             case .helplines: return "Líneas de Ayuda"
             case .contacts: return "Contactos"
@@ -245,13 +245,13 @@ struct HomeQuickActionsView: View {
                     .listSectionSpacing(6)
 
                     if let advanceBalanceGroup = store.group(named: "Servicio Adelanta Saldo") {
-                        Section(advanceBalanceGroup.name ?? "") {
+                        Section(advanceBalanceGroup.localizedName ?? "") {
                             HStack(spacing: 12) {
                                 ForEach(advanceBalanceGroup.codes) { code in
                                     Button {
                                         DialService.dial(code.code)
                                     } label: {
-                                        Text(code.price ?? code.title)
+                                        Text(code.price ?? code.localizedTitle)
                                             .frame(maxWidth: .infinity)
                                     }
                                     .buttonStyle(OutlineButtonStyle())
@@ -813,7 +813,7 @@ struct CategoryListView: View {
                     || $0.code.localizedCaseInsensitiveContains(searchText)
             }
             guard !matches.isEmpty else { return nil }
-            return USSDCodeGroup(name: group.name, codes: matches)
+            return USSDCodeGroup(name: group.name, nameEN: group.nameEN, codes: matches)
         }
     }
 
@@ -853,9 +853,9 @@ struct CategoryListView: View {
                                     } label: {
                                         HStack {
                                             if let icon = code.icon {
-                                                Label(code.title, systemImage: icon)
+                                                Label(code.localizedTitle, systemImage: icon)
                                             } else {
-                                                Text(code.title)
+                                                Text(code.localizedTitle)
                                             }
                                             if category.id == "purchase" {
                                                 Spacer()
@@ -880,7 +880,7 @@ struct CategoryListView: View {
                                 }
                             }
                         } header: {
-                            if let name = group.name {
+                            if let name = group.localizedName {
                                 Text(name)
                             } else {
                                 // A little breathing room in place of a missing header, so an
@@ -895,10 +895,10 @@ struct CategoryListView: View {
                 .searchable(text: $searchText, prompt: "Buscar")
                 .searchDictationBehavior(.automatic)
             }
-            .navigationTitle(category.name)
+            .navigationTitle(category.localizedName)
             .navigationBarTitleDisplayMode(.inline)
             .alert(
-                pendingInputCode?.title ?? "",
+                pendingInputCode?.localizedTitle ?? "",
                 isPresented: Binding(
                     get: { pendingInputCode != nil },
                     set: { isPresented in
@@ -915,7 +915,7 @@ struct CategoryListView: View {
                 Button("Marcar") { dial(code, input: inputText) }
                 Button("Cancelar", role: .cancel) {}
             } message: { code in
-                Text(code.details)
+                Text(code.localizedDetails)
             }
         }
         .onAppear {
@@ -1009,7 +1009,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
         return groups.compactMap { group in
             let matches = group.codes.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
             guard !matches.isEmpty else { return nil }
-            return USSDCodeGroup(name: group.name, codes: matches)
+            return USSDCodeGroup(name: group.name, nameEN: group.nameEN, codes: matches)
         }
     }
 
@@ -1037,7 +1037,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .alert(
-            pendingInputCode?.title ?? "",
+            pendingInputCode?.localizedTitle ?? "",
             isPresented: Binding(
                 get: { pendingInputCode != nil },
                 set: { isPresented in
@@ -1054,7 +1054,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
             Button("Continuar") { composeSMS(code, input: inputText) }
             Button("Cancelar", role: .cancel) {}
         } message: { code in
-            Text(code.details)
+            Text(code.localizedDetails)
         }
         .alert("No se Puede Enviar SMS", isPresented: $showsCannotSendTextAlert) {
             Button("Entendido", role: .cancel) {}
@@ -1062,7 +1062,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
             Text("Este dispositivo no puede enviar mensajes de texto (por ejemplo, el Simulador de Xcode no soporta SMS).")
         }
         .confirmationDialog(
-            variantPickerCode?.title ?? "",
+            variantPickerCode?.localizedTitle ?? "",
             isPresented: Binding(
                 get: { variantPickerCode != nil },
                 set: { if !$0 { variantPickerCode = nil } }
@@ -1071,7 +1071,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
             presenting: variantPickerCode
         ) { code in
             ForEach(code.variants ?? [], id: \.label) { variant in
-                Button(variant.label) { composeVariant(code, variant) }
+                Button(variant.localizedLabel) { composeVariant(code, variant) }
             }
             Button("Cancelar", role: .cancel) {}
         }
@@ -1085,7 +1085,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
     private func codeSections(_ groups: [USSDCodeGroup]) -> some View {
         ForEach(groups) { group in
             if !group.codes.isEmpty {
-                Section(group.name ?? "") {
+                Section(group.localizedName ?? "") {
                     ForEach(group.codes) { code in
                         // Same compact, price-trailing row shape as Compras — set
                         // "compact": true on every code here so they all render like it, price or
@@ -1146,7 +1146,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
     @ViewBuilder
     private func rowLabel(_ code: USSDCode) -> some View {
         HStack {
-            Text(code.title)
+            Text(code.localizedTitle)
             if code.isSubscription == true {
                 Text("Suscripción")
                     .font(.caption2.weight(.semibold))
@@ -1252,7 +1252,7 @@ private struct SMSOptionPickerView: View {
                 }
             }
         }
-        .navigationTitle(code.title)
+        .navigationTitle(code.localizedTitle)
         .navigationBarTitleDisplayMode(.inline)
         .searchable(text: $searchText, prompt: "Buscar o escribir uno nuevo")
         .alert("No se Puede Enviar SMS", isPresented: $showsCannotSendTextAlert) {
@@ -1433,9 +1433,9 @@ struct SettingsView: View {
                             } label: {
                                 HStack {
                                     if let icon = code.icon {
-                                        Label(code.title, systemImage: icon)
+                                        Label(code.localizedTitle, systemImage: icon)
                                     } else {
-                                        Text(code.title)
+                                        Text(code.localizedTitle)
                                     }
                                     Spacer()
                                     Image(systemName: "arrow.right")
@@ -1487,7 +1487,7 @@ struct SettingsView: View {
                         Label("Descargar Todos los Códigos", systemImage: "arrow.down.doc")
                     }
                     Link(destination: URL(string: "https://x.com/albertolicea00")!) {
-                        Label("Developed by @albertolicea00", systemImage: "person.circle")
+                        Label("Desarrollado por @albertolicea00", systemImage: "person.circle")
                     }
                 }
 
@@ -1524,7 +1524,7 @@ struct SettingsView: View {
                 }
             }
             .alert(
-                pendingSMSInputCode?.title ?? "",
+                pendingSMSInputCode?.localizedTitle ?? "",
                 isPresented: Binding(
                     get: { pendingSMSInputCode != nil },
                     set: { isPresented in
@@ -1541,7 +1541,7 @@ struct SettingsView: View {
                 Button("Continuar") { composeSMS(code, input: smsInputText) }
                 Button("Cancelar", role: .cancel) {}
             } message: { code in
-                Text(code.details)
+                Text(code.localizedDetails)
             }
             .alert("No se Puede Enviar SMS", isPresented: $showsCannotSendTextAlert) {
                 Button("Entendido", role: .cancel) {}
@@ -1662,7 +1662,7 @@ private struct FriendsPlanManageView: View {
                         dial(activateCode)
                     } label: {
                         HStack(spacing: 6) {
-                            Text(activateCode.title)
+                            Text(activateCode.localizedTitle)
                             Spacer()
                             Image(systemName: "arrow.right")
                         }
@@ -1676,7 +1676,7 @@ private struct FriendsPlanManageView: View {
                         dial(deactivateCode)
                     } label: {
                         HStack(spacing: 6) {
-                            Text(deactivateCode.title)
+                            Text(deactivateCode.localizedTitle)
                             Spacer()
                             Image(systemName: "arrow.right")
                         }
@@ -1690,7 +1690,7 @@ private struct FriendsPlanManageView: View {
                         dial(statusCode)
                     } label: {
                         HStack(spacing: 6) {
-                            Text(statusCode.title)
+                            Text(statusCode.localizedTitle)
                             Spacer()
                             Image(systemName: "arrow.right")
                         }
@@ -2730,7 +2730,7 @@ struct WifiRoomsProvinceListView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(province.province)
                             .font(.body.weight(.medium))
-                        Text("\(province.rooms.count) salas de navegación · \(province.hotspots.reduce(0) { $0 + $1.spots.count }) zonas wifi")
+                        Text("\(province.rooms.count) ") + Text("salas de navegación") + Text(" · \(province.hotspots.reduce(0) { $0 + $1.spots.count }) ") + Text("zonas wifi")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
@@ -2795,7 +2795,7 @@ struct WifiRoomsDetailView: View {
                         HStack(alignment: .center, spacing: 8) {
                             VStack(alignment: .leading, spacing: 2) {
                                 if let positions = room.positions {
-                                    Text("\(positions) puestos")
+                                    (Text("\(positions) ") + Text("puestos"))
                                         .font(.footnote)
                                         .foregroundStyle(.secondary)
                                 }
@@ -2925,10 +2925,14 @@ struct RemindersListView: View {
                     Button {
                         templateForNewReminder = template
                     } label: {
-                        Label("Agregar \(template.title)", systemImage: "plus.circle")
+                        Label {
+                            Text("Agregar ") + Text(template.localizedTitle)
+                        } icon: {
+                            Image(systemName: "plus.circle")
+                        }
                     }
                 } header: {
-                    Label(template.title, systemImage: template.iconName)
+                    Label(template.localizedTitle, systemImage: template.iconName)
                 }
             }
 
@@ -2995,7 +2999,7 @@ struct ReminderRow: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(reminder.title).font(.headline)
-                Text("\(reminder.recurrence.label) · \(DateFormatter.localizedString(from: reminder.date, dateStyle: .medium, timeStyle: .short))")
+                Text(reminder.recurrence.localizedLabel) + Text(" · \(DateFormatter.localizedString(from: reminder.date, dateStyle: .medium, timeStyle: .short))")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -3062,7 +3066,7 @@ struct AddReminderView: View {
                     DatePicker("Fecha y hora", selection: $date, displayedComponents: [.date, .hourAndMinute])
                     Picker("Repetir", selection: $recurrence) {
                         ForEach(ReminderRecurrenceKind.allCases) { kind in
-                            Text(kind.label).tag(kind)
+                            Text(kind.localizedLabel).tag(kind)
                         }
                     }
                     if recurrence == .custom {
@@ -3070,7 +3074,7 @@ struct AddReminderView: View {
                     }
                 }
             }
-            .navigationTitle(reminderToEdit == nil ? template.title : "Editar Recordatorio")
+            .navigationTitle(reminderToEdit == nil ? template.localizedTitle : "Editar Recordatorio")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar") { dismiss() }
@@ -3161,7 +3165,7 @@ struct ReminderDetailView: View {
                     .padding(.top)
 
                     VStack(alignment: .leading, spacing: 12) {
-                        LabeledContent("Repetición", value: reminder.recurrence.label)
+                        LabeledContent("Repetición") { Text(reminder.recurrence.localizedLabel) }
                         LabeledContent("Próxima Vez", value: DateFormatter.localizedString(from: reminder.date, dateStyle: .medium, timeStyle: .short))
                         if !reminder.phoneNumber.isEmpty {
                             LabeledContent("Número", value: reminder.phoneNumber)

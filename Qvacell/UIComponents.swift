@@ -139,12 +139,12 @@ struct CodeRowView: View {
     var body: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text(code.title)
+                Text(code.localizedTitle)
                     .font(.body.weight(.medium))
                     .foregroundStyle(Color.appForeground)
 
                 if code.price == nil {
-                    Text(code.details)
+                    Text(code.localizedDetails)
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
@@ -183,6 +183,8 @@ struct CodeRowView: View {
         code: "*133*2*1#",
         title: "Plan de 20 SMS",
         details: "20 SMS.",
+        titleEN: "20 SMS Plan",
+        detailsEN: "20 SMS.",
         icon: nil,
         price: "$15.00",
         compact: nil,
@@ -218,7 +220,7 @@ struct ContactRowView: View {
                 .background(accentColorStore.color, in: Circle())
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(code.title)
+                Text(code.localizedTitle)
                     .font(.body.weight(.medium))
                     .foregroundStyle(Color.appForeground)
                 Text(code.code)
@@ -246,6 +248,8 @@ struct ContactRowView: View {
             code: "106",
             title: "Policía Nacional (PNR)",
             details: "Policía Nacional Revolucionaria.",
+            titleEN: "National Police (PNR)",
+            detailsEN: "Revolutionary National Police.",
             icon: "shield.fill",
             price: nil,
             compact: nil,

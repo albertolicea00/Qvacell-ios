@@ -23,6 +23,17 @@ if (!LOCAL_PATH || !REMOTE_URL) {
   process.exit(2);
 }
 
+// codes.json v3 (iOS) shapes `title`/`details`/`name`/`label` as `{"es": "...", "en": "..."}`
+// instead of a plain string — a platform that hasn't adopted that yet (e.g. Android) still has
+// plain strings there. `groupName`/`label` are compared below only as structural identity (which
+// group a code lives in, which variant it is), not as translated display text, so unwrap either
+// shape down to its Spanish string before comparing — otherwise every group/variant would report
+// as "differs in structure" purely from the wrapping change, not an actual content drift.
+function localize(value) {
+  if (value == null) return null;
+  return typeof value === "object" ? (value.es ?? value.en ?? null) : value;
+}
+
 function structuralCode(code) {
   return {
     id: code.id,
@@ -34,7 +45,7 @@ function structuralCode(code) {
     smsBody: code.smsBody ?? null,
     options: code.options ?? null,
     isSubscription: code.isSubscription ?? false,
-    variants: (code.variants ?? []).map((v) => ({ label: v.label, smsBody: v.smsBody })),
+    variants: (code.variants ?? []).map((v) => ({ label: localize(v.label), smsBody: v.smsBody })),
   };
 }
 
@@ -46,7 +57,7 @@ function flatten(catalog) {
   for (const category of catalog.categories ?? []) {
     categoryOrder.push(category.id);
     for (const group of category.groups ?? []) {
-      const groupName = group.name ?? null;
+      const groupName = localize(group.name);
       for (const code of group.codes ?? []) {
         rows.push({ categoryId: category.id, groupName, ...structuralCode(code) });
       }

@@ -100,7 +100,7 @@ final class USSDCodeStore {
     /// instead of hardcoding them in the view.
     func group(named name: String) -> USSDCodeGroup? {
         for category in categories {
-            if let match = category.groups.first(where: { $0.name == name }) {
+            if let match = category.groups.first(where: { $0.name?.es == name }) {
                 return match
             }
         }

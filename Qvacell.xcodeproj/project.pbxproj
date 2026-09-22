@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00A116E10A8F88A9983DAC1C /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6EBC038E535B3BCAEE163B /* Services.swift */; };
 		1BBBCFDDA242479263ABC83C /* codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3737C9D32EA41E146FB8F112 /* codes.json */; };
-		D32A48688FE6C23B843C5FCC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DA559E81D755F26FF024584F /* Localizable.xcstrings */; };
 		2AAA6CCB88EE275D33FF9795 /* CallerIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */; };
 		3DD0EF7C461E407EB6D928C7 /* Qvacell.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E8FFA6F6625D1A2D30B598 /* Qvacell.xcassets */; };
 		4EEF6A5BC4B63C9BE876667D /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5327CE953B7E62F240584E /* Views.swift */; };
@@ -19,6 +18,7 @@
 		983135DC85990D1F471681C6 /* wifi_navigation_rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */; };
 		9A4344702172E06C11EA7C7A /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */; };
 		BCCC7D4D840D07A95DFFB2C5 /* CallerIDExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D32A48688FE6C23B843C5FCC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DA559E81D755F26FF024584F /* Localizable.xcstrings */; };
 		FD5716B54BF3C4E6D4EE9B10 /* QvacellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A6043F64E4118A05AFEE9A /* QvacellApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,6 @@
 		3151AF1B92A77020CC07419E /* CallerIDExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallerIDExtension.entitlements; sourceTree = "<group>"; };
 		3737C9D32EA41E146FB8F112 /* codes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = codes.json; sourceTree = "<group>"; };
 		4A68326477E11D3FA4066B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		DA559E81D755F26FF024584F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4B6EBC038E535B3BCAEE163B /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		4E5327CE953B7E62F240584E /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		54A6043F64E4118A05AFEE9A /* QvacellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvacellApp.swift; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		BA9AF16B501E0D7F3BC18BFD /* wifi_navigation_rooms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wifi_navigation_rooms.json; sourceTree = "<group>"; };
 		C399DCC1FC26430B939D5C09 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		C8E8FFA6F6625D1A2D30B598 /* Qvacell.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Qvacell.xcassets; sourceTree = "<group>"; };
+		DA559E81D755F26FF024584F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E0357C6DBBEFC6A02BB65F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FA686A05D19BF528961E2960 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,7 +169,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2630;
 			};
 			buildConfigurationList = 5B68646823E8E87B011C5C47 /* Build configuration list for PBXProject "Qvacell" */;
 			developmentRegion = es;
@@ -244,6 +244,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -275,8 +276,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -297,6 +300,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -308,7 +312,6 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallerIDExtension/CallerIDExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				INFOPLIST_FILE = CallerIDExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,7 +335,6 @@
 				CODE_SIGN_ENTITLEMENTS = Qvacell/Qvacell.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				INFOPLIST_FILE = Qvacell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -353,7 +355,6 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallerIDExtension/CallerIDExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				INFOPLIST_FILE = CallerIDExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -373,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -404,8 +406,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -419,6 +423,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -433,7 +438,6 @@
 				CODE_SIGN_ENTITLEMENTS = Qvacell/Qvacell.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7W3D3JL6PV;
 				INFOPLIST_FILE = Qvacell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

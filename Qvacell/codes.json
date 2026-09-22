@@ -4,517 +4,698 @@
   "categories": [
     {
       "id": "home",
-      "name": "Home",
+      "name": {
+        "es": "Home",
+        "en": "Home"
+      },
       "icon": "house.fill",
       "groups": [
         {
-          "name": "Saldo y Planes",
+          "name": {
+            "es": "Saldo y Planes",
+            "en": "Balance and Plans"
+          },
           "codes": [
             {
               "id": "main-balance",
               "code": "*222#",
-              "title": "Saldo Principal",
-              "details": "Consulta tu saldo, minutos, SMS y datos.",
+              "title": {
+                "es": "Saldo Principal",
+                "en": "Main Balance"
+              },
+              "details": {
+                "es": "Consulta tu saldo, minutos, SMS y datos.",
+                "en": "Check your balance, minutes, SMS and data."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Main Balance",
-              "details_en": "Check your balance, minutes, SMS and data."
+              "requiresInput": false
             },
             {
               "id": "bonus-usd-plans",
               "code": "*222*266#",
-              "title": "Bonos y Planes en USD",
-              "details": "Consulta tus bonos y planes en USD.",
+              "title": {
+                "es": "Bonos y Planes en USD",
+                "en": "USD Bonuses and Plans"
+              },
+              "details": {
+                "es": "Consulta tus bonos y planes en USD.",
+                "en": "Check your USD bonuses and plans."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "USD Bonuses and Plans",
-              "details_en": "Check your USD bonuses and plans."
+              "requiresInput": false
             },
             {
               "id": "data-plan",
               "code": "*222*328#",
-              "title": "Plan de Datos",
-              "details": "Consulta tu plan de datos contratado.",
+              "title": {
+                "es": "Plan de Datos",
+                "en": "Data Plan"
+              },
+              "details": {
+                "es": "Consulta tu plan de datos contratado.",
+                "en": "Check your contracted data plan."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Data Plan",
-              "details_en": "Check your contracted data plan."
+              "requiresInput": false
             },
             {
               "id": "voice-balance",
               "code": "*222*869#",
-              "title": "Plan o Minutos de Voz",
-              "details": "Consulta tu plan o minutos de voz.",
+              "title": {
+                "es": "Plan o Minutos de Voz",
+                "en": "Voice Plan or Minutes"
+              },
+              "details": {
+                "es": "Consulta tu plan o minutos de voz.",
+                "en": "Check your voice plan or minutes."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Voice Plan or Minutes",
-              "details_en": "Check your voice plan or minutes."
+              "requiresInput": false
             },
             {
               "id": "sms-balance",
               "code": "*222*767#",
-              "title": "Plan de SMS",
-              "details": "Consulta tu plan de SMS.",
+              "title": {
+                "es": "Plan de SMS",
+                "en": "SMS Plan"
+              },
+              "details": {
+                "es": "Consulta tu plan de SMS.",
+                "en": "Check your SMS plan."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "SMS Plan",
-              "details_en": "Check your SMS plan."
+              "requiresInput": false
             },
             {
               "id": "national-recharge-limit",
               "code": "*222*732#",
-              "title": "Límite de Recargas Nacionales",
-              "details": "Consulta el estado del límite de recargas nacionales (360 CUP en 30 días).",
+              "title": {
+                "es": "Límite de Recargas Nacionales",
+                "en": "National Recharge Limit"
+              },
+              "details": {
+                "es": "Consulta el estado del límite de recargas nacionales (360 CUP en 30 días).",
+                "en": "Check the status of your national recharge limit (360 CUP per 30 days)."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "National Recharge Limit",
-              "details_en": "Check the status of your national recharge limit (360 CUP per 30 days)."
+              "requiresInput": false
             },
             {
               "id": "postpaid-balance",
               "code": "*111#",
-              "title": "Saldo Pospago o Institucional",
-              "details": "Consulta tu saldo pospago o institucional.",
+              "title": {
+                "es": "Saldo Pospago o Institucional",
+                "en": "Postpaid or Institutional Balance"
+              },
+              "details": {
+                "es": "Consulta tu saldo pospago o institucional.",
+                "en": "Check your postpaid or institutional balance."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Postpaid or Institutional Balance",
-              "details_en": "Check your postpaid or institutional balance."
+              "requiresInput": false
             },
             {
               "id": "friends-plan",
               "code": "*222*264#",
-              "title": "Estado del Plan Amigos",
-              "details": "Consulta el estado de tu Plan Amigos.",
+              "title": {
+                "es": "Estado del Plan Amigos",
+                "en": "Friends Plan Status"
+              },
+              "details": {
+                "es": "Consulta el estado de tu Plan Amigos.",
+                "en": "Check the status of your Friends Plan."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Friends Plan Status",
-              "details_en": "Check the status of your Friends Plan."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Balance and Plans"
+          ]
         },
         {
-          "name": "Transferir",
+          "name": {
+            "es": "Transferir",
+            "en": "Transfer"
+          },
           "codes": [
             {
               "id": "transfer-direct",
               "code": "*234*1*{phoneNumber}*{pin}*{amount}#",
-              "title": "Transferir Saldo",
-              "details": "Transfiere saldo a otro número con tu clave de transferencia.",
+              "title": {
+                "es": "Transferir Saldo",
+                "en": "Transfer Balance"
+              },
+              "details": {
+                "es": "Transfiere saldo a otro número con tu clave de transferencia.",
+                "en": "Transfer balance to another number with your transfer PIN."
+              },
               "type": "ussd",
-              "requiresInput": true,
-              "title_en": "Transfer Balance",
-              "details_en": "Transfer balance to another number with your transfer PIN."
+              "requiresInput": true
             },
             {
               "id": "transfer-pin-change",
               "code": "*234*2*{current}*{new}#",
-              "title": "Cambiar Clave de Transferencia",
-              "details": "Cambia la clave que usas para transferir saldo a otros números.",
+              "title": {
+                "es": "Cambiar Clave de Transferencia",
+                "en": "Change Transfer PIN"
+              },
+              "details": {
+                "es": "Cambia la clave que usas para transferir saldo a otros números.",
+                "en": "Change the PIN you use to transfer balance to other numbers."
+              },
               "type": "ussd",
-              "requiresInput": true,
-              "title_en": "Change Transfer PIN",
-              "details_en": "Change the PIN you use to transfer balance to other numbers."
+              "requiresInput": true
             }
-          ],
-          "name_en": "Transfer"
+          ]
         },
         {
-          "name": "Recargar",
+          "name": {
+            "es": "Recargar",
+            "en": "Recharge"
+          },
           "codes": [
             {
               "id": "recharge-card",
               "code": "*662*{input}#",
-              "title": "Recargar con Tarjeta",
-              "details": "Recarga tu saldo con una tarjeta prepago.",
+              "title": {
+                "es": "Recargar con Tarjeta",
+                "en": "Recharge with Card"
+              },
+              "details": {
+                "es": "Recarga tu saldo con una tarjeta prepago.",
+                "en": "Recharge your balance with a prepaid card."
+              },
               "type": "ussd",
               "requiresInput": true,
-              "inputPlaceholder": "Número de tarjeta",
-              "title_en": "Recharge with Card",
-              "details_en": "Recharge your balance with a prepaid card."
+              "inputPlaceholder": "Número de tarjeta"
             },
             {
               "id": "recharge-call",
               "code": "*666",
-              "title": "Recargar por Llamada",
-              "details": "Recarga tu saldo llamando a este número.",
+              "title": {
+                "es": "Recargar por Llamada",
+                "en": "Recharge by Call"
+              },
+              "details": {
+                "es": "Recarga tu saldo llamando a este número.",
+                "en": "Recharge your balance by calling this number."
+              },
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Recharge by Call",
-              "details_en": "Recharge your balance by calling this number."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Recharge"
+          ]
         },
         {
-          "name": "Servicio Adelanta Saldo",
+          "name": {
+            "es": "Servicio Adelanta Saldo",
+            "en": "Balance Advance Service"
+          },
           "codes": [
             {
               "id": "advance-balance-25",
               "code": "*234*3*1*25#",
-              "title": "$25.00",
+              "title": {
+                "es": "$25.00",
+                "en": "$25.00"
+              },
               "price": "$25.00",
-              "details": "Adelanta $25 de saldo.",
+              "details": {
+                "es": "Adelanta $25 de saldo.",
+                "en": "Advance $25 of balance."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "$25.00",
-              "details_en": "Advance $25 of balance."
+              "requiresInput": false
             },
             {
               "id": "advance-balance-50",
               "code": "*234*3*1*50#",
-              "title": "$50.00",
+              "title": {
+                "es": "$50.00",
+                "en": "$50.00"
+              },
               "price": "$50.00",
-              "details": "Adelanta $50 de saldo.",
+              "details": {
+                "es": "Adelanta $50 de saldo.",
+                "en": "Advance $50 of balance."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "$50.00",
-              "details_en": "Advance $50 of balance."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Balance Advance Service"
+          ]
         },
         {
-          "name": "Gestionar Plan Amigo",
+          "name": {
+            "es": "Gestionar Plan Amigo",
+            "en": "Manage Friends Plan"
+          },
           "codes": [
             {
               "id": "friends-plan-activate",
               "code": "*133*4*1*1#",
-              "title": "Activar Plan Amigo",
-              "details": "Activa el Plan Amigos por $25.",
+              "title": {
+                "es": "Activar Plan Amigo",
+                "en": "Activate Friends Plan"
+              },
+              "details": {
+                "es": "Activa el Plan Amigos por $25.",
+                "en": "Activate the Friends Plan for $25."
+              },
               "price": "$25.00",
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Activate Friends Plan",
-              "details_en": "Activate the Friends Plan for $25."
+              "requiresInput": false
             },
             {
               "id": "friends-plan-deactivate",
               "code": "*133*4*1*2#",
-              "title": "Desactivar Plan Amigo",
-              "details": "Desactiva el Plan Amigos.",
+              "title": {
+                "es": "Desactivar Plan Amigo",
+                "en": "Deactivate Friends Plan"
+              },
+              "details": {
+                "es": "Desactiva el Plan Amigos.",
+                "en": "Deactivate the Friends Plan."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Deactivate Friends Plan",
-              "details_en": "Deactivate the Friends Plan."
+              "requiresInput": false
             },
             {
               "id": "friends-plan-add-member",
               "code": "*133*4*2*1*{input}#",
-              "title": "Agregar Amigo al Plan",
-              "details": "Agrega un número a tu Plan Amigos.",
+              "title": {
+                "es": "Agregar Amigo al Plan",
+                "en": "Add Friend to Plan"
+              },
+              "details": {
+                "es": "Agrega un número a tu Plan Amigos.",
+                "en": "Add a number to your Friends Plan."
+              },
               "type": "ussd",
               "requiresInput": true,
-              "inputPlaceholder": "Número del amigo",
-              "title_en": "Add Friend to Plan",
-              "details_en": "Add a number to your Friends Plan."
+              "inputPlaceholder": "Número del amigo"
             },
             {
               "id": "friends-plan-remove-member",
               "code": "*133*4*2*2*{input}#",
-              "title": "Eliminar Amigo del Plan",
-              "details": "Elimina un número de tu Plan Amigos.",
+              "title": {
+                "es": "Eliminar Amigo del Plan",
+                "en": "Remove Friend from Plan"
+              },
+              "details": {
+                "es": "Elimina un número de tu Plan Amigos.",
+                "en": "Remove a number from your Friends Plan."
+              },
               "type": "ussd",
               "requiresInput": true,
-              "inputPlaceholder": "Número del amigo",
-              "title_en": "Remove Friend from Plan",
-              "details_en": "Remove a number from your Friends Plan."
+              "inputPlaceholder": "Número del amigo"
             },
             {
               "id": "friends-plan-status-settings",
               "code": "*133*4*3#",
-              "title": "Consultar Plan Amigo",
-              "details": "Consulta el estado de tu Plan Amigos.",
+              "title": {
+                "es": "Consultar Plan Amigo",
+                "en": "Check Friends Plan"
+              },
+              "details": {
+                "es": "Consulta el estado de tu Plan Amigos.",
+                "en": "Check the status of your Friends Plan."
+              },
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Check Friends Plan",
-              "details_en": "Check the status of your Friends Plan."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Manage Friends Plan"
+          ]
         },
         {
-          "name": "Configuraciones",
+          "name": {
+            "es": "Configuraciones",
+            "en": "Settings"
+          },
           "codes": [
             {
               "id": "sms-2266-lte",
               "code": "2266",
               "smsBody": "LTE",
-              "title": "Activar Línea 4G (LTE)",
-              "details": "Activa tu línea para navegar por 4G/LTE.",
+              "title": {
+                "es": "Activar Línea 4G (LTE)",
+                "en": "Activate 4G (LTE) Line"
+              },
+              "details": {
+                "es": "Activa tu línea para navegar por 4G/LTE.",
+                "en": "Activates your line for browsing on 4G/LTE."
+              },
               "icon": "antenna.radiowaves.left.and.right",
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "Activate 4G (LTE) Line",
-              "details_en": "Activates your line for browsing on 4G/LTE."
+              "compact": true
             },
             {
               "id": "sms-2266-imei",
               "code": "2266",
               "smsBody": "{input}",
-              "title": "Comprobar Compatibilidad 3G/4G",
-              "details": "Envía los primeros 8 dígitos de tu IMEI para saber si tu teléfono es compatible con 3G o 4G.",
+              "title": {
+                "es": "Comprobar Compatibilidad 3G/4G",
+                "en": "Check 3G/4G Compatibility"
+              },
+              "details": {
+                "es": "Envía los primeros 8 dígitos de tu IMEI para saber si tu teléfono es compatible con 3G o 4G.",
+                "en": "Send the first 8 digits of your IMEI to find out if your phone supports 3G or 4G."
+              },
               "icon": "checkmark.circle.fill",
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "IMEI (8 dígitos)",
-              "compact": true,
-              "title_en": "Check 3G/4G Compatibility",
-              "details_en": "Send the first 8 digits of your IMEI to find out if your phone supports 3G or 4G."
+              "compact": true
             },
             {
               "id": "sms-4222-mms-config",
               "code": "4222",
               "smsBody": "{input}",
-              "title": "Configurar MMS",
-              "details": "Envía los primeros 9 dígitos de tu correo electrónico al 4222 para configurar el MMS.",
+              "title": {
+                "es": "Configurar MMS",
+                "en": "Set Up MMS"
+              },
+              "details": {
+                "es": "Envía los primeros 9 dígitos de tu correo electrónico al 4222 para configurar el MMS.",
+                "en": "Send the first 9 digits of your email to 4222 to set up MMS."
+              },
               "icon": "photo.on.rectangle.angled",
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "Primeros 9 dígitos de tu email",
-              "compact": true,
-              "title_en": "Set Up MMS",
-              "details_en": "Send the first 9 digits of your email to 4222 to set up MMS."
+              "compact": true
             }
-          ],
-          "name_en": "Settings"
+          ]
         },
         {
-          "name": "Opciones",
+          "name": {
+            "es": "Opciones",
+            "en": "Options"
+          },
           "codes": [
             {
               "id": "data-pay-per-use",
               "code": "*133*1*1#",
-              "title": "Tarifa por Consumo (Activar/Desactivar)",
-              "details": "Activa el cobro de datos por consumo, sin plan fijo.",
+              "title": {
+                "es": "Tarifa por Consumo (Activar/Desactivar)",
+                "en": "Pay-Per-Use Data (Enable/Disable)"
+              },
+              "details": {
+                "es": "Activa el cobro de datos por consumo, sin plan fijo.",
+                "en": "Enable data billed by usage, with no fixed plan."
+              },
               "compact": true,
               "type": "ussd",
-              "requiresInput": false,
-              "title_en": "Pay-Per-Use Data (Enable/Disable)",
-              "details_en": "Enable data billed by usage, with no fixed plan."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Options"
+          ]
         }
-      ],
-      "name_en": "Home"
+      ]
     },
     {
       "id": "purchase",
-      "name": "Compras",
+      "name": {
+        "es": "Compras",
+        "en": "Purchases"
+      },
       "icon": "cart",
       "groups": [
         {
-          "name": "Datos",
+          "name": {
+            "es": "Datos",
+            "en": "Data"
+          },
           "codes": [
             {
               "id": "data-bundle-45gb",
               "code": "*133*1*4*1#",
-              "title": "Plan de 4.5GB",
-              "details": "4.5GB de datos.",
+              "title": {
+                "es": "Plan de 4.5GB",
+                "en": "4.5GB Plan"
+              },
+              "details": {
+                "es": "4.5GB de datos.",
+                "en": "4.5GB of data."
+              },
               "price": "$240.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*1*4*1*1#",
-              "title_en": "4.5GB Plan",
-              "details_en": "4.5GB of data."
+              "noConfirmCode": "*133*1*4*1*1#"
             },
             {
               "id": "data-daily-plan",
               "code": "*133*1*3#",
-              "title": "Plan Diario 200MB",
-              "details": "200MB por día.",
+              "title": {
+                "es": "Plan Diario 200MB",
+                "en": "Daily 200MB Plan"
+              },
+              "details": {
+                "es": "200MB por día.",
+                "en": "200MB per day."
+              },
               "price": "$25.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*1*3*1#",
-              "title_en": "Daily 200MB Plan",
-              "details_en": "200MB per day."
+              "noConfirmCode": "*133*1*3*1#"
             },
             {
               "id": "data-todus-plan",
               "code": "*133*1*2#",
-              "title": "Plan ToDus",
-              "details": "Datos para la app ToDus.",
+              "title": {
+                "es": "Plan ToDus",
+                "en": "ToDus Plan"
+              },
+              "details": {
+                "es": "Datos para la app ToDus.",
+                "en": "Data for the ToDus app."
+              },
               "price": "$25.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*1*2*1#",
-              "title_en": "ToDus Plan",
-              "details_en": "Data for the ToDus app."
+              "noConfirmCode": "*133*1*2*1#"
             }
-          ],
-          "name_en": "Data"
+          ]
         },
         {
-          "name": "Planes Combinados",
+          "name": {
+            "es": "Planes Combinados",
+            "en": "Combo Plans"
+          },
           "codes": [
             {
               "id": "data-bundle-2gb-combo",
               "code": "*133*1*4*2#",
-              "title": "2GB + 15MIN + 20SMS",
-              "details": "Datos, minutos y SMS en un solo combo.",
+              "title": {
+                "es": "2GB + 15MIN + 20SMS",
+                "en": "2GB + 15MIN + 20SMS"
+              },
+              "details": {
+                "es": "Datos, minutos y SMS en un solo combo.",
+                "en": "Data, minutes and SMS in a single combo."
+              },
               "price": "$120.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*1*4*2*1#",
-              "title_en": "2GB + 15MIN + 20SMS",
-              "details_en": "Data, minutes and SMS in a single combo."
+              "noConfirmCode": "*133*1*4*2*1#"
             },
             {
               "id": "data-bundle-4gb-combo",
               "code": "*133*1*4*3#",
-              "title": "4GB + 35MIN + 40SMS",
-              "details": "Datos, minutos y SMS en un solo combo.",
+              "title": {
+                "es": "4GB + 35MIN + 40SMS",
+                "en": "4GB + 35MIN + 40SMS"
+              },
+              "details": {
+                "es": "Datos, minutos y SMS en un solo combo.",
+                "en": "Data, minutes and SMS in a single combo."
+              },
               "price": "$240.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*1*4*3*1#",
-              "title_en": "4GB + 35MIN + 40SMS",
-              "details_en": "Data, minutes and SMS in a single combo."
+              "noConfirmCode": "*133*1*4*3*1#"
             },
             {
               "id": "data-bundle-6gb-combo",
               "code": "*133*1*4*4#",
-              "title": "6GB + 60MIN + 70SMS",
-              "details": "Datos, minutos y SMS en un solo combo.",
+              "title": {
+                "es": "6GB + 60MIN + 70SMS",
+                "en": "6GB + 60MIN + 70SMS"
+              },
+              "details": {
+                "es": "Datos, minutos y SMS en un solo combo.",
+                "en": "Data, minutes and SMS in a single combo."
+              },
               "price": "$360.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*1*4*4*1#",
-              "title_en": "6GB + 60MIN + 70SMS",
-              "details_en": "Data, minutes and SMS in a single combo."
+              "noConfirmCode": "*133*1*4*4*1#"
             }
-          ],
-          "name_en": "Combo Plans"
+          ]
         },
         {
-          "name": "SMS",
+          "name": {
+            "es": "SMS",
+            "en": "SMS"
+          },
           "codes": [
             {
               "id": "sms-bundle-20",
               "code": "*133*2*1#",
-              "title": "Plan de 20 SMS",
-              "details": "20 SMS.",
+              "title": {
+                "es": "Plan de 20 SMS",
+                "en": "20 SMS Plan"
+              },
+              "details": {
+                "es": "20 SMS.",
+                "en": "20 SMS."
+              },
               "price": "$15.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*2*1*1#",
-              "title_en": "20 SMS Plan",
-              "details_en": "20 SMS."
+              "noConfirmCode": "*133*2*1*1#"
             },
             {
               "id": "sms-bundle-50",
               "code": "*133*2*2#",
-              "title": "Plan de 50 SMS",
-              "details": "50 SMS.",
+              "title": {
+                "es": "Plan de 50 SMS",
+                "en": "50 SMS Plan"
+              },
+              "details": {
+                "es": "50 SMS.",
+                "en": "50 SMS."
+              },
               "price": "$30.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*2*2*1#",
-              "title_en": "50 SMS Plan",
-              "details_en": "50 SMS."
+              "noConfirmCode": "*133*2*2*1#"
             },
             {
               "id": "sms-bundle-90",
               "code": "*133*2*3#",
-              "title": "Plan de 90 SMS",
-              "details": "90 SMS.",
+              "title": {
+                "es": "Plan de 90 SMS",
+                "en": "90 SMS Plan"
+              },
+              "details": {
+                "es": "90 SMS.",
+                "en": "90 SMS."
+              },
               "price": "$50.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*2*3*1#",
-              "title_en": "90 SMS Plan",
-              "details_en": "90 SMS."
+              "noConfirmCode": "*133*2*3*1#"
             },
             {
               "id": "sms-bundle-120",
               "code": "*133*2*4#",
-              "title": "Plan de 120 SMS",
-              "details": "120 SMS.",
+              "title": {
+                "es": "Plan de 120 SMS",
+                "en": "120 SMS Plan"
+              },
+              "details": {
+                "es": "120 SMS.",
+                "en": "120 SMS."
+              },
               "price": "$60.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*2*4*1#",
-              "title_en": "120 SMS Plan",
-              "details_en": "120 SMS."
+              "noConfirmCode": "*133*2*4*1#"
             }
-          ],
-          "name_en": "SMS"
+          ]
         },
         {
-          "name": "Voz",
+          "name": {
+            "es": "Voz",
+            "en": "Voice"
+          },
           "codes": [
             {
               "id": "voice-bundle-5min",
               "code": "*133*3*1#",
-              "title": "Plan de 5 MIN",
-              "details": "5 minutos.",
+              "title": {
+                "es": "Plan de 5 MIN",
+                "en": "5 MIN Plan"
+              },
+              "details": {
+                "es": "5 minutos.",
+                "en": "5 minutes."
+              },
               "price": "$37.50",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*3*1*1#",
-              "title_en": "5 MIN Plan",
-              "details_en": "5 minutes."
+              "noConfirmCode": "*133*3*1*1#"
             },
             {
               "id": "voice-bundle-10min",
               "code": "*133*3*2#",
-              "title": "Plan de 10 MIN",
-              "details": "10 minutos.",
+              "title": {
+                "es": "Plan de 10 MIN",
+                "en": "10 MIN Plan"
+              },
+              "details": {
+                "es": "10 minutos.",
+                "en": "10 minutes."
+              },
               "price": "$72.50",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*3*2*1#",
-              "title_en": "10 MIN Plan",
-              "details_en": "10 minutes."
+              "noConfirmCode": "*133*3*2*1#"
             },
             {
               "id": "voice-bundle-15min",
               "code": "*133*3*3#",
-              "title": "Plan de 15 MIN",
-              "details": "15 minutos.",
+              "title": {
+                "es": "Plan de 15 MIN",
+                "en": "15 MIN Plan"
+              },
+              "details": {
+                "es": "15 minutos.",
+                "en": "15 minutes."
+              },
               "price": "$105.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*3*3*1#",
-              "title_en": "15 MIN Plan",
-              "details_en": "15 minutes."
+              "noConfirmCode": "*133*3*3*1#"
             },
             {
               "id": "voice-bundle-25min",
               "code": "*133*3*4#",
-              "title": "Plan de 25 MIN",
-              "details": "25 minutos.",
+              "title": {
+                "es": "Plan de 25 MIN",
+                "en": "25 MIN Plan"
+              },
+              "details": {
+                "es": "25 minutos.",
+                "en": "25 minutes."
+              },
               "price": "$162.50",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*3*4*1#",
-              "title_en": "25 MIN Plan",
-              "details_en": "25 minutes."
+              "noConfirmCode": "*133*3*4*1#"
             },
             {
               "id": "voice-bundle-40min",
               "code": "*133*3*5#",
-              "title": "Plan de 40 MIN",
-              "details": "40 minutos.",
+              "title": {
+                "es": "Plan de 40 MIN",
+                "en": "40 MIN Plan"
+              },
+              "details": {
+                "es": "40 minutos.",
+                "en": "40 minutes."
+              },
               "price": "$250.00",
               "type": "ussd",
               "requiresInput": false,
-              "noConfirmCode": "*133*3*5*1#",
-              "title_en": "40 MIN Plan",
-              "details_en": "40 minutes."
+              "noConfirmCode": "*133*3*5*1#"
             }
-          ],
-          "name_en": "Voice"
+          ]
         }
-      ],
-      "name_en": "Purchases"
+      ]
     },
     {
       "id": "helplines",
-      "name": "Líneas de Ayuda",
+      "name": {
+        "es": "Líneas de Ayuda",
+        "en": "Helplines"
+      },
       "icon": "flipphone",
       "groups": [
         {
@@ -523,851 +704,1128 @@
             {
               "id": "voicemail",
               "code": "*123",
-              "title": "Buzón de Voz",
-              "details": "Accede a tu buzón de voz.",
+              "title": {
+                "es": "Buzón de Voz",
+                "en": "Voicemail"
+              },
+              "details": {
+                "es": "Accede a tu buzón de voz.",
+                "en": "Access your voicemail."
+              },
               "icon": "recordingtape",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Voicemail",
-              "details_en": "Access your voicemail."
+              "requiresInput": false
             },
             {
               "id": "customer-service",
               "code": "*2266",
-              "title": "Atención al Cliente",
-              "details": "Soporte, dudas, o activar el buzón de voz en tu teléfono.",
+              "title": {
+                "es": "Atención al Cliente",
+                "en": "Customer Service"
+              },
+              "details": {
+                "es": "Soporte, dudas, o activar el buzón de voz en tu teléfono.",
+                "en": "Support, questions, or activate voicemail on your phone."
+              },
               "icon": "headphones",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Customer Service",
-              "details_en": "Support, questions, or activate voicemail on your phone."
+              "requiresInput": false
             }
           ]
         },
         {
-          "name": "Emergencias y Seguridad",
+          "name": {
+            "es": "Emergencias y Seguridad",
+            "en": "Emergency and Safety"
+          },
           "codes": [
             {
               "id": "emergency-antidrugs",
               "code": "103",
-              "title": "Línea Antidrogas",
-              "details": "Apoyo a adicciones.",
+              "title": {
+                "es": "Línea Antidrogas",
+                "en": "Anti-Drug Hotline"
+              },
+              "details": {
+                "es": "Apoyo a adicciones.",
+                "en": "Addiction support."
+              },
               "icon": "pills.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Anti-Drug Hotline",
-              "details_en": "Addiction support."
+              "requiresInput": false
             },
             {
               "id": "emergency-ambulance",
               "code": "104",
-              "title": "Ambulancia (SIUM)",
-              "details": "Servicio de ambulancias.",
+              "title": {
+                "es": "Ambulancia (SIUM)",
+                "en": "Ambulance (SIUM)"
+              },
+              "details": {
+                "es": "Servicio de ambulancias.",
+                "en": "Ambulance service."
+              },
               "icon": "cross.case.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Ambulance (SIUM)",
-              "details_en": "Ambulance service."
+              "requiresInput": false
             },
             {
               "id": "emergency-firefighters",
               "code": "105",
-              "title": "Bomberos",
-              "details": "También para escapes graves de gas.",
+              "title": {
+                "es": "Bomberos",
+                "en": "Fire Department"
+              },
+              "details": {
+                "es": "También para escapes graves de gas.",
+                "en": "Also for serious gas leaks."
+              },
               "icon": "flame.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Fire Department",
-              "details_en": "Also for serious gas leaks."
+              "requiresInput": false
             },
             {
               "id": "emergency-police",
               "code": "106",
-              "title": "Policía Nacional (PNR)",
-              "details": "Policía Nacional Revolucionaria.",
+              "title": {
+                "es": "Policía Nacional (PNR)",
+                "en": "National Police (PNR)"
+              },
+              "details": {
+                "es": "Policía Nacional Revolucionaria.",
+                "en": "Revolutionary National Police."
+              },
               "icon": "shield.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "National Police (PNR)",
-              "details_en": "Revolutionary National Police."
+              "requiresInput": false
             },
             {
               "id": "emergency-coastguard",
               "code": "107",
-              "title": "Salvamento Marítimo",
-              "details": "Tropas Guardafronteras.",
+              "title": {
+                "es": "Salvamento Marítimo",
+                "en": "Maritime Rescue"
+              },
+              "details": {
+                "es": "Tropas Guardafronteras.",
+                "en": "Border Guard Troops."
+              },
               "icon": "sailboat.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Maritime Rescue",
-              "details_en": "Border Guard Troops."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Emergency and Safety"
+          ]
         },
         {
-          "name": "Servicios Básicos del Hogar",
+          "name": {
+            "es": "Servicios Básicos del Hogar",
+            "en": "Basic Home Services"
+          },
           "codes": [
             {
               "id": "home-electricity",
               "code": "18888",
-              "title": "Averías Eléctricas (UNE)",
-              "details": "Reporte de cortes y averías eléctricas.",
+              "title": {
+                "es": "Averías Eléctricas (UNE)",
+                "en": "Power Outages (UNE)"
+              },
+              "details": {
+                "es": "Reporte de cortes y averías eléctricas.",
+                "en": "Report power outages and faults."
+              },
               "icon": "bolt.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Power Outages (UNE)",
-              "details_en": "Report power outages and faults."
+              "requiresInput": false
             },
             {
               "id": "home-water",
               "code": "18838",
-              "title": "Averías de Agua",
-              "details": "Salideros y roturas de tuberías (Acueducto).",
+              "title": {
+                "es": "Averías de Agua",
+                "en": "Water Leaks"
+              },
+              "details": {
+                "es": "Salideros y roturas de tuberías (Acueducto).",
+                "en": "Leaks and burst pipes (Aqueduct)."
+              },
               "icon": "drop.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Water Leaks",
-              "details_en": "Leaks and burst pipes (Aqueduct)."
+              "requiresInput": false
             },
             {
               "id": "home-gas",
               "code": "7833-3333",
-              "title": "Averías de Gas",
-              "details": "Gas manufacturado — línea directa en La Habana.",
+              "title": {
+                "es": "Averías de Gas",
+                "en": "Gas Leaks"
+              },
+              "details": {
+                "es": "Gas manufacturado — línea directa en La Habana.",
+                "en": "Manufactured gas — direct line in Havana."
+              },
               "icon": "flame",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Gas Leaks",
-              "details_en": "Manufactured gas — direct line in Havana."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Basic Home Services"
+          ]
         },
         {
-          "name": "Servicios ETECSA y Teléfono",
+          "name": {
+            "es": "Servicios ETECSA y Teléfono",
+            "en": "ETECSA and Phone Services"
+          },
           "codes": [
             {
               "id": "etecsa-assisted-calls",
               "code": "112",
-              "title": "Llamadas Asistidas",
-              "details": "Gestión de llamadas asistidas, nacionales e internacionales.",
+              "title": {
+                "es": "Llamadas Asistidas",
+                "en": "Assisted Calls"
+              },
+              "details": {
+                "es": "Gestión de llamadas asistidas, nacionales e internacionales.",
+                "en": "Manage assisted calls, domestic and international."
+              },
               "icon": "phone.arrow.up.right",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Assisted Calls",
-              "details_en": "Manage assisted calls, domestic and international."
+              "requiresInput": false
             },
             {
               "id": "etecsa-directory",
               "code": "113",
-              "title": "Información y Guía Telefónica",
-              "details": "Para pedir un número.",
+              "title": {
+                "es": "Información y Guía Telefónica",
+                "en": "Directory Assistance"
+              },
+              "details": {
+                "es": "Para pedir un número.",
+                "en": "To request a number."
+              },
               "icon": "info.circle.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Directory Assistance",
-              "details_en": "To request a number."
+              "requiresInput": false
             },
             {
               "id": "etecsa-landline-report",
               "code": "114",
-              "title": "Averías de Teléfono Fijo",
-              "details": "Reporte de interrupciones de telefonía fija.",
+              "title": {
+                "es": "Averías de Teléfono Fijo",
+                "en": "Landline Faults"
+              },
+              "details": {
+                "es": "Reporte de interrupciones de telefonía fija.",
+                "en": "Report landline service interruptions."
+              },
               "icon": "phone.down.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Landline Faults",
-              "details_en": "Report landline service interruptions."
+              "requiresInput": false
             },
             {
               "id": "etecsa-general-info",
               "code": "115",
-              "title": "Información General ETECSA",
-              "details": "Información general y trámites comerciales.",
+              "title": {
+                "es": "Información General ETECSA",
+                "en": "ETECSA General Information"
+              },
+              "details": {
+                "es": "Información general y trámites comerciales.",
+                "en": "General information and commercial procedures."
+              },
               "icon": "building.2.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "ETECSA General Information",
-              "details_en": "General information and commercial procedures."
+              "requiresInput": false
             },
             {
               "id": "etecsa-time-signal",
               "code": "116",
-              "title": "Señal Horaria",
-              "details": "La hora exacta.",
+              "title": {
+                "es": "Señal Horaria",
+                "en": "Time Signal"
+              },
+              "details": {
+                "es": "La hora exacta.",
+                "en": "The exact time."
+              },
               "icon": "clock.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Time Signal",
-              "details_en": "The exact time."
+              "requiresInput": false
             },
             {
               "id": "etecsa-commercial",
               "code": "118",
-              "title": "Atención Comercial ETECSA",
-              "details": "Atención comercial unificada.",
+              "title": {
+                "es": "Atención Comercial ETECSA",
+                "en": "ETECSA Customer Service"
+              },
+              "details": {
+                "es": "Atención comercial unificada.",
+                "en": "Unified customer service."
+              },
               "icon": "person.2.wave.2.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "ETECSA Customer Service",
-              "details_en": "Unified customer service."
+              "requiresInput": false
             }
-          ],
-          "name_en": "ETECSA and Phone Services"
+          ]
         },
         {
-          "name": "Quejas y Atención Ciudadana",
+          "name": {
+            "es": "Quejas y Atención Ciudadana",
+            "en": "Complaints and Citizen Services"
+          },
           "codes": [
             {
               "id": "complaints-mininit",
               "code": "18806",
-              "title": "Atención a la Ciudadanía (MININT)",
-              "details": "Denuncias o quejas sobre policías.",
+              "title": {
+                "es": "Atención a la Ciudadanía (MININT)",
+                "en": "Citizen Services (MININT)"
+              },
+              "details": {
+                "es": "Denuncias o quejas sobre policías.",
+                "en": "Reports or complaints about police."
+              },
               "icon": "exclamationmark.bubble.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Citizen Services (MININT)",
-              "details_en": "Reports or complaints about police."
+              "requiresInput": false
             },
             {
               "id": "complaints-prosecutor",
               "code": "18860",
-              "title": "Fiscalía General",
-              "details": "Orientación jurídica y quejas de legalidad.",
+              "title": {
+                "es": "Fiscalía General",
+                "en": "Attorney General's Office"
+              },
+              "details": {
+                "es": "Orientación jurídica y quejas de legalidad.",
+                "en": "Legal guidance and legality complaints."
+              },
               "icon": "building.columns.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Attorney General's Office",
-              "details_en": "Legal guidance and legality complaints."
+              "requiresInput": false
             },
             {
               "id": "complaints-mail",
               "code": "8024-4644",
-              "title": "Correos de Cuba",
-              "details": "Línea única gratuita para bultos y giros.",
+              "title": {
+                "es": "Correos de Cuba",
+                "en": "Correos de Cuba"
+              },
+              "details": {
+                "es": "Línea única gratuita para bultos y giros.",
+                "en": "Single toll-free line for packages and money orders."
+              },
               "icon": "envelope.fill",
               "showsNumber": true,
               "type": "call",
-              "requiresInput": false,
-              "title_en": "Correos de Cuba",
-              "details_en": "Single toll-free line for packages and money orders."
+              "requiresInput": false
             }
-          ],
-          "name_en": "Complaints and Citizen Services"
+          ]
         }
-      ],
-      "name_en": "Helplines"
+      ]
     },
     {
       "id": "sms",
-      "name": "Servicios por SMS",
+      "name": {
+        "es": "Servicios por SMS",
+        "en": "SMS Services"
+      },
       "icon": "envelope.badge",
       "groups": [
         {
-          "name": "Consultas",
+          "name": {
+            "es": "Consultas",
+            "en": "Queries"
+          },
           "codes": [
             {
               "id": "sms-2266-ayuda",
               "code": "2266",
               "smsBody": "ayuda",
-              "title": "Ayuda",
-              "details": "Envía \"ayuda\" al 2266 para ver los comandos SMS disponibles.",
+              "title": {
+                "es": "Ayuda",
+                "en": "Help"
+              },
+              "details": {
+                "es": "Envía \"ayuda\" al 2266 para ver los comandos SMS disponibles.",
+                "en": "Send \"ayuda\" to 2266 to see the available SMS commands."
+              },
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "Help",
-              "details_en": "Send \"ayuda\" to 2266 to see the available SMS commands."
+              "compact": true
             },
             {
               "id": "sms-2266-planes",
               "code": "2266",
               "smsBody": "planes",
-              "title": "Planes",
-              "details": "Consulta los planes disponibles por SMS.",
+              "title": {
+                "es": "Planes",
+                "en": "Plans"
+              },
+              "details": {
+                "es": "Consulta los planes disponibles por SMS.",
+                "en": "Check available plans by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "Plans",
-              "details_en": "Check available plans by SMS."
+              "compact": true
             },
             {
               "id": "sms-2266-amigo",
               "code": "2266",
               "smsBody": "amigo",
-              "title": "Plan Amigo",
-              "details": "Consulta el estado de tu Plan Amigo por SMS.",
+              "title": {
+                "es": "Plan Amigo",
+                "en": "Friends Plan"
+              },
+              "details": {
+                "es": "Consulta el estado de tu Plan Amigo por SMS.",
+                "en": "Check the status of your Friends Plan by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "Friends Plan",
-              "details_en": "Check the status of your Friends Plan by SMS."
+              "compact": true
             },
             {
               "id": "sms-2266-resumen",
               "code": "2266",
               "smsBody": "resumen",
-              "title": "Resumen de Crédito",
-              "details": "Consulta el resumen de tu crédito por SMS.",
+              "title": {
+                "es": "Resumen de Crédito",
+                "en": "Credit Summary"
+              },
+              "details": {
+                "es": "Consulta el resumen de tu crédito por SMS.",
+                "en": "Check your credit summary by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "Credit Summary",
-              "details_en": "Check your credit summary by SMS."
+              "compact": true
             }
-          ],
-          "name_en": "Queries"
+          ]
         },
         {
-          "name": "DHL y Vuelos",
+          "name": {
+            "es": "DHL y Vuelos",
+            "en": "DHL and Flights"
+          },
           "codes": [
             {
               "id": "sms-8888-dhl",
               "code": "8888",
               "smsBody": "DHL {input}",
-              "title": "Rastreo DHL",
-              "details": "Envía tu número de guía DHL por SMS para rastrear tu envío.",
+              "title": {
+                "es": "Rastreo DHL",
+                "en": "DHL Tracking"
+              },
+              "details": {
+                "es": "Envía tu número de guía DHL por SMS para rastrear tu envío.",
+                "en": "Send your DHL tracking number by SMS to track your shipment."
+              },
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "Número de guía",
               "price": "$4.00",
-              "compact": true,
-              "title_en": "DHL Tracking",
-              "details_en": "Send your DHL tracking number by SMS to track your shipment."
+              "compact": true
             },
             {
               "id": "sms-8888-vuelo",
               "code": "8888",
               "smsBody": "VUELO {input}",
-              "title": "Información de Vuelo",
-              "details": "Envía el número de vuelo por SMS para consultar su información.",
+              "title": {
+                "es": "Información de Vuelo",
+                "en": "Flight Information"
+              },
+              "details": {
+                "es": "Envía el número de vuelo por SMS para consultar su información.",
+                "en": "Send the flight number by SMS to check its information."
+              },
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "Número de vuelo",
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Flight Information",
-              "details_en": "Send the flight number by SMS to check its information."
+              "compact": true
             }
-          ],
-          "name_en": "DHL and Flights"
+          ]
         },
         {
-          "name": "Tarifas y Servicios",
+          "name": {
+            "es": "Tarifas y Servicios",
+            "en": "Rates and Services"
+          },
           "codes": [
             {
               "id": "sms-8000-follow",
               "code": "8000",
               "smsBody": "follow",
-              "title": "Boletín (Newsletter)",
-              "details": "Suscríbete al boletín informativo por SMS.",
+              "title": {
+                "es": "Boletín (Newsletter)",
+                "en": "Newsletter"
+              },
+              "details": {
+                "es": "Suscríbete al boletín informativo por SMS.",
+                "en": "Subscribe to the newsletter by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$0.00",
-              "compact": true,
-              "title_en": "Newsletter",
-              "details_en": "Subscribe to the newsletter by SMS."
+              "compact": true
             },
             {
               "id": "sms-8000-onat",
               "code": "8000",
               "smsBody": "onat",
-              "title": "Servicio ONAT",
-              "details": "Suscríbete al servicio de la ONAT por SMS.",
+              "title": {
+                "es": "Servicio ONAT",
+                "en": "ONAT Service"
+              },
+              "details": {
+                "es": "Suscríbete al servicio de la ONAT por SMS.",
+                "en": "Subscribe to the ONAT service by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$0.00",
-              "compact": true,
-              "title_en": "ONAT Service",
-              "details_en": "Subscribe to the ONAT service by SMS."
+              "compact": true
             },
             {
               "id": "sms-8000-turismo",
               "code": "8000",
               "smsBody": "turismo",
-              "title": "Servicio de Turismo",
-              "details": "Suscríbete al servicio de turismo por SMS.",
+              "title": {
+                "es": "Servicio de Turismo",
+                "en": "Tourism Service"
+              },
+              "details": {
+                "es": "Suscríbete al servicio de turismo por SMS.",
+                "en": "Subscribe to the tourism service by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$0.00",
-              "compact": true,
-              "title_en": "Tourism Service",
-              "details_en": "Subscribe to the tourism service by SMS."
+              "compact": true
             },
             {
               "id": "sms-8888-embajada",
               "code": "8888",
               "smsBody": "EMBAJADA {input}",
-              "title": "Información de Embajada",
-              "details": "Envía tu consulta para recibir información de la embajada por SMS.",
+              "title": {
+                "es": "Información de Embajada",
+                "en": "Embassy Information"
+              },
+              "details": {
+                "es": "Envía tu consulta para recibir información de la embajada por SMS.",
+                "en": "Send your query by SMS to get embassy information."
+              },
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "Texto de la consulta",
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Embassy Information",
-              "details_en": "Send your query by SMS to get embassy information."
+              "compact": true
             },
             {
               "id": "sms-8888-cambio",
               "code": "8888",
               "smsBody": "CAMBIO {input}",
-              "title": "Cambio de Moneda",
-              "details": "Consulta la tasa de cambio por SMS — indica una moneda y, opcionalmente, un monto (ej. \"EUR 120\"), o déjalo vacío para el cambio general.",
+              "title": {
+                "es": "Cambio de Moneda",
+                "en": "Currency Exchange"
+              },
+              "details": {
+                "es": "Consulta la tasa de cambio por SMS — indica una moneda y, opcionalmente, un monto (ej. \"EUR 120\"), o déjalo vacío para el cambio general.",
+                "en": "Check the exchange rate by SMS — enter a currency and, optionally, an amount (e.g. \"EUR 120\"), or leave it blank for the general rate."
+              },
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "Moneda y monto (opcional)",
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Currency Exchange",
-              "details_en": "Check the exchange rate by SMS — enter a currency and, optionally, an amount (e.g. \"EUR 120\"), or leave it blank for the general rate."
+              "compact": true
             },
             {
               "id": "sms-2266-oferta",
               "code": "2266",
               "smsBody": "oferta",
-              "title": "Ofertas de ETECSA",
-              "details": "Consulta las ofertas vigentes de ETECSA por SMS.",
+              "title": {
+                "es": "Ofertas de ETECSA",
+                "en": "ETECSA Offers"
+              },
+              "details": {
+                "es": "Consulta las ofertas vigentes de ETECSA por SMS.",
+                "en": "Check current ETECSA offers by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "ETECSA Offers",
-              "details_en": "Check current ETECSA offers by SMS."
+              "compact": true
             },
             {
               "id": "sms-2266-tarifa",
               "code": "2266",
               "smsBody": "tarifa",
-              "title": "Tarifas de  ETECSA",
-              "details": "Consulta tu tarifa actual de ETECSA por SMS.",
+              "title": {
+                "es": "Tarifas de  ETECSA",
+                "en": "ETECSA Rates"
+              },
+              "details": {
+                "es": "Consulta tu tarifa actual de ETECSA por SMS.",
+                "en": "Check your current ETECSA rate by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
-              "compact": true,
-              "title_en": "ETECSA Rates",
-              "details_en": "Check your current ETECSA rate by SMS."
+              "compact": true
             },
             {
               "id": "sms-8888-telectrica",
               "code": "8888",
               "smsBody": "TELECTRICA {input}",
-              "title": "Tarifa Eléctrica",
-              "details": "Envía el rate de consumo por SMS para calcular la tarifa eléctrica.",
+              "title": {
+                "es": "Tarifa Eléctrica",
+                "en": "Electricity Rate"
+              },
+              "details": {
+                "es": "Envía el rate de consumo por SMS para calcular la tarifa eléctrica.",
+                "en": "Send your consumption rate by SMS to calculate the electricity rate."
+              },
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "Rate de consumo",
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Electricity Rate",
-              "details_en": "Send your consumption rate by SMS to calculate the electricity rate."
+              "compact": true
             }
-          ],
-          "name_en": "Rates and Services"
+          ]
         },
         {
-          "name": "Deportes",
+          "name": {
+            "es": "Deportes",
+            "en": "Sports"
+          },
           "codes": [
             {
               "id": "sms-8888-pelota",
               "code": "8888",
               "smsBody": "PELOTA",
-              "title": "Pelota Cubana",
-              "details": "Elige qué consultar de la pelota cubana por SMS.",
+              "title": {
+                "es": "Pelota Cubana",
+                "en": "Cuban Baseball"
+              },
+              "details": {
+                "es": "Elige qué consultar de la pelota cubana por SMS.",
+                "en": "Choose what to check about Cuban baseball by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "PELOTA",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "PELOTA"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "PELOTA POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "PELOTA POS"
                 }
-              ],
-              "title_en": "Cuban Baseball",
-              "details_en": "Choose what to check about Cuban baseball by SMS."
+              ]
             },
             {
               "id": "sms-8888-mlb",
               "code": "8888",
               "smsBody": "MLB",
-              "title": "MLB (Grandes Ligas)",
-              "details": "Elige qué consultar de las Grandes Ligas por SMS.",
+              "title": {
+                "es": "MLB (Grandes Ligas)",
+                "en": "MLB (Major Leagues)"
+              },
+              "details": {
+                "es": "Elige qué consultar de las Grandes Ligas por SMS.",
+                "en": "Choose what to check about the Major Leagues by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "MLB",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "MLB"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "MLB POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "MLB POS"
                 }
-              ],
-              "title_en": "MLB (Major Leagues)",
-              "details_en": "Choose what to check about the Major Leagues by SMS."
+              ]
             },
             {
               "id": "sms-8888-bundesliga",
               "code": "8888",
               "smsBody": "BUNDESLIGA",
-              "title": "Bundesliga",
-              "details": "Elige qué consultar de los resultados de la Bundesliga por SMS.",
+              "title": {
+                "es": "Bundesliga",
+                "en": "Bundesliga"
+              },
+              "details": {
+                "es": "Elige qué consultar de los resultados de la Bundesliga por SMS.",
+                "en": "Choose what to check about Bundesliga results by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "BUNDESLIGA",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "BUNDESLIGA"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "BUNDESLIGA POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "BUNDESLIGA POS"
                 },
                 {
-                  "label": "Goleadores",
-                  "smsBody": "BUNDESLIGA GOL",
-                  "label_en": "Top Scorers"
+                  "label": {
+                    "es": "Goleadores",
+                    "en": "Top Scorers"
+                  },
+                  "smsBody": "BUNDESLIGA GOL"
                 }
-              ],
-              "title_en": "Bundesliga",
-              "details_en": "Choose what to check about Bundesliga results by SMS."
+              ]
             },
             {
               "id": "sms-8888-chanpion",
               "code": "8888",
               "smsBody": "CHANPION",
-              "title": "Champions League",
-              "details": "Elige qué consultar de los resultados de la Champions League por SMS.",
+              "title": {
+                "es": "Champions League",
+                "en": "Champions League"
+              },
+              "details": {
+                "es": "Elige qué consultar de los resultados de la Champions League por SMS.",
+                "en": "Choose what to check about Champions League results by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "CHANPION",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "CHANPION"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "CHANPION POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "CHANPION POS"
                 },
                 {
-                  "label": "Goleadores",
-                  "smsBody": "CHANPION GOL",
-                  "label_en": "Top Scorers"
+                  "label": {
+                    "es": "Goleadores",
+                    "en": "Top Scorers"
+                  },
+                  "smsBody": "CHANPION GOL"
                 }
-              ],
-              "title_en": "Champions League",
-              "details_en": "Choose what to check about Champions League results by SMS."
+              ]
             },
             {
               "id": "sms-8888-rey",
               "code": "8888",
               "smsBody": "REY",
-              "title": "Copa del Rey",
-              "details": "Elige qué consultar de los resultados de la Copa del Rey por SMS.",
+              "title": {
+                "es": "Copa del Rey",
+                "en": "Copa del Rey"
+              },
+              "details": {
+                "es": "Elige qué consultar de los resultados de la Copa del Rey por SMS.",
+                "en": "Choose what to check about Copa del Rey results by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "REY",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "REY"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "REY POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "REY POS"
                 },
                 {
-                  "label": "Goleadores",
-                  "smsBody": "REY GOL",
-                  "label_en": "Top Scorers"
+                  "label": {
+                    "es": "Goleadores",
+                    "en": "Top Scorers"
+                  },
+                  "smsBody": "REY GOL"
                 }
-              ],
-              "title_en": "Copa del Rey",
-              "details_en": "Choose what to check about Copa del Rey results by SMS."
+              ]
             },
             {
               "id": "sms-8888-liga1",
               "code": "8888",
               "smsBody": "LIGA1",
-              "title": "LaLiga",
-              "details": "Elige qué consultar de los resultados de LaLiga por SMS.",
+              "title": {
+                "es": "LaLiga",
+                "en": "LaLiga"
+              },
+              "details": {
+                "es": "Elige qué consultar de los resultados de LaLiga por SMS.",
+                "en": "Choose what to check about LaLiga results by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "LIGA1",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "LIGA1"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "LIGA1 POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "LIGA1 POS"
                 },
                 {
-                  "label": "Goleadores",
-                  "smsBody": "LIGA1 GOL",
-                  "label_en": "Top Scorers"
+                  "label": {
+                    "es": "Goleadores",
+                    "en": "Top Scorers"
+                  },
+                  "smsBody": "LIGA1 GOL"
                 }
-              ],
-              "title_en": "LaLiga",
-              "details_en": "Choose what to check about LaLiga results by SMS."
+              ]
             },
             {
               "id": "sms-8888-premier",
               "code": "8888",
               "smsBody": "PREMIER",
-              "title": "Premier League",
-              "details": "Elige qué consultar de los resultados de la Premier League por SMS.",
+              "title": {
+                "es": "Premier League",
+                "en": "Premier League"
+              },
+              "details": {
+                "es": "Elige qué consultar de los resultados de la Premier League por SMS.",
+                "en": "Choose what to check about Premier League results by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "PREMIER",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "PREMIER"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "PREMIER POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "PREMIER POS"
                 },
                 {
-                  "label": "Goleadores",
-                  "smsBody": "PREMIER GOL",
-                  "label_en": "Top Scorers"
+                  "label": {
+                    "es": "Goleadores",
+                    "en": "Top Scorers"
+                  },
+                  "smsBody": "PREMIER GOL"
                 }
-              ],
-              "title_en": "Premier League",
-              "details_en": "Choose what to check about Premier League results by SMS."
+              ]
             },
             {
               "id": "sms-8888-seriea",
               "code": "8888",
               "smsBody": "SerieA",
-              "title": "Serie A",
-              "details": "Elige qué consultar de los resultados de la Serie A por SMS.",
+              "title": {
+                "es": "Serie A",
+                "en": "Serie A"
+              },
+              "details": {
+                "es": "Elige qué consultar de los resultados de la Serie A por SMS.",
+                "en": "Choose what to check about Serie A results by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
               "variants": [
                 {
-                  "label": "Resultados",
-                  "smsBody": "SerieA",
-                  "label_en": "Results"
+                  "label": {
+                    "es": "Resultados",
+                    "en": "Results"
+                  },
+                  "smsBody": "SerieA"
                 },
                 {
-                  "label": "Posiciones",
-                  "smsBody": "SerieA POS",
-                  "label_en": "Standings"
+                  "label": {
+                    "es": "Posiciones",
+                    "en": "Standings"
+                  },
+                  "smsBody": "SerieA POS"
                 },
                 {
-                  "label": "Goleadores",
-                  "smsBody": "SerieA GOL",
-                  "label_en": "Top Scorers"
+                  "label": {
+                    "es": "Goleadores",
+                    "en": "Top Scorers"
+                  },
+                  "smsBody": "SerieA GOL"
                 }
-              ],
-              "title_en": "Serie A",
-              "details_en": "Choose what to check about Serie A results by SMS."
+              ]
             }
-          ],
-          "name_en": "Sports"
+          ]
         },
         {
-          "name": "Noticias",
+          "name": {
+            "es": "Noticias",
+            "en": "News"
+          },
           "codes": [
             {
               "id": "sms-8888-tiempo",
               "code": "8888",
               "smsBody": "TIEMPO",
-              "title": "Tiempo (General)",
-              "details": "Consulta el pronóstico del tiempo por SMS.",
+              "title": {
+                "es": "Tiempo (General)",
+                "en": "Weather (General)"
+              },
+              "details": {
+                "es": "Consulta el pronóstico del tiempo por SMS.",
+                "en": "Check the weather forecast by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Weather (General)",
-              "details_en": "Check the weather forecast by SMS."
+              "compact": true
             },
             {
               "id": "sms-8888-tiempo-zona",
               "code": "8888",
               "smsBody": "TIEMPO {input}",
-              "title": "Tiempo por Zona",
-              "details": "Consulta el pronóstico del tiempo de una zona específica por SMS — p. ej. OCC, CEN, ORI, o una provincia como Camagüey, Holguín, Santiago de Cuba, Cayo Coco...",
+              "title": {
+                "es": "Tiempo por Zona",
+                "en": "Weather by Zone"
+              },
+              "details": {
+                "es": "Consulta el pronóstico del tiempo de una zona específica por SMS — p. ej. OCC, CEN, ORI, o una provincia como Camagüey, Holguín, Santiago de Cuba, Cayo Coco...",
+                "en": "Check the weather forecast for a specific zone by SMS — e.g. OCC, CEN, ORI, or a province like Camagüey, Holguín, Santiago de Cuba, Cayo Coco..."
+              },
               "type": "sms",
               "requiresInput": true,
               "inputPlaceholder": "OCC, CEN, ORI, Camagüey...)",
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Weather by Zone",
-              "details_en": "Check the weather forecast for a specific zone by SMS — e.g. OCC, CEN, ORI, or a province like Camagüey, Holguín, Santiago de Cuba, Cayo Coco..."
+              "compact": true
             },
             {
               "id": "sms-8888-noticias",
               "code": "8888",
               "smsBody": "NOTICIAS",
-              "title": "Noticias",
-              "details": "Consulta las últimas noticias por SMS.",
+              "title": {
+                "es": "Noticias",
+                "en": "News"
+              },
+              "details": {
+                "es": "Consulta las últimas noticias por SMS.",
+                "en": "Check the latest news by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
-              "compact": true,
-              "title_en": "News",
-              "details_en": "Check the latest news by SMS."
+              "compact": true
             },
             {
               "id": "sms-8888-titulares",
               "code": "8888",
               "smsBody": "TITULARES",
-              "title": "Titulares",
-              "details": "Consulta los titulares por SMS.",
+              "title": {
+                "es": "Titulares",
+                "en": "Headlines"
+              },
+              "details": {
+                "es": "Consulta los titulares por SMS.",
+                "en": "Check the headlines by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Headlines",
-              "details_en": "Check the headlines by SMS."
+              "compact": true
             },
             {
               "id": "sms-8888-pl",
               "code": "8888",
               "smsBody": "PL",
-              "title": "Prensa Latina",
-              "details": "Consulta noticias de Prensa Latina por SMS.",
+              "title": {
+                "es": "Prensa Latina",
+                "en": "Prensa Latina"
+              },
+              "details": {
+                "es": "Consulta noticias de Prensa Latina por SMS.",
+                "en": "Check Prensa Latina news by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
-              "compact": true,
-              "title_en": "Prensa Latina",
-              "details_en": "Check Prensa Latina news by SMS."
+              "compact": true
             },
             {
               "id": "sms-8100-marti",
               "code": "8100",
               "smsBody": "MARTI",
-              "title": "Martí",
-              "details": "Suscríbete al servicio Martí por SMS.",
+              "title": {
+                "es": "Martí",
+                "en": "Martí"
+              },
+              "details": {
+                "es": "Suscríbete al servicio Martí por SMS.",
+                "en": "Subscribe to the Martí service by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
-              "isSubscription": true,
-              "title_en": "Martí",
-              "details_en": "Subscribe to the Martí service by SMS."
+              "isSubscription": true
             },
             {
               "id": "sms-8100-cubadebate",
               "code": "8100",
               "smsBody": "CUBADEBATE",
-              "title": "Cubadebate",
-              "details": "Suscríbete a Cubadebate por SMS.",
+              "title": {
+                "es": "Cubadebate",
+                "en": "Cubadebate"
+              },
+              "details": {
+                "es": "Suscríbete a Cubadebate por SMS.",
+                "en": "Subscribe to Cubadebate by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
-              "isSubscription": true,
-              "title_en": "Cubadebate",
-              "details_en": "Subscribe to Cubadebate by SMS."
+              "isSubscription": true
             },
             {
               "id": "sms-8100-cdeportes",
               "code": "8100",
               "smsBody": "CDEPORTES",
-              "title": "Cubadeportes",
-              "details": "Suscríbete a Cubadeportes por SMS.",
+              "title": {
+                "es": "Cubadeportes",
+                "en": "Cubadeportes"
+              },
+              "details": {
+                "es": "Suscríbete a Cubadeportes por SMS.",
+                "en": "Subscribe to Cubadeportes by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
-              "isSubscription": true,
-              "title_en": "Cubadeportes",
-              "details_en": "Subscribe to Cubadeportes by SMS."
+              "isSubscription": true
             },
             {
               "id": "sms-8100-granma",
               "code": "8100",
               "smsBody": "GRAMNA",
-              "title": "Granma",
-              "details": "Suscríbete al periódico Granma por SMS.",
+              "title": {
+                "es": "Granma",
+                "en": "Granma"
+              },
+              "details": {
+                "es": "Suscríbete al periódico Granma por SMS.",
+                "en": "Subscribe to the Granma newspaper by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
-              "isSubscription": true,
-              "title_en": "Granma",
-              "details_en": "Subscribe to the Granma newspaper by SMS."
+              "isSubscription": true
             },
             {
               "id": "sms-8100-pl",
               "code": "8100",
               "smsBody": "PL",
-              "title": "Prensa Latina",
-              "details": "Suscríbete a Prensa Latina por SMS.",
+              "title": {
+                "es": "Prensa Latina",
+                "en": "Prensa Latina"
+              },
+              "details": {
+                "es": "Suscríbete a Prensa Latina por SMS.",
+                "en": "Subscribe to Prensa Latina by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
               "compact": true,
-              "isSubscription": true,
-              "title_en": "Prensa Latina",
-              "details_en": "Subscribe to Prensa Latina by SMS."
+              "isSubscription": true
             }
-          ],
-          "name_en": "News"
+          ]
         },
         {
-          "name": "Recetas, Frases y Horóscopos",
+          "name": {
+            "es": "Recetas, Frases y Horóscopos",
+            "en": "Recipes, Quotes and Horoscopes"
+          },
           "codes": [
             {
               "id": "sms-8888-receta",
               "code": "8888",
               "smsBody": "RECETA {input}",
-              "title": "Recetas de Cocina",
-              "details": "Elige una categoría y recibe una receta por SMS.",
+              "title": {
+                "es": "Recetas de Cocina",
+                "en": "Cooking Recipes"
+              },
+              "details": {
+                "es": "Elige una categoría y recibe una receta por SMS.",
+                "en": "Choose a category and get a recipe by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
@@ -1386,16 +1844,20 @@
                 "REPOSTERIA",
                 "SALMON",
                 "SALSAS"
-              ],
-              "title_en": "Cooking Recipes",
-              "details_en": "Choose a category and get a recipe by SMS."
+              ]
             },
             {
               "id": "sms-8888-frases",
               "code": "8888",
               "smsBody": "{input}",
-              "title": "Frases y Poemas",
-              "details": "Elige un tema y recibe una frase o poema por SMS.",
+              "title": {
+                "es": "Frases y Poemas",
+                "en": "Quotes and Poems"
+              },
+              "details": {
+                "es": "Elige un tema y recibe una frase o poema por SMS.",
+                "en": "Choose a topic and get a quote or poem by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
@@ -1436,16 +1898,20 @@
                 "NERUDA",
                 "CHE",
                 "PITAGORAS"
-              ],
-              "title_en": "Quotes and Poems",
-              "details_en": "Choose a topic and get a quote or poem by SMS."
+              ]
             },
             {
               "id": "sms-8888-horoscopo",
               "code": "8888",
               "smsBody": "{input}",
-              "title": "Horóscopo Tradicional",
-              "details": "Elige tu signo y recibe tu horóscopo por SMS.",
+              "title": {
+                "es": "Horóscopo Tradicional",
+                "en": "Traditional Horoscope"
+              },
+              "details": {
+                "es": "Elige tu signo y recibe tu horóscopo por SMS.",
+                "en": "Choose your sign and get your horoscope by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
@@ -1463,16 +1929,20 @@
                 "CAPRICORNIO",
                 "ACUARIO",
                 "PISCIS"
-              ],
-              "title_en": "Traditional Horoscope",
-              "details_en": "Choose your sign and get your horoscope by SMS."
+              ]
             },
             {
               "id": "sms-8888-horoscopo-chino",
               "code": "8888",
               "smsBody": "{input}",
-              "title": "Horóscopo Chino",
-              "details": "Elige tu signo del zodíaco chino y recibe tu horóscopo por SMS.",
+              "title": {
+                "es": "Horóscopo Chino",
+                "en": "Chinese Horoscope"
+              },
+              "details": {
+                "es": "Elige tu signo del zodíaco chino y recibe tu horóscopo por SMS.",
+                "en": "Choose your Chinese zodiac sign and get your horoscope by SMS."
+              },
               "type": "sms",
               "requiresInput": false,
               "price": "$4.00",
@@ -1490,15 +1960,11 @@
                 "PERRO",
                 "RATA",
                 "CERDO"
-              ],
-              "title_en": "Chinese Horoscope",
-              "details_en": "Choose your Chinese zodiac sign and get your horoscope by SMS."
+              ]
             }
-          ],
-          "name_en": "Recipes, Quotes and Horoscopes"
+          ]
         }
-      ],
-      "name_en": "SMS Services"
+      ]
     }
   ]
 }

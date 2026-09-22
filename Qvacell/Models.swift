@@ -14,19 +14,27 @@ enum USSDActionType: String, Codable {
     case sms
 }
 
+/// A Spanish/English pair for one piece of `codes.json` display text — `{"es": "...", "en":
+/// "..."}`. `en` is nil for entries not yet translated, in which case `localized` falls back to
+/// `es` on an English-language device too.
+struct LocalizedText: Codable, Hashable {
+    let es: String
+    let en: String?
+
+    /// `es` or `en` depending on the device's language, falling back to `es` when untranslated.
+    var localized: String {
+        Locale.current.language.languageCode?.identifier == "en" ? (en ?? es) : es
+    }
+}
+
 /// A single ETECSA (Cubacel) service code. Its category and group are implied by where it sits
 /// in the catalog's nested JSON — a code carries no category/group tag of its own.
 struct USSDCode: Identifiable, Codable, Hashable {
     let id: String
     /// Raw code. May contain the `{input}` placeholder when user input is required.
     let code: String
-    let title: String
-    let details: String
-    /// English translation of `title`/`details`, used on English-language devices — see
-    /// `localizedTitle`/`localizedDetails`. Nil for entries not yet translated (falls back to
-    /// the Spanish source).
-    let titleEN: String?
-    let detailsEN: String?
+    let title: LocalizedText
+    let details: LocalizedText
     /// SF Symbol name. When present, the row renders as an icon + title (no description) like
     /// the Home quick actions; when nil, it renders as the default title + description row.
     let icon: String?
@@ -65,24 +73,11 @@ struct USSDCode: Identifiable, Codable, Hashable {
     /// choices and each already has a natural short label. Nil for every other code.
     let variants: [SMSVariant]?
 
-    enum CodingKeys: String, CodingKey {
-        case id, code, title, details, icon, price, compact, showsNumber, type, requiresInput,
-             inputPlaceholder, noConfirmCode, smsBody, options, isSubscription, variants
-        case titleEN = "title_en"
-        case detailsEN = "details_en"
-    }
-
-    /// `title` on an English-language device (falls back to the Spanish `title` when no
-    /// translation is present yet).
-    var localizedTitle: String {
-        Locale.current.language.languageCode?.identifier == "en" ? (titleEN ?? title) : title
-    }
-
-    /// `details` on an English-language device (falls back to the Spanish `details` when no
-    /// translation is present yet).
-    var localizedDetails: String {
-        Locale.current.language.languageCode?.identifier == "en" ? (detailsEN ?? details) : details
-    }
+    /// `title.localized` — kept as a shorthand since this was `code.localizedTitle` before
+    /// `title`/`details` became `LocalizedText`.
+    var localizedTitle: String { title.localized }
+    /// `details.localized` — see `localizedTitle`.
+    var localizedDetails: String { details.localized }
 
     /// Code with the given named placeholders substituted in — each dictionary key `name`
     /// replaces a `{name}` token in `code`. Used by multi-field actions like the Home transfer card.
@@ -113,58 +108,31 @@ struct USSDCode: Identifiable, Codable, Hashable {
 
 /// One named choice in `USSDCode.variants` — e.g. `label: "Posiciones", smsBody: "BUNDESLIGA POS"`.
 struct SMSVariant: Codable, Hashable {
-    let label: String
-    let labelEN: String?
+    let label: LocalizedText
     let smsBody: String
 
-    enum CodingKeys: String, CodingKey {
-        case label, smsBody
-        case labelEN = "label_en"
-    }
-
-    /// `label` on an English-language device (falls back to Spanish when untranslated).
-    var localizedLabel: String {
-        Locale.current.language.languageCode?.identifier == "en" ? (labelEN ?? label) : label
-    }
+    var localizedLabel: String { label.localized }
 }
 
 /// A named sub-heading of codes within a category's list, e.g. "Datos", "SMS", "Voz" inside
 /// Compras y Recargas. `name` is nil for a category with no sub-grouping, and renders with no header.
 struct USSDCodeGroup: Identifiable, Codable, Hashable {
-    var id: String { name ?? "_" }
-    let name: String?
-    let nameEN: String?
+    var id: String { name?.es ?? "_" }
+    let name: LocalizedText?
     let codes: [USSDCode]
 
-    enum CodingKeys: String, CodingKey {
-        case name, codes
-        case nameEN = "name_en"
-    }
-
-    /// `name` on an English-language device (falls back to Spanish when untranslated).
-    var localizedName: String? {
-        Locale.current.language.languageCode?.identifier == "en" ? (nameEN ?? name) : name
-    }
+    var localizedName: String? { name?.localized }
 }
 
 /// A category of related service codes, shown as one tab.
 struct USSDCategory: Identifiable, Codable, Hashable {
     let id: String
-    let name: String
-    let nameEN: String?
+    let name: LocalizedText
     /// SF Symbol name used in the UI.
     let icon: String
     let groups: [USSDCodeGroup]
 
-    enum CodingKeys: String, CodingKey {
-        case id, name, icon, groups
-        case nameEN = "name_en"
-    }
-
-    /// `name` on an English-language device (falls back to Spanish when untranslated).
-    var localizedName: String {
-        Locale.current.language.languageCode?.identifier == "en" ? (nameEN ?? name) : name
-    }
+    var localizedName: String { name.localized }
 }
 
 /// Root shape of the bundled `codes.json` catalog.

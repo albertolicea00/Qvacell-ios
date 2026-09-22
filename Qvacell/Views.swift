@@ -809,11 +809,11 @@ struct CategoryListView: View {
         guard !searchText.isEmpty else { return category.groups }
         return category.groups.compactMap { group in
             let matches = group.codes.filter {
-                $0.title.localizedCaseInsensitiveContains(searchText)
+                $0.localizedTitle.localizedCaseInsensitiveContains(searchText)
                     || $0.code.localizedCaseInsensitiveContains(searchText)
             }
             guard !matches.isEmpty else { return nil }
-            return USSDCodeGroup(name: group.name, nameEN: group.nameEN, codes: matches)
+            return USSDCodeGroup(name: group.name, codes: matches)
         }
     }
 
@@ -1007,9 +1007,9 @@ private struct SMSCodeListView<ExtraSection: View>: View {
     private func filtered(_ groups: [USSDCodeGroup]) -> [USSDCodeGroup] {
         guard !searchText.isEmpty else { return groups }
         return groups.compactMap { group in
-            let matches = group.codes.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+            let matches = group.codes.filter { $0.localizedTitle.localizedCaseInsensitiveContains(searchText) }
             guard !matches.isEmpty else { return nil }
-            return USSDCodeGroup(name: group.name, nameEN: group.nameEN, codes: matches)
+            return USSDCodeGroup(name: group.name, codes: matches)
         }
     }
 

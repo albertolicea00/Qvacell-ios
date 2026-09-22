@@ -35,6 +35,30 @@
               "requiresInput": false
             },
             {
+              "id": "voice-balance",
+              "code": "*222*869#",
+              "title": "Plan o Minutos de Voz",
+              "details": "Consulta tu plan o minutos de voz.",
+              "type": "ussd",
+              "requiresInput": false
+            },
+            {
+              "id": "sms-balance",
+              "code": "*222*767#",
+              "title": "Plan de SMS",
+              "details": "Consulta tu plan de SMS.",
+              "type": "ussd",
+              "requiresInput": false
+            },
+            {
+              "id": "national-recharge-limit",
+              "code": "*222*732#",
+              "title": "Límite de Recargas Nacionales",
+              "details": "Consulta el estado del límite de recargas nacionales (360 CUP en 30 días).",
+              "type": "ussd",
+              "requiresInput": false
+            },
+            {
               "id": "postpaid-balance",
               "code": "*111#",
               "title": "Saldo Pospago o Institucional",

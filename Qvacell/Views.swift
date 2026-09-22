@@ -162,60 +162,20 @@ struct HomeQuickActionsView: View {
                 }
 
                 List {
-                    Section("Saldo y Planes") {}
-                    .listSectionSpacing(6)
-
-                    Section {
-                        GeometryReader { geometry in
-                            let tiles = [
-                                ("Saldo", "creditcard.fill", "main-balance"),
-                                ("Bonos", "gift.fill", "bonus-usd-plans"),
-                                ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
-                                ("Deuda", "creditcard.trianglebadge.exclamationmark", "postpaid-balance"),
-                            ]
-                            let gap: CGFloat = 20
-                            let rawSize = (geometry.size.width - gap * CGFloat(tiles.count - 1)) / CGFloat(tiles.count)
-                            let tileSize = min(max(rawSize, 44), 84)
-
-                            HStack(spacing: gap) {
-                                ForEach(tiles, id: \.2) { title, icon, codeId in
-                                    QuickActionTile(title: title, systemImage: icon, size: tileSize) {
-                                        dial(codeId: codeId)
-                                    }
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                        .frame(height: 96)
+                    Section("Consultas") {
+                        QuickActionTileGrid(tiles: [
+                            ("Saldo", "creditcard.fill", "main-balance"),
+                            ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
+                            ("Voz", "phone.fill", "voice-balance"),
+                            ("SMS", "message.fill", "sms-balance"),
+                            ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
+                            ("Amigo", "person.2.fill", "friends-plan"),
+                            ("Bono", "gift.fill", "bonus-usd-plans"),
+                            ("Pospago", "building.2.fill", "postpaid-balance"),
+                        ], dial: dial)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-                    }
-                    .listSectionSpacing(6)
-
-                    Section {
-                        Button {
-                            dial(codeId: "postpaid-balance")
-                        } label: {
-                            HStack {
-                                Label("Saldo Pospago o Institucional", systemImage: "building.2.fill")
-                                Spacer()
-                                Image(systemName: "arrow.right")
-                            }
-                        }
-                    }
-                    .listSectionSpacing(6)
-
-                    Section {
-                        Button {
-                            dial(codeId: "friends-plan")
-                        } label: {
-                            HStack {
-                                Label("Estado del Plan Amigos", systemImage: "person.2.fill")
-                                Spacer()
-                                Image(systemName: "arrow.right")
-                            }
-                        }
                     }
                     .listSectionSpacing(6)
 
@@ -397,24 +357,60 @@ private struct QuickActionTile: View {
 
     @Environment(AccentColorStore.self) private var accentColorStore
 
-    /// Shorter than `size` so the tile reads as a rounded rectangle, not a square.
-    private var height: CGFloat { size * 0.72 }
-
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 8) {
+            VStack(spacing: 6) {
                 Image(systemName: systemImage)
-                    .font(.system(size: size * 0.26))
-                    .foregroundStyle(.white)
-                    .frame(width: size, height: height)
-                    .background(accentColorStore.color, in: RoundedRectangle(cornerRadius: size * 0.24))
+                    .font(.system(size: size * 0.24))
                 Text(title)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.appForeground)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
             }
-            .frame(maxWidth: .infinity)
+            .foregroundStyle(.white)
+            .frame(width: size, height: size)
+            .background(accentColorStore.color, in: RoundedRectangle(cornerRadius: size * 0.2))
         }
         .buttonStyle(.plain)
+    }
+}
+
+/// `QuickActionTile`s laid out 4-per-row, wrapping to as many rows as needed — used for the
+/// "Consultas" section on Home.
+private struct QuickActionTileGrid: View {
+    let tiles: [(String, String, String)]
+    let dial: (String) -> Void
+
+    private let columns = 4
+    private let gap: CGFloat = 16
+
+    private var rowCount: Int { (tiles.count + columns - 1) / columns }
+
+    var body: some View {
+        GeometryReader { geometry in
+            let rawSize = (geometry.size.width - gap * CGFloat(columns - 1)) / CGFloat(columns)
+            let tileSize = min(max(rawSize, 44), 84)
+
+            VStack(spacing: gap) {
+                ForEach(0..<rowCount, id: \.self) { row in
+                    HStack(spacing: gap) {
+                        ForEach(0..<columns, id: \.self) { column in
+                            let index = row * columns + column
+                            if index < tiles.count {
+                                let (title, icon, codeId) = tiles[index]
+                                QuickActionTile(title: title, systemImage: icon, size: tileSize) {
+                                    dial(codeId)
+                                }
+                            } else {
+                                Color.clear.frame(width: tileSize, height: tileSize)
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+        }
+        .frame(height: CGFloat(rowCount) * 84 + CGFloat(rowCount - 1) * gap)
     }
 }
 

@@ -356,6 +356,11 @@ private struct QuickActionTile: View {
     let action: () -> Void
 
     @Environment(AccentColorStore.self) private var accentColorStore
+    /// 0 = filled (colored background, white icon/text), 1 = outline (transparent background,
+    /// colored border/icon/text) — set in Ajustes › Preferencias.
+    @AppStorage("quickActionTileStyle") private var style: Int = 0
+
+    private var isOutline: Bool { style == 1 }
 
     var body: some View {
         Button(action: action) {
@@ -367,9 +372,16 @@ private struct QuickActionTile: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
             }
-            .foregroundStyle(.white)
+            .foregroundStyle(isOutline ? accentColorStore.color : Color.white)
             .frame(width: size, height: size)
-            .background(accentColorStore.color, in: RoundedRectangle(cornerRadius: size * 0.2))
+            .background(
+                isOutline ? Color.clear : accentColorStore.color,
+                in: RoundedRectangle(cornerRadius: size * 0.2)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: size * 0.2)
+                    .stroke(accentColorStore.color, lineWidth: isOutline ? 1.5 : 0)
+            )
         }
         .buttonStyle(.plain)
     }
@@ -1292,6 +1304,7 @@ struct SettingsView: View {
     @Environment(AccentColorStore.self) private var accentColorStore
 
     @AppStorage("darkModePreference") private var darkMode: Int = 0
+    @AppStorage("quickActionTileStyle") private var quickActionTileStyle: Int = 0
     @AppStorage("showNetworkStatus") private var showNetworkStatus = false
     @AppStorage("defaultTab") private var defaultTab = HomeTab.home.rawValue
     @AppStorage("quickPurchaseNoConfirmDefault") private var quickPurchaseNoConfirmDefault = false
@@ -1334,6 +1347,12 @@ struct SettingsView: View {
                         Text("Por Defecto").tag(0)
                         Text("Claro").tag(1)
                         Text("Oscuro").tag(2)
+                    }
+                    .tint(accentColorStore.color)
+
+                    Picker("Estilo de Acciones Rápidas", selection: $quickActionTileStyle) {
+                        Text("Relleno").tag(0)
+                        Text("Contorno").tag(1)
                     }
                     .tint(accentColorStore.color)
 

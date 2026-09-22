@@ -267,7 +267,7 @@
             {
               "id": "data-daily-plan",
               "code": "*133*1*3#",
-              "title": "Plan Diario de 200MB",
+              "title": "Plan Diario 200MB",
               "details": "200MB por día.",
               "price": "$25.00",
               "type": "ussd",

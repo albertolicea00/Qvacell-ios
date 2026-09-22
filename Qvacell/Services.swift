@@ -1017,7 +1017,7 @@ enum PlanCompra: String, AppEnum {
 
     static var caseDisplayRepresentations: [PlanCompra: DisplayRepresentation] = [
         .plan45GB: "Plan de 4.5GB",
-        .planDiario: "Plan Diario de 200MB",
+        .planDiario: "Plan Diario 200MB",
         .planToDus: "Plan ToDus",
         .combo2GB: "Combo 2GB + 15MIN + 20SMS",
         .combo4GB: "Combo 4GB + 35MIN + 40SMS",

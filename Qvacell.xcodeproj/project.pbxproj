@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00A116E10A8F88A9983DAC1C /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6EBC038E535B3BCAEE163B /* Services.swift */; };
 		1BBBCFDDA242479263ABC83C /* codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3737C9D32EA41E146FB8F112 /* codes.json */; };
+		D32A48688FE6C23B843C5FCC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DA559E81D755F26FF024584F /* Localizable.xcstrings */; };
 		2AAA6CCB88EE275D33FF9795 /* CallerIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFBEDAF4392FB3D0B658EA /* CallerIDStore.swift */; };
 		3DD0EF7C461E407EB6D928C7 /* Qvacell.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E8FFA6F6625D1A2D30B598 /* Qvacell.xcassets */; };
 		4EEF6A5BC4B63C9BE876667D /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5327CE953B7E62F240584E /* Views.swift */; };
@@ -50,6 +51,7 @@
 		3151AF1B92A77020CC07419E /* CallerIDExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallerIDExtension.entitlements; sourceTree = "<group>"; };
 		3737C9D32EA41E146FB8F112 /* codes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = codes.json; sourceTree = "<group>"; };
 		4A68326477E11D3FA4066B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DA559E81D755F26FF024584F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4B6EBC038E535B3BCAEE163B /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		4E5327CE953B7E62F240584E /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		54A6043F64E4118A05AFEE9A /* QvacellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvacellApp.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				3737C9D32EA41E146FB8F112 /* codes.json */,
 				4A68326477E11D3FA4066B87 /* Info.plist */,
+				DA559E81D755F26FF024584F /* Localizable.xcstrings */,
 				FA686A05D19BF528961E2960 /* Models.swift */,
 				301757F2FCA61984E6AD5A99 /* Qvacell.entitlements */,
 				54A6043F64E4118A05AFEE9A /* QvacellApp.swift */,
@@ -169,10 +172,11 @@
 				LastUpgradeCheck = 1430;
 			};
 			buildConfigurationList = 5B68646823E8E87B011C5C47 /* Build configuration list for PBXProject "Qvacell" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				es,
 				en,
 			);
 			mainGroup = 2E15B34489D45978082090CD;
@@ -195,6 +199,7 @@
 			files = (
 				3DD0EF7C461E407EB6D928C7 /* Qvacell.xcassets in Resources */,
 				1BBBCFDDA242479263ABC83C /* codes.json in Resources */,
+				D32A48688FE6C23B843C5FCC /* Localizable.xcstrings in Resources */,
 				983135DC85990D1F471681C6 /* wifi_navigation_rooms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

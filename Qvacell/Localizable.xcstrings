@@ -1,0 +1,3944 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "¿Cómo funciona?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How does it work?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo funciona?"
+          }
+        }
+      }
+    },
+    "¿De dónde salen los datos?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Where does the data come from?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿De dónde salen los datos?"
+          }
+        }
+      }
+    },
+    "¿Eliminar recordatorio?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete reminder?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar recordatorio?"
+          }
+        }
+      }
+    },
+    "¿Qué es el USSD?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is USSD?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es el USSD?"
+          }
+        }
+      }
+    },
+    "¿Qué es esto?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is this?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es esto?"
+          }
+        }
+      }
+    },
+    "¿Qué es y cómo funciona?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is it and how does it work?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es y cómo funciona?"
+          }
+        }
+      }
+    },
+    "¿Qué es?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is it?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es?"
+          }
+        }
+      }
+    },
+    "¿Qué hace la app?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What does the app do?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué hace la app?"
+          }
+        }
+      }
+    },
+    "¿Qué muestra?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What does it show?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué muestra?"
+          }
+        }
+      }
+    },
+    "%@" : {
+
+    },
+    "%@ · %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@ puestos" : {
+
+    },
+    "%@ salas de navegación · %@ zonas wifi" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ salas de navegación · %2$@ zonas wifi"
+          }
+        }
+      }
+    },
+    "Abre el marcador para comprar un plan de datos, combo, SMS o voz de ETECSA usando el código estable y seguro (con confirmación)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the dialer to buy a data, combo, SMS, or voice plan from ETECSA using the safe, stable code (with confirmation)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre el marcador para comprar un plan de datos, combo, SMS o voz de ETECSA usando el código estable y seguro (con confirmación)."
+          }
+        }
+      }
+    },
+    "Abre los **Ajustes** de tu iPhone." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open your iPhone's **Settings**."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre los **Ajustes** de tu iPhone."
+          }
+        }
+      }
+    },
+    "Abrir Ajustes de Siri para Qvacell" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Siri Settings for Qvacell"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes de Siri para Qvacell"
+          }
+        }
+      }
+    },
+    "Acción sin Confirmación" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No-Confirmation Action"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acción sin Confirmación"
+          }
+        }
+      }
+    },
+    "Acción sin Confirmación activada — las compras se marcan de una vez, sin pedir confirmación" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No-Confirmation Action enabled — purchases dial straight through without asking for confirmation"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acción sin Confirmación activada — las compras se marcan de una vez, sin pedir confirmación"
+          }
+        }
+      }
+    },
+    "Acerca de" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
+          }
+        }
+      }
+    },
+    "Activa el interruptor de **Qvacell** (CallerID)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on the **Qvacell** (CallerID) toggle."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa el interruptor de **Qvacell** (CallerID)."
+          }
+        }
+      }
+    },
+    "Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Contacts permission to call or transfer balance directly to your contacts."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente."
+          }
+        }
+      }
+    },
+    "Actívala manualmente en Ajustes › Teléfono › Bloqueo e Identificación de Llamadas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable it manually in Settings › Phone › Call Blocking & Identification."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actívala manualmente en Ajustes › Teléfono › Bloqueo e Identificación de Llamadas."
+          }
+        }
+      }
+    },
+    "Activar el Plan Amigos tiene un costo de $25.00." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activating the Friends Plan costs $25.00."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar el Plan Amigos tiene un costo de $25.00."
+          }
+        }
+      }
+    },
+    "Agregar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar"
+          }
+        }
+      }
+    },
+    "Agregar a mi Plan de Amigos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to my Friends Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar a mi Plan de Amigos"
+          }
+        }
+      }
+    },
+    "Agregar Amigo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Friend"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Amigo"
+          }
+        }
+      }
+    },
+    "Ajustes" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
+          }
+        }
+      }
+    },
+    "Alberto Licea (Desarrollador)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alberto Licea (Developer)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alberto Licea (Desarrollador)"
+          }
+        }
+      }
+    },
+    "Algunos códigos, como recargar con tarjeta, necesitan un número adicional (p. ej. *662*{tarjeta}#). Al tocarlos, primero se pide ese dato y luego se marca el código completo." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some codes, like recharging with a card, need an extra piece of data (e.g. *662*{card}#). Tapping them asks for that data first, then dials the complete code."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunos códigos, como recargar con tarjeta, necesitan un número adicional (p. ej. *662*{tarjeta}#). Al tocarlos, primero se pide ese dato y luego se marca el código completo."
+          }
+        }
+      }
+    },
+    "Amigo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friend"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amigo"
+          }
+        }
+      }
+    },
+    "Anónimo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anonymous"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anónimo"
+          }
+        }
+      }
+    },
+    "App Atajos de iOS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS Shortcuts App"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Atajos de iOS"
+          }
+        }
+      }
+    },
+    "Aviso de señal celular" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cellular signal warning"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso de señal celular"
+          }
+        }
+      }
+    },
+    "Ayuda" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda"
+          }
+        }
+      }
+    },
+    "Ayuda (Manual de Uso)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help (User Guide)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda (Manual de Uso)"
+          }
+        }
+      }
+    },
+    "Bono" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bono"
+          }
+        }
+      }
+    },
+    "Bonos y Planes en USD" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USD Bonuses and Plans"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonos y Planes en USD"
+          }
+        }
+      }
+    },
+    "Buscando red..." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Searching for network..."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscando red..."
+          }
+        }
+      }
+    },
+    "Buscar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar"
+          }
+        }
+      }
+    },
+    "Buscar en Database" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Database"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar en Database"
+          }
+        }
+      }
+    },
+    "Buscar en Directorio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Directory"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar en Directorio"
+          }
+        }
+      }
+    },
+    "Buscar en Directorio todavía no está disponible." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Directory Search isn't available yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar en Directorio todavía no está disponible."
+          }
+        }
+      }
+    },
+    "Buscar o escribir uno nuevo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search or type a new one"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar o escribir uno nuevo"
+          }
+        }
+      }
+    },
+    "Buscar sala o zona wifi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search room or WiFi zone"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar sala o zona wifi"
+          }
+        }
+      }
+    },
+    "Búsqueda solo por número" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by number only"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Búsqueda solo por número"
+          }
+        }
+      }
+    },
+    "Cada orden por voz abre la app y prepara el marcado exacto, solicitando confirmación del sistema antes de llamar." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every voice command opens the app and prepares the exact dial, asking for the system's confirmation before calling."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada orden por voz abre la app y prepara el marcado exacto, solicitando confirmación del sistema antes de llamar."
+          }
+        }
+      }
+    },
+    "Cambiar Clave" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar Clave"
+          }
+        }
+      }
+    },
+    "Cambiar y guardar tu PIN" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change and save your PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar y guardar tu PIN"
+          }
+        }
+      }
+    },
+    "Cancelar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Cerrar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "Claro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claro"
+          }
+        }
+      }
+    },
+    "Clave" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clave"
+          }
+        }
+      }
+    },
+    "Clave actual" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clave actual"
+          }
+        }
+      }
+    },
+    "Clave de Transferencia" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clave de Transferencia"
+          }
+        }
+      }
+    },
+    "Clave nueva" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clave nueva"
+          }
+        }
+      }
+    },
+    "Código" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código"
+          }
+        }
+      }
+    },
+    "Código de recarga" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharge code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código de recarga"
+          }
+        }
+      }
+    },
+    "Código fuente en GitHub" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Code on GitHub"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código fuente en GitHub"
+          }
+        }
+      }
+    },
+    "Código Rápido" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código Rápido"
+          }
+        }
+      }
+    },
+    "Códigos que piden un dato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Codes that ask for data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Códigos que piden un dato"
+          }
+        }
+      }
+    },
+    "Color de Acento" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accent Color"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color de Acento"
+          }
+        }
+      }
+    },
+    "Combo 2GB + 15MIN + 20SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2GB + 15MIN + 20SMS Combo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combo 2GB + 15MIN + 20SMS"
+          }
+        }
+      }
+    },
+    "Combo 4GB + 35MIN + 40SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4GB + 35MIN + 40SMS Combo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combo 4GB + 35MIN + 40SMS"
+          }
+        }
+      }
+    },
+    "Combo 6GB + 60MIN + 70SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6GB + 60MIN + 70SMS Combo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combo 6GB + 60MIN + 70SMS"
+          }
+        }
+      }
+    },
+    "Cómo Funciona el USSD" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How USSD Works"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo Funciona el USSD"
+          }
+        }
+      }
+    },
+    "Comprar Paquete te lleva directo a la pestaña Compras (no tiene un solo código fijo, es todo un catálogo). Recargar Saldo te pide el número de la tarjeta justo antes de marcar (nunca se guarda). Transferencia recuerda el número de destino y te pide el monto, con tu Clave de Transferencia ya rellenada si la tienes guardada." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy a Bundle takes you straight to the Purchases tab (it has no single fixed code, it's a whole catalog). Recharge Balance asks for the card number right before dialing (it's never saved). Transfer remembers the destination number and asks for the amount, with your Transfer PIN already filled in if you have it saved."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar Paquete te lleva directo a la pestaña Compras (no tiene un solo código fijo, es todo un catálogo). Recargar Saldo te pide el número de la tarjeta justo antes de marcar (nunca se guarda). Transferencia recuerda el número de destino y te pide el monto, con tu Clave de Transferencia ya rellenada si la tienes guardada."
+          }
+        }
+      }
+    },
+    "Comprar Plan" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar Plan"
+          }
+        }
+      }
+    },
+    "Comprar Planes por Voz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy Plans by Voice"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar Planes por Voz"
+          }
+        }
+      }
+    },
+    "Compras" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchases"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compras"
+          }
+        }
+      }
+    },
+    "Compras: Acción sin Confirmación" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchases: No-Confirmation Action"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compras: Acción sin Confirmación"
+          }
+        }
+      }
+    },
+    "Confirmar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar"
+          }
+        }
+      }
+    },
+    "Consultar Saldo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Balance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultar Saldo"
+          }
+        }
+      }
+    },
+    "Consultar Saldo y Servicios" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Balance and Services"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultar Saldo y Servicios"
+          }
+        }
+      }
+    },
+    "Consultas" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inquiries"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultas"
+          }
+        }
+      }
+    },
+    "Contactos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactos"
+          }
+        }
+      }
+    },
+    "Continuar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
+    },
+    "Contorno" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outline"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contorno"
+          }
+        }
+      }
+    },
+    "Controla Qvacell usando tu voz con Siri o integrando acciones en la app Atajos de iOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control Qvacell with your voice using Siri or by adding actions in the iOS Shortcuts app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controla Qvacell usando tu voz con Siri o integrando acciones en la app Atajos de iOS."
+          }
+        }
+      }
+    },
+    "Cuándo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuándo"
+          }
+        }
+      }
+    },
+    "Cuenta" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuenta"
+          }
+        }
+      }
+    },
+    "Datos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos"
+          }
+        }
+      }
+    },
+    "Debes abrir la pestaña Contactos en Qvacell al menos una vez para que la app sincronice tu lista de contactos con la extensión." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must open the Contacts tab in Qvacell at least once so the app can sync your contact list with the extension."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debes abrir la pestaña Contactos en Qvacell al menos una vez para que la app sincronice tu lista de contactos con la extensión."
+          }
+        }
+      }
+    },
+    "Descargando… %@%%" : {
+
+    },
+    "Descargar Base de Datos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download Database"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargar Base de Datos"
+          }
+        }
+      }
+    },
+    "Descargar JSON de Salas y Zonas WiFi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download Rooms and WiFi Zones JSON"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargar JSON de Salas y Zonas WiFi"
+          }
+        }
+      }
+    },
+    "Descargar Todos los Códigos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download All Codes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargar Todos los Códigos"
+          }
+        }
+      }
+    },
+    "Ej: 51234567" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E.g: 51234567"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ej: 51234567"
+          }
+        }
+      }
+    },
+    "Ejecutar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejecutar"
+          }
+        }
+      }
+    },
+    "Ejecutar desde el recordatorio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run from the reminder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejecutar desde el recordatorio"
+          }
+        }
+      }
+    },
+    "El número de la tarjeta de recarga, tal como aparece raspada." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The recharge card number, exactly as it appears scratched off."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El número de la tarjeta de recarga, tal como aparece raspada."
+          }
+        }
+      }
+    },
+    "El USSD es un protocolo telefónico que te permite interactuar con tu operadora marcando códigos especiales como *222#. Necesita señal celular, no datos ni Wi-Fi. Toca cualquier código de la lista y el marcador del sistema se abre listo para enviarlo — el propio iOS te pide confirmar antes de que la llamada se realice." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USSD is a phone protocol that lets you interact with your carrier by dialing special codes like *222#. It needs cellular signal, not data or Wi-Fi. Tap any code in the list and the system dialer opens ready to send it — iOS itself asks you to confirm before the call actually goes through."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El USSD es un protocolo telefónico que te permite interactuar con tu operadora marcando códigos especiales como *222#. Necesita señal celular, no datos ni Wi-Fi. Toca cualquier código de la lista y el marcador del sistema se abre listo para enviarlo — el propio iOS te pide confirmar antes de que la llamada se realice."
+          }
+        }
+      }
+    },
+    "Elige avisarte una sola vez, todos los días, cada semana, cada mes o cada ciertos días. Desde la notificación misma puedes \"Marcar como hecho\" o \"Posponer 1 día\" sin abrir la app; tocarla abre el detalle del recordatorio. También puedes crear un recordatorio totalmente personalizado, sin plantilla. Todos empiezan sin ningún recordatorio activo — los creas tú, a tu medida." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose to be notified once, every day, every week, every month, or every certain number of days. From the notification itself you can \"Mark as Done\" or \"Snooze 1 Day\" without opening the app; tapping it opens the reminder's detail. You can also create a fully custom reminder with no template. Everyone starts with no active reminders — you create them yourself, your way."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige avisarte una sola vez, todos los días, cada semana, cada mes o cada ciertos días. Desde la notificación misma puedes \"Marcar como hecho\" o \"Posponer 1 día\" sin abrir la app; tocarla abre el detalle del recordatorio. También puedes crear un recordatorio totalmente personalizado, sin plantilla. Todos empiezan sin ningún recordatorio activo — los creas tú, a tu medida."
+          }
+        }
+      }
+    },
+    "Eliminar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
+    },
+    "Eliminar Amigo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Friend"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar Amigo"
+          }
+        }
+      }
+    },
+    "Eliminar de mi Plan de Amigos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from my Friends Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar de mi Plan de Amigos"
+          }
+        }
+      }
+    },
+    "Eliminar Recordatorio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Reminder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar Recordatorio"
+          }
+        }
+      }
+    },
+    "En Ajustes › Cuenta › Gestionar PIN de Transferencia puedes cambiar el PIN que usas para transferir saldo, o guardarlo en este dispositivo para que se rellene solo cada vez que transfieras (desde Home o desde un contacto). Se guarda cifrado en este iPhone y nunca sale de él." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Settings › Account › Manage Transfer PIN you can change the PIN you use to transfer balance, or save it on this device so it fills in automatically every time you transfer (from Home or from a contact). It's stored encrypted on this iPhone and never leaves it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Ajustes › Cuenta › Gestionar PIN de Transferencia puedes cambiar el PIN que usas para transferir saldo, o guardarlo en este dispositivo para que se rellene solo cada vez que transfieras (desde Home o desde un contacto). Se guarda cifrado en este iPhone y nunca sale de él."
+          }
+        }
+      }
+    },
+    "En Ajustes › Cuenta › Gestionar Plan Amigo puedes activarlo, desactivarlo, agregar o eliminar un amigo (con su número o eligiéndolo de Contactos), y consultar su estado. Activar el Plan Amigos tiene un costo de $25.00." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Settings › Account › Manage Friends Plan you can activate it, deactivate it, add or remove a friend (with their number or by picking them from Contacts), and check its status. Activating the Friends Plan costs $25.00."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Ajustes › Cuenta › Gestionar Plan Amigo puedes activarlo, desactivarlo, agregar o eliminar un amigo (con su número o eligiéndolo de Contactos), y consultar su estado. Activar el Plan Amigos tiene un costo de $25.00."
+          }
+        }
+      }
+    },
+    "En Ajustes › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Settings › Utilities › Search Directory you can look up numbers and business contacts in ETECSA's phone directory (currently under development)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Ajustes › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
+          }
+        }
+      }
+    },
+    "En Ajustes › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Settings › Utilities › Reminders you can create local notifications (no server, no internet) to remind you when it's time to buy a bundle, recharge balance, or make a transfer. There's a section per template, and you can add as many reminders of each as you need — one per line you manage."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Ajustes › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes."
+          }
+        }
+      }
+    },
+    "En Construcción" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Under Construction"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Construcción"
+          }
+        }
+      }
+    },
+    "En Cuba, cuando alguien te llama a cobro revertido marcando **\\*99**, ETECSA envía el número entrante envuelto con 14 dígitos (por ejemplo, **99535XXXXXXX99**)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Cuba, when someone calls you collect by dialing **\\*99**, ETECSA sends the incoming number wrapped in 14 digits (for example, **99535XXXXXXX99**)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Cuba, cuando alguien te llama a cobro revertido marcando **\\*99**, ETECSA envía el número entrante envuelto con 14 dígitos (por ejemplo, **99535XXXXXXX99**)."
+          }
+        }
+      }
+    },
+    "En la pestaña Compras hay un interruptor \"Acción sin Confirmación\". Actívalo y los códigos que lo soportan marcan directo el paso de confirmación de ETECSA, ahorrándote un paso — solo actívalo si ya confías en lo que vas a comprar." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's an \"No-Confirmation Action\" switch on the Purchases tab. Turn it on and the codes that support it dial straight past ETECSA's confirmation step, saving you a step — only turn it on if you already trust what you're about to buy."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En la pestaña Compras hay un interruptor \"Acción sin Confirmación\". Actívalo y los códigos que lo soportan marcan directo el paso de confirmación de ETECSA, ahorrándote un paso — solo actívalo si ya confías en lo que vas a comprar."
+          }
+        }
+      }
+    },
+    "En los ajustes de iOS puedes verificar que los permisos de «Aprender de esta app» y «Sugerencias» estén activados para Qvacell." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In iOS Settings you can check that \"Learn from this App\" and \"Suggestions\" permissions are turned on for Qvacell."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En los ajustes de iOS puedes verificar que los permisos de «Aprender de esta app» y «Sugerencias» estén activados para Qvacell."
+          }
+        }
+      }
+    },
+    "Entendido" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got It"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entendido"
+          }
+        }
+      }
+    },
+    "Entra en **Bloqueo e identificación de llamadas**." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go into **Call Blocking & Identification**."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entra en **Bloqueo e identificación de llamadas**."
+          }
+        }
+      }
+    },
+    "Enviar \"%@\"" : {
+
+    },
+    "Escanear (próximamente)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan (coming soon)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear (próximamente)"
+          }
+        }
+      }
+    },
+    "Escribe un número para buscar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type a number to search"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe un número para buscar"
+          }
+        }
+      }
+    },
+    "Ese no parece un número móvil cubano válido." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That doesn't look like a valid Cuban mobile number."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ese no parece un número móvil cubano válido."
+          }
+        }
+      }
+    },
+    "Esta acción no se puede deshacer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action can't be undone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta acción no se puede deshacer."
+          }
+        }
+      }
+    },
+    "Estado de la Extensión" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extension Status"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de la Extensión"
+          }
+        }
+      }
+    },
+    "Estado del Plan Amigos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friends Plan Status"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado del Plan Amigos"
+          }
+        }
+      }
+    },
+    "Este contacto no tiene un número con formato de móvil cubano (+53 y 8 dígitos). Revísalo antes de marcar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This contact doesn't have a number in Cuban mobile format (+53 and 8 digits). Check it before dialing."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este contacto no tiene un número con formato de móvil cubano (+53 y 8 dígitos). Revísalo antes de marcar."
+          }
+        }
+      }
+    },
+    "Este contacto no tiene un número con formato de móvil cubano (+53 y 8 dígitos). Revísalo antes de transferir." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This contact doesn't have a number in Cuban mobile format (+53 and 8 digits). Check it before transferring."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este contacto no tiene un número con formato de móvil cubano (+53 y 8 dígitos). Revísalo antes de transferir."
+          }
+        }
+      }
+    },
+    "Este dispositivo no puede enviar mensajes de texto (por ejemplo, el Simulador de Xcode no soporta SMS)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device can't send text messages (for example, the Xcode Simulator doesn't support SMS)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este dispositivo no puede enviar mensajes de texto (por ejemplo, el Simulador de Xcode no soporta SMS)."
+          }
+        }
+      }
+    },
+    "Fecha y hora" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date and time"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha y hora"
+          }
+        }
+      }
+    },
+    "Gestionar PIN de Transferencia" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Transfer PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar PIN de Transferencia"
+          }
+        }
+      }
+    },
+    "Gestionar Plan Amigo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Friends Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar Plan Amigo"
+          }
+        }
+      }
+    },
+    "Guardar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        }
+      }
+    },
+    "Guardar Clave" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar Clave"
+          }
+        }
+      }
+    },
+    "Home" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
+    },
+    "Identifica automáticamente quién te llama con cobro revertido (*99) mostrando el nombre real de tu contacto en la pantalla de llamada." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically identifies who's calling you collect (*99) by showing your contact's real name on the call screen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifica automáticamente quién te llama con cobro revertido (*99) mostrando el nombre real de tu contacto en la pantalla de llamada."
+          }
+        }
+      }
+    },
+    "Identificador *99" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*99 Caller ID"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identificador *99"
+          }
+        }
+      }
+    },
+    "Identificador de Llamadas (*99)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caller ID (*99)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identificador de Llamadas (*99)"
+          }
+        }
+      }
+    },
+    "Impórtala si ya la tienes en este dispositivo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import it if you already have it on this device."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impórtala si ya la tienes en este dispositivo."
+          }
+        }
+      }
+    },
+    "Importando… puede tardar varios minutos, no cierres la app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importing… this can take several minutes, don't close the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importando… puede tardar varios minutos, no cierres la app."
+          }
+        }
+      }
+    },
+    "Importante" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Important"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importante"
+          }
+        }
+      }
+    },
+    "Importar Base de Datos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Database"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar Base de Datos"
+          }
+        }
+      }
+    },
+    "La app no incluye ninguna base de datos ni la descarga automáticamente — tienes que traer tú mismo el archivo SQLite (.db) de base de datos (con el botón «Importar» o copiándolo mediante Finder) para poder buscar." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app doesn't include any database or download it automatically — you have to bring your own SQLite (.db) database file (with the \"Import\" button or by copying it via Finder) to be able to search."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La app no incluye ninguna base de datos ni la descarga automáticamente — tienes que traer tú mismo el archivo SQLite (.db) de base de datos (con el botón «Importar» o copiándolo mediante Finder) para poder buscar."
+          }
+        }
+      }
+    },
+    "La clave nueva es igual a la actual." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The new PIN is the same as the current one."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La clave nueva es igual a la actual."
+          }
+        }
+      }
+    },
+    "Límite" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite"
+          }
+        }
+      }
+    },
+    "Llamar 99" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call 99"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar 99"
+          }
+        }
+      }
+    },
+    "Llamar Anónimo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call Anonymously"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar Anónimo"
+          }
+        }
+      }
+    },
+    "Llamar con *99" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call with *99"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar con *99"
+          }
+        }
+      }
+    },
+    "Llamar Oculto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Call"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar Oculto"
+          }
+        }
+      }
+    },
+    "Llamar Oculto (#31#)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Call (#31#)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar Oculto (#31#)"
+          }
+        }
+      }
+    },
+    "Llamar Oculto o por Cobrar (*99)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden or Collect Call (*99)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar Oculto o por Cobrar (*99)"
+          }
+        }
+      }
+    },
+    "Llamar por Cobrar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collect Call"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar por Cobrar"
+          }
+        }
+      }
+    },
+    "Llamar por Cobrar (*99)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collect Call (*99)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llamar por Cobrar (*99)"
+          }
+        }
+      }
+    },
+    "Los códigos de suscripción de SMS se agregarán aquí próximamente." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMS subscription codes will be added here soon."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los códigos de suscripción de SMS se agregarán aquí próximamente."
+          }
+        }
+      }
+    },
+    "Marca el código saltando el paso de confirmación de ETECSA, por si acaso confías en la selección y quieres ahorrarte un paso." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dials the code skipping ETECSA's confirmation step, in case you already trust your selection and want to save a step."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca el código saltando el paso de confirmación de ETECSA, por si acaso confías en la selección y quieres ahorrarte un paso."
+          }
+        }
+      }
+    },
+    "Marca una llamada con número oculto (#31#) a un número móvil cubano usando Qvacell." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dials a hidden-number call (#31#) to a Cuban mobile number using Qvacell."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca una llamada con número oculto (#31#) a un número móvil cubano usando Qvacell."
+          }
+        }
+      }
+    },
+    "Marca una llamada por cobrar (*99) a un número móvil cubano usando Qvacell." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dials a collect call (*99) to a Cuban mobile number using Qvacell."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca una llamada por cobrar (*99) a un número móvil cubano usando Qvacell."
+          }
+        }
+      }
+    },
+    "Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dials one of Qvacell's quick codes: balance, bonuses, data plan, postpaid balance, or Friends Plan status."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo."
+          }
+        }
+      }
+    },
+    "Marcar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dial"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar"
+          }
+        }
+      }
+    },
+    "Marcar Código Rápido" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dial Quick Code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar Código Rápido"
+          }
+        }
+      }
+    },
+    "Medir Velocidad de Internet" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measure Internet Speed"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medir Velocidad de Internet"
+          }
+        }
+      }
+    },
+    "Mensaje" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Message"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensaje"
+          }
+        }
+      }
+    },
+    "Mide ping, velocidad de descarga y de subida de tu conexión actual (datos móviles o WiFi). La prueba consume los datos que uses durante ella — ten cuidado si tienes un plan de datos limitado." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measures ping, download speed, and upload speed of your current connection (mobile data or WiFi). The test uses up the data consumed during it — be careful if you have a limited data plan."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mide ping, velocidad de descarga y de subida de tu conexión actual (datos móviles o WiFi). La prueba consume los datos que uses durante ella — ten cuidado si tienes un plan de datos limitado."
+          }
+        }
+      }
+    },
+    "Monto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto"
+          }
+        }
+      }
+    },
+    "No es uno de los temas conocidos — se enviará tal cual lo escribiste." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This isn't one of the known topics — it will be sent exactly as you typed it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No es uno de los temas conocidos — se enviará tal cual lo escribiste."
+          }
+        }
+      }
+    },
+    "No está afiliada, avalada ni patrocinada por ETECSA. Los códigos pueden cambiar en cualquier momento a discreción del operador." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not affiliated with, endorsed by, or sponsored by ETECSA. Codes may change at any time at the carrier's discretion."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No está afiliada, avalada ni patrocinada por ETECSA. Los códigos pueden cambiar en cualquier momento a discreción del operador."
+          }
+        }
+      }
+    },
+    "No necesitas configurar nada: al instalar la app, Siri y Atajos reconocen automáticamente «Qvacell»." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't need to set up anything: as soon as the app is installed, Siri and Shortcuts automatically recognize \"Qvacell\"."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No necesitas configurar nada: al instalar la app, Siri y Atajos reconocen automáticamente «Qvacell»."
+          }
+        }
+      }
+    },
+    "No se encontró ese código." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That code wasn't found."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ese código."
+          }
+        }
+      }
+    },
+    "No se encontró ese plan." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That plan wasn't found."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ese plan."
+          }
+        }
+      }
+    },
+    "No se encontró ningún contacto con número cubano (+53, 8 dígitos)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No contact with a Cuban number was found (+53, 8 digits)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ningún contacto con número cubano (+53, 8 dígitos)."
+          }
+        }
+      }
+    },
+    "No se pudo abrir el marcador en este dispositivo." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The dialer couldn't be opened on this device."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo abrir el marcador en este dispositivo."
+          }
+        }
+      }
+    },
+    "No se Puede Enviar SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can't Send SMS"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se Puede Enviar SMS"
+          }
+        }
+      }
+    },
+    "Nuevo Recordatorio Personalizado" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Custom Reminder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuevo Recordatorio Personalizado"
+          }
+        }
+      }
+    },
+    "Número" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número"
+          }
+        }
+      }
+    },
+    "Número (+53 ...)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number (+53 ...)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número (+53 ...)"
+          }
+        }
+      }
+    },
+    "Número de Tarjeta" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card Number"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de Tarjeta"
+          }
+        }
+      }
+    },
+    "Número de Teléfono" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone Number"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de Teléfono"
+          }
+        }
+      }
+    },
+    "Número no parece cubano" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number doesn't look Cuban"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número no parece cubano"
+          }
+        }
+      }
+    },
+    "Olvidar Clave Guardada" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forget Saved PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olvidar Clave Guardada"
+          }
+        }
+      }
+    },
+    "Oscuro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oscuro"
+          }
+        }
+      }
+    },
+    "Para cada provincia cubana, lista las salas de navegación pagas de ETECSA (con su cantidad de puestos) y las zonas de WIFI público gratis, agrupadas por municipio. Es información pública de ETECSA, incluida en la app — no necesita conexión para verse." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For each Cuban province, it lists ETECSA's paid navigation rooms (with their seat count) and the free public WiFi zones, grouped by municipality. This is public ETECSA information, bundled with the app — no connection is needed to view it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para cada provincia cubana, lista las salas de navegación pagas de ETECSA (con su cantidad de puestos) y las zonas de WIFI público gratis, agrupadas por municipio. Es información pública de ETECSA, incluida en la app — no necesita conexión para verse."
+          }
+        }
+      }
+    },
+    "Pasos para Activar en tu iPhone" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steps to Activate on your iPhone"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasos para Activar en tu iPhone"
+          }
+        }
+      }
+    },
+    "Permitir Acceso a Contactos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow Contacts Access"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Acceso a Contactos"
+          }
+        }
+      }
+    },
+    "Personalizados" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizados"
+          }
+        }
+      }
+    },
+    "PIN de Transferencia" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer PIN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIN de Transferencia"
+          }
+        }
+      }
+    },
+    "Plan" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        }
+      }
+    },
+    "Plan Amigo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friends Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Amigo"
+          }
+        }
+      }
+    },
+    "Plan de 4.5GB" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4.5GB Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 4.5GB"
+          }
+        }
+      }
+    },
+    "Plan de 5 Minutos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5-Minute Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 5 Minutos"
+          }
+        }
+      }
+    },
+    "Plan de 10 Minutos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10-Minute Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 10 Minutos"
+          }
+        }
+      }
+    },
+    "Plan de 15 Minutos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15-Minute Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 15 Minutos"
+          }
+        }
+      }
+    },
+    "Plan de 20 SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20 SMS Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 20 SMS"
+          }
+        }
+      }
+    },
+    "Plan de 25 Minutos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "25-Minute Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 25 Minutos"
+          }
+        }
+      }
+    },
+    "Plan de 40 Minutos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "40-Minute Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 40 Minutos"
+          }
+        }
+      }
+    },
+    "Plan de 50 SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50 SMS Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 50 SMS"
+          }
+        }
+      }
+    },
+    "Plan de 90 SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "90 SMS Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 90 SMS"
+          }
+        }
+      }
+    },
+    "Plan de 120 SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "120 SMS Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de 120 SMS"
+          }
+        }
+      }
+    },
+    "Plan de Compras" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de Compras"
+          }
+        }
+      }
+    },
+    "Plan de Datos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de Datos"
+          }
+        }
+      }
+    },
+    "Plan Diario 200MB" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "200MB Daily Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Diario 200MB"
+          }
+        }
+      }
+    },
+    "Plan ToDus" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ToDus Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan ToDus"
+          }
+        }
+      }
+    },
+    "Por Defecto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por Defecto"
+          }
+        }
+      }
+    },
+    "Por eso, la app Teléfono de tu iPhone normalmente no sabe quién es y solo muestra esa serie de números. La extensión de Qvacell le enseña a iOS a reconocerlo y mostrar el nombre real del contacto guardado en tu agenda." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That's why your iPhone's Phone app usually doesn't know who it is and just shows that string of numbers. Qvacell's extension teaches iOS to recognize it and show the real name of the contact saved in your address book."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por eso, la app Teléfono de tu iPhone normalmente no sabe quién es y solo muestra esa serie de números. La extensión de Qvacell le enseña a iOS a reconocerlo y mostrar el nombre real del contacto guardado en tu agenda."
+          }
+        }
+      }
+    },
+    "Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma, ni abrir esa pantalla de Ajustes directamente; debe autorizarse manualmente desde los ajustes de iOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due to Apple's security policies, no app can activate this extension by itself, nor open that Settings screen directly; it must be authorized manually from iOS Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma, ni abrir esa pantalla de Ajustes directamente; debe autorizarse manualmente desde los ajustes de iOS."
+          }
+        }
+      }
+    },
+    "Por privacidad, la búsqueda inversa en la base de datos se realiza únicamente a partir de números de teléfono, no por nombre." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For privacy, reverse lookup in the database is done only by phone number, not by name."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por privacidad, la búsqueda inversa en la base de datos se realiza únicamente a partir de números de teléfono, no por nombre."
+          }
+        }
+      }
+    },
+    "Pospago" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postpaid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pospago"
+          }
+        }
+      }
+    },
+    "Preferencias" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferences"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias"
+          }
+        }
+      }
+    },
+    "Puede tardar varios minutos, no cierres la app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This can take several minutes, don't close the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede tardar varios minutos, no cierres la app."
+          }
+        }
+      }
+    },
+    "Puedes integrar cualquiera de estas acciones dentro de la app **Atajos** de iOS para crear rutinas personalizadas, widgets en tu pantalla de inicio o ejecutarlas desde tu Apple Watch." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can integrate any of these actions into the iOS **Shortcuts** app to create custom routines, Home Screen widgets, or run them from your Apple Watch."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes integrar cualquiera de estas acciones dentro de la app **Atajos** de iOS para crear rutinas personalizadas, widgets en tu pantalla de inicio o ejecutarlas desde tu Apple Watch."
+          }
+        }
+      }
+    },
+    "Qué es Qvacell" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is Qvacell"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qué es Qvacell"
+          }
+        }
+      }
+    },
+    "Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qvacell gives you quick access to ETECSA's (Cubacel) USSD service codes: balance, purchases, transfers, and other utilities, all from an offline app with no dependencies."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias."
+          }
+        }
+      }
+    },
+    "Recargar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recargar"
+          }
+        }
+      }
+    },
+    "Recargar con Tarjeta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharge with Card"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recargar con Tarjeta"
+          }
+        }
+      }
+    },
+    "Recargar por Llamada" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharge by Call"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recargar por Llamada"
+          }
+        }
+      }
+    },
+    "Recordatorio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorio"
+          }
+        }
+      }
+    },
+    "Recordatorios" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorios"
+          }
+        }
+      }
+    },
+    "Recurrencia y notificación" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recurrence and notification"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recurrencia y notificación"
+          }
+        }
+      }
+    },
+    "Relleno" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filled"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relleno"
+          }
+        }
+      }
+    },
+    "Restablecer Color por Defecto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset to Default Color"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer Color por Defecto"
+          }
+        }
+      }
+    },
+    "Salas de Navegación" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigation Rooms"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salas de Navegación"
+          }
+        }
+      }
+    },
+    "Salas y Zonas WiFi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rooms and WiFi Zones"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salas y Zonas WiFi"
+          }
+        }
+      }
+    },
+    "Saldo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo"
+          }
+        }
+      }
+    },
+    "Saldo Pospago o Institucional" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postpaid or Institutional Balance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Pospago o Institucional"
+          }
+        }
+      }
+    },
+    "Saldo Principal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main Balance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Principal"
+          }
+        }
+      }
+    },
+    "Se guarda cifrada en el Llavero de este dispositivo (nunca sale de él) y se rellena sola en el campo Clave al transferir, tanto en Home como dentro de un contacto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's stored encrypted in this device's Keychain (it never leaves it) and fills in the PIN field automatically when transferring, both on Home and inside a contact."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se guarda cifrada en el Llavero de este dispositivo (nunca sale de él) y se rellena sola en el campo Clave al transferir, tanto en Home como dentro de un contacto."
+          }
+        }
+      }
+    },
+    "Se usará como destino al ejecutar la transferencia." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It will be used as the destination when the transfer runs."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se usará como destino al ejecutar la transferencia."
+          }
+        }
+      }
+    },
+    "Señal débil (riesgo de fallo)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak signal (risk of failure)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señal débil (riesgo de fallo)"
+          }
+        }
+      }
+    },
+    "Servicios por SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMS Services"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servicios por SMS"
+          }
+        }
+      }
+    },
+    "Sin Acceso a Contactos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Access to Contacts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin Acceso a Contactos"
+          }
+        }
+      }
+    },
+    "Sin Base de Datos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Database"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin Base de Datos"
+          }
+        }
+      }
+    },
+    "Sin Códigos Todavía" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Codes Yet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin Códigos Todavía"
+          }
+        }
+      }
+    },
+    "Sin Contactos Cubanos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Cuban Contacts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin Contactos Cubanos"
+          }
+        }
+      }
+    },
+    "Sin recordatorios de este tipo todavía." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No reminders of this type yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin recordatorios de este tipo todavía."
+          }
+        }
+      }
+    },
+    "Sin recordatorios personalizados." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No custom reminders."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin recordatorios personalizados."
+          }
+        }
+      }
+    },
+    "Sin señal — el USSD no funcionará" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No signal — USSD won't work"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin señal — el USSD no funcionará"
+          }
+        }
+      }
+    },
+    "Siri y Atajos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri and Shortcuts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri y Atajos"
+          }
+        }
+      }
+    },
+    "Siri y Atajos de Voz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri and Voice Shortcuts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri y Atajos de Voz"
+          }
+        }
+      }
+    },
+    "SMS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMS"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMS"
+          }
+        }
+      }
+    },
+    "Solo se identifican contactos que ya tengas guardados en tu agenda con número celular cubano (+53 5XXXXXXX)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only contacts already saved in your address book with a Cuban mobile number (+53 5XXXXXXX) are identified."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo se identifican contactos que ya tengas guardados en tu agenda con número celular cubano (+53 5XXXXXXX)."
+          }
+        }
+      }
+    },
+    "Son servicios de ETECSA que se usan enviando un SMS, no marcando un código — tarifas, DHL y vuelos, deportes, noticias, frases y horóscopos. Algunos son suscripciones (se marcan con la etiqueta \"Suscripción\") y pueden tener un costo recurrente. Necesitas un dispositivo que pueda enviar SMS (el Simulador de Xcode, por ejemplo, no puede)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These are ETECSA services used by sending an SMS, not by dialing a code — rates, DHL and flights, sports, news, quotes, and horoscopes. Some are subscriptions (marked with the \"Subscription\" label) and may have a recurring cost. You need a device that can send SMS (the Xcode Simulator, for example, can't)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son servicios de ETECSA que se usan enviando un SMS, no marcando un código — tarifas, DHL y vuelos, deportes, noticias, frases y horóscopos. Algunos son suscripciones (se marcan con la etiqueta \"Suscripción\") y pueden tener un costo recurrente. Necesitas un dispositivo que pueda enviar SMS (el Simulador de Xcode, por ejemplo, no puede)."
+          }
+        }
+      }
+    },
+    "Suscripción" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscription"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suscripción"
+          }
+        }
+      }
+    },
+    "Tarifa por Consumo (Datos)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay-Per-Use Rate (Data)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarifa por Consumo (Datos)"
+          }
+        }
+      }
+    },
+    "Título" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Título"
+          }
+        }
+      }
+    },
+    "Toca en **Teléfono**." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap **Phone**."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca en **Teléfono**."
+          }
+        }
+      }
+    },
+    "Transferir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir"
+          }
+        }
+      }
+    },
+    "Transferir Saldo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer Balance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir Saldo"
+          }
+        }
+      }
+    },
+    "Tus contactos se procesan 100% en el dispositivo (offline), sin servidores ni internet." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your contacts are processed 100% on-device (offline), with no servers or internet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus contactos se procesan 100% en el dispositivo (offline), sin servidores ni internet."
+          }
+        }
+      }
+    },
+    "Usa siempre el código estándar seguro que abre la pantalla de confirmación interactiva de ETECSA antes de realizar la compra." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always uses the standard, safe code that opens ETECSA's interactive confirmation screen before making the purchase."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa siempre el código estándar seguro que abre la pantalla de confirmación interactiva de ETECSA antes de realizar la compra."
+          }
+        }
+      }
+    },
+    "Utilidades" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilities"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilidades"
+          }
+        }
+      }
+    },
+    "Versión %@ (%@)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Versión %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "Voz" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voice"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voz"
+          }
+        }
+      }
+    },
+    "Zonas WiFi Públicas" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public WiFi Zones"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zonas WiFi Públicas"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

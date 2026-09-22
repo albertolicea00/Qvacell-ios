@@ -94,7 +94,7 @@ struct MessageComposeView: UIViewControllerRepresentable {
 /// and shows plain text with no toggle when `isMasked` is false (the user is typing it in by
 /// hand, so there's nothing to hide from them).
 struct PinRevealField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
     var isMasked: Bool
 
@@ -335,7 +335,7 @@ struct ConnectionBannerView: View {
     @State private var monitor = CellularMonitor.shared
     @Environment(AccentColorStore.self) private var accentColorStore
 
-    private var statusText: String {
+    private var statusText: LocalizedStringKey {
         guard monitor.hasService else { return "Sin señal — el USSD no funcionará" }
         switch monitor.signalQuality {
         case 3: return "Señal óptima (\(monitor.networkType))"

@@ -343,7 +343,7 @@ private struct OutlineButtonStyle: ButtonStyle {
 
 /// One square icon + label button in the Home quick-action grid.
 private struct QuickActionTile: View {
-    let title: String
+    let title: LocalizedStringKey
     let systemImage: String
     /// Explicit width computed by the parent from the available screen width, so the tile
     /// actually grows on a bigger screen instead of collapsing to the icon's intrinsic size.
@@ -385,7 +385,7 @@ private struct QuickActionTile: View {
 /// `QuickActionTile`s laid out 4-per-row, wrapping to as many rows as needed — used for the
 /// "Consultas" section on Home.
 private struct QuickActionTileGrid: View {
-    let tiles: [(String, String, String)]
+    let tiles: [(LocalizedStringKey, String, String)]
     let dial: (String) -> Void
 
     private let columns = 4
@@ -979,10 +979,10 @@ struct SMSServicesView: View {
 /// slot between `leadingGroupNames` and `trailingGroupNames` for a non-code row like the Deportes
 /// nav link — most callers don't need one, see the `EmptyView` convenience init below.
 private struct SMSCodeListView<ExtraSection: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     let leadingGroupNames: [String]
     var trailingGroupNames: [String] = []
-    let emptyStateDescription: String
+    let emptyStateDescription: LocalizedStringKey
     let extraSection: () -> ExtraSection
 
     @Environment(USSDCodeStore.self) private var store
@@ -1172,7 +1172,7 @@ private struct SMSCodeListView<ExtraSection: View>: View {
 }
 
 extension SMSCodeListView where ExtraSection == EmptyView {
-    init(title: String, groupNames: [String], emptyStateDescription: String) {
+    init(title: LocalizedStringKey, groupNames: [String], emptyStateDescription: LocalizedStringKey) {
         self.init(
             title: title,
             leadingGroupNames: groupNames,
@@ -1486,8 +1486,8 @@ struct SettingsView: View {
                     Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/codes.json")!) {
                         Label("Descargar Todos los Códigos", systemImage: "arrow.down.doc")
                     }
-                    Link(destination: URL(string: "https://www.linkedin.com/in/albertolicea00")!) {
-                        Label("Alberto Licea (Desarrollador)", systemImage: "person.circle")
+                    Link(destination: URL(string: "https://x.com/albertolicea00")!) {
+                        Label("Developed by @albertolicea00", systemImage: "person.circle")
                     }
                 }
 
@@ -2239,7 +2239,7 @@ struct YellowPagesSearchView: View {
 /// native grouped-list row (not a standalone button) so "Descargar"/"Importar" read as one
 /// integrated component instead of two separate pills.
 private struct DirectoryActionRow: View {
-    let title: String
+    let title: LocalizedStringKey
     let systemImage: String
     let isEnabled: Bool
     let tint: Color
@@ -2687,8 +2687,8 @@ private struct SiriPhraseRow: View {
 
 /// One title + body row inside a Settings section.
 private struct SettingsInfoRow: View {
-    let title: String
-    let text: String
+    let title: LocalizedStringKey
+    let text: LocalizedStringKey
 
     @Environment(AccentColorStore.self) private var accentColorStore
 

@@ -2278,6 +2278,24 @@ private struct HelpSettingsView: View {
                 )
             }
 
+            Section("Idioma") {
+                SettingsInfoRow(
+                    title: "¿Cómo cambio el idioma?",
+                    text: "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Ajustes de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español."
+                )
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    HStack {
+                        Label("Cambiar Idioma en Ajustes de iOS", systemImage: "globe")
+                        Spacer()
+                        Image(systemName: "arrow.up.forward.app")
+                    }
+                }
+            }
+
             Section("Cómo Funciona el USSD") {
                 SettingsInfoRow(
                     title: "¿Qué es el USSD?",

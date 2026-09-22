@@ -7,6 +7,23 @@
     " · %@ " : {
 
     },
+    "¿Cómo cambio el idioma?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I change the language?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo cambio el idioma?"
+          }
+        }
+      }
+    },
     "¿Cómo funciona?" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -748,6 +765,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambiar Clave"
+          }
+        }
+      }
+    },
+    "Cambiar Idioma en Ajustes de iOS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Language in iOS Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar Idioma en Ajustes de iOS"
           }
         }
       }
@@ -2084,6 +2118,23 @@
         }
       }
     },
+    "Idioma" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma"
+          }
+        }
+      }
+    },
     "Impórtala si ya la tienes en este dispositivo." : {
       "localizations" : {
         "en" : {
@@ -3358,6 +3409,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias."
+          }
+        }
+      }
+    },
+    "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Ajustes de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qvacell has no language picker of its own — it follows whatever language you set for the app in iOS Settings. If your iPhone is set to English, the app shows in English; if it's set to Spanish (or another untranslated language), it shows in Spanish."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Ajustes de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español."
           }
         }
       }

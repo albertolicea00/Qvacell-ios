@@ -1488,7 +1488,7 @@ struct SettingsView: View {
                             .contentShape(Rectangle())
                             .onTapGesture { registerVersionTap() }
 
-                        Link(destination: URL(string: "https://x.com/albertolicea00")!) {
+                        Link(destination: URL(string: "https://github.com/albertolicea00")!) {
                             Text("by @albertolicea00")
                                 .font(.caption)
                         }

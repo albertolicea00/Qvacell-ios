@@ -736,6 +736,9 @@
         }
       }
     },
+    "by @albertolicea00" : {
+
+    },
     "Cada orden por voz abre la app y prepara el marcado exacto, solicitando confirmación del sistema antes de llamar." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3497,6 +3500,22 @@
         }
       }
     },
+    "Red celular" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cellular network"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red celular"
+          }
+        }
+      }
+    },
     "Recordatorio" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3731,6 +3750,22 @@
         }
       }
     },
+    "Señal buena (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good signal (%@)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señal buena (%@)"
+          }
+        }
+      }
+    },
     "Señal débil (riesgo de fallo)" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3744,6 +3779,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Señal débil (riesgo de fallo)"
+          }
+        }
+      }
+    },
+    "Señal óptima (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optimal signal (%@)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señal óptima (%@)"
           }
         }
       }
@@ -3861,6 +3912,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin recordatorios personalizados."
+          }
+        }
+      }
+    },
+    "Sin servicio celular" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No cellular service"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin servicio celular"
           }
         }
       }
@@ -4135,9 +4202,15 @@
     },
     "Versión %@ (%@)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        },
         "es" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Versión %1$@ (%2$@)"
           }
         }

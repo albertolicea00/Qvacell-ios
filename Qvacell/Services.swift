@@ -131,8 +131,8 @@ final class CellularMonitor {
     private let telephonyInfo = CTTelephonyNetworkInfo()
 
     private(set) var hasService = false
-    /// User-facing network type label, e.g. "4G / LTE". Spanish since it is shown in the UI.
-    private(set) var networkType = "Buscando red..."
+    /// User-facing network type label, e.g. "4G / LTE". Localized since it is shown in the UI.
+    private(set) var networkType = String(localized: "Buscando red...")
     /// 0 (no service) through 3 (best).
     private(set) var signalQuality = 0
 
@@ -152,7 +152,7 @@ final class CellularMonitor {
               let tech = techByService.values.first, !tech.isEmpty
         else {
             hasService = false
-            networkType = "Sin servicio celular"
+            networkType = String(localized: "Sin servicio celular")
             signalQuality = 0
             return
         }
@@ -172,10 +172,10 @@ final class CellularMonitor {
             networkType = "3G"
             signalQuality = 2
         case CTRadioAccessTechnologyEdge, CTRadioAccessTechnologyGPRS:
-            networkType = "2G / EDGE"
+            networkType = String(localized: "2G / EDGE")
             signalQuality = 1
         default:
-            networkType = "Red celular"
+            networkType = String(localized: "Red celular")
             signalQuality = 2
         }
     }

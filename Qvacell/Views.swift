@@ -1479,26 +1479,24 @@ struct SettingsView: View {
                     Label("No está afiliada, avalada ni patrocinada por ETECSA. Los códigos pueden cambiar en cualquier momento a discreción del operador.", systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.secondary)
-
-                    Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios")!) {
-                        Label("Código fuente en GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
-                    }
-                    Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/codes.json")!) {
-                        Label("Descargar Todos los Códigos", systemImage: "arrow.down.doc")
-                    }
-                    Link(destination: URL(string: "https://x.com/albertolicea00")!) {
-                        Label("Desarrollado por @albertolicea00", systemImage: "person.circle")
-                    }
                 }
 
                 Section {
-                    Text("Versión \(AppVersion) (\(AppBuild))")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .listRowBackground(Color.clear)
-                        .contentShape(Rectangle())
-                        .onTapGesture { registerVersionTap() }
+                    VStack(spacing: 4) {
+                        Text("Versión \(AppVersion) (\(AppBuild))")
+                            .font(.caption)
+                            .contentShape(Rectangle())
+                            .onTapGesture { registerVersionTap() }
+
+                        Link(destination: URL(string: "https://x.com/albertolicea00")!) {
+                            Text("by @albertolicea00")
+                                .font(.caption)
+                        }
+                        .tint(.secondary)
+                    }
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowBackground(Color.clear)
                 }
             }
             .navigationDestination(isPresented: $isShowingDatabaseOnLaunch) { DirectorySearchView() }
@@ -2276,6 +2274,9 @@ private struct HelpSettingsView: View {
                     title: "¿Qué hace la app?",
                     text: "Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias."
                 )
+                Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios")!) {
+                    Label("Código fuente en GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
+                }
             }
 
             Section("Idioma") {
@@ -2305,6 +2306,9 @@ private struct HelpSettingsView: View {
                     title: "Códigos que piden un dato",
                     text: "Algunos códigos, como recargar con tarjeta, necesitan un número adicional (p. ej. *662*{tarjeta}#). Al tocarlos, primero se pide ese dato y luego se marca el código completo."
                 )
+                Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/codes.json")!) {
+                    Label("Descargar Todos los Códigos", systemImage: "arrow.down.doc")
+                }
             }
 
             Section("Compras: Acción sin Confirmación") {
@@ -2355,6 +2359,9 @@ private struct HelpSettingsView: View {
                     title: "¿Qué muestra?",
                     text: "Para cada provincia cubana, lista las salas de navegación pagas de ETECSA (con su cantidad de puestos) y las zonas de WIFI público gratis, agrupadas por municipio. Es información pública de ETECSA, incluida en la app — no necesita conexión para verse."
                 )
+                Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/wifi_navigation_rooms.json")!) {
+                    Label("Descargar JSON de Salas y Zonas WiFi", systemImage: "arrow.down.doc")
+                }
             }
 
             // Section("Medir Velocidad de Internet") {
@@ -2753,12 +2760,6 @@ struct WifiRoomsProvinceListView: View {
                             .foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 2)
-                }
-            }
-
-            Section {
-                Link(destination: URL(string: "https://github.com/albertolicea00/Qvacell-ios/blob/main/Qvacell/wifi_navigation_rooms.json")!) {
-                    Label("Descargar JSON de Salas y Zonas WiFi", systemImage: "arrow.down.doc")
                 }
             }
         }

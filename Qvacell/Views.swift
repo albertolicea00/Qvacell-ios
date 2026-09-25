@@ -668,6 +668,7 @@ private struct ContactCallOptionsSheet: View {
                 }
                 .frame(maxWidth: .infinity)
                 .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
 
                 VStack(spacing: 10) {
                     Button {
@@ -695,6 +696,7 @@ private struct ContactCallOptionsSheet: View {
                 .controlSize(.large)
                 .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                 .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
             }
             .listSectionSpacing(6)
 

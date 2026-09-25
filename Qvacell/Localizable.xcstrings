@@ -3500,22 +3500,6 @@
         }
       }
     },
-    "Red celular" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cellular network"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Red celular"
-          }
-        }
-      }
-    },
     "Recordatorio" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3580,6 +3564,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recurrencia y notificación"
+          }
+        }
+      }
+    },
+    "Red celular" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cellular network"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red celular"
           }
         }
       }
@@ -3751,6 +3752,7 @@
       }
     },
     "Señal buena (%@)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3784,6 +3786,7 @@
       }
     },
     "Señal óptima (%@)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3916,22 +3919,6 @@
         }
       }
     },
-    "Sin servicio celular" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No cellular service"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin servicio celular"
-          }
-        }
-      }
-    },
     "Sin señal — el USSD no funcionará" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3945,6 +3932,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin señal — el USSD no funcionará"
+          }
+        }
+      }
+    },
+    "Sin servicio celular" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No cellular service"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin servicio celular"
           }
         }
       }

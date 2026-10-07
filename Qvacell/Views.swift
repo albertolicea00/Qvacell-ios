@@ -167,6 +167,7 @@ struct HomeQuickActionsView: View {
                             ("Amigo", "person.2.fill", "friends-plan"),
                             ("Bono", "gift.fill", "bonus-usd-plans"),
                             ("Pospago", "building.2.fill", "postpaid-balance"),
+                            ("TFA", "lock.shield.fill", "tfa"),
                         ], dial: dial)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
@@ -345,36 +346,32 @@ private struct OutlineButtonStyle: ButtonStyle {
 private struct QuickActionTile: View {
     let title: LocalizedStringKey
     let systemImage: String
-    /// Explicit width computed by the parent from the available screen width, so the tile
-    /// actually grows on a bigger screen instead of collapsing to the icon's intrinsic size.
-    let size: CGFloat
     let action: () -> Void
 
     @Environment(AccentColorStore.self) private var accentColorStore
-    /// 0 = filled (colored background, white icon/text), 1 = outline (transparent background,
-    /// colored border/icon/text) — set in Ajustes › Preferencias.
     @AppStorage("quickActionTileStyle") private var style: Int = 0
 
     private var isOutline: Bool { style == 1 }
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 6) {
+            VStack(spacing: 4) {
                 Image(systemName: systemImage)
-                    .font(.system(size: size * 0.24))
+                    .font(.system(size: 18))
                 Text(title)
                     .font(.caption.weight(.semibold))
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
             }
             .foregroundStyle(isOutline ? accentColorStore.color : Color.white)
-            .frame(width: size, height: size)
+            .frame(maxWidth: .infinity)
+            .frame(height: 72)
             .background(
                 isOutline ? Color.clear : accentColorStore.color,
-                in: RoundedRectangle(cornerRadius: size * 0.2)
+                in: RoundedRectangle(cornerRadius: 12)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: size * 0.2)
+                RoundedRectangle(cornerRadius: 12)
                     .stroke(accentColorStore.color, lineWidth: isOutline ? 1.5 : 0)
             )
         }
@@ -388,36 +385,30 @@ private struct QuickActionTileGrid: View {
     let tiles: [(LocalizedStringKey, String, String)]
     let dial: (String) -> Void
 
-    private let columns = 4
-    private let gap: CGFloat = 16
+    private let columns = 3
+    private let gap: CGFloat = 8
+    private let tileHeight: CGFloat = 72
 
     private var rowCount: Int { (tiles.count + columns - 1) / columns }
 
     var body: some View {
-        GeometryReader { geometry in
-            let rawSize = (geometry.size.width - gap * CGFloat(columns - 1)) / CGFloat(columns)
-            let tileSize = min(max(rawSize, 44), 84)
-
-            VStack(spacing: gap) {
-                ForEach(0..<rowCount, id: \.self) { row in
-                    HStack(spacing: gap) {
-                        ForEach(0..<columns, id: \.self) { column in
-                            let index = row * columns + column
-                            if index < tiles.count {
-                                let (title, icon, codeId) = tiles[index]
-                                QuickActionTile(title: title, systemImage: icon, size: tileSize) {
-                                    dial(codeId)
-                                }
-                            } else {
-                                Color.clear.frame(width: tileSize, height: tileSize)
+        VStack(spacing: gap) {
+            ForEach(0..<rowCount, id: \.self) { row in
+                HStack(spacing: gap) {
+                    ForEach(0..<columns, id: \.self) { column in
+                        let index = row * columns + column
+                        if index < tiles.count {
+                            let (title, icon, codeId) = tiles[index]
+                            QuickActionTile(title: title, systemImage: icon) {
+                                dial(codeId)
                             }
+                        } else {
+                            Color.clear.frame(maxWidth: .infinity, minHeight: tileHeight)
                         }
                     }
-                    .frame(maxWidth: .infinity)
                 }
             }
         }
-        .frame(height: CGFloat(rowCount) * 84 + CGFloat(rowCount - 1) * gap)
     }
 }
 

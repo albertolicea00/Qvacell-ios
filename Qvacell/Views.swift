@@ -160,14 +160,14 @@ struct HomeQuickActionsView: View {
                     Section("Consultas") {
                         QuickActionTileGrid(tiles: [
                             ("Saldo", "creditcard.fill", "main-balance"),
+                            ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
+                            ("Bono", "gift.fill", "bonus-usd-plans"),
                             ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
                             ("Voz", "phone.fill", "voice-balance"),
                             ("SMS", "message.fill", "sms-balance"),
-                            ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
                             ("Amigo", "person.2.fill", "friends-plan"),
-                            ("Bono", "gift.fill", "bonus-usd-plans"),
-                            ("Pospago", "building.2.fill", "postpaid-balance"),
                             ("TFA", "lock.shield.fill", "tfa"),
+                            ("Pospago", "building.2.fill", "postpaid-balance"),
                         ], dial: dial)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)

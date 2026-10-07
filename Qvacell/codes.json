@@ -127,6 +127,21 @@
               },
               "type": "ussd",
               "requiresInput": false
+            },
+            {
+              "id": "tfa",
+              "code": "*118#",
+              "title": {
+                "es": "TFA",
+                "en": "TFA"
+              },
+              "details": {
+                "es": "Servicio TFA (*118#).",
+                "en": "TFA service (*118#)."
+              },
+              "icon": "lock.shield.fill",
+              "type": "ussd",
+              "requiresInput": false
             }
           ]
         },

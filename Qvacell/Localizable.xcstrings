@@ -349,6 +349,22 @@
         }
       }
     },
+    "Adelanta Saldo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance Advance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adelanta Saldo"
+          }
+        }
+      }
+    },
     "Agregar" : {
       "localizations" : {
         "en" : {
@@ -3747,6 +3763,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se usará como destino al ejecutar la transferencia."
+          }
+        }
+      }
+    },
+    "Selecciona el monto a adelantar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the amount to advance."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona el monto a adelantar."
           }
         }
       }

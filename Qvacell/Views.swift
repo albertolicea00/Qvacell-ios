@@ -1332,6 +1332,7 @@ struct SettingsView: View {
     @State private var smsInputText = ""
     @State private var pendingSMS: PendingSMS?
     @State private var showsCannotSendTextAlert = false
+    @State private var showingAdvanceBalanceOptions = false
 
     var body: some View {
         NavigationStack {
@@ -1446,6 +1447,18 @@ struct SettingsView: View {
                         }
                     }
 
+                    if store.group(named: "Servicio Adelanta Saldo") != nil {
+                        Button {
+                            showingAdvanceBalanceOptions = true
+                        } label: {
+                            HStack {
+                                Label("Adelanta Saldo", systemImage: "banknote.fill")
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }
+                        }
+                    }
+
                     NavigationLink {
                         FriendsPlanManageView()
                     } label: {
@@ -1551,6 +1564,18 @@ struct SettingsView: View {
             .sheet(item: $pendingSMS) { pending in
                 MessageComposeView(recipient: pending.recipient, body: pending.body)
                     .ignoresSafeArea()
+            }
+            .confirmationDialog("Adelanta Saldo", isPresented: $showingAdvanceBalanceOptions, titleVisibility: .visible) {
+                if let group = store.group(named: "Servicio Adelanta Saldo") {
+                    ForEach(group.codes) { code in
+                        Button(code.localizedTitle) {
+                            DialService.dial(code.code)
+                        }
+                    }
+                }
+                Button("Cancelar", role: .cancel) {}
+            } message: {
+                Text("Selecciona el monto a adelantar.")
             }
         }
         .overlay(alignment: .bottom) {

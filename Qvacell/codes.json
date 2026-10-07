@@ -132,12 +132,12 @@
               "id": "tfa",
               "code": "*118#",
               "title": {
-                "es": "TFA",
-                "en": "TFA"
+                "es": "Telefonía Fija Alternativa",
+                "en": "Alternative Fixed Telephony"
               },
               "details": {
-                "es": "Servicio TFA (*118#).",
-                "en": "TFA service (*118#)."
+                "es": "Consulta tu Servicio TFA (Telefonía Fija Alternativa).",
+                "en": "Check your TFA service (Alternative Fixed Telephony)."
               },
               "icon": "lock.shield.fill",
               "type": "ussd",

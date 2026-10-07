@@ -171,7 +171,7 @@ struct HomeQuickActionsView: View {
                         ], dial: dial)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                        .listRowInsets(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
                     }
                     .listSectionSpacing(6)
 

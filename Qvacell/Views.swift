@@ -124,6 +124,9 @@ struct HomeQuickActionsView: View {
     @Environment(USSDCodeStore.self) private var store
     @Environment(AccentColorStore.self) private var accentColorStore
     @AppStorage("showNetworkStatus") private var showNetworkStatus = false
+    @AppStorage("quickActionTileStyle") private var quickActionTileStyle: Int = 0
+
+    private var isListStyle: Bool { quickActionTileStyle == 2 }
 
     @State private var phoneNumber = ""
     @State private var pin = ""
@@ -158,20 +161,24 @@ struct HomeQuickActionsView: View {
 
                 List {
                     Section("Consultas") {
-                        QuickActionTileGrid(tiles: [
-                            ("Saldo", "creditcard.fill", "main-balance"),
-                            ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
-                            ("Bono", "gift.fill", "bonus-usd-plans"),
-                            ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
-                            ("Voz", "phone.fill", "voice-balance"),
-                            ("SMS", "message.fill", "sms-balance"),
-                            ("Amigo", "person.2.fill", "friends-plan"),
-                            ("TFA", "lock.shield.fill", "tfa"),
-                            ("Pospago", "building.2.fill", "postpaid-balance"),
-                        ], dial: dial)
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                        if isListStyle {
+                            ForEach(Self.queryTiles, id: \.2) { title, icon, codeId in
+                                Button {
+                                    dial(codeId: codeId)
+                                } label: {
+                                    HStack {
+                                        Label(title, systemImage: icon)
+                                        Spacer()
+                                        Image(systemName: "arrow.right")
+                                    }
+                                }
+                            }
+                        } else {
+                            QuickActionTileGrid(tiles: Self.queryTiles, dial: dial)
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                        }
                     }
                     .listSectionSpacing(6)
 
@@ -296,6 +303,18 @@ struct HomeQuickActionsView: View {
             }
         }
     }
+
+    private static let queryTiles: [(LocalizedStringKey, String, String)] = [
+        ("Saldo", "creditcard.fill", "main-balance"),
+        ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
+        ("Bono", "gift.fill", "bonus-usd-plans"),
+        ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
+        ("Voz", "phone.fill", "voice-balance"),
+        ("SMS", "message.fill", "sms-balance"),
+        ("Amigo", "person.2.fill", "friends-plan"),
+        ("TFA", "lock.shield.fill", "tfa"),
+        ("Pospago", "building.2.fill", "postpaid-balance"),
+    ]
 
     private func dial(codeId: String) {
         if let code = store.code(withId: codeId) {
@@ -1434,6 +1453,7 @@ struct SettingsView: View {
                     Picker("Estilo de Acciones Rápidas", selection: $quickActionTileStyle) {
                         Text("Relleno").tag(0)
                         Text("Contorno").tag(1)
+                        Text("Listado").tag(2)
                     }
                     .tint(accentColorStore.color)
 

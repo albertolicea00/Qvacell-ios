@@ -2288,6 +2288,22 @@
         }
       }
     },
+    "Listado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listado"
+          }
+        }
+      }
+    },
     "Llamar 99" : {
       "extractionState" : "stale",
       "localizations" : {

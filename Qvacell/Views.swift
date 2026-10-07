@@ -163,14 +163,34 @@ struct HomeQuickActionsView: View {
                     Section("Consultas") {
                         if isListStyle {
                             ForEach(Self.queryTiles, id: \.2) { title, icon, codeId in
-                                Button {
-                                    dial(codeId: codeId)
-                                } label: {
-                                    HStack {
-                                        Label(title, systemImage: icon)
-                                        Spacer()
-                                        Image(systemName: "arrow.right")
+                                if let code = store.code(withId: codeId) {
+                                    Button {
+                                        dial(codeId: codeId)
+                                    } label: {
+                                        HStack(spacing: 12) {
+                                            Image(systemName: icon)
+                                                .foregroundStyle(.white)
+                                                .frame(width: 36, height: 36)
+                                                .background(accentColorStore.color, in: Circle())
+
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text(title)
+                                                    .font(.body.weight(.medium))
+                                                    .foregroundStyle(Color.appForeground)
+                                                Text(code.localizedDetails)
+                                                    .font(.caption)
+                                                    .foregroundStyle(.secondary)
+                                                    .lineLimit(2)
+                                            }
+
+                                            Spacer()
+
+                                            Image(systemName: "arrow.right")
+                                                .foregroundStyle(accentColorStore.color)
+                                        }
+                                        .padding(.vertical, 4)
                                     }
+                                    .buttonStyle(.plain)
                                 }
                             }
                         } else {

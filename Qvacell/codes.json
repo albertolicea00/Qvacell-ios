@@ -387,13 +387,13 @@
                 "en": "Set Up MMS"
               },
               "details": {
-                "es": "Envía los primeros 9 dígitos de tu correo electrónico al 4222 para configurar el MMS.",
-                "en": "Send the first 9 digits of your email to 4222 to set up MMS."
+                "es": "Envía los primeros 8 dígitos de tu IMEI al 4222 para configurar el MMS.",
+                "en": "Send the first 8 digits of your IMEI to 4222 to set up MMS."
               },
               "icon": "photo.on.rectangle.angled",
               "type": "sms",
               "requiresInput": true,
-              "inputPlaceholder": "Primeros 9 dígitos de tu email",
+              "inputPlaceholder": "Primeros 8 dígitos de tu IMEI",
               "compact": true
             }
           ]

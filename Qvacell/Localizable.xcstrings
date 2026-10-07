@@ -350,6 +350,7 @@
       }
     },
     "Adelanta Saldo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

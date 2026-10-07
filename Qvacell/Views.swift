@@ -1337,82 +1337,6 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Preferencias") {
-                    // Inline pickers in a List don't reliably inherit `.tint()` from an ancestor
-                    // (e.g. the TabView's) for their selected-value text/chevron — tint each one
-                    // directly so it actually follows the user's accent color choice.
-                    Picker("Tema", selection: $darkMode) {
-                        Text("Por Defecto").tag(0)
-                        Text("Claro").tag(1)
-                        Text("Oscuro").tag(2)
-                    }
-                    .tint(accentColorStore.color)
-
-                    Picker("Estilo de Acciones Rápidas", selection: $quickActionTileStyle) {
-                        Text("Relleno").tag(0)
-                        Text("Contorno").tag(1)
-                    }
-                    .tint(accentColorStore.color)
-
-                    Toggle("Aviso de señal celular", isOn: $showNetworkStatus)
-
-                    Picker("Pestaña Inicial", selection: $defaultTab) {
-                        ForEach(HomeTab.launchOptions(includingDatabase: showDatabaseSearch)) { tab in
-                            Text(tab.displayName).tag(tab.rawValue)
-                        }
-                    }
-                    .tint(accentColorStore.color)
-
-                    ColorPicker(
-                        "Color de Acento",
-                        selection: Binding(
-                            get: { accentColorStore.color },
-                            set: { accentColorStore.color = $0 }
-                        ),
-                        supportsOpacity: false
-                    )
-
-                    if accentColorStore.color.hexString != Color.brandCyan.hexString {
-                        Button("Restablecer Color por Defecto") {
-                            accentColorStore.resetToDefault()
-                        }
-                    }
-                }
-
-                Section("Utilidades") {
-                    NavigationLink {
-                        RemindersListView()
-                    } label: {
-                        Label("Recordatorios", systemImage: "bell.badge.fill")
-                    }
-
-                    NavigationLink {
-                        SMSServicesView()
-                    } label: {
-                        Label("Servicios por SMS", systemImage: "envelope.badge")
-                    }
-
-                    NavigationLink {
-                        WifiRoomsProvinceListView()
-                    } label: {
-                        Label("Salas y Zonas WiFi", systemImage: "wifi")
-                    }
-
-                    NavigationLink {
-                        YellowPagesSearchView()
-                    } label: {
-                        Label("Buscar en Directorio", systemImage: "magnifyingglass")
-                    }
-
-                    if showDatabaseSearch {
-                        NavigationLink {
-                            DirectorySearchView()
-                        } label: {
-                            Label("Buscar en Database", systemImage: "cylinder.split.1x2")
-                        }
-                    }
-                }
-
                 Section("Cuenta") {
 
                     if let payPerUseCode = store.code(withId: "data-pay-per-use") {
@@ -1453,8 +1377,10 @@ struct SettingsView: View {
                         } label: {
                             HStack {
                                 Label("Adelanta Saldo", systemImage: "banknote.fill")
+                                    .foregroundStyle(.primary)
                                 Spacer()
                                 Image(systemName: "arrow.right")
+                                    .foregroundStyle(.secondary)
                             }
                         }
                     }
@@ -1469,6 +1395,79 @@ struct SettingsView: View {
                         TransferPinSettingsView()
                     } label: {
                         Label("Gestionar PIN de Transferencia", systemImage: "key.fill")
+                    }
+                }
+
+                Section("Utilidades") {
+                    NavigationLink {
+                        RemindersListView()
+                    } label: {
+                        Label("Recordatorios", systemImage: "bell.badge.fill")
+                    }
+
+                    NavigationLink {
+                        SMSServicesView()
+                    } label: {
+                        Label("Servicios por SMS", systemImage: "envelope.badge")
+                    }
+
+                    NavigationLink {
+                        WifiRoomsProvinceListView()
+                    } label: {
+                        Label("Salas y Zonas WiFi", systemImage: "wifi")
+                    }
+
+                    NavigationLink {
+                        YellowPagesSearchView()
+                    } label: {
+                        Label("Buscar en Directorio", systemImage: "magnifyingglass")
+                    }
+
+                    if showDatabaseSearch {
+                        NavigationLink {
+                            DirectorySearchView()
+                        } label: {
+                            Label("Buscar en Database", systemImage: "cylinder.split.1x2")
+                        }
+                    }
+                }
+
+                Section("Preferencias") {
+                    Picker("Tema", selection: $darkMode) {
+                        Text("Por Defecto").tag(0)
+                        Text("Claro").tag(1)
+                        Text("Oscuro").tag(2)
+                    }
+                    .tint(accentColorStore.color)
+
+                    Picker("Estilo de Acciones Rápidas", selection: $quickActionTileStyle) {
+                        Text("Relleno").tag(0)
+                        Text("Contorno").tag(1)
+                    }
+                    .tint(accentColorStore.color)
+
+                    Toggle("Aviso de señal celular", isOn: $showNetworkStatus)
+
+                    Picker("Pestaña Inicial", selection: $defaultTab) {
+                        ForEach(HomeTab.launchOptions(includingDatabase: showDatabaseSearch)) { tab in
+                            Text(tab.displayName).tag(tab.rawValue)
+                        }
+                    }
+                    .tint(accentColorStore.color)
+
+                    ColorPicker(
+                        "Color de Acento",
+                        selection: Binding(
+                            get: { accentColorStore.color },
+                            set: { accentColorStore.color = $0 }
+                        ),
+                        supportsOpacity: false
+                    )
+
+                    if accentColorStore.color.hexString != Color.brandCyan.hexString {
+                        Button("Restablecer Color por Defecto") {
+                            accentColorStore.resetToDefault()
+                        }
                     }
                 }
 

@@ -14,7 +14,7 @@ let AppBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
 
 // MARK: - Accent Color Store
 
-/// The user's chosen accent color (Ajustes › Preferencias), used everywhere the app used to
+/// The user's chosen accent color (Options › Preferencias), used everywhere the app used to
 /// hardcode `Color.brandCyan`. Persisted as a hex string in `UserDefaults` (`Color` itself isn't
 /// storable there) and defaults to `brandCyan` until the user picks something else.
 @Observable
@@ -35,7 +35,7 @@ final class AccentColorStore {
         }
     }
 
-    /// Reverts to the app's default accent (`brandCyan`) — offered in Ajustes next to the picker.
+    /// Reverts to the app's default accent (`brandCyan`) — offered in Options next to the picker.
     func resetToDefault() {
         color = .brandCyan
     }

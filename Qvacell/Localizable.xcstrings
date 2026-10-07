@@ -806,6 +806,23 @@
         }
       }
     },
+    "Cambiar Idioma en Configuración de iOS" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Language in iOS Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar Idioma en Configuración de iOS"
+          }
+        }
+      }
+    },
     "Cambiar y guardar tu PIN" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1765,6 +1782,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En los ajustes de iOS puedes verificar que los permisos de «Aprender de esta app» y «Sugerencias» estén activados para Qvacell."
+          }
+        }
+      }
+    },
+    "En Opciones › Cuenta › Gestionar PIN de Transferencia puedes cambiar el PIN que usas para transferir saldo, o guardarlo en este dispositivo para que se rellene solo cada vez que transfieras (desde Home o desde un contacto). Se guarda cifrado en este iPhone y nunca sale de él." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Options › Account › Manage Transfer PIN you can change the PIN you use to transfer balance, or save it on this device so it fills in automatically every time you transfer (from Home or from a contact). It's stored encrypted on this iPhone and never leaves it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Opciones › Cuenta › Gestionar PIN de Transferencia puedes cambiar el PIN que usas para transferir saldo, o guardarlo en este dispositivo para que se rellene solo cada vez que transfieras (desde Home o desde un contacto). Se guarda cifrado en este iPhone y nunca sale de él."
+          }
+        }
+      }
+    },
+    "En Opciones › Cuenta › Gestionar Plan Amigo puedes activarlo, desactivarlo, agregar o eliminar un amigo (con su número o eligiéndolo de Contactos), y consultar su estado. Activar el Plan Amigos tiene un costo de $25.00." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Options › Account › Manage Friends Plan you can activate it, deactivate it, add or remove a friend (with their number or by picking them from Contacts), and check its status. Activating the Friends Plan costs $25.00."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Opciones › Cuenta › Gestionar Plan Amigo puedes activarlo, desactivarlo, agregar o eliminar un amigo (con su número o eligiéndolo de Contactos), y consultar su estado. Activar el Plan Amigos tiene un costo de $25.00."
+          }
+        }
+      }
+    },
+    "En Opciones › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Options › Utilities › Search Directory you can look up numbers and business contacts in ETECSA's phone directory (currently under development)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Opciones › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
+          }
+        }
+      }
+    },
+    "En Opciones › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Options › Utilities › Reminders you can create local notifications (no server, no internet) to remind you when it's time to buy a bundle, recharge balance, or make a transfer. There's a section per template, and you can add as many reminders of each as you need — one per line you manage."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Opciones › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes."
           }
         }
       }
@@ -2878,6 +2963,40 @@
         }
       }
     },
+    "Opciones" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones"
+          }
+        }
+      }
+    },
+    "Options" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones"
+          }
+        }
+      }
+    },
     "Oscuro" : {
       "localizations" : {
         "en" : {
@@ -3462,6 +3581,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Ajustes de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español."
+          }
+        }
+      }
+    },
+    "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Configuración de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qvacell has no language picker of its own — it follows whatever language you set for the app in iOS Settings. If your iPhone is set to English, the app shows in English; if it's set to Spanish (or another untranslated language), it shows in Spanish."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Configuración de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español."
           }
         }
       }

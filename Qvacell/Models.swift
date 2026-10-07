@@ -181,7 +181,7 @@ enum CubanPhoneNumber {
 extension Color {
     /// rgb(0, 0, 102) — primary brand color.
     static let brandNavy = Color(red: 0 / 255, green: 0 / 255, blue: 102 / 255)
-    /// #09C — the app's default accent color. The user can override this in Ajustes ›
+    /// #09C — the app's default accent color. The user can override this in Options ›
     /// Preferencias (see `AccentColorStore`); this constant is only the fallback/default value.
     static let brandCyan = Color(red: 0 / 255, green: 153 / 255, blue: 204 / 255)
     /// Adaptive background: white in light mode, black in dark mode.

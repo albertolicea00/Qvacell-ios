@@ -8,7 +8,7 @@ import UniformTypeIdentifiers
 
 /// Root screen. Tab order is explicit (not a generic `ForEach` over every category) since Home
 /// must sit in the middle, flanked by Contactos/Líneas de Ayuda on one side and Compras on the
-/// other: Líneas de Ayuda, Contactos, Home, Compras, Ajustes.
+/// other: Líneas de Ayuda, Contactos, Home, Compras, Opciones.
 struct HomeView: View {
     @Environment(USSDCodeStore.self) private var store
     @Environment(AccentColorStore.self) private var accentColorStore
@@ -47,11 +47,11 @@ struct HomeView: View {
                     .tag(HomeTab.purchase.rawValue)
             }
 
-            SettingsView()
+            OptionsView()
                 .tabItem {
-                    Label("Ajustes", systemImage: "gearshape.fill")
+                    Label("Opciones", systemImage: "square.grid.2x2")
                 }
-                .tag(HomeTab.settings.rawValue)
+                .tag(HomeTab.options.rawValue)
         }
         .tint(accentColorStore.color)
         .onAppear {
@@ -73,16 +73,30 @@ struct HomeView: View {
 }
 
 /// The 5 tabs, keyed by a stable string so it can be stored in `@AppStorage` (as "Pestaña
-/// inicial" in Ajustes › Preferencias) and used as the `TabView` selection tag.
+/// inicial" in Opciones › Preferencias) and used as the `TabView` selection tag.
 enum HomeTab: String, CaseIterable, Identifiable {
-    case helplines, contacts, home, purchase, settings, smsServices, directory, database
+    case helplines, contacts, home, purchase, options, smsServices, directory, database
 
     var id: String { rawValue }
 
-    /// Every case except the plain `.settings` landing screen itself (and `.database` if locked) —
-    /// used by "Pestaña Inicial" in Ajustes.
+    init?(rawValue: String) {
+        switch rawValue {
+        case "helplines": self = .helplines
+        case "contacts": self = .contacts
+        case "home": self = .home
+        case "purchase": self = .purchase
+        case "options", "settings": self = .options
+        case "smsServices": self = .smsServices
+        case "directory": self = .directory
+        case "database": self = .database
+        default: return nil
+        }
+    }
+
+    /// Every case except the plain `.options` landing screen itself (and `.database` if locked) —
+    /// used by "Pestaña Inicial" in Opciones.
     static func launchOptions(includingDatabase: Bool = false) -> [HomeTab] {
-        allCases.filter { $0 != .settings && ($0 != .database || includingDatabase) }
+        allCases.filter { $0 != .options && ($0 != .database || includingDatabase) }
     }
 
     var displayName: LocalizedStringKey {
@@ -92,21 +106,25 @@ enum HomeTab: String, CaseIterable, Identifiable {
             case .home: return "Home"
             case .purchase: return "Compras"
             case .smsServices: return "Servicios por SMS"
-            case .settings: return "Ajustes"
+            case .options: return "Opciones"
             case .directory: return "Buscar en Directorio"
             case .database: return "Buscar en Database"
         }
     }
 
     /// The actual `TabView` tab to select for this launch destination — none of these nested
-    /// Ajustes screens are tabs themselves, they're screens `SettingsView` pushes onto once
-    /// Ajustes is showing.
+    /// Opciones screens are tabs themselves, they're screens `OptionsView` pushes onto once
+    /// Opciones is showing.
     var tabToSelect: HomeTab {
         switch self {
-        case .database, .smsServices, .directory: return .settings
+        case .database, .smsServices, .directory: return .options
         default: return self
         }
     }
+}
+
+extension HomeTab {
+    static var settings: HomeTab { .options }
 }
 
 #Preview {
@@ -832,7 +850,7 @@ struct CategoryListView: View {
     @State private var searchText = ""
     /// Compras-only, and never persisted itself — it just starts out matching
     /// `quickPurchaseNoConfirmDefault` each time this view is (re)created, i.e. on every fresh app
-    /// launch, per "Activar por Defecto..." in Ajustes.
+    /// launch, per "Activar por Defecto..." in Options.
     @State private var isQuickActionEnabled = false
 
     /// `category.groups`, narrowed to codes whose title or number matches the search text —
@@ -982,12 +1000,12 @@ struct CategoryListView: View {
 
 // MARK: - SMS Subscriptions
 
-/// Ajustes › Servicios por SMS — subscribe/unsubscribe USSD codes for ETECSA's SMS info
+/// Options › Servicios por SMS — subscribe/unsubscribe USSD codes for ETECSA's SMS info
 /// services, pulled from the "Servicios por SMS" group in `codes.json` (currently empty; codes
 /// go straight into the JSON once they're in hand, same as every other code in the app — never
 /// hardcoded here).
-/// Ajustes › Utilidades › Servicios por SMS — every SMS-based service except "Configuraciones"
-/// (LTE, IMEI/3G-4G check, MMS setup — those render directly as their own rows under Ajustes ›
+/// Options › Utilidades › Servicios por SMS — every SMS-based service except "Configuraciones"
+/// (LTE, IMEI/3G-4G check, MMS setup — those render directly as their own rows under Options ›
 /// Cuenta instead, see `SettingsView`, since they're quick one-off device/line settings, not
 /// something worth another level of navigation here). Deportes (Pelota Cubana, MLB, and the
 /// football tournaments) sits as its own Section, between DHL y Vuelos and Noticias.
@@ -1323,10 +1341,12 @@ private struct PendingSMS: Identifiable {
     .environment(AccentColorStore())
 }
 
-// MARK: - Settings / Help Screen
+// MARK: - Options / Help Screen
 
-/// Settings tab: appearance, list display, connection warning, how USSD works, about and links.
-struct SettingsView: View {
+typealias SettingsView = OptionsView
+
+/// Options tab: appearance, list display, connection warning, how USSD works, about and links.
+struct OptionsView: View {
     @Environment(USSDCodeStore.self) private var store
     @Environment(AccentColorStore.self) private var accentColorStore
 
@@ -1337,7 +1357,7 @@ struct SettingsView: View {
     @AppStorage("quickPurchaseNoConfirmDefault") private var quickPurchaseNoConfirmDefault = false
 
     /// Fires at most once per launch — `defaultTab` is only meant to auto-push
-    /// `.database`/`.directory` the moment Ajustes first appears on a fresh launch, not every
+    /// `.database`/`.directory` the moment Options first appears on a fresh launch, not every
     /// time the user switches back to this tab after navigating elsewhere.
     @State private var hasAutoNavigatedToLaunchDestination = false
     @State private var isShowingDatabaseOnLaunch = false
@@ -1516,7 +1536,7 @@ struct SettingsView: View {
                     }
 
                     NavigationLink {
-                        HelpSettingsView()
+                        HelpOptionsView()
                     } label: {
                         Label("Ayuda (Manual de Uso)", systemImage: "questionmark.circle.fill")
                     }
@@ -1547,13 +1567,13 @@ struct SettingsView: View {
             .navigationDestination(isPresented: $isShowingDatabaseOnLaunch) { DirectorySearchView() }
             .navigationDestination(isPresented: $isShowingSMSServicesOnLaunch) { SMSServicesView() }
             .navigationDestination(isPresented: $isShowingDirectoryOnLaunch) { YellowPagesSearchView() }
-            .navigationTitle("Ajustes")
+            .navigationTitle("Opciones")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                // A stored `defaultTab` of "settings" predates removing the bare Ajustes option
+                // A stored `defaultTab` of "options" / "settings" predates removing the bare Opciones option
                 // from "Pestaña Inicial", or ".database" if database search is not unlocked —
                 // normalize it so the Picker doesn't show a blank selection.
-                if defaultTab == HomeTab.settings.rawValue || (!showDatabaseSearch && defaultTab == HomeTab.database.rawValue) {
+                if defaultTab == HomeTab.options.rawValue || defaultTab == "settings" || (!showDatabaseSearch && defaultTab == HomeTab.database.rawValue) {
                     defaultTab = HomeTab.home.rawValue
                 }
                 guard !hasAutoNavigatedToLaunchDestination else { return }
@@ -1693,7 +1713,7 @@ struct SettingsView: View {
     }
 }
 
-/// Ajustes › Gestionar Plan Amigo — Agregar and Eliminar are two fully independent forms (each
+/// Options › Gestionar Plan Amigo — Agregar and Eliminar are two fully independent forms (each
 /// with its own Número field + contact picker) since they dial different strings; duplicating the
 /// form is simpler than making one shared control smart enough to handle both. Also carries the
 /// Settings-only "Consultar Plan Amigo" query, distinct from Home's own `friends-plan` button.
@@ -1852,8 +1872,8 @@ private struct FriendsPlanManageView: View {
     }
 }
 
-/// Ajustes › Gestionar PIN de Transferencia — Cambiar Clave and Guardar Clave, each its own form
-/// with room to breathe (moved out of the old inline-expanding Ajustes rows into this dedicated
+/// Options › Gestionar PIN de Transferencia — Cambiar Clave and Guardar Clave, each its own form
+/// with room to breathe (moved out of the old inline-expanding Options rows into this dedicated
 /// screen).
 private struct TransferPinSettingsView: View {
     @Environment(USSDCodeStore.self) private var store
@@ -1962,7 +1982,7 @@ private struct TransferPinSettingsView: View {
     }
 }
 
-/// Ajustes › Buscar en Database — reverse number/name lookup over whichever directory database
+/// Options › Buscar en Database — reverse number/name lookup over whichever directory database
 /// file the user has copied into this app's Documents folder: Finder file sharing, the "Importar
 /// Base de Datos" picker, or the "Descargar Base de Datos" button (fetches `DirectoryDatabase
 /// .downloadURL`, wherever that's currently hosted). Its schema shape (v1/v2) is auto-detected from the file's
@@ -2030,7 +2050,7 @@ struct DirectorySearchView: View {
                     } else {
                         // One integrated card (two stacked rows, divider between) instead of two
                         // separate pill buttons — reads as one grouped action, matching the
-                        // inset-grouped list rows used everywhere else in Ajustes.
+                        // inset-grouped list rows used everywhere else in Options.
                         VStack(spacing: 0) {
                             // Disabled for security and legal compliance: downloading an external phone directory
                             // database directly in-app may violate privacy laws, data protection regulations, or App
@@ -2263,7 +2283,7 @@ struct DirectorySearchView: View {
     }
 }
 
-/// Ajustes › Buscar en Directorio — placeholder search screen for a live/online reverse
+/// Options › Buscar en Directorio — placeholder search screen for a live/online reverse
 /// number-and-name directory lookup (formerly "Páginas Amarillas"). Not wired to a real source
 /// yet — the form exists so the fields it will use are fixed, but "Buscar" stays disabled until
 /// there's an actual endpoint to call. Distinct from "Buscar en Database" (`DirectorySearchView`),
@@ -2321,13 +2341,15 @@ private struct DirectoryActionRow: View {
     }
 }
 
-/// Ajustes › Preferencias — appearance and general behavior toggles.
-/// Ajustes › Ayuda — how USSD works, in plain language.
-private struct HelpSettingsView: View {
+/// Options › Preferencias — appearance and general behavior toggles.
+/// Options › Ayuda — how USSD works, in plain language.
+private typealias HelpSettingsView = HelpOptionsView
+
+private struct HelpOptionsView: View {
     var body: some View {
         Form {
             Section("Qué es Qvacell") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué hace la app?",
                     text: "Qvacell da acceso rápido a los códigos USSD de servicio de ETECSA (Cubacel): saldo, compras, transferencias y otras utilidades, todo desde una app sin conexión y sin dependencias."
                 )
@@ -2337,9 +2359,9 @@ private struct HelpSettingsView: View {
             }
 
             Section("Idioma") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Cómo cambio el idioma?",
-                    text: "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Ajustes de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español."
+                    text: "Qvacell no tiene un selector de idioma propio — sigue el idioma que elijas para la app en Configuración de iOS. Si tu iPhone está en inglés, la app se muestra en inglés; si está en español (u otro idioma sin traducir), se muestra en español."
                 )
                 Button {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -2347,7 +2369,7 @@ private struct HelpSettingsView: View {
                     }
                 } label: {
                     HStack {
-                        Label("Cambiar Idioma en Ajustes de iOS", systemImage: "globe")
+                        Label("Cambiar Idioma en Configuración de iOS", systemImage: "globe")
                         Spacer()
                         Image(systemName: "arrow.up.forward.app")
                     }
@@ -2355,11 +2377,11 @@ private struct HelpSettingsView: View {
             }
 
             Section("Cómo Funciona el USSD") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué es el USSD?",
                     text: "El USSD es un protocolo telefónico que te permite interactuar con tu operadora marcando códigos especiales como *222#. Necesita señal celular, no datos ni Wi-Fi. Toca cualquier código de la lista y el marcador del sistema se abre listo para enviarlo — el propio iOS te pide confirmar antes de que la llamada se realice."
                 )
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "Códigos que piden un dato",
                     text: "Algunos códigos, como recargar con tarjeta, necesitan un número adicional (p. ej. *662*{tarjeta}#). Al tocarlos, primero se pide ese dato y luego se marca el código completo."
                 )
@@ -2369,50 +2391,50 @@ private struct HelpSettingsView: View {
             }
 
             Section("Compras: Acción sin Confirmación") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué hace?",
                     text: "En la pestaña Compras hay un interruptor \"Acción sin Confirmación\". Actívalo y los códigos que lo soportan marcan directo el paso de confirmación de ETECSA, ahorrándote un paso — solo actívalo si ya confías en lo que vas a comprar."
                 )
             }
 
             Section("Recordatorios") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué hace?",
-                    text: "En Ajustes › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes."
+                    text: "En Opciones › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes."
                 )
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "Ejecutar desde el recordatorio",
                     text: "Comprar Paquete te lleva directo a la pestaña Compras (no tiene un solo código fijo, es todo un catálogo). Recargar Saldo te pide el número de la tarjeta justo antes de marcar (nunca se guarda). Transferencia recuerda el número de destino y te pide el monto, con tu Clave de Transferencia ya rellenada si la tienes guardada."
                 )
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "Recurrencia y notificación",
                     text: "Elige avisarte una sola vez, todos los días, cada semana, cada mes o cada ciertos días. Desde la notificación misma puedes \"Marcar como hecho\" o \"Posponer 1 día\" sin abrir la app; tocarla abre el detalle del recordatorio. También puedes crear un recordatorio totalmente personalizado, sin plantilla. Todos empiezan sin ningún recordatorio activo — los creas tú, a tu medida."
                 )
             }
 
             Section("Plan Amigo") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "Gestionar Plan Amigo",
-                    text: "En Ajustes › Cuenta › Gestionar Plan Amigo puedes activarlo, desactivarlo, agregar o eliminar un amigo (con su número o eligiéndolo de Contactos), y consultar su estado. Activar el Plan Amigos tiene un costo de $25.00."
+                    text: "En Opciones › Cuenta › Gestionar Plan Amigo puedes activarlo, desactivarlo, agregar o eliminar un amigo (con su número o eligiéndolo de Contactos), y consultar su estado. Activar el Plan Amigos tiene un costo de $25.00."
                 )
             }
 
             Section("PIN de Transferencia") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "Cambiar y guardar tu PIN",
-                    text: "En Ajustes › Cuenta › Gestionar PIN de Transferencia puedes cambiar el PIN que usas para transferir saldo, o guardarlo en este dispositivo para que se rellene solo cada vez que transfieras (desde Home o desde un contacto). Se guarda cifrado en este iPhone y nunca sale de él."
+                    text: "En Opciones › Cuenta › Gestionar PIN de Transferencia puedes cambiar el PIN que usas para transferir saldo, o guardarlo en este dispositivo para que se rellene solo cada vez que transfieras (desde Home o desde un contacto). Se guarda cifrado en este iPhone y nunca sale de él."
                 )
             }
 
             Section("Servicios por SMS") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué es esto?",
                     text: "Son servicios de ETECSA que se usan enviando un SMS, no marcando un código — tarifas, DHL y vuelos, deportes, noticias, frases y horóscopos. Algunos son suscripciones (se marcan con la etiqueta \"Suscripción\") y pueden tener un costo recurrente. Necesitas un dispositivo que pueda enviar SMS (el Simulador de Xcode, por ejemplo, no puede)."
                 )
             }
 
             Section("Salas y Zonas WiFi") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué muestra?",
                     text: "Para cada provincia cubana, lista las salas de navegación pagas de ETECSA (con su cantidad de puestos) y las zonas de WIFI público gratis, agrupadas por municipio. Es información pública de ETECSA, incluida en la app — no necesita conexión para verse."
                 )
@@ -2422,25 +2444,25 @@ private struct HelpSettingsView: View {
             }
 
             // Section("Medir Velocidad de Internet") {
-            //     SettingsInfoRow(
+            //     OptionsInfoRow(
             //         title: "¿Cómo funciona?",
             //         text: "Mide ping, velocidad de descarga y de subida de tu conexión actual (datos móviles o WiFi). La prueba consume los datos que uses durante ella — ten cuidado si tienes un plan de datos limitado."
             //     )
             // }
 
             Section("Buscar en Directorio") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿Qué es?",
-                    text: "En Ajustes › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
+                    text: "En Opciones › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
                 )
             }
 
             Section("Buscar en Database") {
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "¿De dónde salen los datos?",
                     text: "La app no incluye ninguna base de datos ni la descarga automáticamente — tienes que traer tú mismo el archivo SQLite (.db) de base de datos (con el botón «Importar» o copiándolo mediante Finder) para poder buscar."
                 )
-                SettingsInfoRow(
+                OptionsInfoRow(
                     title: "Búsqueda solo por número",
                     text: "Por privacidad, la búsqueda inversa en la base de datos se realiza únicamente a partir de números de teléfono, no por nombre."
                 )
@@ -2454,7 +2476,7 @@ private struct HelpSettingsView: View {
 
 // MARK: - Caller ID Settings & Instructions Screen
 
-/// Ajustes › Identificador de Llamadas (*99) — instructions, live CallKit extension status,
+/// Options › Identificador de Llamadas (*99) — instructions, live CallKit extension status,
 /// and deep link to iOS Phone Settings.
 private struct CallerIDSettingsView: View {
     @Environment(AccentColorStore.self) private var accentColorStore
@@ -2638,7 +2660,7 @@ private struct StepRowView: View {
 
 // MARK: - Siri & Shortcuts Instructions Screen
 
-/// Ajustes › Siri y Atajos de Voz — voice command instructions and deep links to Siri settings.
+/// Options › Siri y Atajos de Voz — voice command instructions and deep links to Siri settings.
 private struct SiriShortcutsHelpView: View {
     @Environment(AccentColorStore.self) private var accentColorStore
 
@@ -2767,8 +2789,10 @@ private struct SiriPhraseRow: View {
     }
 }
 
-/// One title + body row inside a Settings section.
-private struct SettingsInfoRow: View {
+/// One title + body row inside an Options section.
+private typealias SettingsInfoRow = OptionsInfoRow
+
+private struct OptionsInfoRow: View {
     let title: LocalizedStringKey
     let text: LocalizedStringKey
 
@@ -2788,7 +2812,7 @@ private struct SettingsInfoRow: View {
 }
 
 #Preview {
-    SettingsView()
+    OptionsView()
         .environment(USSDCodeStore())
         .environment(AccentColorStore())
         .environment(WifiRoomsStore())
@@ -2796,7 +2820,7 @@ private struct SettingsInfoRow: View {
 
 // MARK: - Wifi Navigation Rooms & Hotspots
 
-/// Ajustes › Salas y Zonas WiFi — every Cuban province from ETECSA's own public "Navigation
+/// Options › Salas y Zonas WiFi — every Cuban province from ETECSA's own public "Navigation
 /// rooms and public spaces (WIFI)" directory (`wifi_navigation_rooms.json`, scraped once from
 /// https://www.etecsa.cu/en/rooms-public-spaces — see README for the exact source URLs). Picking
 /// a province shows its navigation rooms (seat counts) and free WIFI hotspots by municipality.

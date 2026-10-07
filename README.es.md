@@ -30,7 +30,7 @@ Una aplicación para iPhone para acceder rápidamente a los **códigos de servic
 - 👥 **Gestión de Cuentas y PIN** — Almacena el PIN de transferencia en Keychain y gestiona números del Plan Amigo fácilmente.
 - 🔔 **Recordatorios Locales** — Programa alertas recurrentes para compras de planes, recargas de saldo o transferencias con marcado en 1 toque.
 - 🎙️ **Siri y Atajos de Voz** — Ejecuta consultas de saldo, códigos rápidos y llamadas a cobro revertido (`*99` / 99) o anónimas (`#31#` / oculto / privado) mediante comandos de voz nativos usando `AppIntents`.
-- 🌗 **Personalización y Ajustes** — Soporte para tema Claro/Oscuro, selector de color de acento personalizado y pestaña de inicio configurable.
+- 🌗 **Personalización y Opciones** — Soporte para tema Claro/Oscuro, selector de color de acento personalizado y pestaña de inicio configurable.
 
 ### Próximamente
 
@@ -55,7 +55,7 @@ open Qvacell.xcodeproj
 
 Compila y ejecuta en un dispositivo. **El marcado USSD requiere un iPhone físico con una SIM de Cubacel** 📲 — el simulador no puede realizar llamadas.
 
-Para activar el Identificador de Llamadas para llamadas `*99`, tras instalar la app ve a **Ajustes › Teléfono › Bloqueo e Identificación de Llamadas** en el dispositivo y activa **CallerID**. Este es un ajuste manual de iOS que se realiza una sola vez — ninguna app puede activarlo automáticamente. Consulta [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification) para entender los motivos.
+Para activar el Identificador de Llamadas para llamadas `*99`, tras instalar la app ve a **Ajustes (o Configuración) › Teléfono › Bloqueo e Identificación de Llamadas** en el dispositivo y activa **CallerID**. Este es un ajuste manual de iOS que se realiza una sola vez — ninguna app puede activarlo automáticamente. Consulta [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification) para entender los motivos.
 
 ## 🗂️ Estructura del Proyecto
 
@@ -65,7 +65,7 @@ Qvacell/
 ├── Models.swift              # USSDCode, USSDCategory, decodificación del catálogo, paleta de colores, Reminder/ReminderTemplate
 ├── Services.swift            # Almacén del catálogo JSON, Contactos, puente con marcador del sistema, ReminderManager (notificaciones locales)
 ├── UIComponents.swift        # Vistas de presentación reutilizables (fila de código)
-├── Views.swift               # Pantallas de Inicio, Contactos, categorías y ajustes
+├── Views.swift               # Pantallas de Inicio, Contactos, categorías y opciones
 ├── codes.json                # Catálogo de códigos USSD incluido
 └── wifi_navigation_rooms.json  # Directorio de salas de navegación/puntos Wi-Fi de ETECSA incluido
 
@@ -84,7 +84,7 @@ Los códigos de consulta gratuitos se marcan inmediatamente. Los códigos de com
 
 ## 🔍 Directorio Telefónico y Base de Datos Offline
 
-En **Ajustes › Utilidades**:
+En **Opciones › Utilidades**:
 
 - **Buscar en Directorio**: Búsqueda en el directorio telefónico y comercial (en construcción).
 - **Buscar en Database**: Búsqueda inversa offline sobre una base de datos SQLite (`.db`) suministrada por el usuario. Por seguridad y privacidad, esta función viene oculta por defecto (se desbloquea tocando 5 veces la versión en _Acerca de_) y la búsqueda es estrictamente solo por número (sin búsqueda por nombre).

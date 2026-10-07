@@ -65,7 +65,7 @@ Qvacell/
 ├── Models.swift              # USSDCode, USSDCategory, catalog decoding, brand palette, Reminder/ReminderTemplate
 ├── Services.swift            # JSON catalog store, Contacts, system dialer bridge, ReminderManager (local notifications)
 ├── UIComponents.swift        # Reusable presentational views (code row)
-├── Views.swift               # Home, Contactos, category, and settings screens
+├── Views.swift               # Home, Contactos, category, and options screens
 ├── codes.json                # Bundled USSD code catalog
 └── wifi_navigation_rooms.json  # Bundled ETECSA navigation-room/hotspot directory
 
@@ -84,7 +84,7 @@ Free query codes dial immediately. Paid purchase codes stop at ETECSA's confirma
 
 ## 🔍 Phone Directory & Offline Database Search
 
-Under **Ajustes › Utilidades**:
+Under **Opciones › Utilidades**:
 
 - **Buscar en Directorio**: Online search integration for phone and commercial directory records (under construction).
 - **Buscar en Database**: Advanced offline reverse phone lookup over a user-supplied SQLite (`.db`) file. For security and privacy, this feature is hidden by default (unlocked by tapping the app version 5 times in _Acerca de_) and searches strictly by phone number (no name lookup).

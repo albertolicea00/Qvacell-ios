@@ -19,7 +19,7 @@ It is a dependency-free SwiftUI app with no backend and no network calls. Almost
                             ▼
                         HomeView
               (TabView, 5 tabs: Líneas de Ayuda,
-               Contactos, Home, Compras, Ajustes)
+               Contactos, Home, Compras, Options)
         ┌──────────┬──────────┬──────────┬──────────┐
         ▼          ▼          ▼          ▼          ▼
    CategoryListView (×2, helplines/purchase)   SettingsView
@@ -96,11 +96,11 @@ A code carries no `category` field of its own — its category and group are ent
 
 ## 4. Navigation Model
 
-`HomeView` is a bottom `TabView` with 5 explicit tabs — Líneas de Ayuda, Contactos, Home, Compras, Ajustes — not a generic loop over every catalog category (the tab order is hardcoded on purpose: Home must sit in the middle). Líneas de Ayuda and Compras each host a `CategoryListView` bound to the matching `USSDCategory` (`helplines`/`purchase`) from `store.tabCategories`; adding a _code or group_ to either category in `codes.json` updates that tab automatically, but adding a whole new top-level category does **not** grow the `TabView` — the tab set itself is fixed.
+`HomeView` is a bottom `TabView` with 5 explicit tabs — Líneas de Ayuda, Contactos, Home, Compras, Opciones — not a generic loop over every catalog category (the tab order is hardcoded on purpose: Home must sit in the middle). Líneas de Ayuda and Compras each host a `CategoryListView` bound to the matching `USSDCategory` (`helplines`/`purchase`) from `store.tabCategories`; adding a _code or group_ to either category in `codes.json` updates that tab automatically, but adding a whole new top-level category does **not** grow the `TabView` — the tab set itself is fixed.
 
 Each `CategoryListView` is a `NavigationStack` wrapping a `List` of that category's groups/codes. Tapping a row dials/prompts/composes directly depending on `USSDCode.type` and `requiresInput` — there is no shared "code detail" sheet type; see §5.
 
-`SettingsView` is its own `NavigationStack` wrapping a `List` (not a `Form`), entirely separate from the category tabs. Unlike the original single-screen design, it now has real navigation depth — `NavigationLink`s push `SMSServicesView`, `WifiRoomsProvinceListView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", when unlocked), `FriendsPlanManageView`, `TransferPinSettingsView`, `CallerIDSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. "Pestaña Inicial" (`@AppStorage("defaultTab")`) can point at one of those nested screens instead of a bare tab; `SettingsView.onAppear` auto-pushes the matching one exactly once per launch via a dedicated `isShowing*OnLaunch` flag per destination (see `HomeTab.launchOptions`/`.tabToSelect`). Persisted `@AppStorage` state now includes `darkModePreference`, `defaultTab`, `showNetworkStatus`, and `quickPurchaseNoConfirmDefault`, plus the accent color hex (`AccentColorStore`) and the transfer PIN (Keychain, not `UserDefaults` — §12).
+`OptionsView` is its own `NavigationStack` wrapping a `List` (not a `Form`), entirely separate from the category tabs. Unlike the original single-screen design, it now has real navigation depth — `NavigationLink`s push `SMSServicesView`, `WifiRoomsProvinceListView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", when unlocked), `FriendsPlanManageView`, `TransferPinSettingsView`, `CallerIDSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. "Pestaña Inicial" (`@AppStorage("defaultTab")`) can point at one of those nested screens instead of a bare tab; `OptionsView.onAppear` auto-pushes the matching one exactly once per launch via a dedicated `isShowing*OnLaunch` flag per destination (see `HomeTab.launchOptions`/`.tabToSelect`). Persisted `@AppStorage` state now includes `darkModePreference`, `defaultTab`, `showNetworkStatus`, and `quickPurchaseNoConfirmDefault`, plus the accent color hex (`AccentColorStore`) and the transfer PIN (Keychain, not `UserDefaults` — §12).
 
 ---
 
@@ -120,7 +120,7 @@ There is no prefill/resolver indirection beyond the `{input}`/named-placeholder 
 
 ## 6. Reminders & Local Notifications
 
-Ajustes › Utilidades › Recordatorios schedules `UNUserNotificationCenter` local notifications for a purchase/recharge/transfer the user needs to make — entirely on-device, no push infrastructure, no server, consistent with §1's "no backend, no network calls."
+Options › Utilidades › Recordatorios schedules `UNUserNotificationCenter` local notifications for a purchase/recharge/transfer the user needs to make — entirely on-device, no push infrastructure, no server, consistent with §1's "no backend, no network calls."
 
 ### 6.1 Model & manager
 
@@ -159,7 +159,7 @@ Same trigger mapping as every other `UNNotificationTrigger`-based scheduler: `.n
 
 ## 7. Theming
 
-- **Brand palette**: `Color.brandNavy` (`rgb(0,0,102)`) and `Color.brandCyan` (`#09C`) are fixed static properties on `Color`, defined in `Models.swift`. `brandCyan` is only the _default_ accent now — `AccentColorStore` (`Services.swift`) holds the user's actual choice, made via a `ColorPicker` in Ajustes › Preferencias, persisted as a hex string in `UserDefaults` (`Color` itself isn't storable there — `Color.hexString`/`init?(hex:)` in `Models.swift` do the round-trip). Every view that used to hardcode `.brandCyan`/`Color.brandCyan` for its accent now reads `accentColorStore.color` via `@Environment(AccentColorStore.self)` instead — `AccentColor` in the asset catalog still matches the _default_ cyan, but the live tint can differ from it once the user picks something else. Inline `Picker`s inside a `List` don't reliably inherit `.tint()` from an ancestor for their selected-value text/chevron, so those are tinted directly rather than relying on inheritance.
+- **Brand palette**: `Color.brandNavy` (`rgb(0,0,102)`) and `Color.brandCyan` (`#09C`) are fixed static properties on `Color`, defined in `Models.swift`. `brandCyan` is only the _default_ accent now — `AccentColorStore` (`Services.swift`) holds the user's actual choice, made via a `ColorPicker` in Options › Preferencias, persisted as a hex string in `UserDefaults` (`Color` itself isn't storable there — `Color.hexString`/`init?(hex:)` in `Models.swift` do the round-trip). Every view that used to hardcode `.brandCyan`/`Color.brandCyan` for its accent now reads `accentColorStore.color` via `@Environment(AccentColorStore.self)` instead — `AccentColor` in the asset catalog still matches the _default_ cyan, but the live tint can differ from it once the user picks something else. Inline `Picker`s inside a `List` don't reliably inherit `.tint()` from an ancestor for their selected-value text/chevron, so those are tinted directly rather than relying on inheritance.
 - **Adaptive colors**: `Color.appBackground`/`.appForeground` wrap `UIColor.systemBackground`/`.label` so light/dark mode "just works" by default.
 - **Dark mode override**: `SettingsView` exposes a "Theme" picker (System Default / Light / Dark) backed by `@AppStorage("darkModePreference")` (`Int`, 0/1/2). `QvacellApp` reads the same key and applies `.preferredColorScheme(nil/.light/.dark)` to the root `WindowGroup` content — the one piece of state in the app that is both user-configurable and persisted across launches.
 - **Typography**: `AppTheme.codeFont(size:)` is the one shared style — a semibold monospaced font — used everywhere a dial string is displayed, so codes always read as "code" rather than prose.
@@ -241,7 +241,7 @@ CXCallDirectoryManager.reloadExtension  ──▶  CallDirectoryHandler.beginReq
 ### 11.3 Real constraints (not fixable in code)
 
 - **Only labels contacts already in the address book.** A `*99` call from an unknown number still shows the raw wrapped digits — same limitation as Truecaller-style apps for unrecognized numbers.
-- **The user must enable it once, manually**: Ajustes del sistema › Teléfono › Bloqueo e Identificación de Llamadas › CallerID. No API lets an app turn this on for itself.
+- **The user must enable it once, manually**: Ajustes del sistema (Settings) › Teléfono › Bloqueo e Identificación de Llamadas › CallerID. No API lets an app turn this on for itself.
 - **Requires the App Groups capability to be signed correctly** (`group.com.qvacell.shared`, declared in both targets' entitlements in `project.yml`). With automatic signing this is normally provisioned by Xcode the first time you build with a real Team ID; if identification silently doesn't show up, check that the App Group actually got created under that team in the Apple Developer portal.
 - **Only testable on a physical iPhone.** The simulator has no real telephony stack, so this cannot be verified with `xcrun simctl` screenshots the way the rest of the UI in this repo is — it needs an actual incoming `*99` call on a device with the extension enabled.
 - **A truly anonymous call (`#31#`) can never be identified this way** — see §8 platform constraints; the network never transmits the number at all in that case, so there is nothing for `CallerIDStore` to wrap or unwrap.
@@ -252,7 +252,7 @@ CXCallDirectoryManager.reloadExtension  ──▶  CallDirectoryHandler.beginReq
 
 `TransferPinStore` (`Services.swift`) persists the user's ETECSA transfer PIN in the device Keychain (`kSecClassGenericPassword`), not `UserDefaults` — it's the one piece of user-entered state in the app sensitive enough to warrant that. `.save(_:)`/`.load()`/`.delete()` wrap `SecItemAdd`/`SecItemCopyMatching`/`SecItemDelete` directly (no third-party Keychain wrapper). The stored item's accessibility is `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` — it never syncs via iCloud Keychain and is excluded from device backups, so reinstalling the app or restoring from backup loses it (by design: it's read back into a plaintext `TextField`, unlike a password, so it shouldn't survive a device transfer silently).
 
-Consumers: the Home Transferir card and the offline Database search's "Clave" field both call `TransferPinStore.load()` to prefill themselves instead of asking the user to retype the PIN every time; `TransferPinSettingsView` (Ajustes › Cuenta › Gestionar PIN de Transferencia) is the only place that writes to it.
+Consumers: the Home Transferir card and the offline Database search's "Clave" field both call `TransferPinStore.load()` to prefill themselves instead of asking the user to retype the PIN every time; `TransferPinSettingsView` (Opciones › Cuenta › Gestionar PIN de Transferencia) is the only place that writes to it.
 
 ---
 

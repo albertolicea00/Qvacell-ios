@@ -19,6 +19,7 @@
 		9A4344702172E06C11EA7C7A /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF01536287DE4C4A8B7C285 /* CallDirectoryHandler.swift */; };
 		BCCC7D4D840D07A95DFFB2C5 /* CallerIDExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A9D43613FB3D3AF15CA5563 /* CallerIDExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D32A48688FE6C23B843C5FCC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DA559E81D755F26FF024584F /* Localizable.xcstrings */; };
+		E88C78855BDFB4B852E0046B /* RechargeCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF564C70BF6621E9606F1BE /* RechargeCardScanner.swift */; };
 		FD5716B54BF3C4E6D4EE9B10 /* QvacellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A6043F64E4118A05AFEE9A /* QvacellApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		3151AF1B92A77020CC07419E /* CallerIDExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallerIDExtension.entitlements; sourceTree = "<group>"; };
 		3737C9D32EA41E146FB8F112 /* codes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = codes.json; sourceTree = "<group>"; };
 		4A68326477E11D3FA4066B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3AF564C70BF6621E9606F1BE /* RechargeCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechargeCardScanner.swift; sourceTree = "<group>"; };
 		4B6EBC038E535B3BCAEE163B /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		4E5327CE953B7E62F240584E /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		54A6043F64E4118A05AFEE9A /* QvacellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvacellApp.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				FA686A05D19BF528961E2960 /* Models.swift */,
 				301757F2FCA61984E6AD5A99 /* Qvacell.entitlements */,
 				54A6043F64E4118A05AFEE9A /* QvacellApp.swift */,
+				3AF564C70BF6621E9606F1BE /* RechargeCardScanner.swift */,
 				4B6EBC038E535B3BCAEE163B /* Services.swift */,
 				C399DCC1FC26430B939D5C09 /* UIComponents.swift */,
 				4E5327CE953B7E62F240584E /* Views.swift */,
@@ -214,6 +217,7 @@
 				2AAA6CCB88EE275D33FF9795 /* CallerIDStore.swift in Sources */,
 				85FE368EC7E835F615D3217D /* Models.swift in Sources */,
 				FD5716B54BF3C4E6D4EE9B10 /* QvacellApp.swift in Sources */,
+				E88C78855BDFB4B852E0046B /* RechargeCardScanner.swift in Sources */,
 				00A116E10A8F88A9983DAC1C /* Services.swift in Sources */,
 				4F1F3C8C701BA2778C1CEE68 /* UIComponents.swift in Sources */,
 				4EEF6A5BC4B63C9BE876667D /* Views.swift in Sources */,

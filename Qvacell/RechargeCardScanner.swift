@@ -23,6 +23,7 @@ struct RechargeCardScannerView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.white, .black.opacity(0.5))
                     }
+                    .accessibilityLabel("Cerrar")
                     .padding()
                 }
             }

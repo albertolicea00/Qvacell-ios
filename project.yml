@@ -26,6 +26,7 @@ targets:
           - tel
           - telprompt
         NSContactsUsageDescription: Para mostrar tus contactos y llamarlos directamente desde la app.
+        NSCameraUsageDescription: Para escanear el código de tu tarjeta de recarga.
         UIFileSharingEnabled: true
         LSSupportsOpeningDocumentsInPlace: true
     settings:

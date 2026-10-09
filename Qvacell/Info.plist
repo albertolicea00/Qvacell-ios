@@ -31,6 +31,8 @@
 	<string>Para mostrar tus contactos y llamarlos directamente desde la app.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Para escanear el código de tu tarjeta de recarga.</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>

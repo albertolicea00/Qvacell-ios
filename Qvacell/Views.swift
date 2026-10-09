@@ -151,6 +151,7 @@ struct HomeQuickActionsView: View {
     @State private var amount = ""
     @State private var cardNumber = ""
     @State private var showingContactPicker = false
+    @State private var showingCardScanner = false
     @State private var showsInvalidNumberWarning = false
 
     /// `true` while `pin` holds the value just loaded from `TransferPinStore` and not yet typed
@@ -269,9 +270,13 @@ struct HomeQuickActionsView: View {
 
                     Section {
                         HStack(spacing: 12) {
-                            Image(systemName: "camera.fill")
-                                .foregroundStyle(.secondary)
-                                .accessibilityLabel("Escanear (próximamente)")
+                            Button {
+                                showingCardScanner = true
+                            } label: {
+                                Image(systemName: "camera.fill")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .accessibilityLabel("Escanear tarjeta de recarga")
 
                             TextField("Código de recarga", text: $cardNumber)
                                 .keyboardType(.numberPad)
@@ -316,6 +321,11 @@ struct HomeQuickActionsView: View {
                         showsInvalidNumberWarning = !isValidCubanNumber
                     }
                     .ignoresSafeArea()
+                }
+                .sheet(isPresented: $showingCardScanner) {
+                    RechargeCardScannerView { code in
+                        cardNumber = code
+                    }
                 }
                 .alert("Número no parece cubano", isPresented: $showsInvalidNumberWarning) {
                     Button("Entendido", role: .cancel) {}

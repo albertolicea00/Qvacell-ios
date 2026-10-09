@@ -131,6 +131,7 @@ Los códigos se compilaron a partir de los siguientes sitios:
 - https://www.ecured.cu/Entumovil
 - https://www.escambray.cu/2017/etecsa-informa-sobre-nuevos-servicios-de-telefonia-movil-para-clientes-prepago-infografia/
 - https://www.entumovil.cu/#:~:text=Para%20activar%20las%20siguientes%20prestaciones%2C,portal%20el%20de%20su%20preferencia.
+- https://github.com/daxslab/fotorecarga
 
 ---
 

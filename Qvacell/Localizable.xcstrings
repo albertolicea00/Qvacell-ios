@@ -533,6 +533,22 @@
         }
       }
     },
+    "Apunta la cámara al código de recarga" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point the camera at the recharge code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apunta la cámara al código de recarga"
+          }
+        }
+      }
+    },
     "Aviso de señal celular" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -754,7 +770,20 @@
       }
     },
     "by @albertolicea00" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by @albertolicea00"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by @albertolicea00"
+          }
+        }
+      }
     },
     "Cada orden por voz abre la app y prepara el marcado exacto, solicitando confirmación del sistema antes de llamar." : {
       "extractionState" : "stale",
@@ -1432,7 +1461,20 @@
       }
     },
     "Descargando… %@%%" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading… %@%%"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargando… %@%%"
+          }
+        }
+      }
     },
     "Descargar Base de Datos" : {
       "extractionState" : "stale",
@@ -1889,7 +1931,20 @@
       }
     },
     "Enviar \"%@\"" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send \"%@\""
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar \"%@\""
+          }
+        }
+      }
     },
     "Escanear (próximamente)" : {
       "extractionState" : "stale",
@@ -1904,6 +1959,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escanear (próximamente)"
+          }
+        }
+      }
+    },
+    "Escanear tarjeta de recarga" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan recharge card"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear tarjeta de recarga"
+          }
+        }
+      }
+    },
+    "Escáner no disponible" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner Unavailable"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escáner no disponible"
           }
         }
       }
@@ -2035,6 +2124,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Este dispositivo no puede enviar mensajes de texto (por ejemplo, el Simulador de Xcode no soporta SMS)."
+          }
+        }
+      }
+    },
+    "Este dispositivo no soporta escaneo de texto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device does not support text scanning."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este dispositivo no soporta escaneo de texto."
           }
         }
       }

@@ -345,13 +345,13 @@ struct HomeQuickActionsView: View {
     private static let queryTiles: [(LocalizedStringKey, String, String)] = [
         ("Saldo", "creditcard.fill", "main-balance"),
         ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
-        ("Bono", "gift.fill", "bonus-usd-plans"),
+        ("Pospago", "building.2.fill", "postpaid-balance"),        
         ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
         ("Voz", "phone.fill", "voice-balance"),
         ("SMS", "message.fill", "sms-balance"),
+        ("Bono", "gift.fill", "bonus-usd-plans"),
         ("Amigo", "person.2.fill", "friends-plan"),
         ("TFA", "lock.shield.fill", "tfa"),
-        ("Pospago", "building.2.fill", "postpaid-balance"),
     ]
 
     private func dial(codeId: String) {

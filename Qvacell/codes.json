@@ -154,6 +154,7 @@
             {
               "id": "transfer-direct",
               "code": "*234*1*{phoneNumber}*{pin}*{amount}#",
+              "noConfirmCode": "*234*1*{phoneNumber}*{pin}*{amount}*1#",
               "title": {
                 "es": "Transferir Saldo",
                 "en": "Transfer Balance"

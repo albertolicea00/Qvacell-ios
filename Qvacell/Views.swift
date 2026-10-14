@@ -1383,6 +1383,7 @@ struct OptionsView: View {
     @State private var pendingSMS: PendingSMS?
     @State private var showsCannotSendTextAlert = false
     @State private var showingAdvanceBalanceOptions = false
+    @State private var showingInterestLinks = false
 
     var body: some View {
         NavigationStack {
@@ -1523,6 +1524,18 @@ struct OptionsView: View {
                 }
 
                 Section("Acerca de") {
+                    Button {
+                        showingInterestLinks = true
+                    } label: {
+                        HStack {
+                            Label("Enlaces de interés", systemImage: "link")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
+
                     NavigationLink {
                         CallerIDSettingsView()
                     } label: {
@@ -1614,6 +1627,10 @@ struct OptionsView: View {
             .sheet(item: $pendingSMS) { pending in
                 MessageComposeView(recipient: pending.recipient, body: pending.body)
                     .ignoresSafeArea()
+            }
+            .sheet(isPresented: $showingInterestLinks) {
+                InterestLinksView()
+                    .presentationDetents([.medium, .large])
             }
             .confirmationDialog("Adelanta Saldo", isPresented: $showingAdvanceBalanceOptions, titleVisibility: .visible) {
                 if let group = store.group(named: "Servicio Adelanta Saldo") {
@@ -2344,6 +2361,52 @@ private struct DirectoryActionRow: View {
 /// Options › Preferencias — appearance and general behavior toggles.
 /// Options › Ayuda — how USSD works, in plain language.
 private typealias HelpSettingsView = HelpOptionsView
+
+private struct InterestLinksView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    private static let links: [(title: LocalizedStringKey, url: URL)] = [
+        ("Login Nauta Hogar", URL(string: "https://secure.etecsa.net:8443/")!),
+        ("Portal Nauta", URL(string: "https://www.nauta.cu/")!),
+        ("Tienda Web ETECSA", URL(string: "https://tienda.etecsa.cu/")!),
+        ("Páginas Amarillas de Cuba", URL(string: "https://pamarillas.cu/")!),
+        ("Webmail Correo Nauta", URL(string: "https://webmail.nauta.cu/")!),
+        ("Webmail Correo ENET", URL(string: "https://webmail.enet.cu/")!),
+        ("Portal Nauta (antiguo)", URL(string: "https://www.portal.nauta.cu/")!),
+    ]
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Portales y servicios en línea de ETECSA") {
+                    ForEach(Self.links, id: \.url) { link in
+                        Link(destination: link.url) {
+                            HStack(spacing: 12) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(link.title)
+                                        .foregroundStyle(.primary)
+                                    Text(link.url.absoluteString)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer(minLength: 0)
+                                Image(systemName: "arrow.up.right")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Enlaces de interés")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Cerrar") { dismiss() }
+                }
+            }
+        }
+    }
+}
 
 private struct HelpOptionsView: View {
     var body: some View {

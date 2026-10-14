@@ -1363,6 +1363,23 @@
         }
       }
     },
+    "Corp" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corp"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corp"
+          }
+        }
+      }
+    },
     "Cuándo" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1850,6 +1867,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En Opciones › Utilidades › Recordatorios puedes crear notificaciones locales (sin servidor, sin internet) para que te avisen cuando toca comprar un paquete, recargar saldo o hacer una transferencia. Hay una sección por plantilla, y puedes agregar tantos recordatorios de cada una como necesites — uno por cada línea que manejes."
+          }
+        }
+      }
+    },
+    "Enlaces de interés" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Useful links"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enlaces de interés"
           }
         }
       }
@@ -2525,6 +2559,23 @@
         }
       }
     },
+    "Login Nauta Hogar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nauta Hogar Login"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login Nauta Hogar"
+          }
+        }
+      }
+    },
     "Los códigos de suscripción de SMS se agregarán aquí próximamente." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3013,6 +3064,23 @@
         }
       }
     },
+    "Páginas Amarillas de Cuba" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuba Yellow Pages"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Páginas Amarillas de Cuba"
+          }
+        }
+      }
+    },
     "Para cada provincia cubana, lista las salas de navegación pagas de ETECSA (con su cantidad de puestos) y las zonas de WIFI público gratis, agrupadas por municipio. Es información pública de ETECSA, incluida en la app — no necesita conexión para verse." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3452,19 +3520,53 @@
         }
       }
     },
-    "Corp" : {
+    "Portal Nauta" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Corp"
+            "value" : "Nauta Portal"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Corp"
+            "value" : "Portal Nauta"
+          }
+        }
+      }
+    },
+    "Portal Nauta (antiguo)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nauta Portal (legacy)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portal Nauta (antiguo)"
+          }
+        }
+      }
+    },
+    "Portales y servicios en línea de ETECSA" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ETECSA portals and online services"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portales y servicios en línea de ETECSA"
           }
         }
       }
@@ -4272,6 +4374,23 @@
         }
       }
     },
+    "Tienda Web ETECSA" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ETECSA Online Store"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tienda Web ETECSA"
+          }
+        }
+      }
+    },
     "Título" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4418,6 +4537,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voz"
+          }
+        }
+      }
+    },
+    "Webmail Correo ENET" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ENET Webmail"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webmail Correo ENET"
+          }
+        }
+      }
+    },
+    "Webmail Correo Nauta" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nauta Webmail"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webmail Correo Nauta"
           }
         }
       }

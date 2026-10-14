@@ -2592,19 +2592,19 @@
         }
       }
     },
-    "Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo." : {
+    "Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo corporativo o estado del Plan Amigo." : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dials one of Qvacell's quick codes: balance, bonuses, data plan, postpaid balance, or Friends Plan status."
+            "value" : "Dials one of Qvacell's quick codes: balance, bonuses, data plan, corporate balance, or Friends Plan status."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo."
+            "value" : "Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo corporativo o estado del Plan Amigo."
           }
         }
       }
@@ -3452,19 +3452,19 @@
         }
       }
     },
-    "Pospago" : {
+    "Corp" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Postpaid"
+            "value" : "Corp"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pospago"
+            "value" : "Corp"
           }
         }
       }
@@ -3854,19 +3854,19 @@
         }
       }
     },
-    "Saldo Pospago o Institucional" : {
+    "Saldo Corporativo" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Postpaid or Institutional Balance"
+            "value" : "Corporate Balance"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saldo Pospago o Institucional"
+            "value" : "Saldo Corporativo"
           }
         }
       }

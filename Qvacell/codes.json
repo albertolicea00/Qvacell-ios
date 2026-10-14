@@ -101,15 +101,15 @@
               "requiresInput": false
             },
             {
-              "id": "postpaid-balance",
+              "id": "corp-balance",
               "code": "*111#",
               "title": {
-                "es": "Saldo Pospago o Institucional",
-                "en": "Postpaid or Institutional Balance"
+                "es": "Saldo Corporativo",
+                "en": "Corporate Balance"
               },
               "details": {
-                "es": "Consulta tu saldo pospago o institucional.",
-                "en": "Check your postpaid or institutional balance."
+                "es": "Consulta tu saldo corporativo.",
+                "en": "Check your corporate balance."
               },
               "type": "ussd",
               "requiresInput": false

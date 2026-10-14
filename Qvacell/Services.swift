@@ -985,7 +985,7 @@ final class ReminderManager: NSObject, UNUserNotificationCenterDelegate {
 /// `openAppWhenRun` so the system's own dial confirmation always has the app in the foreground to
 /// appear over — nothing dials silently in the background.
 enum QuickUSSDCode: String, AppEnum {
-    case saldoPrincipal, bonosYPlanes, planDeDatos, saldoPospago, estadoPlanAmigo
+    case saldoPrincipal, bonosYPlanes, planDeDatos, saldoCorporativo, estadoPlanAmigo
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "Código Rápido"
 
@@ -993,7 +993,7 @@ enum QuickUSSDCode: String, AppEnum {
         .saldoPrincipal: "Saldo Principal",
         .bonosYPlanes: "Bonos y Planes en USD",
         .planDeDatos: "Plan de Datos",
-        .saldoPospago: "Saldo Pospago o Institucional",
+        .saldoCorporativo: "Saldo Corporativo",
         .estadoPlanAmigo: "Estado del Plan Amigos",
     ]
 
@@ -1004,7 +1004,7 @@ enum QuickUSSDCode: String, AppEnum {
         case .saldoPrincipal: return "main-balance"
         case .bonosYPlanes: return "bonus-usd-plans"
         case .planDeDatos: return "data-plan"
-        case .saldoPospago: return "postpaid-balance"
+        case .saldoCorporativo: return "corp-balance"
         case .estadoPlanAmigo: return "friends-plan-status-settings"
         }
     }
@@ -1058,7 +1058,7 @@ enum PlanCompra: String, AppEnum {
 
 struct EjecutarCodigoIntent: AppIntent {
     static var title: LocalizedStringResource = "Marcar Código Rápido"
-    static var description = IntentDescription("Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo pospago o estado del Plan Amigo.")
+    static var description = IntentDescription("Marca uno de los códigos rápidos de Qvacell: saldo, bonos, plan de datos, saldo corporativo o estado del Plan Amigo.")
     static var openAppWhenRun: Bool = true
 
     @Parameter(title: "Código")

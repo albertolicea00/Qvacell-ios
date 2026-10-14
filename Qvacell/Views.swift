@@ -345,7 +345,7 @@ struct HomeQuickActionsView: View {
     private static let queryTiles: [(LocalizedStringKey, String, String)] = [
         ("Saldo", "creditcard.fill", "main-balance"),
         ("Límite", "creditcard.trianglebadge.exclamationmark", "national-recharge-limit"),
-        ("Pospago", "building.2.fill", "postpaid-balance"),        
+        ("Corp", "building.2.fill", "corp-balance"),
         ("Datos", "antenna.radiowaves.left.and.right", "data-plan"),
         ("Voz", "phone.fill", "voice-balance"),
         ("SMS", "message.fill", "sms-balance"),

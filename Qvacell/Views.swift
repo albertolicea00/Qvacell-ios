@@ -402,7 +402,7 @@ private struct OutlineButtonStyle: ButtonStyle {
     }
 }
 
-/// One square icon + label button in the Home quick-action grid.
+/// One icon + label button in the Home quick-action grid.
 private struct QuickActionTile: View {
     let title: LocalizedStringKey
     let systemImage: String
@@ -425,7 +425,7 @@ private struct QuickActionTile: View {
             }
             .foregroundStyle(isOutline ? accentColorStore.color : Color.white)
             .frame(maxWidth: .infinity)
-            .frame(height: 72)
+            .frame(height: 84)
             .background(
                 isOutline ? Color.clear : accentColorStore.color,
                 in: RoundedRectangle(cornerRadius: 12)
@@ -439,7 +439,7 @@ private struct QuickActionTile: View {
     }
 }
 
-/// `QuickActionTile`s laid out 4-per-row, wrapping to as many rows as needed — used for the
+/// `QuickActionTile`s laid out 3-per-row, wrapping to as many rows as needed — used for the
 /// "Consultas" section on Home.
 private struct QuickActionTileGrid: View {
     let tiles: [(LocalizedStringKey, String, String)]
@@ -447,7 +447,7 @@ private struct QuickActionTileGrid: View {
 
     private let columns = 3
     private let gap: CGFloat = 8
-    private let tileHeight: CGFloat = 72
+    private let tileHeight: CGFloat = 84
 
     private var rowCount: Int { (tiles.count + columns - 1) / columns }
 

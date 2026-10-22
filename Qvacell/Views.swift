@@ -1377,51 +1377,35 @@ struct OptionsView: View {
     @State private var toastIcon = "lock.open.fill"
     @State private var toastTask: Task<Void, Never>?
 
-    /// Backs the three "Configuraciones" SMS rows (LTE, 3G/4G check, MMS) in Cuenta — these dial
-    /// straight from the row, no sub-screen, so `SettingsView` needs its own compose-SMS state
-    /// same as `SMSCodeListView`'s (duplicated rather than shared, per this app's usual approach
-    /// to a handful of independent action rows).
-    @State private var pendingSMSInputCode: USSDCode?
-    @State private var smsInputText = ""
-    @State private var pendingSMS: PendingSMS?
-    @State private var showsCannotSendTextAlert = false
     @State private var showingAdvanceBalanceOptions = false
     @State private var showingInterestLinks = false
+    @State private var showingSIMSettings = false
 
     var body: some View {
         NavigationStack {
             List {
                 Section("Cuenta") {
-
-                    if let payPerUseCode = store.code(withId: "data-pay-per-use") {
-                        Button {
-                            guard !payPerUseCode.code.isEmpty else { return }
-                            DialService.dial(payPerUseCode.code)
-                        } label: {
-                            HStack {
-                                Label("Tarifa por Consumo (Datos)", systemImage: "dollarsign.circle.fill")
-                                Spacer()
-                                Image(systemName: "arrow.right")
-                            }
+                    Button {
+                        showingInterestLinks = true
+                    } label: {
+                        HStack {
+                            Label("Enlaces de interés", systemImage: "link")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.tertiary)
                         }
-                        .disabled(payPerUseCode.code.isEmpty)
                     }
 
-                    if let configGroup = store.group(named: "Configuraciones") {
-                        ForEach(configGroup.codes) { code in
-                            Button {
-                                selectSMS(code)
-                            } label: {
-                                HStack {
-                                    if let icon = code.icon {
-                                        Label(code.localizedTitle, systemImage: icon)
-                                    } else {
-                                        Text(code.localizedTitle)
-                                    }
-                                    Spacer()
-                                    Image(systemName: "arrow.right")
-                                }
-                            }
+                    Button {
+                        showingSIMSettings = true
+                    } label: {
+                        HStack {
+                            Label("Configuración de SIM", systemImage: "simcard")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.tertiary)
                         }
                     }
 
@@ -1527,18 +1511,6 @@ struct OptionsView: View {
                 }
 
                 Section("Acerca de") {
-                    Button {
-                        showingInterestLinks = true
-                    } label: {
-                        HStack {
-                            Label("Enlaces de interés", systemImage: "link")
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.tertiary)
-                        }
-                    }
-
                     NavigationLink {
                         SiriShortcutsHelpView()
                     } label: {
@@ -1599,34 +1571,9 @@ struct OptionsView: View {
                 //     isShowingDirectoryOnLaunch = true
                 // }
             }
-            .alert(
-                pendingSMSInputCode?.localizedTitle ?? "",
-                isPresented: Binding(
-                    get: { pendingSMSInputCode != nil },
-                    set: { isPresented in
-                        if !isPresented {
-                            pendingSMSInputCode = nil
-                            smsInputText = ""
-                        }
-                    }
-                ),
-                presenting: pendingSMSInputCode
-            ) { code in
-                TextField(code.inputPlaceholder ?? "Dato", text: $smsInputText)
-                    .keyboardType(.phonePad)
-                Button("Continuar") { composeSMS(code, input: smsInputText) }
-                Button("Cancelar", role: .cancel) {}
-            } message: { code in
-                Text(code.localizedDetails)
-            }
-            .alert("No se Puede Enviar SMS", isPresented: $showsCannotSendTextAlert) {
-                Button("Entendido", role: .cancel) {}
-            } message: {
-                Text("Este dispositivo no puede enviar mensajes de texto (por ejemplo, el Simulador de Xcode no soporta SMS).")
-            }
-            .sheet(item: $pendingSMS) { pending in
-                MessageComposeView(recipient: pending.recipient, body: pending.body)
-                    .ignoresSafeArea()
+            .sheet(isPresented: $showingSIMSettings) {
+                SIMSettingsView()
+                    .presentationDetents([.medium, .large])
             }
             .sheet(isPresented: $showingInterestLinks) {
                 InterestLinksView()
@@ -1709,6 +1656,87 @@ struct OptionsView: View {
             await MainActor.run {
                 toastMessage = nil
             }
+        }
+    }
+
+}
+
+/// Options › Configuración de SIM — data tariff and SMS configuration services.
+private struct SIMSettingsView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(USSDCodeStore.self) private var store
+    @Environment(AccentColorStore.self) private var accentColorStore
+
+    @State private var pendingSMSInputCode: USSDCode?
+    @State private var smsInputText = ""
+    @State private var pendingSMS: PendingSMS?
+    @State private var showsCannotSendTextAlert = false
+
+    private var codes: [USSDCode] {
+        ["data-pay-per-use", "sms-4222-mms-config", "sms-2266-imei", "sms-2266-lte"]
+            .compactMap { store.code(withId: $0) }
+    }
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    ForEach(codes) { code in
+                        Button {
+                            if code.type == .sms {
+                                selectSMS(code)
+                            } else {
+                                DialService.dial(code.code)
+                            }
+                        } label: {
+                            HStack {
+                                Label(code.localizedTitle, systemImage: code.icon ?? "simcard")
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }
+                        }
+                        .disabled(code.code.isEmpty)
+                    }
+                }
+            }
+            .listStyle(.insetGrouped)
+            .tint(accentColorStore.color)
+            .navigationTitle("Configuración de SIM")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Cerrar") { dismiss() }
+                }
+            }
+        }
+        .alert(
+            pendingSMSInputCode?.localizedTitle ?? "",
+            isPresented: Binding(
+                get: { pendingSMSInputCode != nil },
+                set: { isPresented in
+                    if !isPresented {
+                        pendingSMSInputCode = nil
+                        smsInputText = ""
+                    }
+                }
+            ),
+            presenting: pendingSMSInputCode
+        ) { code in
+            TextField(code.inputPlaceholder ?? "Dato", text: $smsInputText)
+                .keyboardType(.phonePad)
+            Button("Continuar") { composeSMS(code, input: smsInputText) }
+            Button("Cancelar", role: .cancel) {}
+        } message: { code in
+            Text(code.localizedDetails)
+        }
+        .alert("No se Puede Enviar SMS", isPresented: $showsCannotSendTextAlert) {
+            Button("Entendido", role: .cancel) {}
+        } message: {
+            Text("Este dispositivo no puede enviar mensajes de texto (por ejemplo, el Simulador de Xcode no soporta SMS).")
+        }
+        .sheet(item: $pendingSMS) { pending in
+            MessageComposeView(recipient: pending.recipient, body: pending.body)
+                .ignoresSafeArea()
         }
     }
 

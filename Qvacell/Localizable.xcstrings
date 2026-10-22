@@ -1162,6 +1162,23 @@
         }
       }
     },
+    "Configuración de SIM" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIM settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de SIM"
+          }
+        }
+      }
+    },
     "Confirmar" : {
       "extractionState" : "stale",
       "localizations" : {

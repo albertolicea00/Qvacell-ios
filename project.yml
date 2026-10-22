@@ -11,7 +11,6 @@ targets:
     platform: iOS
     sources:
       - Qvacell
-      - Shared
       - path: Qvacell.xcassets
     info:
       path: Qvacell/Info.plist
@@ -39,42 +38,5 @@ targets:
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-    entitlements:
-      path: Qvacell/Qvacell.entitlements
-      properties:
-        com.apple.security.application-groups:
-          - group.com.qvacell.shared
-    dependencies:
-      - target: CallerIDExtension
-        embed: true
     scheme:
       testTargets: []
-
-  CallerIDExtension:
-    type: app-extension
-    platform: iOS
-    sources:
-      - CallerIDExtension
-      - Shared
-    info:
-      path: CallerIDExtension/Info.plist
-      properties:
-        CFBundleDisplayName: CallerID
-        CFBundleShortVersionString: 1.2.4
-        CFBundleVersion: "1"
-        NSExtension:
-          NSExtensionPointIdentifier: com.apple.callkit.call-directory
-          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).CallDirectoryHandler
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.qvacell.app.CallerIDExtension
-        MARKETING_VERSION: 1.2.4
-        CURRENT_PROJECT_VERSION: 1
-        SWIFT_VERSION: "5.9"
-        TARGETED_DEVICE_FAMILY: "1"
-        SKIP_INSTALL: NO
-    entitlements:
-      path: CallerIDExtension/CallerIDExtension.entitlements
-      properties:
-        com.apple.security.application-groups:
-          - group.com.qvacell.shared

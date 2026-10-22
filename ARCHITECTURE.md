@@ -4,7 +4,7 @@ For contribution workflow see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 This document describes the technical architecture of Qvacell, a native iOS app that lets users dial ETECSA (Cubacel) USSD service codes (`*222#` style dial strings) without needing to remember them.
 
-It is a dependency-free SwiftUI app with no backend and no network calls. Almost everything comes from one read-only bundled JSON catalog; the two exceptions are the device's own Contacts (read live via the `Contacts` framework, never sent anywhere) and a small App Group file the CallerIDExtension target reads to label `*99` collect calls (§11) — there is still no server, no analytics, and no third-party dependency anywhere in the project.
+It is a dependency-free SwiftUI app with no backend and no network calls. Almost everything comes from one read-only bundled JSON catalog; the only exception is the device's own Contacts (read live via the `Contacts` framework, never sent anywhere) — there is still no server, no analytics, and no third-party dependency anywhere in the project.
 
 ---
 
@@ -30,7 +30,7 @@ It is a dependency-free SwiftUI app with no backend and no network calls. Almost
    depending on USSDCode.type          Zonas WiFi, Buscar en Directorio,
                                         Buscar en Database (desbloqueable),
                                         Gestionar Plan Amigo, Gestionar PIN,
-                                        Identificador *99, Siri y Atajos, Ayuda
+                                        Siri y Atajos, Ayuda
         │
         ▼
    DialService / MessageComposeView
@@ -52,14 +52,12 @@ There is no MVVM view-model layer and no cross-tab navigation state machine, but
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Qvacell/QvacellApp.swift`                     | `@main` entry point. Creates `USSDCodeStore` and `AccentColorStore` and injects both into `HomeView` via `.environment`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `Qvacell/Models.swift`                         | `Codable` catalog models (`USSDCatalog`, `USSDCategory`, `USSDCodeGroup`, `USSDCode`, `USSDActionType`, `SMSVariant`), `CubanPhoneNumber` (the one place that validates a Cuban mobile number), the brand palette (`Color.brandNavy`, `.brandCyan`, `.appBackground`, `.appForeground`, hex round-tripping for the user's accent color), `AppTheme.codeFont`, and the WiFi navigation-room models (`WifiProvince`, `WifiRoom`, `WifiHotspotGroup`).                                                                                                                                                                                                                                                                                                           |
-| `Qvacell/Services.swift`                       | `USSDCodeStore` (loads/decodes `codes.json`), `AccentColorStore` (user's accent color, `UserDefaults`-backed), `WifiRoomsStore` (loads `wifi_navigation_rooms.json`), `ContactsService` (reads the device address book, rebuilds the CallerID list on every fetch — §11), `CellularMonitor`, `DialService` (builds/opens `tel://` URLs), `MapsService` (opens Apple/Google Maps as a place search), `TransferPinStore` (Keychain-backed transfer PIN, §12), `DirectoryDatabase` (SQLite reverse-lookup over a user-supplied dump, §13), and `ReminderManager` (local-notification scheduling, §6).                                                                                                                                                            |
+| `Qvacell/Services.swift`                       | `USSDCodeStore` (loads/decodes `codes.json`), `AccentColorStore` (user's accent color, `UserDefaults`-backed), `WifiRoomsStore` (loads `wifi_navigation_rooms.json`), `ContactsService` (reads the device address book), `CellularMonitor`, `DialService` (builds/opens `tel://` URLs), `MapsService` (opens Apple/Google Maps as a place search), `TransferPinStore` (Keychain-backed transfer PIN, §12), `DirectoryDatabase` (SQLite reverse-lookup over a user-supplied dump, §13), and `ReminderManager` (local-notification scheduling, §6).                                                                                                                                                            |
 | `Qvacell/UIComponents.swift`                   | Reusable, presentation-only views: `CodeRowView`, `ContactRowView`, plus `ContactPickerView` and `MessageComposeView` (thin `UIViewControllerRepresentable` wrappers around the system contact picker and SMS compose sheet).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `Qvacell/Views.swift`                          | `HomeView` (the root `TabView`), `HomeQuickActionsView` (Home tab), `CategoryListView` (Líneas de Ayuda / Compras tabs), `ContactsListView` and friends (Contactos tab), `SMSServicesView`/`SMSCodeListView`/`SMSOptionPickerView` (Servicios por SMS), `SettingsView` and everything it pushes: `WifiRoomsProvinceListView`/`WifiRoomsDetailView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", offline, hidden by default), `FriendsPlanManageView`, `TransferPinSettingsView`, `CallerIDSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. This is the largest file in the project by a wide margin — check it directly rather than trusting a stale summary here as new screens get added. |
+| `Qvacell/Views.swift`                          | `HomeView` (the root `TabView`), `HomeQuickActionsView` (Home tab), `CategoryListView` (Líneas de Ayuda / Compras tabs), `ContactsListView` and friends (Contactos tab), `SMSServicesView`/`SMSCodeListView`/`SMSOptionPickerView` (Servicios por SMS), `SettingsView` and everything it pushes: `WifiRoomsProvinceListView`/`WifiRoomsDetailView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", offline, hidden by default), `FriendsPlanManageView`, `TransferPinSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. This is the largest file in the project by a wide margin — check it directly rather than trusting a stale summary here as new screens get added. |
 | `Qvacell/codes.json`                           | Static, bundled dataset: version, carrier, categories → groups → codes, each with its dial string and presentation metadata (§3).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `Qvacell/wifi_navigation_rooms.json`           | Static, bundled dataset: one entry per province with its navigation rooms and free WIFI hotspots (§ Navigation Rooms in the README).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `Qvacell.xcassets/`                            | `AccentColor` (brand cyan, `#09C` — the _default_; the user can override it at runtime via `AccentColorStore`, unlike the asset catalog value itself) and `AppIcon`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `Shared/CallerIDStore.swift`                   | `CallerIDEntry` model plus read/write helpers for the App Group file both `Qvacell` and `CallerIDExtension` touch — the only file compiled into _both_ targets (§11).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `CallerIDExtension/CallDirectoryHandler.swift` | The `CXCallDirectoryProvider` subclass — the entire CallerIDExtension target (§11).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 No separate persistence layer, networking layer, or dependency-injection container exists — `Services.swift` _is_ the service layer, and there is exactly one store instance, created once and passed down.
 
@@ -100,7 +98,7 @@ A code carries no `category` field of its own — its category and group are ent
 
 Each `CategoryListView` is a `NavigationStack` wrapping a `List` of that category's groups/codes. Tapping a row dials/prompts/composes directly depending on `USSDCode.type` and `requiresInput` — there is no shared "code detail" sheet type; see §5.
 
-`OptionsView` is its own `NavigationStack` wrapping a `List` (not a `Form`), entirely separate from the category tabs. Unlike the original single-screen design, it now has real navigation depth — `NavigationLink`s push `SMSServicesView`, `WifiRoomsProvinceListView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", when unlocked), `FriendsPlanManageView`, `TransferPinSettingsView`, `CallerIDSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. "Pestaña Inicial" (`@AppStorage("defaultTab")`) can point at one of those nested screens instead of a bare tab; `OptionsView.onAppear` auto-pushes the matching one exactly once per launch via a dedicated `isShowing*OnLaunch` flag per destination (see `HomeTab.launchOptions`/`.tabToSelect`). Persisted `@AppStorage` state now includes `darkModePreference`, `defaultTab`, `showNetworkStatus`, and `quickPurchaseNoConfirmDefault`, plus the accent color hex (`AccentColorStore`) and the transfer PIN (Keychain, not `UserDefaults` — §12).
+`OptionsView` is its own `NavigationStack` wrapping a `List` (not a `Form`), entirely separate from the category tabs. Unlike the original single-screen design, it now has real navigation depth — `NavigationLink`s push `SMSServicesView`, `WifiRoomsProvinceListView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", when unlocked), `FriendsPlanManageView`, `TransferPinSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. "Pestaña Inicial" (`@AppStorage("defaultTab")`) can point at one of those nested screens instead of a bare tab; `OptionsView.onAppear` auto-pushes the matching one exactly once per launch via a dedicated `isShowing*OnLaunch` flag per destination (see `HomeTab.launchOptions`/`.tabToSelect`). Persisted `@AppStorage` state now includes `darkModePreference`, `defaultTab`, `showNetworkStatus`, and `quickPurchaseNoConfirmDefault`, plus the accent color hex (`AccentColorStore`) and the transfer PIN (Keychain, not `UserDefaults` — §12).
 
 ---
 
@@ -197,54 +195,13 @@ These shape the UX and are not fixable in code:
 
 ---
 
-## 11. Caller ID Extension (`*99` collect-call identification)
+## 11. Caller Identification — Removed
 
-### 11.1 Why this exists
+Qvacell previously included an implementation for identifying incoming `*99` collect calls. This feature was removed to avoid maintaining duplicate functionality across Qvacell and [LlamaCon99](https://github.com/albertolicea00/LlamaCon99). Incoming-call identification is now exclusively the responsibility of LlamaCon99 and is no longer part of Qvacell's scope.
 
-ETECSA's `*99` collect-call service does **not** withhold the caller's number the way `#31#` (anonymous) does — it wraps it. Dialing `*99{number}` makes the call arrive on the other end with a caller ID string of the form:
+The removed implementation included the CallKit Call Directory extension, the shared App Group store, contact synchronization, and the settings/instructions screen. The previous code is preserved in the local branch `archive/caller-id-llamacon99` for reference and extraction; it is not planned for reintegration into Qvacell.
 
-```
-99 + "53" (country code) + {8-digit local number} + 99
-```
-
-e.g. a call to `51234567` shows up as `99535123456799` (14 digits) instead of the real number. iOS's stock Phone app has no idea what to do with that, so the incoming call just shows a meaningless 14-digit string. Since the real digits genuinely reach the device (unlike a truly anonymous call, which never transmits them — see the in-app "Ayuda" copy on this), it's possible to reverse the wrapping and show the real contact's name instead. Apple's supported mechanism for that is a **CallKit Call Directory Extension**.
-
-### 11.2 How it works
-
-```
-Qvacell (main app)                 CallerIDExtension (app extension)
-──────────────────────────                 ────────────────────────────────
-ContactsService.fetch()
-  reads CNContactStore
-  → [DeviceContact]
-        │
-        ▼
-CallerIDStore.wrappedNumber(...)
-  "99" + "53" + localNumber + "99"
-        │
-        ▼
-CallerIDStore.write([CallerIDEntry])  ──▶  App Group container (shared file)
-  group.com.qvacell.shared          "caller-id-entries.json"
-        │                                          │
-        ▼                                          ▼
-CXCallDirectoryManager.reloadExtension  ──▶  CallDirectoryHandler.beginRequest(with:)
-  (tells iOS to re-run the extension)          CallerIDStore.read()
-                                                → context.addIdentificationEntry(...)
-                                                  for each entry, ascending order
-                                                → context.completeRequest()
-```
-
-- **`Shared/CallerIDStore.swift`** is compiled into _both_ targets. It defines `CallerIDEntry` (`wrappedNumber: Int64`, `name: String`), the wrapping formula, and JSON read/write against a file in the App Group container (`group.com.qvacell.shared`) — the only way for two separate sandboxed processes (the app and the extension) to share data.
-- **`ContactsService.fetch()`** (in `Qvacell/Services.swift`) rebuilds the full entry list from `contacts` every time it re-fetches from `CNContactStore`, writes it via `CallerIDStore.write(_:)`, then calls `CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier:)` so iOS re-invokes the extension immediately rather than waiting for its own schedule. This keeps the Caller ID list in sync automatically — there is no separate manual "sync" button in the UI.
-- **`CallerIDExtension/CallDirectoryHandler.swift`** is the entire extension target: a `CXCallDirectoryProvider` subclass that reads the shared file and calls `addIdentificationEntry(withNextSequentialPhoneNumber:label:)` once per contact, in strictly ascending numeric order (a hard CallKit requirement — the request is rejected otherwise), then `completeRequest()`. It never touches `CNContactStore` itself and has no Contacts permission of its own — everything it shows was computed by the main app.
-
-### 11.3 Real constraints (not fixable in code)
-
-- **Only labels contacts already in the address book.** A `*99` call from an unknown number still shows the raw wrapped digits — same limitation as Truecaller-style apps for unrecognized numbers.
-- **The user must enable it once, manually**: Ajustes del sistema (Settings) › Teléfono › Bloqueo e Identificación de Llamadas › CallerID. No API lets an app turn this on for itself.
-- **Requires the App Groups capability to be signed correctly** (`group.com.qvacell.shared`, declared in both targets' entitlements in `project.yml`). With automatic signing this is normally provisioned by Xcode the first time you build with a real Team ID; if identification silently doesn't show up, check that the App Group actually got created under that team in the Apple Developer portal.
-- **Only testable on a physical iPhone.** The simulator has no real telephony stack, so this cannot be verified with `xcrun simctl` screenshots the way the rest of the UI in this repo is — it needs an actual incoming `*99` call on a device with the extension enabled.
-- **A truly anonymous call (`#31#`) can never be identified this way** — see §8 platform constraints; the network never transmits the number at all in that case, so there is nothing for `CallerIDStore` to wrap or unwrap.
+Outgoing `*99` collect-call dialing remains available in Qvacell. This decision concerns incoming-call identification only.
 
 ---
 

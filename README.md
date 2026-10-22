@@ -23,7 +23,6 @@ An iPhone app to quickly access the **USSD service codes of ETECSA (Cubacel)** :
 - 📋 **Full USSD Catalog** — Organized by categories (Balance & Plans, Purchases, Transfers, Utilities) with input-aware prompts.
 - 📞 **One-Tap Dialing** — Instant execution opening the native system dialer with `#` properly encoded.
 - 👤 **Contact Integration** — Access device address book to call, transfer credit, or place `*99` collect calls directly.
-- 🆔 **Caller ID Extension** — CallKit extension labeling incoming `*99` collect calls with the contact's real name.
 - 🛜 **Wi-Fi & Navigation Directory** — Offline search for ETECSA navigation rooms and public Wi-Fi hotspots by province.
 - ✉️ **SMS Services Catalog** — Browse and prefill SMS service queries (news, weather, sports, utility rates) without silent sending.
 - 📶 **Internet Speed Test** — Built-in ping, download, and upload speed test gauge powered by Cloudflare endpoints.
@@ -55,8 +54,6 @@ open Qvacell.xcodeproj
 
 Build and run on a device. **USSD dialing requires a physical iPhone with a Cubacel SIM** 📲 — the simulator cannot place calls.
 
-To get Caller ID working for `*99` collect calls, after installing the app go to **Ajustes (Settings) › Teléfono › Bloqueo e Identificación de Llamadas** on the device and enable **CallerID**. This is a one-time, manual iOS setting — no app can enable it automatically. See [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification) for why.
-
 ## 🗂️ Project Structure
 
 ```
@@ -68,12 +65,6 @@ Qvacell/
 ├── Views.swift               # Home, Contactos, category, and options screens
 ├── codes.json                # Bundled USSD code catalog
 └── wifi_navigation_rooms.json  # Bundled ETECSA navigation-room/hotspot directory
-
-CallerIDExtension/             # CallKit Call Directory Extension (labels *99 collect calls)
-└── CallDirectoryHandler.swift
-
-Shared/                        # Code shared by the app and CallerIDExtension
-└── CallerIDStore.swift        # App Group–backed caller-ID list (read/write)
 ```
 
 _The full USSD code catalog is dynamically loaded from our JSON configuration file [`Qvacell/codes.json`](Qvacell/codes.json), keeping the app lightweight and easy to update._ 📁
@@ -99,9 +90,7 @@ Includes an offline directory of official ETECSA navigation rooms and public Wi-
 
 ## 🚧 Known Limitations
 
-- **Offline database not integrated with Caller ID (`*99`).** The user-imported database (`Buscar en Database`) is intentionally kept separate from `CallerIDStore`/`CallDirectoryHandler` (see [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), which only ever loads from the device's own Contacts. A CallKit Call Directory Extension has a hard cap on how many identification entries it can register (historically on the order of 100k–200k) — typical database dumps have millions of rows (v1: ~4.6M; v2: ~4.8M combined), so registering them wholesale would get the extension rejected or disabled by iOS. Feeding it in would need a drastic filter (e.g. only numbers already in the device's own contacts, which is exactly what happens today) to fit under that ceiling.
-
-- **No "call via WhatsApp/Teams" option in Contactos.** The Contactos tab only offers cellular actions (normal call, `*99` collect, `#31#` anonymous) next to each contact — it can't add a "call via WhatsApp" or "call via Teams" option alongside them. Those apps place calls over their own proprietary VoIP/Wi-Fi-calling stack, not the cellular network, and don't expose any public API or URL scheme a third-party app can use to trigger a call through them — that's entirely up to WhatsApp/Teams themselves (they'd need to register their own CallKit provider and/or an app-specific integration), not something Qvacell can add from the outside.
+- **No "call via WhatsApp/Teams" option in Contactos.** The Contactos tab only offers cellular actions (normal call, `*99` collect, `#31#` anonymous) next to each contact — it can't add a "call via WhatsApp" or "call via Teams" option alongside them. Those apps place calls over their own proprietary VoIP/Wi-Fi-calling stack, not the cellular network, and don't expose any public API or URL scheme a third-party app can use to trigger a call through them — that's entirely up to WhatsApp/Teams themselves (they'd need to provide an app-specific integration), not something Qvacell can add from the outside.
 
 - **iOS security sandbox and USSD limitations (no real-time balance tracking).** Unlike Android (where apps can intercept USSD responses in the background), iOS sandbox security prevents third-party apps from reading or parsing USSD response dialogs, chaining sessions automatically, or running background USSD queries. Because of this system limitation, the app cannot automatically display or update your balance, data packages, or bonus balances in real-time inside the app UI; dialing a code (`tel://`) hands off execution to the native Phone app where the user sees the carrier response screen directly.
 

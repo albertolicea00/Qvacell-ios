@@ -109,23 +109,6 @@
         }
       }
     },
-    "¿Qué es y cómo funciona?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "What is it and how does it work?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Qué es y cómo funciona?"
-          }
-        }
-      }
-    },
     "¿Qué es?" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -200,23 +183,6 @@
         }
       }
     },
-    "Abre los **Ajustes** de tu iPhone." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open your iPhone's **Settings**."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abre los **Ajustes** de tu iPhone."
-          }
-        }
-      }
-    },
     "Abrir Ajustes de Siri para Qvacell" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -284,23 +250,6 @@
         }
       }
     },
-    "Activa el interruptor de **Qvacell** (CallerID)." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turn on the **Qvacell** (CallerID) toggle."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activa el interruptor de **Qvacell** (CallerID)."
-          }
-        }
-      }
-    },
     "Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente." : {
       "localizations" : {
         "en" : {
@@ -313,22 +262,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Activa el permiso de Contactos para poder llamar o transferir saldo a tus contactos directamente."
-          }
-        }
-      }
-    },
-    "Actívala manualmente en Ajustes › Teléfono › Bloqueo e Identificación de Llamadas." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable it manually in Settings › Phone › Call Blocking & Identification."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actívala manualmente en Ajustes › Teléfono › Bloqueo e Identificación de Llamadas."
           }
         }
       }
@@ -1431,23 +1364,6 @@
         }
       }
     },
-    "Debes abrir la pestaña Contactos en Qvacell al menos una vez para que la app sincronice tu lista de contactos con la extensión." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You must open the Contacts tab in Qvacell at least once so the app can sync your contact list with the extension."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Debes abrir la pestaña Contactos en Qvacell al menos una vez para que la app sincronice tu lista de contactos con la extensión."
-          }
-        }
-      }
-    },
     "Descargando… %@%%" : {
 
     },
@@ -1754,22 +1670,6 @@
         }
       }
     },
-    "En Cuba, cuando alguien te llama a cobro revertido marcando **\\*99**, ETECSA envía el número entrante envuelto con 14 dígitos (por ejemplo, **99535XXXXXXX99**)." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In Cuba, when someone calls you collect by dialing **\\*99**, ETECSA sends the incoming number wrapped in 14 digits (for example, **99535XXXXXXX99**)."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En Cuba, cuando alguien te llama a cobro revertido marcando **\\*99**, ETECSA envía el número entrante envuelto con 14 dígitos (por ejemplo, **99535XXXXXXX99**)."
-          }
-        }
-      }
-    },
     "En la pestaña Compras hay un interruptor \"Acción sin Confirmación\". Actívalo y los códigos que lo soportan marcan directo el paso de confirmación de ETECSA, ahorrándote un paso — solo actívalo si ya confías en lo que vas a comprar." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1905,23 +1805,6 @@
         }
       }
     },
-    "Entra en **Bloqueo e identificación de llamadas**." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go into **Call Blocking & Identification**."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entra en **Bloqueo e identificación de llamadas**."
-          }
-        }
-      }
-    },
     "Enviar \"%@\"" : {
 
     },
@@ -1987,23 +1870,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esta acción no se puede deshacer."
-          }
-        }
-      }
-    },
-    "Estado de la Extensión" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Extension Status"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estado de la Extensión"
           }
         }
       }
@@ -2208,55 +2074,6 @@
         }
       }
     },
-    "Identifica automáticamente quién te llama con cobro revertido (*99) mostrando el nombre real de tu contacto en la pantalla de llamada." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatically identifies who's calling you collect (*99) by showing your contact's real name on the call screen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Identifica automáticamente quién te llama con cobro revertido (*99) mostrando el nombre real de tu contacto en la pantalla de llamada."
-          }
-        }
-      }
-    },
-    "Identificador *99" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "*99 Caller ID"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Identificador *99"
-          }
-        }
-      }
-    },
-    "Identificador de Llamadas (*99)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Caller ID (*99)"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Identificador de Llamadas (*99)"
-          }
-        }
-      }
-    },
     "Idioma" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2302,23 +2119,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importando… puede tardar varios minutos, no cierres la app."
-          }
-        }
-      }
-    },
-    "Importante" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Important"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importante"
           }
         }
       }
@@ -3098,23 +2898,6 @@
         }
       }
     },
-    "Pasos para Activar en tu iPhone" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Steps to Activate on your iPhone"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pasos para Activar en tu iPhone"
-          }
-        }
-      }
-    },
     "Permitir Acceso a Contactos" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3467,38 +3250,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Por Defecto"
-          }
-        }
-      }
-    },
-    "Por eso, la app Teléfono de tu iPhone normalmente no sabe quién es y solo muestra esa serie de números. La extensión de Qvacell le enseña a iOS a reconocerlo y mostrar el nombre real del contacto guardado en tu agenda." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "That's why your iPhone's Phone app usually doesn't know who it is and just shows that string of numbers. Qvacell's extension teaches iOS to recognize it and show the real name of the contact saved in your address book."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por eso, la app Teléfono de tu iPhone normalmente no sabe quién es y solo muestra esa serie de números. La extensión de Qvacell le enseña a iOS a reconocerlo y mostrar el nombre real del contacto guardado en tu agenda."
-          }
-        }
-      }
-    },
-    "Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma, ni abrir esa pantalla de Ajustes directamente; debe autorizarse manualmente desde los ajustes de iOS." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Due to Apple's security policies, no app can activate this extension by itself, nor open that Settings screen directly; it must be authorized manually from iOS Settings."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por políticas de seguridad de Apple, ninguna aplicación puede activar esta extensión por sí misma, ni abrir esa pantalla de Ajustes directamente; debe autorizarse manualmente desde los ajustes de iOS."
           }
         }
       }
@@ -4290,23 +4041,6 @@
         }
       }
     },
-    "Solo se identifican contactos que ya tengas guardados en tu agenda con número celular cubano (+53 5XXXXXXX)." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only contacts already saved in your address book with a Cuban mobile number (+53 5XXXXXXX) are identified."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Solo se identifican contactos que ya tengas guardados en tu agenda con número celular cubano (+53 5XXXXXXX)."
-          }
-        }
-      }
-    },
     "Son servicios de ETECSA que se usan enviando un SMS, no marcando un código — tarifas, DHL y vuelos, deportes, noticias, frases y horóscopos. Algunos son suscripciones (se marcan con la etiqueta \"Suscripción\") y pueden tener un costo recurrente. Necesitas un dispositivo que pueda enviar SMS (el Simulador de Xcode, por ejemplo, no puede)." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4408,23 +4142,6 @@
         }
       }
     },
-    "Toca en **Teléfono**." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap **Phone**."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca en **Teléfono**."
-          }
-        }
-      }
-    },
     "Transferir" : {
       "localizations" : {
         "en" : {
@@ -4454,23 +4171,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Transferir Saldo"
-          }
-        }
-      }
-    },
-    "Tus contactos se procesan 100% en el dispositivo (offline), sin servidores ni internet." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your contacts are processed 100% on-device (offline), with no servers or internet."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tus contactos se procesan 100% en el dispositivo (offline), sin servidores ni internet."
           }
         }
       }

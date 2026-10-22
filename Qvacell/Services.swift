@@ -1,5 +1,4 @@
 import AppIntents
-import CallKit
 import Contacts
 import CoreTelephony
 import Foundation
@@ -356,8 +355,8 @@ final class ContactsService {
             var results: [DeviceContact] = []
             try? store.enumerateContacts(with: request) { contact, _ in
                 // Keep every Cuban number on the contact, not just the first — contacts with
-                // several lines (two SIMs, mobile + home) need all of them for identification
-                // and dialing to actually work, deduped in case the same number is repeated
+                // several lines (two SIMs, mobile + home) need all of them for
+                // dialing to work, deduped in case the same number is repeated
                 // under different labels.
                 var seenNumbers = Set<String>()
                 let cubanNumbers: [ContactPhoneNumber] = contact.phoneNumbers.compactMap { labeled in
@@ -378,7 +377,6 @@ final class ContactsService {
                 ))
             }
             let sorted = results.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
-            Self.syncCallerIDExtension(with: sorted)
             DispatchQueue.main.async { [weak self] in
                 self?.contacts = sorted
                 self?.isLoaded = true
@@ -386,26 +384,6 @@ final class ContactsService {
         }
     }
 
-    /// Rebuilds the `*99` collect-call caller-ID list (see `CallerIDStore`) from the freshly
-    /// fetched contacts and asks CallKit to reload `CallerIDExtension` with it. No-op if the
-    /// user has never enabled the extension in Ajustes del sistema — `reloadExtension` still
-    /// completes, CallKit just has nothing enabled to feed.
-    private static func syncCallerIDExtension(with contacts: [DeviceContact]) {
-        // Register every Cuban number on each contact, not just the primary one — a contact
-        // with several lines should be identified no matter which one calls in. CallKit still
-        // requires every wrapped number in the batch to be unique, so dedupe across the whole
-        // batch (a single duplicate fails the whole extension reload).
-        var seenNumbers = Set<Int64>()
-        let entries = contacts.flatMap { contact in
-            contact.numbers.compactMap { number -> CallerIDEntry? in
-                guard let wrapped = CallerIDStore.wrappedNumber(forLocalNumber: number.number),
-                      seenNumbers.insert(wrapped).inserted else { return nil }
-                return CallerIDEntry(wrappedNumber: wrapped, name: contact.name)
-            }
-        }
-        CallerIDStore.write(entries)
-        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: CallerIDStore.extensionBundleID) { _ in }
-    }
 }
 
 // MARK: - Dial Service

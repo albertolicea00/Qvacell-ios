@@ -23,7 +23,6 @@ Una aplicación para iPhone para acceder rápidamente a los **códigos de servic
 - 📋 **Catálogo USSD Completo** — Organizado por categorías (Saldo y Planes, Compras, Transferencias, Utilidades) con solicitudes interactivas según entradas necesarias.
 - 📞 **Marcado en Un Tap** — Ejecución instantánea abriendo el marcador nativo del sistema con `#` codificado correctamente.
 - 👤 **Integración con Contactos** — Accede a la agenda del dispositivo para llamar, transferir saldo o realizar llamadas a cobro revertido `*99` directamente.
-- 🆔 **Extensión Identificador de Llamadas** — Extensión CallKit que etiqueta las llamadas a cobro revertido `*99` entrantes con el nombre real del contacto.
 - 🛜 **Directorio de Salas de Navegación y Wi-Fi** — Búsqueda offline de salas de navegación de ETECSA y puntos Wi-Fi públicos por provincia.
 - ✉️ **Catálogo de Servicios SMS** — Examina y prellena consultas de servicios por SMS (noticias, tiempo, deportes, tarifas de servicios) sin envío silencioso.
 - 📶 **Prueba de Velocidad de Internet** — Medidor de prueba de velocidad de ping, descarga y subida integrado con endpoints de Cloudflare.
@@ -55,8 +54,6 @@ open Qvacell.xcodeproj
 
 Compila y ejecuta en un dispositivo. **El marcado USSD requiere un iPhone físico con una SIM de Cubacel** 📲 — el simulador no puede realizar llamadas.
 
-Para activar el Identificador de Llamadas para llamadas `*99`, tras instalar la app ve a **Ajustes (o Configuración) › Teléfono › Bloqueo e Identificación de Llamadas** en el dispositivo y activa **CallerID**. Este es un ajuste manual de iOS que se realiza una sola vez — ninguna app puede activarlo automáticamente. Consulta [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification) para entender los motivos.
-
 ## 🗂️ Estructura del Proyecto
 
 ```
@@ -68,12 +65,6 @@ Qvacell/
 ├── Views.swift               # Pantallas de Inicio, Contactos, categorías y opciones
 ├── codes.json                # Catálogo de códigos USSD incluido
 └── wifi_navigation_rooms.json  # Directorio de salas de navegación/puntos Wi-Fi de ETECSA incluido
-
-CallerIDExtension/             # Extensión CallKit Call Directory (etiqueta llamadas a cobro revertido *99)
-└── CallDirectoryHandler.swift
-
-Shared/                        # Código compartido entre la app y CallerIDExtension
-└── CallerIDStore.swift        # Lista de IDs de llamadas respaldada por App Group (lectura/escritura)
 ```
 
 _El catálogo completo de códigos USSD se carga dinámicamente desde nuestro archivo de configuración JSON [`Qvacell/codes.json`](Qvacell/codes.json), manteniendo la app ligera y fácil de actualizar._ 📁
@@ -98,8 +89,6 @@ Incluye un directorio offline de salas de navegación oficiales de ETECSA y punt
 [`cross-platform-sync-check.yml`](.github/workflows/cross-platform-sync-check.yml) se ejecuta en cada push a `main` que modifique `codes.json` o `wifi_navigation_rooms.json`, y compara la copia de este repo contra la de [qvacell-apk](https://github.com/albertolicea00/Qvacell-apk) (la app Android). Si han divergido, abre (o actualiza) un issue en el _otro_ repositorio para que se actualice la plataforma que quedó atrás. Solo se compara la **estructura** en `codes.json` (ids, cadenas de marcado, tipo de acción, manejo de entrada, ubicación en categoría/grupo) — los campos cosméticos (icono, precio, redacción del título, etc.) pueden diferir entre plataformas. Ver [ARCHITECTURE.md § 14](ARCHITECTURE.md#14-cross-platform-catalog-sync-check) para el detalle exacto de qué se compara y cómo.
 
 ## 🚧 Limitaciones Conocidas
-
-- **La base de datos offline no está integrada con el ID de Llamadas (`*99`).** La base de datos importada por el usuario (`Buscar en Database`) se mantiene separada intencionalmente de `CallerIDStore`/`CallDirectoryHandler` (ver [ARCHITECTURE.md § 11](ARCHITECTURE.md#11-caller-id-extension-99-collect-call-identification)), el cual solo se carga desde los Contactos propios del dispositivo. Una extensión CallKit Call Directory tiene un límite estricto en la cantidad de entradas de identificación que puede registrar (alrededor de 100k–200k) — los volcados de base de datos tienen millones de filas (v1: ~4.6M; v2: ~4.8M combinados), por lo que registrarlos por completo provocaría el rechazo o desactivación de la extensión por parte de iOS.
 
 - **Sin opción de "llamar por WhatsApp/Teams" en Contactos.** La pestaña Contactos solo ofrece acciones celulares (llamada normal, `*99` a cobro revertido, `#31#` anónima) al lado de cada contacto — no puede añadir una opción de "llamar por WhatsApp" o "llamar por Teams". Esas apps realizan llamadas sobre su propia pila VoIP/Wi-Fi, no sobre la red celular, y no exponen APIs públicas o esquemas URL que una app externa pueda usar para desencadenar una llamada a través de ellas.
 

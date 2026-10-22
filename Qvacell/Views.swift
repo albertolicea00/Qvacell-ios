@@ -92,10 +92,14 @@ enum HomeTab: String, CaseIterable, Identifiable {
         }
     }
 
-    /// Every case except the plain `.options` landing screen itself (and `.database` if locked) —
+    /// Visible destinations except the plain `.options` landing screen (and `.database` if locked) —
     /// used by "Pestaña Inicial" in Opciones.
     static func launchOptions(includingDatabase: Bool = false) -> [HomeTab] {
-        allCases.filter { $0 != .options && ($0 != .database || includingDatabase) }
+        allCases.filter {
+            $0 != .options
+                && $0 != .directory
+                && ($0 != .database || includingDatabase)
+        }
     }
 
     var displayName: LocalizedStringKey {
@@ -1361,7 +1365,7 @@ struct OptionsView: View {
     @State private var hasAutoNavigatedToLaunchDestination = false
     @State private var isShowingDatabaseOnLaunch = false
     @State private var isShowingSMSServicesOnLaunch = false
-    @State private var isShowingDirectoryOnLaunch = false
+    // @State private var isShowingDirectoryOnLaunch = false
 
     /// Unlocks the hidden "Buscar en Database" row — 5 taps on the version text below within 3
     /// seconds toggles it. Not persisted-and-forgotten as a one-way unlock: toggling lets whoever
@@ -1467,11 +1471,11 @@ struct OptionsView: View {
                         Label("Salas y Zonas WiFi", systemImage: "wifi")
                     }
 
-                    NavigationLink {
-                        YellowPagesSearchView()
-                    } label: {
-                        Label("Buscar en Directorio", systemImage: "magnifyingglass")
-                    }
+                    // NavigationLink {
+                    //     YellowPagesSearchView()
+                    // } label: {
+                    //     Label("Buscar en Directorio", systemImage: "magnifyingglass")
+                    // }
 
                     if showDatabaseSearch {
                         NavigationLink {
@@ -1572,14 +1576,16 @@ struct OptionsView: View {
             }
             .navigationDestination(isPresented: $isShowingDatabaseOnLaunch) { DirectorySearchView() }
             .navigationDestination(isPresented: $isShowingSMSServicesOnLaunch) { SMSServicesView() }
-            .navigationDestination(isPresented: $isShowingDirectoryOnLaunch) { YellowPagesSearchView() }
+            // .navigationDestination(isPresented: $isShowingDirectoryOnLaunch) { YellowPagesSearchView() }
             .navigationTitle("Opciones")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 // A stored `defaultTab` of "options" / "settings" predates removing the bare Opciones option
-                // from "Pestaña Inicial", or ".database" if database search is not unlocked —
+                // from "Pestaña Inicial", or a destination that is currently hidden —
                 // normalize it so the Picker doesn't show a blank selection.
-                if defaultTab == HomeTab.options.rawValue || defaultTab == "settings" || (!showDatabaseSearch && defaultTab == HomeTab.database.rawValue) {
+                if defaultTab == HomeTab.options.rawValue || defaultTab == "settings"
+                    || (!showDatabaseSearch && defaultTab == HomeTab.database.rawValue)
+                    || defaultTab == HomeTab.directory.rawValue {
                     defaultTab = HomeTab.home.rawValue
                 }
                 guard !hasAutoNavigatedToLaunchDestination else { return }
@@ -1588,9 +1594,10 @@ struct OptionsView: View {
                     isShowingDatabaseOnLaunch = true
                 } else if defaultTab == HomeTab.smsServices.rawValue {
                     isShowingSMSServicesOnLaunch = true
-                } else if defaultTab == HomeTab.directory.rawValue {
-                    isShowingDirectoryOnLaunch = true
                 }
+                // else if defaultTab == HomeTab.directory.rawValue {
+                //     isShowingDirectoryOnLaunch = true
+                // }
             }
             .alert(
                 pendingSMSInputCode?.localizedTitle ?? "",
@@ -2506,12 +2513,12 @@ private struct HelpOptionsView: View {
             //     )
             // }
 
-            Section("Buscar en Directorio") {
-                OptionsInfoRow(
-                    title: "¿Qué es?",
-                    text: "En Opciones › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
-                )
-            }
+            // Section("Buscar en Directorio") {
+            //     OptionsInfoRow(
+            //         title: "¿Qué es?",
+            //         text: "En Opciones › Utilidades › Buscar en Directorio puedes buscar números y contactos comerciales en el directorio telefónico de ETECSA (función actualmente en desarrollo)."
+            //     )
+            // }
 
             Section("Buscar en Database") {
                 OptionsInfoRow(

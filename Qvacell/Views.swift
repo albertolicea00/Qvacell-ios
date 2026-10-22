@@ -1389,38 +1389,58 @@ struct OptionsView: View {
                         showingInterestLinks = true
                     } label: {
                         HStack {
-                            Label("Enlaces de interés", systemImage: "link")
+                            Label {
+                                Text("Enlaces de interés")
+                                    .foregroundStyle(.primary)
+                            } icon: {
+                                Image(systemName: "link")
+                                    .foregroundStyle(accentColorStore.color)
+                            }
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(.tertiary)
                         }
                     }
+                    .buttonStyle(.plain)
 
                     Button {
                         showingSIMSettings = true
                     } label: {
                         HStack {
-                            Label("Configuración de SIM", systemImage: "simcard")
+                            Label {
+                                Text("Configuración de SIM")
+                                    .foregroundStyle(.primary)
+                            } icon: {
+                                Image(systemName: "simcard")
+                                    .foregroundStyle(accentColorStore.color)
+                            }
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(.tertiary)
                         }
                     }
+                    .buttonStyle(.plain)
 
                     if store.group(named: "Servicio Adelanta Saldo") != nil {
                         Button {
                             showingAdvanceBalanceOptions = true
                         } label: {
                             HStack {
-                                Label("Adelanta Saldo", systemImage: "banknote.fill")
-                                    .foregroundStyle(.primary)
+                                Label {
+                                    Text("Adelanta Saldo")
+                                        .foregroundStyle(.primary)
+                                } icon: {
+                                    Image(systemName: "banknote.fill")
+                                        .foregroundStyle(accentColorStore.color)
+                                }
                                 Spacer()
                                 Image(systemName: "arrow.right")
                                     .foregroundStyle(.secondary)
                             }
                         }
+                        .buttonStyle(.plain)
                     }
 
                     NavigationLink {

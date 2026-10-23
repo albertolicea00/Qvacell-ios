@@ -283,7 +283,6 @@
       }
     },
     "Adelanta Saldo" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1163,7 +1162,6 @@
       }
     },
     "Configuración de SIM" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1789,7 +1787,6 @@
       }
     },
     "Enlaces de interés" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2625,6 +2622,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No necesitas configurar nada: al instalar la app, Siri y Atajos reconocen automáticamente «Qvacell»."
+          }
+        }
+      }
+    },
+    "No se detecta servicio celular. Comprueba la señal y que tengas una SIM Cubacel activa." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No cellular service detected. Check your signal and make sure you have an active Cubacel SIM."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se detecta servicio celular. Comprueba la señal y que tengas una SIM Cubacel activa."
           }
         }
       }

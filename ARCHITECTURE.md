@@ -100,6 +100,14 @@ Each `CategoryListView` is a `NavigationStack` wrapping a `List` of that categor
 
 `OptionsView` is its own `NavigationStack` wrapping a `List` (not a `Form`), entirely separate from the category tabs. Unlike the original single-screen design, it now has real navigation depth — `NavigationLink`s push `SMSServicesView`, `WifiRoomsProvinceListView`, `YellowPagesSearchView` ("Buscar en Directorio"), `DirectorySearchView` ("Buscar en Database", when unlocked), `FriendsPlanManageView`, `TransferPinSettingsView`, `SiriShortcutsHelpView`, and `HelpSettingsView`. "Pestaña Inicial" (`@AppStorage("defaultTab")`) can point at one of those nested screens instead of a bare tab; `OptionsView.onAppear` auto-pushes the matching one exactly once per launch via a dedicated `isShowing*OnLaunch` flag per destination (see `HomeTab.launchOptions`/`.tabToSelect`). Persisted `@AppStorage` state now includes `darkModePreference`, `defaultTab`, `showNetworkStatus`, and `quickPurchaseNoConfirmDefault`, plus the accent color hex (`AccentColorStore`) and the transfer PIN (Keychain, not `UserDefaults` — §12).
 
+### Cellular service warning and iOS limitations
+
+Each of the five tab roots applies `CellularServiceWarningModifier` outside its `NavigationStack`. It reserves space above the tab bar with `safeAreaInset`, so the amber warning also remains visible on pushed screens, independently of the optional `showNetworkStatus` banner. The text uses Dynamic Type and wraps without covering content. `CellularMonitor` updates on radio-technology notifications, every five seconds while HomeView is mounted, and when the app becomes active.
+
+When no cellular radio technology is reported, the warning asks the user to check signal and an active Cubacel SIM. This is **not proof of a missing SIM**: airplane mode, disabled lines, and lack of coverage can produce the same observation. Actions remain available.
+
+The iOS app targets iOS 17+. As documented in [Apple's iOS 16.4 release notes](https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-16_4-release-notes), deprecated `CTCarrier` APIs return static values for apps built with the iOS 16.4 SDK or later. Qvacell therefore does not use placeholder MCC/MNC values to claim that a SIM is foreign or Cubacel. Carrier-specific detection parity with Android cannot be implemented reliably with those public APIs. There is currently no dynamic dashboard or silent USSD refresh in this iOS app, so there is no dashboard refresh to gate.
+
 ---
 
 ## 5. Code Execution Path

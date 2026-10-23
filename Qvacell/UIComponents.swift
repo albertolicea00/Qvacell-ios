@@ -327,6 +327,35 @@ struct DirectoryEntryRowView: View {
     .environment(AccentColorStore())
 }
 
+// MARK: - Global Cellular Service Warning
+
+/// Informational only: iOS 17+ cannot reliably identify the SIM's home operator.
+/// Keep this outside each tab's NavigationStack so pushed screens share the warning.
+struct CellularServiceWarningModifier: ViewModifier {
+    @State private var monitor = CellularMonitor.shared
+
+    func body(content: Content) -> some View {
+        content.safeAreaInset(edge: .bottom, spacing: 0) {
+            if !monitor.hasService {
+                HStack(alignment: .top, spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundStyle(.orange)
+                        .accessibilityHidden(true)
+                    Text("No se detecta servicio celular. Comprueba la señal y que tengas una SIM Cubacel activa.")
+                        .foregroundStyle(.primary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .font(.footnote)
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.orange.opacity(0.15))
+                .accessibilityElement(children: .combine)
+            }
+        }
+    }
+}
+
 // MARK: - Connection Status Banner
 
 /// Warns when cellular signal is absent or weak, since USSD codes need voice-network

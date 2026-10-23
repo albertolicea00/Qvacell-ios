@@ -146,6 +146,10 @@ final class CellularMonitor {
         }
     }
 
+    func refresh() {
+        updateStatus()
+    }
+
     private func updateStatus() {
         guard let techByService = telephonyInfo.serviceCurrentRadioAccessTechnology,
               let tech = techByService.values.first, !tech.isEmpty

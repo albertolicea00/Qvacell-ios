@@ -15,11 +15,14 @@ struct HomeView: View {
     @Environment(TabRouter.self) private var tabRouter
     @AppStorage("defaultTab") private var defaultTab = HomeTab.home.rawValue
     @State private var selectedTab = HomeTab.home.rawValue
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var cellularMonitor = CellularMonitor.shared
 
     var body: some View {
         TabView(selection: $selectedTab) {
             if let helplines = store.tabCategories.first(where: { $0.id == "helplines" }) {
                 CategoryListView(category: helplines)
+                    .modifier(CellularServiceWarningModifier())
                     .tabItem {
                         Label("Ayuda", systemImage: helplines.icon)
                     }
@@ -27,12 +30,14 @@ struct HomeView: View {
             }
 
             ContactsListView()
+                .modifier(CellularServiceWarningModifier())
                 .tabItem {
                     Label("Contactos", systemImage: "person.crop.circle.fill")
                 }
                 .tag(HomeTab.contacts.rawValue)
 
             HomeQuickActionsView()
+                .modifier(CellularServiceWarningModifier())
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
@@ -40,6 +45,7 @@ struct HomeView: View {
 
             if let purchase = store.tabCategories.first(where: { $0.id == "purchase" }) {
                 CategoryListView(category: purchase)
+                    .modifier(CellularServiceWarningModifier())
                     .tabItem {
                         Label("Compras", systemImage: purchase.icon)
                     }
@@ -47,12 +53,26 @@ struct HomeView: View {
             }
 
             OptionsView()
+                .modifier(CellularServiceWarningModifier())
                 .tabItem {
                     Label("Opciones", systemImage: "square.grid.2x2")
                 }
                 .tag(HomeTab.options.rawValue)
         }
         .tint(accentColorStore.color)
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { cellularMonitor.refresh() }
+        }
+        .task {
+            while !Task.isCancelled {
+                cellularMonitor.refresh()
+                do {
+                    try await Task.sleep(for: .seconds(5))
+                } catch {
+                    return
+                }
+            }
+        }
         .onAppear {
             selectedTab = (HomeTab(rawValue: defaultTab) ?? .home).tabToSelect.rawValue
         }
